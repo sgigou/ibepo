@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		392AD047245D72D9008252F1 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392AD046245D72D9008252F1 /* KeyboardViewController.swift */; };
+		392AD04B245D72D9008252F1 /* keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 392AD044245D72D9008252F1 /* keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39528F7F245AFC4D0080FBE8 /* AppDelegate.swift */; };
 		39528F89245AFC510080FBE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39528F88245AFC510080FBE8 /* Assets.xcassets */; };
 		39528F8C245AFC510080FBE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39528F8A245AFC510080FBE8 /* LaunchScreen.storyboard */; };
@@ -18,6 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		392AD049245D72D9008252F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 39528F74245AFC4D0080FBE8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 392AD043245D72D9008252F1;
+			remoteInfo = keyboard;
+		};
 		39528F93245AFC510080FBE8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 39528F74245AFC4D0080FBE8 /* Project object */;
@@ -34,7 +43,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		392AD04C245D72D9008252F1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				392AD04B245D72D9008252F1 /* keyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		392AD044245D72D9008252F1 /* keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		392AD046245D72D9008252F1 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		392AD048245D72D9008252F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39528F7C245AFC4D0080FBE8 /* iBépo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iBépo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39528F7F245AFC4D0080FBE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39528F88245AFC510080FBE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,6 +78,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		392AD041245D72D9008252F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		39528F79245AFC4D0080FBE8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -76,6 +109,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		392AD045245D72D9008252F1 /* keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				392AD046245D72D9008252F1 /* KeyboardViewController.swift */,
+				392AD048245D72D9008252F1 /* Info.plist */,
+			);
+			path = keyboard;
+			sourceTree = "<group>";
+		};
 		394657A0245B0EF20039E88F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +133,7 @@
 				39528F7E245AFC4D0080FBE8 /* ibepo */,
 				39528F95245AFC510080FBE8 /* ibepoTests */,
 				39528FA0245AFC510080FBE8 /* ibepoUITests */,
+				392AD045245D72D9008252F1 /* keyboard */,
 				39528F7D245AFC4D0080FBE8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,6 +144,7 @@
 				39528F7C245AFC4D0080FBE8 /* iBépo.app */,
 				39528F92245AFC510080FBE8 /* ibepoTests.xctest */,
 				39528F9D245AFC510080FBE8 /* ibepoUITests.xctest */,
+				392AD044245D72D9008252F1 /* keyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -155,6 +199,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		392AD043245D72D9008252F1 /* keyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 392AD04F245D72D9008252F1 /* Build configuration list for PBXNativeTarget "keyboard" */;
+			buildPhases = (
+				392AD040245D72D9008252F1 /* Sources */,
+				392AD041245D72D9008252F1 /* Frameworks */,
+				392AD042245D72D9008252F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = keyboard;
+			productName = keyboard;
+			productReference = 392AD044245D72D9008252F1 /* keyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		39528F7B245AFC4D0080FBE8 /* ibepo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39528FA6245AFC510080FBE8 /* Build configuration list for PBXNativeTarget "ibepo" */;
@@ -163,10 +224,12 @@
 				39528F79245AFC4D0080FBE8 /* Frameworks */,
 				39528F7A245AFC4D0080FBE8 /* Resources */,
 				3946579F245B0D2D0039E88F /* Increment Build */,
+				392AD04C245D72D9008252F1 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				392AD04A245D72D9008252F1 /* PBXTargetDependency */,
 			);
 			name = ibepo;
 			productName = ibepo;
@@ -219,6 +282,9 @@
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = Novesoft;
 				TargetAttributes = {
+					392AD043245D72D9008252F1 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
 					39528F7B245AFC4D0080FBE8 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -248,11 +314,19 @@
 				39528F7B245AFC4D0080FBE8 /* ibepo */,
 				39528F91245AFC510080FBE8 /* ibepoTests */,
 				39528F9C245AFC510080FBE8 /* ibepoUITests */,
+				392AD043245D72D9008252F1 /* keyboard */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		392AD042245D72D9008252F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		39528F7A245AFC4D0080FBE8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -301,6 +375,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		392AD040245D72D9008252F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				392AD047245D72D9008252F1 /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		39528F78245AFC4D0080FBE8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -330,6 +412,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		392AD04A245D72D9008252F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 392AD043245D72D9008252F1 /* keyboard */;
+			targetProxy = 392AD049245D72D9008252F1 /* PBXContainerItemProxy */;
+		};
 		39528F94245AFC510080FBE8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 39528F7B245AFC4D0080FBE8 /* ibepo */;
@@ -354,6 +441,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		392AD04D245D72D9008252F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F2M6RF7E9E;
+				INFOPLIST_FILE = keyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.novesoft.ibepo.keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		392AD04E245D72D9008252F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F2M6RF7E9E;
+				INFOPLIST_FILE = keyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.novesoft.ibepo.keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		39528FA4245AFC510080FBE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -471,6 +596,7 @@
 		39528FA7245AFC510080FBE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F2M6RF7E9E;
@@ -491,6 +617,7 @@
 		39528FA8245AFC510080FBE8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F2M6RF7E9E;
@@ -595,6 +722,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		392AD04F245D72D9008252F1 /* Build configuration list for PBXNativeTarget "keyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				392AD04D245D72D9008252F1 /* Debug */,
+				392AD04E245D72D9008252F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		39528F77245AFC4D0080FBE8 /* Build configuration list for PBXProject "ibepo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
