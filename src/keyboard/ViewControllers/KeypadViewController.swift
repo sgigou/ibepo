@@ -11,11 +11,20 @@ import UIKit
 /// Key pad part of the input view.
 class KeypadViewController: UIViewController {
   
+  private var keySet: KeySet!
+  
   // MARK: Life cycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .systemGreen
+    loadKeySet()
+  }
+  
+  // MARK: Loading
+  
+  private func loadKeySet() {
+    let factory = KeySetFactory()
+    keySet = factory.generate()
   }
   
 }
