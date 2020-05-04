@@ -16,13 +16,27 @@ class InputView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    // TODO: Stub
-    backgroundColor = .systemBlue
+    loadViews()
   }
   
   required init?(coder: NSCoder) {
     super.init(coder: coder)
-    backgroundColor = .systemBlue
+    loadViews()
+  }
+  
+  // Loading
+  
+  /// Load the key pad and the autocomplete view (if needed).
+  private func loadViews() {
+    let keyboardView = KeyboardView()
+    addSubview(keyboardView)
+    keyboardView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      keyboardView.leftAnchor.constraint(equalTo: leftAnchor),
+      keyboardView.topAnchor.constraint(equalTo: topAnchor),
+      keyboardView.rightAnchor.constraint(equalTo: rightAnchor),
+      keyboardView.bottomAnchor.constraint(equalTo: bottomAnchor)
+    ])
   }
   
 }

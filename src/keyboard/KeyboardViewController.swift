@@ -8,7 +8,10 @@
 
 import UIKit
 
+/// View for custom keyboard extension
 class KeyboardViewController: UIInputViewController {
+  
+  // MARK: Life cycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
