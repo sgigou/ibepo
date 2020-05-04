@@ -7,17 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		391BF06224600625004F8497 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06124600625004F8497 /* KeyboardView.swift */; };
-		391BF06324600625004F8497 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06124600625004F8497 /* KeyboardView.swift */; };
+		391BF06324600625004F8497 /* KeypadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06124600625004F8497 /* KeypadViewController.swift */; };
+		391BF06524600865004F8497 /* KeyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06424600865004F8497 /* KeyList.swift */; };
+		391BF06624600865004F8497 /* KeyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06424600865004F8497 /* KeyList.swift */; };
+		391BF06924600AF8004F8497 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06824600AF8004F8497 /* Key.swift */; };
+		391BF06A24600AF8004F8497 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06824600AF8004F8497 /* Key.swift */; };
+		391BF06C24600D98004F8497 /* KeyListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06B24600D98004F8497 /* KeyListFactory.swift */; };
+		391BF070246012EC004F8497 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06F246012EC004F8497 /* KeyView.swift */; };
+		391BF071246012EC004F8497 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06F246012EC004F8497 /* KeyView.swift */; };
+		391BF07324602208004F8497 /* UI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF07224602208004F8497 /* UI+Extension.swift */; };
+		391BF07424602208004F8497 /* UI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF07224602208004F8497 /* UI+Extension.swift */; };
 		392AD047245D72D9008252F1 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392AD046245D72D9008252F1 /* KeyboardViewController.swift */; };
 		392AD04B245D72D9008252F1 /* keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 392AD044245D72D9008252F1 /* keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		392AD050245D759F008252F1 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994E3A1245D6D10008B1099 /* InputView.swift */; };
+		392AD050245D759F008252F1 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994E3A1245D6D10008B1099 /* InputViewController.swift */; };
 		39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39528F7F245AFC4D0080FBE8 /* AppDelegate.swift */; };
 		39528F89245AFC510080FBE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39528F88245AFC510080FBE8 /* Assets.xcassets */; };
 		39528F8C245AFC510080FBE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39528F8A245AFC510080FBE8 /* LaunchScreen.storyboard */; };
 		39528F97245AFC510080FBE8 /* ibepoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39528F96245AFC510080FBE8 /* ibepoTests.swift */; };
 		39528FA2245AFC510080FBE8 /* ibepoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39528FA1245AFC510080FBE8 /* ibepoUITests.swift */; };
-		3994E3A2245D6D10008B1099 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994E3A1245D6D10008B1099 /* InputView.swift */; };
 		3994E3A6245D6E82008B1099 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994E3A4245D6E82008B1099 /* HomeViewController.swift */; };
 		3994E3A7245D6E82008B1099 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3994E3A5245D6E82008B1099 /* HomeViewController.xib */; };
 /* End PBXBuildFile section */
@@ -61,7 +68,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		391BF06124600625004F8497 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		391BF06124600625004F8497 /* KeypadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadViewController.swift; sourceTree = "<group>"; };
+		391BF06424600865004F8497 /* KeyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyList.swift; sourceTree = "<group>"; };
+		391BF06824600AF8004F8497 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		391BF06B24600D98004F8497 /* KeyListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyListFactory.swift; sourceTree = "<group>"; };
+		391BF06F246012EC004F8497 /* KeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyView.swift; sourceTree = "<group>"; };
+		391BF07224602208004F8497 /* UI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+Extension.swift"; sourceTree = "<group>"; };
 		392AD044245D72D9008252F1 /* keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		392AD046245D72D9008252F1 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		392AD048245D72D9008252F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,7 +88,7 @@
 		39528F9D245AFC510080FBE8 /* ibepoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ibepoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39528FA1245AFC510080FBE8 /* ibepoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ibepoUITests.swift; sourceTree = "<group>"; };
 		39528FA3245AFC510080FBE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3994E3A1245D6D10008B1099 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		3994E3A1245D6D10008B1099 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		3994E3A4245D6E82008B1099 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3994E3A5245D6E82008B1099 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,11 +125,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		392AD045245D72D9008252F1 /* keyboard */ = {
+		391BF06724600869004F8497 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				391BF06824600AF8004F8497 /* Key.swift */,
+				391BF06424600865004F8497 /* KeyList.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		391BF06E246012DA004F8497 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				391BF06B24600D98004F8497 /* KeyListFactory.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		391BF07524602501004F8497 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				392AD046245D72D9008252F1 /* KeyboardViewController.swift */,
+				3994E3A1245D6D10008B1099 /* InputViewController.swift */,
+				391BF06124600625004F8497 /* KeypadViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		391BF0762460251C004F8497 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				391BF07224602208004F8497 /* UI+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		392AD045245D72D9008252F1 /* keyboard */ = {
+			isa = PBXGroup;
+			children = (
 				392AD048245D72D9008252F1 /* Info.plist */,
+				391BF0762460251C004F8497 /* Extensions */,
+				391BF06E246012DA004F8497 /* Services */,
+				391BF06724600869004F8497 /* Entities */,
+				391BF07524602501004F8497 /* ViewControllers */,
+				3994E3A3245D6D13008B1099 /* Views */,
 			);
 			path = keyboard;
 			sourceTree = "<group>";
@@ -159,7 +210,6 @@
 				39528F7F245AFC4D0080FBE8 /* AppDelegate.swift */,
 				39528F8D245AFC510080FBE8 /* Info.plist */,
 				3994E3A8245D6E86008B1099 /* ViewControllers */,
-				3994E3A3245D6D13008B1099 /* Views */,
 				394657A0245B0EF20039E88F /* Resources */,
 			);
 			path = ibepo;
@@ -186,8 +236,7 @@
 		3994E3A3245D6D13008B1099 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3994E3A1245D6D10008B1099 /* InputView.swift */,
-				391BF06124600625004F8497 /* KeyboardView.swift */,
+				391BF06F246012EC004F8497 /* KeyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -384,9 +433,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				391BF06324600625004F8497 /* KeyboardView.swift in Sources */,
+				391BF07424602208004F8497 /* UI+Extension.swift in Sources */,
+				391BF06324600625004F8497 /* KeypadViewController.swift in Sources */,
+				391BF06A24600AF8004F8497 /* Key.swift in Sources */,
+				391BF071246012EC004F8497 /* KeyView.swift in Sources */,
+				391BF06624600865004F8497 /* KeyList.swift in Sources */,
 				392AD047245D72D9008252F1 /* KeyboardViewController.swift in Sources */,
-				392AD050245D759F008252F1 /* InputView.swift in Sources */,
+				392AD050245D759F008252F1 /* InputViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,9 +448,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */,
-				391BF06224600625004F8497 /* KeyboardView.swift in Sources */,
-				3994E3A2245D6D10008B1099 /* InputView.swift in Sources */,
+				391BF07324602208004F8497 /* UI+Extension.swift in Sources */,
+				391BF06524600865004F8497 /* KeyList.swift in Sources */,
+				391BF06C24600D98004F8497 /* KeyListFactory.swift in Sources */,
+				391BF070246012EC004F8497 /* KeyView.swift in Sources */,
 				3994E3A6245D6E82008B1099 /* HomeViewController.swift in Sources */,
+				391BF06924600AF8004F8497 /* Key.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
