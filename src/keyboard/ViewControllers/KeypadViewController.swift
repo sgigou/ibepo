@@ -16,10 +16,7 @@ class KeypadViewController: UIViewController {
   // MARK: Life cycle
   
   override func loadView() {
-    let view = KeypadView()
-    view.initRowStack()
-    view.heightAnchor.constraint(greaterThanOrEqualToConstant: 200).isActive = true
-    self.view = view
+    self.view = KeypadView()
   }
   
   override func viewDidLoad() {
@@ -33,7 +30,7 @@ class KeypadViewController: UIViewController {
     let view = self.view as! KeypadView
     let factory = KeySetFactory()
     keySet = factory.generate()
-    view.add(keySet: keySet)
+    view.load(keySet: keySet)
   }
   
 }

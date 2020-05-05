@@ -16,6 +16,36 @@ class LetterKeyView: KeyView {
     case primary, secondary
   }
   
+  var primaryLabel = UILabel()
   
+  // MARK: Life cycle
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    initPrimaryLabel()
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  // MARK: Drawing
+  
+  func setLetters(primary: String) {
+    primaryLabel.text = primary
+  }
+  
+  private func initPrimaryLabel() {
+    guard let backgroundView = self.backgroundView else { return }
+    primaryLabel.textAlignment = .center
+    primaryLabel.translatesAutoresizingMaskIntoConstraints = false
+    addSubview(primaryLabel)
+    NSLayoutConstraint.activate([
+      primaryLabel.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+      primaryLabel.rightAnchor.constraint(equalTo: backgroundView.rightAnchor),
+      primaryLabel.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
+      primaryLabel.leftAnchor.constraint(equalTo: backgroundView.leftAnchor),
+    ])
+  }
   
 }

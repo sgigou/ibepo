@@ -11,10 +11,4 @@ import UIKit
 /// The display of a function key (like space or alt).
 class SpecialKeyView: KeyView {
   
-  override var intrinsicContentSize: CGSize {
-    get {
-      return CGSize(width: 1.5, height: 1)
-    }
-  }
-  
 }

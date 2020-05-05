@@ -11,12 +11,6 @@ import UIKit
 /// A key on the keypad.
 class KeyView: UIView {
   
-  override var intrinsicContentSize: CGSize {
-    get {
-      return CGSize(width: 1, height: 1)
-    }
-  }
-  
   var backgroundView: UIView?
   
   override init(frame: CGRect) {
@@ -28,16 +22,23 @@ class KeyView: UIView {
     fatalError("init(coder:) is not supported")
   }
   
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    if let backgroundView = self.backgroundView {
+      backgroundView.layer.shadowPath = UIBezierPath(roundedRect: backgroundView.bounds, cornerRadius: 5.0).cgPath
+    }
+  }
+  
   func initBackground() {
     let backgroundView = UIView()
     backgroundView.backgroundColor = .white
     backgroundView.translatesAutoresizingMaskIntoConstraints = false
-    /*backgroundView.layer.cornerRadius = 5.0
+    backgroundView.layer.cornerRadius = 5.0
     backgroundView.layer.shadowColor = UIColor.black.cgColor
     backgroundView.layer.shadowOffset = CGSize(width: 0, height: 2)
     backgroundView.layer.shadowRadius = .zero
     backgroundView.layer.shadowOpacity = 0.25
-    backgroundView.layer.shadowPath = UIBezierPath(roundedRect: backgroundView.bounds, cornerRadius: 5.0).cgPath*/
+    backgroundView.layer.shadowPath = UIBezierPath(roundedRect: backgroundView.bounds, cornerRadius: 5.0).cgPath
     addSubview(backgroundView)
     NSLayoutConstraint.activate([
       backgroundView.topAnchor.constraint(equalTo: topAnchor, constant: 6),
