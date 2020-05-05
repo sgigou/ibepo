@@ -24,6 +24,18 @@
 		39814955246043DC007C9754 /* LetterKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39814954246043DC007C9754 /* LetterKeyView.swift */; };
 		398149562460444C007C9754 /* KeySetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06B24600D98004F8497 /* KeySetFactory.swift */; };
 		3981495824604498007C9754 /* KeySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3981495724604498007C9754 /* KeySet.swift */; };
+		3981495A246048C9007C9754 /* KeypadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39814959246048C9007C9754 /* KeypadView.swift */; };
+		3981495C246051F0007C9754 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994E3A1245D6D10008B1099 /* InputViewController.swift */; };
+		3981495D246051F0007C9754 /* KeypadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06124600625004F8497 /* KeypadViewController.swift */; };
+		3981495E246051F7007C9754 /* CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06824600AF8004F8497 /* CharacterSet.swift */; };
+		3981495F246051F7007C9754 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3981494E246041FC007C9754 /* Key.swift */; };
+		39814960246051F7007C9754 /* KeySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3981495724604498007C9754 /* KeySet.swift */; };
+		39814961246051F9007C9754 /* KeySetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06B24600D98004F8497 /* KeySetFactory.swift */; };
+		39814962246051FB007C9754 /* UI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF07224602208004F8497 /* UI+Extension.swift */; };
+		3981496324605219007C9754 /* KeypadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39814959246048C9007C9754 /* KeypadView.swift */; };
+		398149642460521D007C9754 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06F246012EC004F8497 /* KeyView.swift */; };
+		398149652460521D007C9754 /* LetterKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39814954246043DC007C9754 /* LetterKeyView.swift */; };
+		398149662460521D007C9754 /* SpecialKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3981495224604393007C9754 /* SpecialKeyView.swift */; };
 		3994E3A6245D6E82008B1099 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994E3A4245D6E82008B1099 /* HomeViewController.swift */; };
 		3994E3A7245D6E82008B1099 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3994E3A5245D6E82008B1099 /* HomeViewController.xib */; };
 /* End PBXBuildFile section */
@@ -90,6 +102,7 @@
 		3981495224604393007C9754 /* SpecialKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialKeyView.swift; sourceTree = "<group>"; };
 		39814954246043DC007C9754 /* LetterKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterKeyView.swift; sourceTree = "<group>"; };
 		3981495724604498007C9754 /* KeySet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeySet.swift; sourceTree = "<group>"; };
+		39814959246048C9007C9754 /* KeypadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadView.swift; sourceTree = "<group>"; };
 		3994E3A1245D6D10008B1099 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		3994E3A4245D6E82008B1099 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3994E3A5245D6E82008B1099 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -148,7 +161,6 @@
 		391BF07524602501004F8497 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				392AD046245D72D9008252F1 /* KeyboardViewController.swift */,
 				3994E3A1245D6D10008B1099 /* InputViewController.swift */,
 				391BF06124600625004F8497 /* KeypadViewController.swift */,
 			);
@@ -167,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				392AD048245D72D9008252F1 /* Info.plist */,
+				392AD046245D72D9008252F1 /* KeyboardViewController.swift */,
 				391BF0762460251C004F8497 /* Extensions */,
 				391BF06E246012DA004F8497 /* Services */,
 				391BF06724600869004F8497 /* Entities */,
@@ -236,12 +249,21 @@
 			path = ibepoUITests;
 			sourceTree = "<group>";
 		};
-		3994E3A3245D6D13008B1099 /* Views */ = {
+		3981495B246048F5007C9754 /* Keys */ = {
 			isa = PBXGroup;
 			children = (
 				391BF06F246012EC004F8497 /* KeyView.swift */,
 				39814954246043DC007C9754 /* LetterKeyView.swift */,
 				3981495224604393007C9754 /* SpecialKeyView.swift */,
+			);
+			path = Keys;
+			sourceTree = "<group>";
+		};
+		3994E3A3245D6D13008B1099 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				39814959246048C9007C9754 /* KeypadView.swift */,
+				3981495B246048F5007C9754 /* Keys */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -446,6 +468,7 @@
 				391BF06A24600AF8004F8497 /* CharacterSet.swift in Sources */,
 				391BF071246012EC004F8497 /* KeyView.swift in Sources */,
 				392AD047245D72D9008252F1 /* KeyboardViewController.swift in Sources */,
+				3981495A246048C9007C9754 /* KeypadView.swift in Sources */,
 				3981495824604498007C9754 /* KeySet.swift in Sources */,
 				392AD050245D759F008252F1 /* InputViewController.swift in Sources */,
 				3981495324604393007C9754 /* SpecialKeyView.swift in Sources */,
@@ -456,8 +479,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				398149642460521D007C9754 /* KeyView.swift in Sources */,
+				3981495C246051F0007C9754 /* InputViewController.swift in Sources */,
+				39814962246051FB007C9754 /* UI+Extension.swift in Sources */,
+				398149662460521D007C9754 /* SpecialKeyView.swift in Sources */,
+				39814960246051F7007C9754 /* KeySet.swift in Sources */,
 				39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */,
+				39814961246051F9007C9754 /* KeySetFactory.swift in Sources */,
+				398149652460521D007C9754 /* LetterKeyView.swift in Sources */,
+				3981495D246051F0007C9754 /* KeypadViewController.swift in Sources */,
+				3981496324605219007C9754 /* KeypadView.swift in Sources */,
+				3981495E246051F7007C9754 /* CharacterSet.swift in Sources */,
 				3994E3A6245D6E82008B1099 /* HomeViewController.swift in Sources */,
+				3981495F246051F7007C9754 /* Key.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

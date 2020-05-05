@@ -59,7 +59,6 @@ class KeySetFactory {
     row.append(generateKey(for: CharacterSet("w", nil, nil, "#", nil, nil)))
     row.append(generateKey(for: CharacterSet("w", nil, nil, "#", nil, nil)))
     row.append(generateKey(for: CharacterSet("w", nil, nil, "#", nil, nil)))
-    row.append(generateKey(for: CharacterSet("w", nil, nil, "#", nil, nil)))
     return row
   }
   

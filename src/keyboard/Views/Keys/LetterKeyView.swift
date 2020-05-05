@@ -11,4 +11,11 @@ import UIKit
 /// The display of a CharacterSet
 class LetterKeyView: KeyView {
   
+  /// Level of the key. Will change its display on the keypad.
+  enum Level {
+    case primary, secondary
+  }
+  
+  
+  
 }
