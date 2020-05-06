@@ -7,7 +7,7 @@
 //
 
 /// Create a filled KeyList entity.
-class KeySetFactory {
+final class KeySetFactory {
   
   func generate() -> KeySet {
     var rows = [Row]()
@@ -64,7 +64,7 @@ class KeySetFactory {
   
   private func generateKey(for characterSet: CharacterSet) -> Key {
     let view = LetterKeyView()
-    view.setLetters(primary: characterSet.primaryLetter)
+    view.setLetters(primary: characterSet.primaryLetter, secondary: characterSet.secondaryLetter)
     return Key(set: characterSet, view: view)
   }
   

@@ -9,6 +9,6 @@
 import UIKit
 
 /// The display of a function key (like space or alt).
-class SpecialKeyView: KeyView {
+final class SpecialKeyView: KeyView {
   
 }
