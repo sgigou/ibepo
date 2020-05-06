@@ -32,20 +32,20 @@ class KeypadView: UIView {
     
     let rowView3 = addRowView(topAnchor: rowView2.bottomAnchor)
     let caps = addSpecial(in: rowView3, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: rowView3.leftAnchor)
-    caps.configure(withImage: SymbolsManager.getImage(named: "shift"))
+    caps.configure(withImage: SymbolsManager.getImage(named: "shift"), level: .secondary)
     lastKey = parse(keySet.rows[2], in: rowView3, leftAnchor: caps.rightAnchor)
     let del = addSpecial(in: rowView3, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: lastKey.rightAnchor)
     del.rightAnchor.constraint(equalTo: rowView3.rightAnchor).isActive = true
-    del.configure(withImage: SymbolsManager.getImage(named: "delete.left"))
+    del.configure(withImage: SymbolsManager.getImage(named: "delete.left"), level: .secondary)
     
     let rowView4 = addRowView(topAnchor: rowView3.bottomAnchor, bottomAnchor: bottomAnchor)
     let alt = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*3, leftAnchor: rowView4.leftAnchor)
-    alt.configure(withImage: SymbolsManager.getImage(named: "option"))
+    alt.configure(withImage: SymbolsManager.getImage(named: "option"), level: .secondary)
     let space = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*5, leftAnchor: alt.rightAnchor)
-    space.configure(withText: "Espace")
+    space.configure(withText: "Espace", level: .primary)
     let ret = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*3, leftAnchor: space.rightAnchor)
     ret.rightAnchor.constraint(equalTo: rowView4.rightAnchor).isActive = true
-    ret.configure(withImage: SymbolsManager.getImage(named: "return"))
+    ret.configure(withImage: SymbolsManager.getImage(named: "return"), level: .secondary)
   }
   
   /**

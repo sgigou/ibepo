@@ -55,7 +55,6 @@ final class LetterKeyView: KeyView {
   }
   
   private func initSecondaryLabel() {
-    guard let backgroundView = self.backgroundView else { return }
     secondaryLabel.font = .systemFont(ofSize: 12.0, weight: .light)
     secondaryLabel.textColor = ColorManager.secondaryLabel
     secondaryLabel.textAlignment = .center
@@ -70,7 +69,6 @@ final class LetterKeyView: KeyView {
   }
   
   private func initPrimaryLabel() {
-    guard let backgroundView = self.backgroundView else { return }
     primaryLabel.font = .systemFont(ofSize: 20.0)
     primaryLabel.textColor = ColorManager.label
     primaryLabel.textAlignment = .center

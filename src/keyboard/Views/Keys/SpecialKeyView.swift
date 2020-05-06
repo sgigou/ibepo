@@ -11,6 +11,11 @@ import UIKit
 /// The display of a function key (like space or alt).
 final class SpecialKeyView: KeyView {
   
+  /// Primary functions are displayed in bright, secondary are lighter.
+  enum Level {
+    case primary, secondary
+  }
+  
   /// Label displaying the key function
   private var label: UILabel?
   
@@ -31,14 +36,25 @@ final class SpecialKeyView: KeyView {
   
   // MARK: Configuration
   
-  func configure(withText text: String) {
+  func configure(withText text: String, level: Level) {
     addLabel()
     label?.text = text
+    setLevel(level)
   }
   
-  func configure(withImage image: UIImage) {
+  func configure(withImage image: UIImage, level: Level) {
     addImageView()
     imageView?.image = image
+    setLevel(level)
+  }
+  
+  private func setLevel(_ level: Level) {
+    switch level {
+    case .primary:
+      backgroundView.backgroundColor = ColorManager.background
+    case .secondary:
+      backgroundView.backgroundColor = ColorManager.secondaryBackground
+    }
   }
   
   // MARK: Drawing
@@ -48,7 +64,6 @@ final class SpecialKeyView: KeyView {
    */
   private func addLabel() {
     if label != nil { return }
-    guard let backgroundView = self.backgroundView else { return }
     imageView?.removeFromSuperview()
     imageView = nil
     label = UILabel()
@@ -70,7 +85,6 @@ final class SpecialKeyView: KeyView {
    */
   private func addImageView() {
     if imageView != nil { return }
-    guard let backgroundView = self.backgroundView else { return }
     label?.removeFromSuperview()
     label = nil
     imageView = UIImageView()

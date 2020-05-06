@@ -11,7 +11,9 @@ import UIKit
 /// A key on the keypad.
 class KeyView: UIView {
   
-  var backgroundView: UIView?
+  var backgroundView: UIView!
+  
+  // MARK: Life cycle
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -29,13 +31,20 @@ class KeyView: UIView {
     }
   }
   
+  // MARK: Display
+  
+  /**
+   Creates and adds the background view for the letter.
+   
+   The view has ColorManager.background color by default.
+   */
   func initBackground() {
     let backgroundView = UIView()
-    backgroundView.backgroundColor = .white
+    backgroundView.backgroundColor = ColorManager.background
     backgroundView.translatesAutoresizingMaskIntoConstraints = false
     backgroundView.layer.cornerRadius = 5.0
     backgroundView.layer.shadowColor = UIColor.black.cgColor
-    backgroundView.layer.shadowOffset = CGSize(width: 0, height: 2)
+    backgroundView.layer.shadowOffset = CGSize(width: 0, height: 1.5)
     backgroundView.layer.shadowRadius = .zero
     backgroundView.layer.shadowOpacity = 0.25
     backgroundView.layer.shadowPath = UIBezierPath(roundedRect: backgroundView.bounds, cornerRadius: 5.0).cgPath

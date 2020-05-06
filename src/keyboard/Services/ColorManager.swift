@@ -27,4 +27,20 @@ final class ColorManager {
     }
   }
   
+  static var background: UIColor {
+    if #available(iOS 13.0, *) {
+      return .systemBackground
+    } else {
+      return .white
+    }
+  }
+  
+  static var secondaryBackground: UIColor {
+    if #available(iOS 13.0, *) {
+      return .systemGray3
+    } else {
+      return .lightText
+    }
+  }
+  
 }
