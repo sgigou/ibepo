@@ -32,9 +32,19 @@ final class LetterKeyView: KeyView {
   
   // MARK: Configuration
   
-  func setLetters(primary: String, secondary: String) {
+  func setLetters(primary: String, secondary: String, level: Level) {
     primaryLabel.text = primary
     secondaryLabel.text = secondary
+    setLevel(level)
+  }
+  
+  private func setLevel(_ level: Level) {
+    switch level {
+    case .primary:
+      primaryLabel.textColor = ColorManager.label
+    case .secondary:
+      primaryLabel.textColor = ColorManager.secondaryLabel
+    }
   }
   
   // MARK: Drawing
