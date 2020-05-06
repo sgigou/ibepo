@@ -11,6 +11,7 @@ import UIKit
 /// Key pad part of the input view.
 class KeypadViewController: UIViewController {
   
+  /// Currently displayed key set.
   private var keySet: KeySet!
   
   // MARK: Life cycle
@@ -26,6 +27,7 @@ class KeypadViewController: UIViewController {
   
   // MARK: Loading
   
+  /// Load the key set and display it in the KeypadView.
   private func loadKeySet() {
     let view = self.view as! KeypadView
     let factory = KeySetFactory()

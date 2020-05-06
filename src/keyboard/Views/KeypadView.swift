@@ -12,7 +12,7 @@ import UIKit
 class KeypadView: UIView {
   
   /// The multiplier to use on widthAnchor to get the width of a key.
-  let keyWidthMultiplier: CGFloat = 1/11
+  private let keyWidthMultiplier: CGFloat = 1/11
   
   /**
    Load the given keyset and creates views for the rows and the letters.
@@ -32,15 +32,20 @@ class KeypadView: UIView {
     
     let rowView3 = addRowView(topAnchor: rowView2.bottomAnchor)
     let caps = addSpecial(in: rowView3, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: rowView3.leftAnchor)
+    caps.configure(withImage: SymbolsManager.getImage(named: "shift"))
     lastKey = parse(keySet.rows[2], in: rowView3, leftAnchor: caps.rightAnchor)
     let del = addSpecial(in: rowView3, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: lastKey.rightAnchor)
     del.rightAnchor.constraint(equalTo: rowView3.rightAnchor).isActive = true
+    del.configure(withImage: SymbolsManager.getImage(named: "delete.left"))
     
     let rowView4 = addRowView(topAnchor: rowView3.bottomAnchor, bottomAnchor: bottomAnchor)
     let alt = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*3, leftAnchor: rowView4.leftAnchor)
+    alt.configure(withImage: SymbolsManager.getImage(named: "option"))
     let space = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*5, leftAnchor: alt.rightAnchor)
+    space.configure(withText: "Espace")
     let ret = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*3, leftAnchor: space.rightAnchor)
     ret.rightAnchor.constraint(equalTo: rowView4.rightAnchor).isActive = true
+    ret.configure(withImage: SymbolsManager.getImage(named: "return"))
   }
   
   /**
@@ -70,7 +75,7 @@ class KeypadView: UIView {
    - parameter leftAnchor: Custom left anchor to stick the first key. If nil, then rowView.leftAnchor will be used.
    - returns: The last key view created.
    */
-  private func parse(_ row: Row, in rowView: UIView, leftAnchor: NSLayoutXAxisAnchor? = nil) -> UIView {
+  private func parse(_ row: Row, in rowView: UIView, leftAnchor: NSLayoutXAxisAnchor? = nil) -> LetterKeyView {
     var leftAnchor = leftAnchor ?? rowView.leftAnchor
     for key in row {
       add(key, in: rowView, leftAnchor: leftAnchor)
@@ -97,7 +102,7 @@ class KeypadView: UIView {
    - parameter widthMultiplier: The width multiplier that will be used on rowView.widthAnchor.
    - parameter leftAnchor: Where to stick the SpecialKeyView after insertion.
    */
-  private func addSpecial(in rowView: UIView, widthMultiplier: CGFloat, leftAnchor: NSLayoutXAxisAnchor) -> UIView {
+  private func addSpecial(in rowView: UIView, widthMultiplier: CGFloat, leftAnchor: NSLayoutXAxisAnchor) -> SpecialKeyView {
     let specialKeyView = SpecialKeyView()
     specialKeyView.translatesAutoresizingMaskIntoConstraints = false
     rowView.addSubview(specialKeyView)
