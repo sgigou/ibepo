@@ -8,11 +8,25 @@
 
 import UIKit
 
+// MARK: - KeypadViewControllerDelegate
+
+protocol KeypadViewControllerDelegate: class {
+  func insertCharacter(_ character: String)
+}
+
+
+// MARK: - KeypadViewController
+
 /// Key pad part of the input view.
 class KeypadViewController: UIViewController {
   
+  weak var delegate: KeypadViewControllerDelegate?
+  
+  /// Gesture recognizer for keys
+  private var gestureRecognizer: KeyGestureRecognizer!
   /// Currently displayed key set.
   private var keySet: KeySet!
+
   
   // MARK: Life cycle
   
@@ -23,7 +37,10 @@ class KeypadViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     loadKeySet()
+    gestureRecognizer = KeyGestureRecognizer(delegate: self)
+    view.addGestureRecognizer(gestureRecognizer)
   }
+  
   
   // MARK: Loading
   
@@ -33,6 +50,19 @@ class KeypadViewController: UIViewController {
     let factory = KeySetFactory()
     keySet = factory.generate()
     view.load(keySet: keySet)
+  }
+  
+}
+
+
+// MARK: - KeyGestureRecognizerDelegate
+
+extension KeypadViewController: KeyGestureRecognizerDelegate {
+  
+  func letterTap(at coordinate: KeyCoordinate) {
+    let key = keySet.key(at: coordinate)
+    Logger.debug("Key was tapped: \(key)")
+    delegate?.insertCharacter(key.set.primaryLetter)
   }
   
 }

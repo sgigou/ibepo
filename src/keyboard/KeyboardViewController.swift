@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - KeyboardViewController
+
 /// View for custom keyboard extension
 class KeyboardViewController: UIInputViewController {
   
@@ -17,6 +19,7 @@ class KeyboardViewController: UIInputViewController {
     super.viewDidLoad()
     guard let inputView = inputView else { return }
     let inputViewController = InputViewController()
+    inputViewController.delegate = self
     add(inputViewController, with: [
       inputViewController.view.topAnchor.constraint(equalTo: inputView.topAnchor),
       inputViewController.view.rightAnchor.constraint(equalTo: inputView.rightAnchor),
@@ -25,4 +28,12 @@ class KeyboardViewController: UIInputViewController {
     ])
   }
 
+}
+
+// MARK: - InputViewControllerDelegate
+
+extension KeyboardViewController: InputViewControllerDelegate {
+  func insert(_ text: String) {
+    textDocumentProxy.insertText(text)
+  }
 }

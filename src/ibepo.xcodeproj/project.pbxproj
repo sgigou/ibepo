@@ -42,6 +42,10 @@
 		398149662460521D007C9754 /* SpecialKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3981495224604393007C9754 /* SpecialKeyView.swift */; };
 		3994E3A6245D6E82008B1099 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994E3A4245D6E82008B1099 /* HomeViewController.swift */; };
 		3994E3A7245D6E82008B1099 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3994E3A5245D6E82008B1099 /* HomeViewController.xib */; };
+		399E641D2464069D00D25C6D /* KeyGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */; };
+		399E641E2464069D00D25C6D /* KeyGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */; };
+		399E642024640E7A00D25C6D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E641F24640E7A00D25C6D /* Logger.swift */; };
+		399E642124640E7A00D25C6D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E641F24640E7A00D25C6D /* Logger.swift */; };
 		39A197E42462D39E00974C58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39528F88245AFC510080FBE8 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +117,8 @@
 		3994E3A1245D6D10008B1099 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		3994E3A4245D6E82008B1099 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3994E3A5245D6E82008B1099 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyGestureRecognizer.swift; sourceTree = "<group>"; };
+		399E641F24640E7A00D25C6D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,8 @@
 				39514A532462A44000F05A48 /* ColorManager.swift */,
 				39514A562462AB4F00F05A48 /* SymbolsManager.swift */,
 				391BF06B24600D98004F8497 /* KeySetFactory.swift */,
+				399E641F24640E7A00D25C6D /* Logger.swift */,
+				399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -470,12 +478,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				399E641E2464069D00D25C6D /* KeyGestureRecognizer.swift in Sources */,
 				39814955246043DC007C9754 /* LetterKeyView.swift in Sources */,
 				3981494F246041FC007C9754 /* Key.swift in Sources */,
 				391BF07424602208004F8497 /* UI+Extension.swift in Sources */,
 				391BF06324600625004F8497 /* KeypadViewController.swift in Sources */,
 				398149562460444C007C9754 /* KeySetFactory.swift in Sources */,
 				391BF06A24600AF8004F8497 /* CharacterSet.swift in Sources */,
+				399E642124640E7A00D25C6D /* Logger.swift in Sources */,
 				391BF071246012EC004F8497 /* KeyView.swift in Sources */,
 				39514A542462A44000F05A48 /* ColorManager.swift in Sources */,
 				392AD047245D72D9008252F1 /* KeyboardViewController.swift in Sources */,
@@ -496,8 +506,10 @@
 				39814962246051FB007C9754 /* UI+Extension.swift in Sources */,
 				398149662460521D007C9754 /* SpecialKeyView.swift in Sources */,
 				39814960246051F7007C9754 /* KeySet.swift in Sources */,
+				399E641D2464069D00D25C6D /* KeyGestureRecognizer.swift in Sources */,
 				39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */,
 				39814961246051F9007C9754 /* KeySetFactory.swift in Sources */,
+				399E642024640E7A00D25C6D /* Logger.swift in Sources */,
 				39514A552462A4D700F05A48 /* ColorManager.swift in Sources */,
 				398149652460521D007C9754 /* LetterKeyView.swift in Sources */,
 				3981495D246051F0007C9754 /* KeypadViewController.swift in Sources */,

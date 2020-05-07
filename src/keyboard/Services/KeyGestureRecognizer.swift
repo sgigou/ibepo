@@ -1,0 +1,109 @@
+//
+//  KeyGestureRecognizer.swift
+//  ibepo
+//
+//  Created by Steve Gigou on 2020-05-07.
+//  Copyright © 2020 Novesoft. All rights reserved.
+//
+
+import UIKit
+
+/// Represents a tap on the keyboard. It has two times more columns than the KeySet.
+typealias KeypadCoordinate = (row: Int, col: Int)
+
+// MARK: - KeyGestureRecognizerDelegate
+
+protocol KeyGestureRecognizerDelegate: class {
+  func letterTap(at coordinate: KeyCoordinate)
+}
+
+
+// MARK: - KeyGestureRecognizer
+
+/// Recognizer used to manage gestures in the app.
+final class KeyGestureRecognizer: UIGestureRecognizer {
+  
+  /// Custom delegate allowing to manage more interactions with the gesture recognizer.
+  private weak var customDelegate: KeyGestureRecognizerDelegate?
+  
+  /// Default coordinate to return in case of error.
+  private let defaultCoordinate = KeyCoordinate(row: 0, col: 1)
+  
+  
+  // MARK: Life cycle
+  
+  convenience init(delegate: KeyGestureRecognizerDelegate) {
+    self.init()
+    customDelegate = delegate
+  }
+  
+  
+  // MARK: Touches
+  
+  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
+    super.touchesEnded(touches, with: event)
+    guard let touch = touches.first else {  return Logger.debug("No touch in recognizer") }
+    let coordinate = findCoordinate(for: touch)
+    transferTouch(at: coordinate)
+  }
+  
+  
+  // MARK: Delegate communication
+  
+  private func transferTouch(at padCoordinate: KeypadCoordinate) {
+    switch padCoordinate.row {
+    case 0, 1:
+      let coordinate = KeyCoordinate(row: padCoordinate.row, col: padCoordinate.col / 2)
+      customDelegate?.letterTap(at: coordinate)
+    default:
+      Logger.debug("Unknown row: \(padCoordinate.row)")
+      customDelegate?.letterTap(at: defaultCoordinate)
+    }
+  }
+  
+  
+  // MARK: Calculations
+  
+  /**
+   Find the KeypadCoordinate of the given touch.
+   */
+  private func findCoordinate(for touch: UITouch) -> KeypadCoordinate {
+    let row = findRow(for: touch)
+    let col = findCol(for: touch, in: row)
+    return KeypadCoordinate(row: row, col: col)
+  }
+  
+  /**
+   Find the row number for the given touch.
+   */
+  private func findRow(for touch: UITouch) -> Int {
+    guard let view = self.view else {
+      Logger.debug("Touch view not found.")
+      return 3
+    }
+    let location = touch.location(in: view)
+    return findPosition(location: location.y, size: view.frame.height, chunkAmount: 4)
+  }
+  
+  /**
+   Find the col number for the given touch, in the given row.
+   */
+  private func findCol(for touch: UITouch, in row: Int) -> Int {
+    guard let view = self.view else {
+      Logger.debug("Touch view not found.")
+      return 0
+    }
+    let location = touch.location(in: view)
+    return findPosition(location: location.x, size: view.frame.width, chunkAmount: 22)
+  }
+  
+  /**
+   Split the given `size` in `chunkAmount` chunks, and tells in which chunk `location` is.
+   */
+  private func findPosition(location: CGFloat, size: CGFloat, chunkAmount: Int) -> Int {
+    let chunkSize = size / CGFloat(chunkAmount)
+    let chunk = Int(location / chunkSize)
+    return min (chunk, chunkAmount - 1)
+  }
+  
+}
