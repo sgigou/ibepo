@@ -11,7 +11,7 @@ import UIKit
 // MARK: - KeypadViewControllerDelegate
 
 protocol KeypadViewControllerDelegate: class {
-  func insertCharacter(_ character: String)
+  func insert(text: String)
 }
 
 
@@ -22,8 +22,9 @@ class KeypadViewController: UIViewController {
   
   weak var delegate: KeypadViewControllerDelegate?
   
-  /// Gesture recognizer for keys
-  private var gestureRecognizer: KeyGestureRecognizer!
+  /// Key state manager
+  private let keyState = KeyState()
+  
   /// Currently displayed key set.
   private var keySet: KeySet!
 
@@ -37,8 +38,8 @@ class KeypadViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     loadKeySet()
-    gestureRecognizer = KeyGestureRecognizer(delegate: self)
-    view.addGestureRecognizer(gestureRecognizer)
+    keyState.configure(keySet: keySet, view: view as! KeypadView)
+    keyState.delegate = self
   }
   
   
@@ -55,14 +56,12 @@ class KeypadViewController: UIViewController {
 }
 
 
-// MARK: - KeyGestureRecognizerDelegate
+// MARK: - KeyStateDelegate
 
-extension KeypadViewController: KeyGestureRecognizerDelegate {
+extension KeypadViewController: KeyStateDelegate {
   
-  func letterTap(at coordinate: KeyCoordinate) {
-    let key = keySet.key(at: coordinate)
-    Logger.debug("Key was tapped: \(key)")
-    delegate?.insertCharacter(key.set.primaryLetter)
+  func insert(text: String) {
+    delegate?.insert(text: text)
   }
   
 }

@@ -49,8 +49,8 @@ class InputViewController: UIViewController {
 
 extension InputViewController: KeypadViewControllerDelegate {
   
-  func insertCharacter(_ character: String) {
-    delegate?.insert(character)
+  func insert(text: String) {
+    delegate?.insert(text)
   }
   
 }

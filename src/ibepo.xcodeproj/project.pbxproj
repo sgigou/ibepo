@@ -46,6 +46,8 @@
 		399E641E2464069D00D25C6D /* KeyGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */; };
 		399E642024640E7A00D25C6D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E641F24640E7A00D25C6D /* Logger.swift */; };
 		399E642124640E7A00D25C6D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E641F24640E7A00D25C6D /* Logger.swift */; };
+		399E64252464381A00D25C6D /* KeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E64242464381A00D25C6D /* KeyState.swift */; };
+		399E64262464381A00D25C6D /* KeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E64242464381A00D25C6D /* KeyState.swift */; };
 		39A197E42462D39E00974C58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39528F88245AFC510080FBE8 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +121,7 @@
 		3994E3A5245D6E82008B1099 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyGestureRecognizer.swift; sourceTree = "<group>"; };
 		399E641F24640E7A00D25C6D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		399E64242464381A00D25C6D /* KeyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,11 +169,9 @@
 		391BF06E246012DA004F8497 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				39514A532462A44000F05A48 /* ColorManager.swift */,
-				39514A562462AB4F00F05A48 /* SymbolsManager.swift */,
+				399E64222464375800D25C6D /* DataManagement */,
 				391BF06B24600D98004F8497 /* KeySetFactory.swift */,
-				399E641F24640E7A00D25C6D /* Logger.swift */,
-				399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */,
+				399E64232464377B00D25C6D /* KeyGesture */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -292,6 +293,25 @@
 				3994E3A5245D6E82008B1099 /* HomeViewController.xib */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		399E64222464375800D25C6D /* DataManagement */ = {
+			isa = PBXGroup;
+			children = (
+				399E641F24640E7A00D25C6D /* Logger.swift */,
+				39514A532462A44000F05A48 /* ColorManager.swift */,
+				39514A562462AB4F00F05A48 /* SymbolsManager.swift */,
+			);
+			path = DataManagement;
+			sourceTree = "<group>";
+		};
+		399E64232464377B00D25C6D /* KeyGesture */ = {
+			isa = PBXGroup;
+			children = (
+				399E64242464381A00D25C6D /* KeyState.swift */,
+				399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */,
+			);
+			path = KeyGesture;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -488,6 +508,7 @@
 				399E642124640E7A00D25C6D /* Logger.swift in Sources */,
 				391BF071246012EC004F8497 /* KeyView.swift in Sources */,
 				39514A542462A44000F05A48 /* ColorManager.swift in Sources */,
+				399E64262464381A00D25C6D /* KeyState.swift in Sources */,
 				392AD047245D72D9008252F1 /* KeyboardViewController.swift in Sources */,
 				39514A572462AB4F00F05A48 /* SymbolsManager.swift in Sources */,
 				3981495A246048C9007C9754 /* KeypadView.swift in Sources */,
@@ -508,6 +529,7 @@
 				39814960246051F7007C9754 /* KeySet.swift in Sources */,
 				399E641D2464069D00D25C6D /* KeyGestureRecognizer.swift in Sources */,
 				39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */,
+				399E64252464381A00D25C6D /* KeyState.swift in Sources */,
 				39814961246051F9007C9754 /* KeySetFactory.swift in Sources */,
 				399E642024640E7A00D25C6D /* Logger.swift in Sources */,
 				39514A552462A4D700F05A48 /* ColorManager.swift in Sources */,
