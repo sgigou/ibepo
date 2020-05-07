@@ -20,6 +20,7 @@ class KeypadView: UIView {
    */
   func load(keySet: KeySet) {
     translatesAutoresizingMaskIntoConstraints = false
+    backgroundColor = UIColor.gray.withAlphaComponent(0.001) // Gestures do not work on transparent view.
     heightAnchor.constraint(greaterThanOrEqualToConstant: 200).isActive = true
     
     let rowView1 = addRowView(topAnchor: topAnchor)
