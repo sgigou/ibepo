@@ -33,6 +33,14 @@ final class KeyState {
     view.addGestureRecognizer(gestureRecognizer)
   }
   
+  
+  // MARK: Delegate communication
+  
+  private func tapLetter(at keyCoordinate: KeyCoordinate) {
+    let key = keySet.key(at: keyCoordinate)
+    delegate?.insert(text: key.set.primaryLetter)
+  }
+  
 }
 
 
@@ -40,10 +48,14 @@ final class KeyState {
 
 extension KeyState: KeyGestureRecognizerDelegate {
   
-  func letterTap(at coordinate: KeyCoordinate) {
-    let key = keySet.key(at: coordinate)
-    Logger.debug("Key was tapped: \(key)")
-    delegate?.insert(text: key.set.primaryLetter)
+  func touchUp(at keypadCoordinate: KeypadCoordinate) {
+    switch keypadCoordinate.row {
+    case 0, 1: // First two rows only contain letters.
+      let keyCoordinate = KeyCoordinate(row: keypadCoordinate.row, col: keypadCoordinate.col / 2)
+      tapLetter(at: keyCoordinate)
+    default:
+      Logger.debug("Unknown keypadCoordinate row: \(keypadCoordinate.row)")
+    }
   }
   
 }

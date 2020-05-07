@@ -14,7 +14,7 @@ typealias KeypadCoordinate = (row: Int, col: Int)
 // MARK: - KeyGestureRecognizerDelegate
 
 protocol KeyGestureRecognizerDelegate: class {
-  func letterTap(at coordinate: KeyCoordinate)
+  func touchUp(at keypadCoordinate: KeypadCoordinate)
 }
 
 
@@ -44,21 +44,7 @@ final class KeyGestureRecognizer: UIGestureRecognizer {
     super.touchesEnded(touches, with: event)
     guard let touch = touches.first else {  return Logger.debug("No touch in recognizer") }
     let coordinate = findCoordinate(for: touch)
-    transferTouch(at: coordinate)
-  }
-  
-  
-  // MARK: Delegate communication
-  
-  private func transferTouch(at padCoordinate: KeypadCoordinate) {
-    switch padCoordinate.row {
-    case 0, 1:
-      let coordinate = KeyCoordinate(row: padCoordinate.row, col: padCoordinate.col / 2)
-      customDelegate?.letterTap(at: coordinate)
-    default:
-      Logger.debug("Unknown row: \(padCoordinate.row)")
-      customDelegate?.letterTap(at: defaultCoordinate)
-    }
+    customDelegate?.touchUp(at: coordinate)
   }
   
   
