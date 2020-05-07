@@ -53,6 +53,16 @@ extension KeyState: KeyGestureRecognizerDelegate {
     case 0, 1: // First two rows only contain letters.
       let keyCoordinate = KeyCoordinate(row: keypadCoordinate.row, col: keypadCoordinate.col / 2)
       tapLetter(at: keyCoordinate)
+    case 2: // Shift, letters and Delete keys.
+      switch keypadCoordinate.col {
+      case 0...2: // Shift
+        Logger.debug("Shift was tapped")
+      case 19...21: // Delete
+      Logger.debug("Delete was tapped")
+      default: // Letter keys
+        let keyCoordinate = KeyCoordinate(row: keypadCoordinate.row, col: (keypadCoordinate.col - 3) / 2)
+        tapLetter(at: keyCoordinate)
+      }
     default:
       Logger.debug("Unknown keypadCoordinate row: \(keypadCoordinate.row)")
     }
