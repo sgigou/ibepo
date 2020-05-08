@@ -71,13 +71,19 @@ final class SpecialKeyView: KeyView {
    */
   override func updateAppearance() {
     super.updateAppearance()
-    imageView?.tintColor = ColorManager.shared.label
-    label?.textColor = ColorManager.shared.label
-    switch level {
-    case .primary:
-      backgroundView.backgroundColor = ColorManager.shared.background
-    case .secondary:
-      backgroundView.backgroundColor = ColorManager.shared.secondaryBackground
+    if isHighlighted {
+      imageView?.tintColor = .white
+      label?.textColor = .white
+      backgroundView.backgroundColor = ColorManager.shared.mainColor
+    } else {
+      imageView?.tintColor = ColorManager.shared.label
+      label?.textColor = ColorManager.shared.label
+      switch level {
+      case .primary:
+        backgroundView.backgroundColor = ColorManager.shared.background
+      case .secondary:
+        backgroundView.backgroundColor = ColorManager.shared.secondaryBackground
+      }
     }
   }
   

@@ -16,6 +16,8 @@ class KeyView: UIView {
   
   /// The key shape.
   var backgroundView: UIView!
+  /// Indicates if the key is highlighted (colorized).
+  var isHighlighted = false
   
   
   // MARK: Life cycle

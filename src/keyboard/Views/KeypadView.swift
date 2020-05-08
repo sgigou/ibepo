@@ -25,7 +25,24 @@ final class KeypadView: UIView {
   private var returnKeyView: SpecialKeyView?
   
   
-  /// MARK: Drawing
+  // MARK: Life cycle
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    addObservers()
+  }
+  
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+    addObservers()
+  }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
+  
+  
+  // MARK: Drawing
   
   /**
    Update the theme appearance.
@@ -39,8 +56,18 @@ final class KeypadView: UIView {
     returnKeyView?.updateAppearance()
   }
   
+  private func updateReturnKey(type: UIReturnKeyType) {
+    switch type {
+    case .default:
+      returnKeyView?.isHighlighted = false
+    default:
+      returnKeyView?.isHighlighted = true
+    }
+    returnKeyView?.updateAppearance()
+  }
   
-  /// MARK: Loading
+  
+  // MARK: Loading
   
   /**
    Load the given keyset and creates views for the rows and the letters.
@@ -49,7 +76,7 @@ final class KeypadView: UIView {
   func load(keySet: KeySet) {
     translatesAutoresizingMaskIntoConstraints = false
     backgroundColor = UIColor.gray.withAlphaComponent(0.001) // Gestures do not work on transparent view.
-    heightAnchor.constraint(greaterThanOrEqualToConstant: 200).isActive = true
+    heightAnchor.constraint(greaterThanOrEqualToConstant: 160).isActive = true
     
     let rowView1 = addRowView(topAnchor: topAnchor)
     var lastKey = parse(keySet.rows[0], in: rowView1)
@@ -140,6 +167,21 @@ final class KeypadView: UIView {
     specialKeyView.bottomAnchor.constraint(equalTo: rowView.bottomAnchor).isActive = true
     specialKeyView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
     return specialKeyView
+  }
+  
+  
+  // MARK: Notifications
+  
+  private func addObservers() {
+    NotificationCenter.default.addObserver(self, selector: #selector(returnKeyTypeDidChange(_:)), name: .returnKeyTypeDidChange, object: nil)
+  }
+  
+  @objc private func returnKeyTypeDidChange(_ notification: Notification) {
+    guard let returnKeyType = notification.userInfo?["returnKeyType"] as? UIReturnKeyType else {
+      Logger.error("returnKeyType not found.")
+      return
+    }
+    updateReturnKey(type: returnKeyType)
   }
   
 }

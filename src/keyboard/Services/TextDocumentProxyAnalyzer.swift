@@ -12,7 +12,9 @@ import UIKit
 // MARK: - TextDocumentProxyAnalyzer
 
 /// Service that posts notifications if textDocumentProxy attributes change.
-struct TextDocumentProxyAnalyzer {
+class TextDocumentProxyAnalyzer {
+  
+  private var returnKeyType: UIReturnKeyType = .default
   
   /**
    Check for updates in textDocumentProxy attributes.
@@ -20,6 +22,7 @@ struct TextDocumentProxyAnalyzer {
   func update(_ textDocumentProxy: UITextDocumentProxy) {
     Logger.debug("Text document proxy update.")
     updateAppearance(textDocumentProxy.keyboardAppearance ?? .default)
+    updateReturnButton(textDocumentProxy.returnKeyType ?? .default)
   }
   
   /**
@@ -30,6 +33,18 @@ struct TextDocumentProxyAnalyzer {
       Logger.debug("Keyboard appearance switching from \(ColorManager.shared.keyboardAppearance.rawValue) to \(keyboardAppearance.rawValue)")
       ColorManager.shared.keyboardAppearance = keyboardAppearance
       NotificationCenter.default.post(name: .keyboardAppearanceDidChange, object: nil)
+    }
+  }
+  
+  /**
+   Updates the return button appearance.
+   */
+  private func updateReturnButton(_ returnKeyType: UIReturnKeyType) {
+    if self.returnKeyType != returnKeyType {
+      Logger.debug("Return key type switching from \(self.returnKeyType.rawValue) to \(returnKeyType.rawValue)")
+      self.returnKeyType = returnKeyType
+      let userInfo = ["returnKeyType": returnKeyType]
+      NotificationCenter.default.post(name: .returnKeyTypeDidChange, object: nil, userInfo: userInfo)
     }
   }
   

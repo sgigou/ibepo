@@ -17,6 +17,14 @@ final class ColorManager {
   /// Current appearence of the keyboard.
   var keyboardAppearance: UIKeyboardAppearance = .default
   
+  var mainColor: UIColor {
+    if #available(iOS 13, *) {
+      return .systemBlue
+    } else {
+      return .blue
+    }
+  }
+  
   var label: UIColor {
     if #available(iOS 13, *) {
       return .label

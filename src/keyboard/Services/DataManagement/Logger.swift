@@ -12,8 +12,16 @@ import Foundation
 class Logger {
   
   static func debug(_ message: String) {
+    printIfDebug(tag: "DEBUG", message: message)
+  }
+  
+  static func error(_ message: String) {
+    printIfDebug(tag: "ERROR", message: message)
+  }
+  
+  private static func printIfDebug(tag: String, message: String) {
     #if DEBUG
-      print("[DEBUG] \(message)")
+      print("[\(tag)] \(message)")
     #endif
   }
   
