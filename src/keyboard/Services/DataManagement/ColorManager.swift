@@ -11,36 +11,42 @@ import UIKit
 /// Create keyboard colors based on current theme and iOS version.
 final class ColorManager {
   
-  static var label: UIColor {
-    if #available(iOS 13.0, *) {
+  /// Default instance of the ColorManager.
+  static let shared = ColorManager()
+  
+  /// Current appearence of the keyboard.
+  var keyboardAppearance: UIKeyboardAppearance = .default {
+    didSet { Logger.debug("keyboardAppearance set to \(keyboardAppearance.rawValue)") }
+  }
+  
+  var label: UIColor {
+    if #available(iOS 13, *) {
       return .label
     } else {
-      return .black
+      return keyboardAppearance == .dark ? .white : .black
     }
   }
   
-  static var secondaryLabel: UIColor {
-    if #available(iOS 13.0, *) {
+  var secondaryLabel: UIColor {
+    if #available(iOS 13, *) {
       return .secondaryLabel
     } else {
-      return .gray
+      return keyboardAppearance == .dark ?
+        UIColor(red: 235.0, green: 235.0, blue: 245.0, alpha: 0.6) :
+        UIColor(red: 60.0, green: 60.0, blue: 67.0, alpha: 0.6)
     }
   }
   
-  static var background: UIColor {
-    if #available(iOS 13.0, *) {
-      return .systemBackground
-    } else {
-      return .white
-    }
+  var background: UIColor {
+    return keyboardAppearance == .dark ?
+      UIColor(red: 0.424, green: 0.424, blue: 0.424, alpha: 1.0) :
+      .white
   }
   
-  static var secondaryBackground: UIColor {
-    if #available(iOS 13.0, *) {
-      return .systemGray3
-    } else {
-      return .lightText
-    }
+  var secondaryBackground: UIColor {
+    return keyboardAppearance == .dark ?
+      UIColor(red: 0.286, green: 0.286, blue: 0.286, alpha: 1.0) :
+      UIColor(red: 0.698, green: 0.714, blue: 0.761, alpha: 1.0)
   }
   
 }

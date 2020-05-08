@@ -8,10 +8,15 @@
 
 import UIKit
 
+
 // MARK: - KeypadViewControllerDelegate
 
+/// Delegate protocol to reflect text CRUD operations.
 protocol KeypadViewControllerDelegate: class {
+  
+  /// Text should be inserted.
   func insert(text: String)
+  
 }
 
 
@@ -20,6 +25,7 @@ protocol KeypadViewControllerDelegate: class {
 /// Key pad part of the input view.
 class KeypadViewController: UIViewController {
   
+  /// Delegate that will receive text updates.
   weak var delegate: KeypadViewControllerDelegate?
   
   /// Key state manager
@@ -43,9 +49,27 @@ class KeypadViewController: UIViewController {
   }
   
   
+  // MARK: Configuration
+  
+  /**
+   Update theme appearance.
+   */
+  func updateAppearance() {
+    let view = self.view as! KeypadView
+    view.updateAppearance()
+    for row in keySet.rows {
+      for key in row {
+        key.view.updateAppearance()
+      }
+    }
+  }
+  
+  
   // MARK: Loading
   
-  /// Load the key set and display it in the KeypadView.
+  /**
+   Load the key set and display it in the KeypadView.
+  */
   private func loadKeySet() {
     let view = self.view as! KeypadView
     let factory = KeySetFactory()

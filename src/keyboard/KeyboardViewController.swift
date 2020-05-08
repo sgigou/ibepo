@@ -8,27 +8,39 @@
 
 import UIKit
 
+
 // MARK: - KeyboardViewController
 
 /// View for custom keyboard extension
 class KeyboardViewController: UIInputViewController {
+  
+  /// Full input view controller with keyboard and suggestions.
+  private var customInputViewController: InputViewController!
+  
   
   // MARK: Life cycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
     guard let inputView = inputView else { return }
-    let inputViewController = InputViewController()
-    inputViewController.delegate = self
-    add(inputViewController, with: [
-      inputViewController.view.topAnchor.constraint(equalTo: inputView.topAnchor),
-      inputViewController.view.rightAnchor.constraint(equalTo: inputView.rightAnchor),
-      inputViewController.view.bottomAnchor.constraint(equalTo: inputView.bottomAnchor),
-      inputViewController.view.leftAnchor.constraint(equalTo: inputView.leftAnchor)
+    customInputViewController = InputViewController()
+    customInputViewController.delegate = self
+    add(customInputViewController, with: [
+      customInputViewController.view.topAnchor.constraint(equalTo: inputView.topAnchor),
+      customInputViewController.view.rightAnchor.constraint(equalTo: inputView.rightAnchor),
+      customInputViewController.view.bottomAnchor.constraint(equalTo: inputView.bottomAnchor),
+      customInputViewController.view.leftAnchor.constraint(equalTo: inputView.leftAnchor)
     ])
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    ColorManager.shared.keyboardAppearance = textDocumentProxy.keyboardAppearance ?? .default
+    customInputViewController.updateAppearance()
   }
 
 }
+
 
 // MARK: - InputViewControllerDelegate
 

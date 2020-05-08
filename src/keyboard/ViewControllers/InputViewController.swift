@@ -8,19 +8,29 @@
 
 import UIKit
 
+
 // MARK: - InputViewControllerDelegate
 
+/// Delegate protocol allowing to retrieve text CRUD.
 protocol InputViewControllerDelegate: class {
+  
+  /// Text should be inserted.
   func insert(_ text: String)
+  
 }
 
 
 // MARK: - InputViewController
 
 /// Full keyboard view
-class InputViewController: UIViewController {
+final class InputViewController: UIViewController {
   
+  /// Delegate that will get text CRUD.
   weak var delegate: InputViewControllerDelegate?
+  
+  /// The actual keyboard.
+  private var keypadViewController: KeypadViewController?
+  
   
   // MARK: Life cycle
   
@@ -29,21 +39,36 @@ class InputViewController: UIViewController {
     loadViews()
   }
   
-  // Loading
   
-  /// Load the key pad and the autocomplete view (if needed).
+  // MARK: Configuration
+  
+  /**
+   Update the theme appearance.
+   */
+  func updateAppearance() {
+    Logger.debug("Updating appearance.")
+    keypadViewController?.updateAppearance()
+  }
+  
+  
+  // MARK: Loading
+  
+  /**
+   Load the key pad and the autocomplete view (if needed).
+   */
   private func loadViews() {
-    let keypadViewController = KeypadViewController()
-    keypadViewController.delegate = self
-    add(keypadViewController, with: [
-      keypadViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
-      keypadViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor),
-      keypadViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-      keypadViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor)
+    keypadViewController = KeypadViewController()
+    keypadViewController!.delegate = self
+    add(keypadViewController!, with: [
+      keypadViewController!.view.topAnchor.constraint(equalTo: view.topAnchor),
+      keypadViewController!.view.rightAnchor.constraint(equalTo: view.rightAnchor),
+      keypadViewController!.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      keypadViewController!.view.leftAnchor.constraint(equalTo: view.leftAnchor)
     ])
   }
   
 }
+
 
 // MARK: - KeypadViewControllerDelegate
 

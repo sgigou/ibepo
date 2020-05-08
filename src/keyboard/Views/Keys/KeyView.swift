@@ -8,10 +8,15 @@
 
 import UIKit
 
+
+// MARK: - KeyView
+
 /// A key on the keypad.
 class KeyView: UIView {
   
+  /// The key shape.
   var backgroundView: UIView!
+  
   
   // MARK: Life cycle
   
@@ -31,7 +36,15 @@ class KeyView: UIView {
     }
   }
   
+  
   // MARK: Display
+  
+  /**
+   Update theme appearance.
+   */
+  func updateAppearance() {
+    backgroundView.backgroundColor = ColorManager.shared.background
+  }
   
   /**
    Creates and adds the background view for the letter.
@@ -40,11 +53,11 @@ class KeyView: UIView {
    */
   func initBackground() {
     let backgroundView = UIView()
-    backgroundView.backgroundColor = ColorManager.background
+    backgroundView.backgroundColor = ColorManager.shared.background
     backgroundView.translatesAutoresizingMaskIntoConstraints = false
     backgroundView.layer.cornerRadius = 5.0
     backgroundView.layer.shadowColor = UIColor.black.cgColor
-    backgroundView.layer.shadowOffset = CGSize(width: 0, height: 1.5)
+    backgroundView.layer.shadowOffset = CGSize(width: 0, height: 1)
     backgroundView.layer.shadowRadius = .zero
     backgroundView.layer.shadowOpacity = 0.25
     backgroundView.layer.shadowPath = UIBezierPath(roundedRect: backgroundView.bounds, cornerRadius: 5.0).cgPath

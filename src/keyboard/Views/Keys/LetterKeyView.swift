@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+// MARK: - LetterKeyView
+
 /// The display of a CharacterSet
 final class LetterKeyView: KeyView {
   
@@ -16,47 +19,71 @@ final class LetterKeyView: KeyView {
     case primary, secondary
   }
   
-  var primaryLabel = UILabel()
-  var secondaryLabel = UILabel()
+  /// Label displaying the main letter.
+  private var primaryLabel = UILabel()
+  /// Label displaying the alternative letter.
+  private var secondaryLabel = UILabel()
+  /// The level of the key.
+  private var level: Level = .primary {
+    didSet { updateAppearance() }
+  }
+  
   
   // MARK: Life cycle
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    initKey()
+    initLabels()
   }
   
   required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    super.init(coder: coder)
+    initLabels()
   }
+  
   
   // MARK: Configuration
   
+  /**
+   Update the letters that are displayed, and the level of the key.
+   */
   func setLetters(primary: String, secondary: String, level: Level) {
     primaryLabel.text = primary
     secondaryLabel.text = secondary
-    setLevel(level)
+    self.level = level
   }
   
-  private func setLevel(_ level: Level) {
-    switch level {
-    case .primary:
-      primaryLabel.textColor = ColorManager.label
-    case .secondary:
-      primaryLabel.textColor = ColorManager.secondaryLabel
-    }
-  }
   
   // MARK: Drawing
   
-  func initKey() {
+  /**
+   Update theme appearance.
+   */
+  override func updateAppearance() {
+    super.updateAppearance()
+    switch level {
+    case .primary:
+      primaryLabel.textColor = ColorManager.shared.label
+    case .secondary:
+      primaryLabel.textColor = ColorManager.shared.secondaryLabel
+    }
+    secondaryLabel.textColor = ColorManager.shared.secondaryLabel
+  }
+  
+  /**
+   Initialize the labels.
+   */
+  func initLabels() {
     initPrimaryLabel()
     initSecondaryLabel()
   }
   
+  /**
+   Init the secondary label. The primary label should exist.
+   */
   private func initSecondaryLabel() {
     secondaryLabel.font = .systemFont(ofSize: 12.0, weight: .light)
-    secondaryLabel.textColor = ColorManager.secondaryLabel
+    secondaryLabel.textColor = ColorManager.shared.secondaryLabel
     secondaryLabel.textAlignment = .center
     secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
     addSubview(secondaryLabel)
@@ -68,9 +95,12 @@ final class LetterKeyView: KeyView {
     ])
   }
   
+  /**
+   Init the primary label.
+   */
   private func initPrimaryLabel() {
     primaryLabel.font = .systemFont(ofSize: 20.0)
-    primaryLabel.textColor = ColorManager.label
+    primaryLabel.textColor = ColorManager.shared.label
     primaryLabel.textAlignment = .center
     primaryLabel.translatesAutoresizingMaskIntoConstraints = false
     addSubview(primaryLabel)

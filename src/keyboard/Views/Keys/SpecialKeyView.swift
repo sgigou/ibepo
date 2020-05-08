@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+// MARK: - SpecialKeyView
+
 /// The display of a function key (like space or alt).
 final class SpecialKeyView: KeyView {
   
@@ -16,11 +19,16 @@ final class SpecialKeyView: KeyView {
     case primary, secondary
   }
   
+  
   /// Label displaying the key function
   private var label: UILabel?
-  
   /// Image displaying the key function
   private var imageView: UIImageView?
+  /// View level
+  private var level: Level = .primary {
+    didSet { updateAppearance() }
+  }
+  
   
   // MARK: Life cycle
   
@@ -34,30 +42,44 @@ final class SpecialKeyView: KeyView {
     addLabel()
   }
   
+  
   // MARK: Configuration
   
+  /**
+   Configure the key with a label.
+   */
   func configure(withText text: String, level: Level) {
     addLabel()
     label?.text = text
-    setLevel(level)
+    self.level = level
   }
   
+  /**
+   Configure the key with a symbol.
+   */
   func configure(withImage image: UIImage, level: Level) {
     addImageView()
     imageView?.image = image
-    setLevel(level)
+    self.level = level
   }
   
-  private func setLevel(_ level: Level) {
-    switch level {
-    case .primary:
-      backgroundView.backgroundColor = ColorManager.background
-    case .secondary:
-      backgroundView.backgroundColor = ColorManager.secondaryBackground
-    }
-  }
   
   // MARK: Drawing
+  
+  /**
+   Update theme appearance.
+   */
+  override func updateAppearance() {
+    super.updateAppearance()
+    imageView?.tintColor = ColorManager.shared.label
+    label?.textColor = ColorManager.shared.label
+    switch level {
+    case .primary:
+      backgroundView.backgroundColor = ColorManager.shared.background
+    case .secondary:
+      backgroundView.backgroundColor = ColorManager.shared.secondaryBackground
+    }
+  }
   
   /**
    Use the label and removes the image (if needed).
@@ -68,7 +90,7 @@ final class SpecialKeyView: KeyView {
     imageView = nil
     label = UILabel()
     label!.font = .systemFont(ofSize: 20.0)
-    label!.textColor = ColorManager.label
+    label!.textColor = ColorManager.shared.label
     label!.textAlignment = .center
     label!.translatesAutoresizingMaskIntoConstraints = false
     addSubview(label!)
@@ -88,7 +110,7 @@ final class SpecialKeyView: KeyView {
     label?.removeFromSuperview()
     label = nil
     imageView = UIImageView()
-    imageView?.tintColor = ColorManager.label
+    imageView?.tintColor = ColorManager.shared.label
     imageView?.translatesAutoresizingMaskIntoConstraints = false
     addSubview(imageView!)
     NSLayoutConstraint.activate([

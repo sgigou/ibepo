@@ -8,11 +8,39 @@
 
 import UIKit
 
+
+// MARK: - KeypadView
+
 /// All the KeyView
-class KeypadView: UIView {
+final class KeypadView: UIView {
   
   /// The multiplier to use on widthAnchor to get the width of a key.
   private let keyWidthMultiplier: CGFloat = 1/11
+  
+  private var shiftKeyView: SpecialKeyView?
+  private var deleteKeyView: SpecialKeyView?
+  private var altKeyView: SpecialKeyView?
+  private var switchKeyView: SpecialKeyView?
+  private var spaceKeyView: SpecialKeyView?
+  private var returnKeyView: SpecialKeyView?
+  
+  
+  /// MARK: Drawing
+  
+  /**
+   Update the theme appearance.
+  */
+  func updateAppearance() {
+    shiftKeyView?.updateAppearance()
+    deleteKeyView?.updateAppearance()
+    altKeyView?.updateAppearance()
+    switchKeyView?.updateAppearance()
+    spaceKeyView?.updateAppearance()
+    returnKeyView?.updateAppearance()
+  }
+  
+  
+  /// MARK: Loading
   
   /**
    Load the given keyset and creates views for the rows and the letters.
@@ -32,21 +60,21 @@ class KeypadView: UIView {
     lastKey.rightAnchor.constraint(equalTo: rowView2.rightAnchor).isActive = true
     
     let rowView3 = addRowView(topAnchor: rowView2.bottomAnchor)
-    let caps = addSpecial(in: rowView3, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: rowView3.leftAnchor)
-    caps.configure(withImage: SymbolsManager.getImage(named: "shift"), level: .secondary)
-    lastKey = parse(keySet.rows[2], in: rowView3, leftAnchor: caps.rightAnchor)
-    let del = addSpecial(in: rowView3, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: lastKey.rightAnchor)
-    del.rightAnchor.constraint(equalTo: rowView3.rightAnchor).isActive = true
-    del.configure(withImage: SymbolsManager.getImage(named: "delete.left"), level: .secondary)
+    shiftKeyView = addSpecial(in: rowView3, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: rowView3.leftAnchor)
+    shiftKeyView!.configure(withImage: SymbolsManager.getImage(named: "shift"), level: .secondary)
+    lastKey = parse(keySet.rows[2], in: rowView3, leftAnchor: shiftKeyView!.rightAnchor)
+    deleteKeyView = addSpecial(in: rowView3, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: lastKey.rightAnchor)
+    deleteKeyView!.rightAnchor.constraint(equalTo: rowView3.rightAnchor).isActive = true
+    deleteKeyView!.configure(withImage: SymbolsManager.getImage(named: "delete.left"), level: .secondary)
     
     let rowView4 = addRowView(topAnchor: rowView3.bottomAnchor, bottomAnchor: bottomAnchor)
-    let alt = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*3, leftAnchor: rowView4.leftAnchor)
-    alt.configure(withImage: SymbolsManager.getImage(named: "option"), level: .secondary)
-    let space = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*5, leftAnchor: alt.rightAnchor)
-    space.configure(withText: "Espace", level: .primary)
-    let ret = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*3, leftAnchor: space.rightAnchor)
-    ret.rightAnchor.constraint(equalTo: rowView4.rightAnchor).isActive = true
-    ret.configure(withImage: SymbolsManager.getImage(named: "return"), level: .secondary)
+    altKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*3, leftAnchor: rowView4.leftAnchor)
+    altKeyView!.configure(withImage: SymbolsManager.getImage(named: "option"), level: .secondary)
+    spaceKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*5, leftAnchor: altKeyView!.rightAnchor)
+    spaceKeyView!.configure(withText: "Espace", level: .primary)
+    returnKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*3, leftAnchor: spaceKeyView!.rightAnchor)
+    returnKeyView!.rightAnchor.constraint(equalTo: rowView4.rightAnchor).isActive = true
+    returnKeyView!.configure(withImage: SymbolsManager.getImage(named: "return"), level: .secondary)
   }
   
   /**
