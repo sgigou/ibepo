@@ -33,10 +33,9 @@ class KeyboardViewController: UIInputViewController {
     ])
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    ColorManager.shared.keyboardAppearance = textDocumentProxy.keyboardAppearance ?? .default
-    customInputViewController.updateAppearance()
+  override func textDidChange(_ textInput: UITextInput?) {
+    super.textDidChange(textInput)
+    customInputViewController.update(textDocumentProxy: textDocumentProxy)
   }
 
 }

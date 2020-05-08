@@ -43,18 +43,27 @@ class KeypadViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    addObservers()
     loadKeySet()
     keyState.configure(keySet: keySet, view: view as! KeypadView)
     keyState.delegate = self
   }
   
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
   
-  // MARK: Configuration
+  
+  // MARK: Notifications
+  
+  private func addObservers() {
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardAppearanceDidChange), name: .keyboardAppearanceDidChange, object: nil)
+  }
   
   /**
    Update theme appearance.
    */
-  func updateAppearance() {
+  @objc func keyboardAppearanceDidChange() {
     let view = self.view as! KeypadView
     view.updateAppearance()
     for row in keySet.rows {

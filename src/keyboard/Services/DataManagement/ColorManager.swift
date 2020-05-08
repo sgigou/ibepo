@@ -15,9 +15,7 @@ final class ColorManager {
   static let shared = ColorManager()
   
   /// Current appearence of the keyboard.
-  var keyboardAppearance: UIKeyboardAppearance = .default {
-    didSet { Logger.debug("keyboardAppearance set to \(keyboardAppearance.rawValue)") }
-  }
+  var keyboardAppearance: UIKeyboardAppearance = .default
   
   var label: UIColor {
     if #available(iOS 13, *) {

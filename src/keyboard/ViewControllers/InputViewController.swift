@@ -30,6 +30,8 @@ final class InputViewController: UIViewController {
   
   /// The actual keyboard.
   private var keypadViewController: KeypadViewController?
+  /// Service that will notify any change on the textDocumentProxy.
+  private let textDocumentProxyAnalyzer = TextDocumentProxyAnalyzer()
   
   
   // MARK: Life cycle
@@ -43,11 +45,10 @@ final class InputViewController: UIViewController {
   // MARK: Configuration
   
   /**
-   Update the theme appearance.
+   Refresh document proxy values.
    */
-  func updateAppearance() {
-    Logger.debug("Updating appearance.")
-    keypadViewController?.updateAppearance()
+  func update(textDocumentProxy: UITextDocumentProxy) {
+    textDocumentProxyAnalyzer.update(textDocumentProxy)
   }
   
   
