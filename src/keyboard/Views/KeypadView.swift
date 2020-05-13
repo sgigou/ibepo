@@ -138,9 +138,19 @@ final class KeypadView: UIView {
    */
   private func loadRow4(_ keySet: KeySet, rowView3: UIView) {
     let rowView4 = addRowView(topAnchor: rowView3.bottomAnchor, bottomAnchor: bottomAnchor)
-    altKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*3, leftAnchor: rowView4.leftAnchor)
-    altKeyView!.configure(withImage: SymbolsManager.getImage(named: "option"), level: .secondary)
-    spaceKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*5, leftAnchor: altKeyView!.rightAnchor)
+    var spaceLeftAnchor: NSLayoutXAxisAnchor!
+    if KeyboardSettings.shared.needsInputModeSwitchKey {
+      altKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: rowView4.leftAnchor)
+      altKeyView!.configure(withImage: SymbolsManager.getImage(named: "option"), level: .secondary)
+      switchKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: altKeyView!.rightAnchor)
+      switchKeyView?.configure(withImage: SymbolsManager.getImage(named: "globe"), level: .secondary)
+      spaceLeftAnchor = switchKeyView!.rightAnchor
+    } else {
+      altKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*3, leftAnchor: rowView4.leftAnchor)
+      altKeyView!.configure(withImage: SymbolsManager.getImage(named: "option"), level: .secondary)
+      spaceLeftAnchor = altKeyView!.rightAnchor
+    }
+    spaceKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*5, leftAnchor: spaceLeftAnchor)
     spaceKeyView!.configure(withText: "Espace", level: .primary)
     returnKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*3, leftAnchor: spaceKeyView!.rightAnchor)
     returnKeyView!.rightAnchor.constraint(equalTo: rowView4.rightAnchor).isActive = true
