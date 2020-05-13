@@ -30,8 +30,6 @@ final class InputViewController: UIViewController {
   
   /// The actual keyboard.
   private var keypadViewController: KeypadViewController?
-  /// Service that will notify any change on the textDocumentProxy.
-  private let textDocumentProxyAnalyzer = TextDocumentProxyAnalyzer()
   
   
   // MARK: Life cycle
@@ -48,7 +46,7 @@ final class InputViewController: UIViewController {
    Refresh document proxy values.
    */
   func update(textDocumentProxy: UITextDocumentProxy) {
-    textDocumentProxyAnalyzer.update(textDocumentProxy)
+    KeyboardSettings.shared.update(textDocumentProxy)
   }
   
   

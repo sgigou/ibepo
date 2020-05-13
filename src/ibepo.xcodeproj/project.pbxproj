@@ -23,8 +23,8 @@
 		39528F8C245AFC510080FBE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39528F8A245AFC510080FBE8 /* LaunchScreen.storyboard */; };
 		39528F97245AFC510080FBE8 /* ibepoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39528F96245AFC510080FBE8 /* ibepoTests.swift */; };
 		39528FA2245AFC510080FBE8 /* ibepoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39528FA1245AFC510080FBE8 /* ibepoUITests.swift */; };
-		3974AFFB24657FA3004901B7 /* TextDocumentProxyAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974AFFA24657FA3004901B7 /* TextDocumentProxyAnalyzer.swift */; };
-		3974AFFC24658021004901B7 /* TextDocumentProxyAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974AFFA24657FA3004901B7 /* TextDocumentProxyAnalyzer.swift */; };
+		3974AFFB24657FA3004901B7 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974AFFA24657FA3004901B7 /* KeyboardSettings.swift */; };
+		3974AFFC24658021004901B7 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974AFFA24657FA3004901B7 /* KeyboardSettings.swift */; };
 		3974AFFE246581ED004901B7 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974AFFD246581ED004901B7 /* Notification.swift */; };
 		3974AFFF2465824A004901B7 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974AFFD246581ED004901B7 /* Notification.swift */; };
 		3981494F246041FC007C9754 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3981494E246041FC007C9754 /* Key.swift */; };
@@ -115,7 +115,7 @@
 		39528F9D245AFC510080FBE8 /* ibepoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ibepoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39528FA1245AFC510080FBE8 /* ibepoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ibepoUITests.swift; sourceTree = "<group>"; };
 		39528FA3245AFC510080FBE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3974AFFA24657FA3004901B7 /* TextDocumentProxyAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDocumentProxyAnalyzer.swift; sourceTree = "<group>"; };
+		3974AFFA24657FA3004901B7 /* KeyboardSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSettings.swift; sourceTree = "<group>"; };
 		3974AFFD246581ED004901B7 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		3981494E246041FC007C9754 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		3981495224604393007C9754 /* SpecialKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialKeyView.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 			children = (
 				399E64222464375800D25C6D /* DataManagement */,
 				391BF06B24600D98004F8497 /* KeySetFactory.swift */,
-				3974AFFA24657FA3004901B7 /* TextDocumentProxyAnalyzer.swift */,
+				3974AFFA24657FA3004901B7 /* KeyboardSettings.swift */,
 				399E64232464377B00D25C6D /* KeyGesture */,
 			);
 			path = Services;
@@ -510,7 +510,7 @@
 				39814955246043DC007C9754 /* LetterKeyView.swift in Sources */,
 				3981494F246041FC007C9754 /* Key.swift in Sources */,
 				391BF07424602208004F8497 /* UI+Extension.swift in Sources */,
-				3974AFFB24657FA3004901B7 /* TextDocumentProxyAnalyzer.swift in Sources */,
+				3974AFFB24657FA3004901B7 /* KeyboardSettings.swift in Sources */,
 				391BF06324600625004F8497 /* KeypadViewController.swift in Sources */,
 				398149562460444C007C9754 /* KeySetFactory.swift in Sources */,
 				391BF06A24600AF8004F8497 /* CharacterSet.swift in Sources */,
@@ -536,7 +536,7 @@
 				3981495C246051F0007C9754 /* InputViewController.swift in Sources */,
 				39814962246051FB007C9754 /* UI+Extension.swift in Sources */,
 				398149662460521D007C9754 /* SpecialKeyView.swift in Sources */,
-				3974AFFC24658021004901B7 /* TextDocumentProxyAnalyzer.swift in Sources */,
+				3974AFFC24658021004901B7 /* KeyboardSettings.swift in Sources */,
 				39814960246051F7007C9754 /* KeySet.swift in Sources */,
 				399E641D2464069D00D25C6D /* KeyGestureRecognizer.swift in Sources */,
 				39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */,

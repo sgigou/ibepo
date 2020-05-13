@@ -22,6 +22,7 @@ class KeyboardViewController: UIInputViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    initSettings()
     guard let inputView = inputView else { return }
     customInputViewController = InputViewController()
     customInputViewController.delegate = self
@@ -36,6 +37,19 @@ class KeyboardViewController: UIInputViewController {
   override func textDidChange(_ textInput: UITextInput?) {
     super.textDidChange(textInput)
     customInputViewController.update(textDocumentProxy: textDocumentProxy)
+  }
+  
+  
+  // MARK: Configuration
+  
+  /**
+   Read keyboard values and store them into the KeyboardSettings.
+   */
+  private func initSettings() {
+    if #available(iOSApplicationExtension 11.0, *) {
+      Logger.debug("needsInputModeSwitchKey set to \(needsInputModeSwitchKey)")
+      KeyboardSettings.shared.needsInputModeSwitchKey = needsInputModeSwitchKey
+    }
   }
 
 }

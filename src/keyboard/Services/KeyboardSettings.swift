@@ -1,5 +1,5 @@
 //
-//  TextDocumentProxyAnalyzer.swift
+//  KeyboardSettings.swift
 //  keyboard
 //
 //  Created by Steve Gigou on 2020-05-08.
@@ -9,12 +9,19 @@
 import UIKit
 
 
-// MARK: - TextDocumentProxyAnalyzer
+// MARK: - KeyboardSettings
 
 /// Service that posts notifications if textDocumentProxy attributes change.
-class TextDocumentProxyAnalyzer {
+class KeyboardSettings {
   
-  private var returnKeyType: UIReturnKeyType = .default
+  /// Shared instance.
+  static let shared = KeyboardSettings()
+  
+  /// Does the keyboard need to display keyboard switch key?
+  var needsInputModeSwitchKey = false
+  
+  /// Current type of the return key.
+  private(set) var returnKeyType: UIReturnKeyType = .default
   
   /**
    Check for updates in textDocumentProxy attributes.
@@ -43,8 +50,7 @@ class TextDocumentProxyAnalyzer {
     if self.returnKeyType != returnKeyType {
       Logger.debug("Return key type switching from \(self.returnKeyType.rawValue) to \(returnKeyType.rawValue)")
       self.returnKeyType = returnKeyType
-      let userInfo = ["returnKeyType": returnKeyType]
-      NotificationCenter.default.post(name: .returnKeyTypeDidChange, object: nil, userInfo: userInfo)
+      NotificationCenter.default.post(name: .returnKeyTypeDidChange, object: nil)
     }
   }
   

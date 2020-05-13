@@ -177,11 +177,7 @@ final class KeypadView: UIView {
   }
   
   @objc private func returnKeyTypeDidChange(_ notification: Notification) {
-    guard let returnKeyType = notification.userInfo?["returnKeyType"] as? UIReturnKeyType else {
-      Logger.error("returnKeyType not found.")
-      return
-    }
-    updateReturnKey(type: returnKeyType)
+    updateReturnKey(type: KeyboardSettings.shared.returnKeyType)
   }
   
 }
