@@ -38,8 +38,8 @@ final class ColorManager {
       return .secondaryLabel
     } else {
       return keyboardAppearance == .dark ?
-        UIColor(red: 235.0, green: 235.0, blue: 245.0, alpha: 0.6) :
-        UIColor(red: 60.0, green: 60.0, blue: 67.0, alpha: 0.6)
+        UIColor(red: 0.922, green: 0.922, blue: 0.961, alpha: 0.6) :
+        UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
     }
   }
   
