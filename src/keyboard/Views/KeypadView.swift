@@ -71,29 +71,72 @@ final class KeypadView: UIView {
   
   /**
    Load the given keyset and creates views for the rows and the letters.
+   
    - parameter keySet: The KeySet to load and display.
    */
   func load(keySet: KeySet) {
     translatesAutoresizingMaskIntoConstraints = false
     backgroundColor = UIColor.gray.withAlphaComponent(0.001) // Gestures do not work on transparent view.
     heightAnchor.constraint(greaterThanOrEqualToConstant: 160).isActive = true
-    
+    let rowView1 = loadRow1(keySet)
+    let rowView2 = loadRow2(keySet, rowView1: rowView1)
+    let rowView3 = loadRow3(keySet, rowView2: rowView2)
+    loadRow4(keySet, rowView3: rowView3)
+  }
+  
+  /**
+   Loads the top row of the keyboard.
+   
+   It contains only letters.
+  */
+  private func loadRow1(_ keySet: KeySet) -> UIView {
     let rowView1 = addRowView(topAnchor: topAnchor)
-    var lastKey = parse(keySet.rows[0], in: rowView1)
+    let lastKey = parse(keySet.rows[0], in: rowView1)
     lastKey.rightAnchor.constraint(equalTo: rowView1.rightAnchor).isActive = true
-    
+    return rowView1
+  }
+  
+  /**
+   Loads the second row of the keyboard.
+   
+   It contains only letters.
+  */
+  private func loadRow2(_ keySet: KeySet, rowView1: UIView) -> UIView {
     let rowView2 = addRowView(topAnchor: rowView1.bottomAnchor)
-    lastKey = parse(keySet.rows[1], in: rowView2)
+    let lastKey = parse(keySet.rows[1], in: rowView2)
     lastKey.rightAnchor.constraint(equalTo: rowView2.rightAnchor).isActive = true
-    
+    return rowView2
+  }
+  
+  /**
+   Loads the third row.
+   
+   It contains:
+   - shift,
+   - letters,
+   - delete.
+  */
+  private func loadRow3(_ keySet: KeySet, rowView2: UIView) -> UIView {
     let rowView3 = addRowView(topAnchor: rowView2.bottomAnchor)
     shiftKeyView = addSpecial(in: rowView3, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: rowView3.leftAnchor)
     shiftKeyView!.configure(withImage: SymbolsManager.getImage(named: "shift"), level: .secondary)
-    lastKey = parse(keySet.rows[2], in: rowView3, leftAnchor: shiftKeyView!.rightAnchor)
+    let lastKey = parse(keySet.rows[2], in: rowView3, leftAnchor: shiftKeyView!.rightAnchor)
     deleteKeyView = addSpecial(in: rowView3, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: lastKey.rightAnchor)
     deleteKeyView!.rightAnchor.constraint(equalTo: rowView3.rightAnchor).isActive = true
     deleteKeyView!.configure(withImage: SymbolsManager.getImage(named: "delete.left"), level: .secondary)
-    
+    return rowView3
+  }
+  
+  /**
+   Load the last row of the keyboard.
+   
+   It contains:
+   - the alt key,
+   - the keyboard change key (optional),
+   - the space key,
+   - the return key.
+   */
+  private func loadRow4(_ keySet: KeySet, rowView3: UIView) {
     let rowView4 = addRowView(topAnchor: rowView3.bottomAnchor, bottomAnchor: bottomAnchor)
     altKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*3, leftAnchor: rowView4.leftAnchor)
     altKeyView!.configure(withImage: SymbolsManager.getImage(named: "option"), level: .secondary)

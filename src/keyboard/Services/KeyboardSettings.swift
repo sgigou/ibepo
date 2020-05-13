@@ -12,7 +12,7 @@ import UIKit
 // MARK: - KeyboardSettings
 
 /// Service that posts notifications if textDocumentProxy attributes change.
-class KeyboardSettings {
+final class KeyboardSettings {
   
   /// Shared instance.
   static let shared = KeyboardSettings()
