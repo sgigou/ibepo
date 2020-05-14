@@ -45,6 +45,18 @@ final class KeypadView: UIView {
   // MARK: Drawing
   
   /**
+   Draw the shift key for the given state.
+   */
+  func updateShiftState(_ status: Key.State) {
+    switch status {
+    case .on:
+      shiftKeyView!.configure(withImage: SymbolsManager.getImage(named: "shift.fill"), level: .primary)
+    case .off:
+      shiftKeyView!.configure(withImage: SymbolsManager.getImage(named: "shift"), level: .secondary)
+    }
+  }
+  
+  /**
    Update the theme appearance.
   */
   func updateAppearance() {
@@ -119,7 +131,7 @@ final class KeypadView: UIView {
   private func loadRow3(_ keySet: KeySet, rowView2: UIView) -> UIView {
     let rowView3 = addRowView(topAnchor: rowView2.bottomAnchor)
     shiftKeyView = addSpecial(in: rowView3, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: rowView3.leftAnchor)
-    shiftKeyView!.configure(withImage: SymbolsManager.getImage(named: "shift"), level: .secondary)
+    updateShiftState(.off)
     let lastKey = parse(keySet.rows[2], in: rowView3, leftAnchor: shiftKeyView!.rightAnchor)
     deleteKeyView = addSpecial(in: rowView3, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: lastKey.rightAnchor)
     deleteKeyView!.rightAnchor.constraint(equalTo: rowView3.rightAnchor).isActive = true

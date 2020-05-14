@@ -11,19 +11,6 @@
 /// Represents the keyboard state at any moment.
 final class KeyState {
   
-  enum KeyState {
-    case off, on
-    
-    mutating func toggle() {
-      switch self {
-      case .on:
-        self = .off
-      case .off:
-        self = .on
-      }
-    }
-  }
-  
   weak var delegate: KeyboardActionProtocol?
   
   /// Currently displayed key set.
@@ -31,7 +18,7 @@ final class KeyState {
   /// Gesture recognizer for keys
   private var gestureRecognizer: KeyGestureRecognizer!
   /// Current state of the shift key
-  private var shiftKeyState: KeyState = .off
+  private var shiftKeyState: Key.State = .off
   
   
   // MARK: Configuration
@@ -48,6 +35,7 @@ final class KeyState {
   private func tapShift() {
     shiftKeyState.toggle()
     Logger.debug("Shift key is now \(shiftKeyState).")
+    delegate?.shiftStateChanged(newState: shiftKeyState)
   }
   
   

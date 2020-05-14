@@ -98,4 +98,9 @@ extension KeypadViewController: KeyboardActionProtocol {
     delegate?.nextKeyboard()
   }
   
+  func shiftStateChanged(newState: Key.State) {
+    delegate?.shiftStateChanged(newState: newState)
+    (view as? KeypadView)?.updateShiftState(newState)
+  }
+  
 }

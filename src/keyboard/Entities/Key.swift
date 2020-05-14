@@ -11,6 +11,20 @@ import UIKit
 /// A key set and its representing view.
 struct Key {
   
+  /// Represents the state of a key.
+  enum State {
+    case off, on
+    
+    mutating func toggle() {
+      switch self {
+      case .on:
+        self = .off
+      case .off:
+        self = .on
+      }
+    }
+  }
+  
   /// List of characters the view should display.
   let set: CharacterSet
   

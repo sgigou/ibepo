@@ -6,6 +6,7 @@
 //  Copyright © 2020 Novesoft. All rights reserved.
 //
 
+
 // MARK: - KeyStateDelegate
 
 /// Protocol used to interact with the input field.
@@ -34,5 +35,19 @@ protocol KeyboardActionProtocol: class {
    Needs to switch keyboard
    */
   func nextKeyboard()
+  
+  /**
+   Optional. Called when the shift key state changed.
+   */
+  func shiftStateChanged(newState: Key.State)
+  
+}
+
+
+// MARK: - Extension
+
+extension KeyboardActionProtocol {
+  
+  func shiftStateChanged(newState: Key.State) {}
   
 }
