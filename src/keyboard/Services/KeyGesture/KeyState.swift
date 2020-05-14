@@ -63,8 +63,27 @@ extension KeyState: KeyGestureRecognizerDelegate {
         let keyCoordinate = KeyCoordinate(row: keypadCoordinate.row, col: (keypadCoordinate.col - 3) / 2)
         tapLetter(at: keyCoordinate)
       }
+    case 3:
+      switch keypadCoordinate.col {
+      case 0...5:
+        if KeyboardSettings.shared.needsInputModeSwitchKey {
+          if keypadCoordinate.col <= 2 {
+            Logger.debug("Alt was tapped")
+          } else {
+            Logger.debug("Switch was tapped")
+          }
+        } else {
+          Logger.debug("Alt was tapped")
+        }
+      case 6...15:
+        Logger.debug("Space was tapped")
+      case 16...22:
+        Logger.debug("Return was tapped")
+      default:
+        Logger.error("Unknown keypadCoordinate col: \(keypadCoordinate)")
+      }
     default:
-      Logger.debug("Unknown keypadCoordinate row: \(keypadCoordinate.row)")
+      Logger.error("Unknown keypadCoordinate row: \(keypadCoordinate)")
     }
   }
   
