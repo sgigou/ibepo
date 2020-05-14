@@ -38,10 +38,10 @@ struct CharacterSet {
     _ secondaryLetter: String, _ secondaryShiftLetter: String?, _ secondaryAdditions: [String]?
   ) {
     self.primaryLetter = primaryLetter
-    self.primaryShiftLetter = primaryShiftLetter ?? primaryLetter
+    self.primaryShiftLetter = primaryShiftLetter ?? primaryLetter.uppercased()
     self.primaryAdditions = primaryAdditions
     self.secondaryLetter = secondaryLetter
-    self.secondaryShiftLetter = secondaryShiftLetter ?? secondaryLetter
+    self.secondaryShiftLetter = secondaryShiftLetter ?? secondaryLetter.uppercased()
     self.secondaryAdditions = secondaryAdditions
   }
   

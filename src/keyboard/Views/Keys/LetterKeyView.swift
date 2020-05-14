@@ -46,11 +46,13 @@ final class LetterKeyView: KeyView {
   
   /**
    Update the letters that are displayed, and the level of the key.
+   
+   - parameter level: Level to apply to the key. If none is given, then the level will not be changed.
    */
-  func setLetters(primary: String, secondary: String, level: Level) {
+  func setLetters(primary: String, secondary: String, level: Level? = nil) {
     primaryLabel.text = primary
     secondaryLabel.text = secondary
-    self.level = level
+    if let level = level { self.level = level }
   }
   
   

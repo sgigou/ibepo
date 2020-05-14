@@ -6,6 +6,9 @@
 //  Copyright © 2020 Novesoft. All rights reserved.
 //
 
+import Foundation
+
+
 // MARK: - KeyCoordinate
 
 /// A key position in a KeySet.
@@ -26,6 +29,14 @@ struct KeySet {
   /// The letters on the keyboard.
   /// - warning: It does not contain special keys.
   let rows: [Row]
+  
+  var keys: [Key] {
+    var keys = [Key]()
+    for row in rows {
+      keys.append(contentsOf: row)
+    }
+    return keys
+  }
   
   
   // MARK: Key finding

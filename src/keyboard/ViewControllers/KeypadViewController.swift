@@ -101,6 +101,13 @@ extension KeypadViewController: KeyboardActionProtocol {
   func shiftStateChanged(newState: Key.State) {
     delegate?.shiftStateChanged(newState: newState)
     (view as? KeypadView)?.updateShiftState(newState)
+    for key in keySet.keys {
+      if newState == .on {
+        key.view.setLetters(primary: key.set.primaryShiftLetter, secondary: key.set.secondaryShiftLetter)
+      } else {
+        key.view.setLetters(primary: key.set.primaryLetter, secondary: key.set.secondaryLetter)
+      }
+    }
   }
   
 }
