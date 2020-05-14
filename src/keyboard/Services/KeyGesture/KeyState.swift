@@ -11,12 +11,27 @@
 /// Represents the keyboard state at any moment.
 final class KeyState {
   
+  enum KeyState {
+    case off, on
+    
+    mutating func toggle() {
+      switch self {
+      case .on:
+        self = .off
+      case .off:
+        self = .on
+      }
+    }
+  }
+  
   weak var delegate: KeyboardActionProtocol?
   
   /// Currently displayed key set.
   private var keySet: KeySet!
   /// Gesture recognizer for keys
   private var gestureRecognizer: KeyGestureRecognizer!
+  /// Current state of the shift key
+  private var shiftKeyState: KeyState = .off
   
   
   // MARK: Configuration
@@ -25,6 +40,14 @@ final class KeyState {
     self.keySet = keySet
     gestureRecognizer = KeyGestureRecognizer(delegate: self)
     view.addGestureRecognizer(gestureRecognizer)
+  }
+  
+  
+  // MARK: Modifiers
+  
+  private func tapShift() {
+    shiftKeyState.toggle()
+    Logger.debug("Shift key is now \(shiftKeyState).")
   }
   
   
@@ -62,7 +85,7 @@ extension KeyState: KeyGestureRecognizerDelegate {
     case 2: // Shift, letters and Delete keys.
       switch keypadCoordinate.col {
       case 0...2: // Shift
-        Logger.debug("Shift was tapped")
+        tapShift()
       case 19...21: // Delete
         tapDelete()
       default: // Letter keys
