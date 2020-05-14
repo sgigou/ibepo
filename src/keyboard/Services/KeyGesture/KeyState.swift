@@ -47,6 +47,10 @@ final class KeyState {
     delegate?.insert(text: key.set.primaryLetter)
   }
   
+  private func tapReturn() {
+    delegate?.insert(text: "\n")
+  }
+  
   private func tapSpace() {
     delegate?.insert(text: " ")
   }
@@ -92,7 +96,7 @@ extension KeyState: KeyGestureRecognizerDelegate {
       case 6...15:
         tapSpace()
       case 16...22:
-        Logger.debug("Return was tapped")
+        tapReturn()
       default:
         Logger.error("Unknown keypadCoordinate col: \(keypadCoordinate)")
       }
