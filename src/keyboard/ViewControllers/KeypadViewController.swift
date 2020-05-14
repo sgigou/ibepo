@@ -94,4 +94,8 @@ extension KeypadViewController: KeyboardActionProtocol {
     delegate?.deleteBackward(amount: amount)
   }
   
+  func nextKeyboard() {
+    delegate?.nextKeyboard()
+  }
+  
 }

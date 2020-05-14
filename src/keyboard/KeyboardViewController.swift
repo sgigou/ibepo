@@ -73,4 +73,8 @@ extension KeyboardViewController: KeyboardActionProtocol {
     }
   }
   
+  func nextKeyboard() {
+    advanceToNextInputMode()
+  }
+  
 }

@@ -76,7 +76,7 @@ extension KeyState: KeyGestureRecognizerDelegate {
           if keypadCoordinate.col <= 2 {
             Logger.debug("Alt was tapped")
           } else {
-            Logger.debug("Switch was tapped")
+            delegate?.nextKeyboard()
           }
         } else {
           Logger.debug("Alt was tapped")

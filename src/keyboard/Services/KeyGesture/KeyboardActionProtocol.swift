@@ -30,4 +30,9 @@ protocol KeyboardActionProtocol: class {
    */
   func deleteBackward(amount: Int)
   
+  /**
+   Needs to switch keyboard
+   */
+  func nextKeyboard()
+  
 }
