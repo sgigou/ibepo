@@ -58,7 +58,19 @@ class KeyboardViewController: UIInputViewController {
 // MARK: - InputViewControllerDelegate
 
 extension KeyboardViewController: InputViewControllerDelegate {
+  
   func insert(_ text: String) {
     textDocumentProxy.insertText(text)
   }
+  
+  func deleteBackward() {
+    textDocumentProxy.deleteBackward()
+  }
+  
+  func deleteBackward(amount: Int) {
+    for _ in 1...amount {
+      deleteBackward()
+    }
+  }
+  
 }

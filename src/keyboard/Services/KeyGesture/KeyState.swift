@@ -9,7 +9,13 @@
 // MARK: - KeyStateDelegate
 
 protocol KeyStateDelegate: class {
+  
   func insert(text: String)
+  /// Delete one character backward
+  func deleteBackward()
+  /// Delete the given amount of characters backward.
+  func deleteBackward(amount: Int)
+  
 }
 
 // MARK: - KeyState
@@ -45,6 +51,10 @@ final class KeyState {
     delegate?.insert(text: " ")
   }
   
+  private func tapDelete() {
+    delegate?.deleteBackward()
+  }
+  
 }
 
 
@@ -62,7 +72,7 @@ extension KeyState: KeyGestureRecognizerDelegate {
       case 0...2: // Shift
         Logger.debug("Shift was tapped")
       case 19...21: // Delete
-      Logger.debug("Delete was tapped")
+        tapDelete()
       default: // Letter keys
         let keyCoordinate = KeyCoordinate(row: keypadCoordinate.row, col: (keypadCoordinate.col - 3) / 2)
         tapLetter(at: keyCoordinate)

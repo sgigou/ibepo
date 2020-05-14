@@ -16,6 +16,10 @@ protocol InputViewControllerDelegate: class {
   
   /// Text should be inserted.
   func insert(_ text: String)
+  /// Delete one character backward
+  func deleteBackward()
+  /// Delete the given amount of characters backward.
+  func deleteBackward(amount: Int)
   
 }
 
@@ -75,6 +79,14 @@ extension InputViewController: KeypadViewControllerDelegate {
   
   func insert(text: String) {
     delegate?.insert(text)
+  }
+  
+  func deleteBackward() {
+    delegate?.deleteBackward()
+  }
+  
+  func deleteBackward(amount: Int) {
+    delegate?.deleteBackward(amount: amount)
   }
   
 }
