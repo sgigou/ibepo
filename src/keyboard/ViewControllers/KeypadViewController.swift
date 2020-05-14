@@ -102,11 +102,10 @@ extension KeypadViewController: KeyboardActionProtocol {
     delegate?.shiftStateChanged(newState: newState)
     (view as? KeypadView)?.updateShiftState(newState)
     for key in keySet.keys {
-      if newState == .on {
-        key.view.setLetters(primary: key.set.primaryShiftLetter, secondary: key.set.secondaryShiftLetter)
-      } else {
-        key.view.setLetters(primary: key.set.primaryLetter, secondary: key.set.secondaryLetter)
-      }
+      key.view.setLetters(
+        primary: key.set.primaryLetter(forShiftState: newState),
+        secondary: key.set.secondaryLetter(forShiftState: newState)
+      )
     }
   }
   

@@ -43,7 +43,7 @@ final class KeyState {
   
   private func tapLetter(at keyCoordinate: KeyCoordinate) {
     let key = keySet.key(at: keyCoordinate)
-    delegate?.insert(text: key.set.primaryLetter)
+    delegate?.insert(text: key.set.letter(forShiftState: shiftKeyState, andAltState: .off))
   }
   
   private func tapReturn() {

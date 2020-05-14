@@ -45,4 +45,34 @@ struct CharacterSet {
     self.secondaryAdditions = secondaryAdditions
   }
   
+  
+  // MARK: Find letters
+  
+  func letter(forShiftState shiftState: Key.State, andAltState altState: Key.State) -> String {
+    switch altState {
+    case .off:
+      return primaryLetter(forShiftState: shiftState)
+    case .on:
+      return secondaryLetter(forShiftState: shiftState)
+    }
+  }
+  
+  func primaryLetter(forShiftState shiftState: Key.State) -> String {
+    switch shiftState {
+    case .off:
+      return primaryLetter
+    case .on:
+      return primaryShiftLetter
+    }
+  }
+  
+  func secondaryLetter(forShiftState shiftState: Key.State) -> String {
+    switch shiftState {
+    case .off:
+      return secondaryLetter
+    case .on:
+      return secondaryShiftLetter
+    }
+  }
+  
 }
