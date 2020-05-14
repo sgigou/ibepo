@@ -41,6 +41,10 @@ final class KeyState {
     delegate?.insert(text: key.set.primaryLetter)
   }
   
+  private func tapSpace() {
+    delegate?.insert(text: " ")
+  }
+  
 }
 
 
@@ -76,7 +80,7 @@ extension KeyState: KeyGestureRecognizerDelegate {
           Logger.debug("Alt was tapped")
         }
       case 6...15:
-        Logger.debug("Space was tapped")
+        tapSpace()
       case 16...22:
         Logger.debug("Return was tapped")
       default:
