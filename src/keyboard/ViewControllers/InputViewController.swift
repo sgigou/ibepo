@@ -9,28 +9,13 @@
 import UIKit
 
 
-// MARK: - InputViewControllerDelegate
-
-/// Delegate protocol allowing to retrieve text CRUD.
-protocol InputViewControllerDelegate: class {
-  
-  /// Text should be inserted.
-  func insert(_ text: String)
-  /// Delete one character backward
-  func deleteBackward()
-  /// Delete the given amount of characters backward.
-  func deleteBackward(amount: Int)
-  
-}
-
-
 // MARK: - InputViewController
 
 /// Full keyboard view
 final class InputViewController: UIViewController {
   
   /// Delegate that will get text CRUD.
-  weak var delegate: InputViewControllerDelegate?
+  weak var delegate: KeyboardActionProtocol?
   
   /// The actual keyboard.
   private var keypadViewController: KeypadViewController?
@@ -73,12 +58,12 @@ final class InputViewController: UIViewController {
 }
 
 
-// MARK: - KeypadViewControllerDelegate
+// MARK: - KeyboardActionProtocol
 
-extension InputViewController: KeypadViewControllerDelegate {
+extension InputViewController: KeyboardActionProtocol {
   
   func insert(text: String) {
-    delegate?.insert(text)
+    delegate?.insert(text: text)
   }
   
   func deleteBackward() {

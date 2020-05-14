@@ -55,11 +55,11 @@ class KeyboardViewController: UIInputViewController {
 }
 
 
-// MARK: - InputViewControllerDelegate
+// MARK: - KeyboardActionProtocol
 
-extension KeyboardViewController: InputViewControllerDelegate {
+extension KeyboardViewController: KeyboardActionProtocol {
   
-  func insert(_ text: String) {
+  func insert(text: String) {
     textDocumentProxy.insertText(text)
   }
   

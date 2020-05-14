@@ -9,28 +9,13 @@
 import UIKit
 
 
-// MARK: - KeypadViewControllerDelegate
-
-/// Delegate protocol to reflect text CRUD operations.
-protocol KeypadViewControllerDelegate: class {
-  
-  /// Text should be inserted.
-  func insert(text: String)
-  /// Delete one character backward
-  func deleteBackward()
-  /// Delete the given amount of characters backward.
-  func deleteBackward(amount: Int)
-  
-}
-
-
 // MARK: - KeypadViewController
 
 /// Key pad part of the input view.
 class KeypadViewController: UIViewController {
   
   /// Delegate that will receive text updates.
-  weak var delegate: KeypadViewControllerDelegate?
+  weak var delegate: KeyboardActionProtocol?
   
   /// Key state manager
   private let keyState = KeyState()
@@ -93,9 +78,9 @@ class KeypadViewController: UIViewController {
 }
 
 
-// MARK: - KeyStateDelegate
+// MARK: - KeyboardActionProtocol
 
-extension KeypadViewController: KeyStateDelegate {
+extension KeypadViewController: KeyboardActionProtocol {
   
   func insert(text: String) {
     delegate?.insert(text: text)

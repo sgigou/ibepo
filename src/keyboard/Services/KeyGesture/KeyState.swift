@@ -6,24 +6,12 @@
 //  Copyright © 2020 Novesoft. All rights reserved.
 //
 
-// MARK: - KeyStateDelegate
-
-protocol KeyStateDelegate: class {
-  
-  func insert(text: String)
-  /// Delete one character backward
-  func deleteBackward()
-  /// Delete the given amount of characters backward.
-  func deleteBackward(amount: Int)
-  
-}
-
 // MARK: - KeyState
 
 /// Represents the keyboard state at any moment.
 final class KeyState {
   
-  weak var delegate: KeyStateDelegate?
+  weak var delegate: KeyboardActionProtocol?
   
   /// Currently displayed key set.
   private var keySet: KeySet!
