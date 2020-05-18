@@ -42,6 +42,13 @@ class KeypadViewController: UIViewController {
     NotificationCenter.default.removeObserver(self)
   }
   
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    for key in keySet.keys {
+      key.view.updateAppearance()
+    }
+  }
+  
   
   // MARK: Notifications
   
@@ -113,7 +120,7 @@ extension KeypadViewController: KeyboardActionProtocol {
     delegate?.altStateChanged(newState: newState)
     (view as? KeypadView)?.updateAltState(newState)
     for key in keySet.keys {
-      key.view.updateAltState(isActive: newState.isActive)
+      key.view.isAltActivated = newState.isActive
     }
   }
   

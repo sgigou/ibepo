@@ -19,13 +19,33 @@ final class LetterKeyView: KeyView {
     case primary, secondary
   }
   
+  /// Indicates if the alt display is activated.
+  var isAltActivated = false {
+    didSet { updateAppearance() }
+  }
+  /// The level of the key.
+  var level: Level = .primary {
+    didSet { updateAppearance() }
+  }
+  
   /// Label displaying the main letter.
   private var primaryLabel = UILabel()
   /// Label displaying the alternative letter.
   private var secondaryLabel = UILabel()
-  /// The level of the key.
-  private var level: Level = .primary {
-    didSet { updateAppearance() }
+  
+  private var primaryFontSize: CGFloat {
+    if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
+      return 20.0
+    } else {
+      return 16.0
+    }
+  }
+  private var secondaryFontSize: CGFloat {
+    if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
+      return 12.0
+    } else {
+      return 10.0
+    }
   }
   
   
@@ -58,32 +78,23 @@ final class LetterKeyView: KeyView {
   
   // MARK: Drawing
   
-  func updateAltState(isActive: Bool) {
-    if isActive {
-      secondaryLabel.font = .systemFont(ofSize: 20.0)
-      secondaryLabel.textColor = ColorManager.shared.label
-      primaryLabel.font = .systemFont(ofSize: 12.0, weight: .light)
-      primaryLabel.textColor = ColorManager.shared.secondaryLabel
-    } else {
-      secondaryLabel.font = .systemFont(ofSize: 12.0, weight: .light)
-      secondaryLabel.textColor = ColorManager.shared.secondaryLabel
-      primaryLabel.font = .systemFont(ofSize: 20.0)
-      primaryLabel.textColor = ColorManager.shared.label
-    }
-  }
-  
   /**
    Update theme appearance.
    */
   override func updateAppearance() {
     super.updateAppearance()
-    switch level {
-    case .primary:
-      primaryLabel.textColor = ColorManager.shared.label
-    case .secondary:
+    let primaryColor = level == .primary ? ColorManager.shared.label : ColorManager.shared.secondaryLabel
+    if isAltActivated {
+      secondaryLabel.font = .systemFont(ofSize: primaryFontSize)
+      secondaryLabel.textColor = primaryColor
+      primaryLabel.font = .systemFont(ofSize: secondaryFontSize, weight: .light)
       primaryLabel.textColor = ColorManager.shared.secondaryLabel
+    } else {
+      secondaryLabel.font = .systemFont(ofSize: secondaryFontSize, weight: .light)
+      secondaryLabel.textColor = ColorManager.shared.secondaryLabel
+      primaryLabel.font = .systemFont(ofSize: primaryFontSize)
+      primaryLabel.textColor = primaryColor
     }
-    secondaryLabel.textColor = ColorManager.shared.secondaryLabel
   }
   
   /**
@@ -92,7 +103,7 @@ final class LetterKeyView: KeyView {
   func initLabels() {
     initPrimaryLabel()
     initSecondaryLabel()
-    updateAltState(isActive: false)
+    updateAppearance()
   }
   
   /**
