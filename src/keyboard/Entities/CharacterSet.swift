@@ -49,11 +49,10 @@ struct CharacterSet {
   // MARK: Find letters
   
   func letter(forShiftState shiftState: Key.State, andAltState altState: Key.State) -> String {
-    switch altState {
-    case .off:
-      return primaryLetter(forShiftState: shiftState)
-    case .on:
+    if altState.isActive {
       return secondaryLetter(forShiftState: shiftState)
+    } else {
+      return primaryLetter(forShiftState: shiftState)
     }
   }
   

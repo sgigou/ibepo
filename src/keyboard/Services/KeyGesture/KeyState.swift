@@ -41,6 +41,9 @@ final class KeyState {
     if shiftKeyState == .on {
       tapShift()
     }
+    if altKeyState == .on {
+      tapAlt()
+    }
   }
   
   private func tapShift() {
@@ -60,7 +63,7 @@ final class KeyState {
   
   private func tapLetter(at keyCoordinate: KeyCoordinate) {
     let key = keySet.key(at: keyCoordinate)
-    delegate?.insert(text: key.set.letter(forShiftState: shiftKeyState, andAltState: .off))
+    delegate?.insert(text: key.set.letter(forShiftState: shiftKeyState, andAltState: altKeyState))
     letterWasTapped()
   }
   
