@@ -41,6 +41,11 @@ protocol KeyboardActionProtocol: class {
    */
   func shiftStateChanged(newState: Key.State)
   
+  /**
+   Optional. Called when the alt key state changed.
+   */
+  func altStateChanged(newState: Key.State)
+  
 }
 
 
@@ -49,5 +54,6 @@ protocol KeyboardActionProtocol: class {
 extension KeyboardActionProtocol {
   
   func shiftStateChanged(newState: Key.State) {}
+  func altStateChanged(newState: Key.State) {}
   
 }

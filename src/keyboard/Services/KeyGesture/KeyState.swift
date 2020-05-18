@@ -19,6 +19,8 @@ final class KeyState {
   private var gestureRecognizer: KeyGestureRecognizer!
   /// Current state of the shift key
   private var shiftKeyState: Key.State = .off
+  /// Current state of the alt key
+  private var altKeyState: Key.State = .off
   
   
   // MARK: Configuration
@@ -45,6 +47,12 @@ final class KeyState {
     shiftKeyState.toggle()
     Logger.debug("Shift key is now \(shiftKeyState).")
     delegate?.shiftStateChanged(newState: shiftKeyState)
+  }
+  
+  private func tapAlt() {
+    altKeyState.toggle()
+    Logger.debug("Alt key is now \(altKeyState).")
+    delegate?.altStateChanged(newState: altKeyState)
   }
   
   
@@ -95,12 +103,12 @@ extension KeyState: KeyGestureRecognizerDelegate {
       case 0...5:
         if KeyboardSettings.shared.needsInputModeSwitchKey {
           if keypadCoordinate.col <= 2 {
-            Logger.debug("Alt was tapped")
+            tapAlt()
           } else {
             delegate?.nextKeyboard()
           }
         } else {
-          Logger.debug("Alt was tapped")
+          tapAlt()
         }
       case 6...15:
         tapSpace()
