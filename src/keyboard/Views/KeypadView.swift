@@ -45,7 +45,7 @@ final class KeypadView: UIView {
   // MARK: Drawing
   
   /**
-   Draw the shift key for the given state.
+   Draws the shift key for the given state.
    */
   func updateShiftState(_ status: Key.State) {
     switch status {
@@ -53,6 +53,18 @@ final class KeypadView: UIView {
       shiftKeyView!.configure(withImage: SymbolsManager.getImage(named: "shift.fill"), level: .primary)
     case .off:
       shiftKeyView!.configure(withImage: SymbolsManager.getImage(named: "shift"), level: .secondary)
+    }
+  }
+  
+  /**
+   Draws the alt key for the given state.
+   */
+  func updateAltState(_ state: Key.State) {
+    switch state {
+    case .on:
+      altKeyView!.configure(withImage: SymbolsManager.getImage(named: "option"), level: .primary)
+    case .off:
+      altKeyView!.configure(withImage: SymbolsManager.getImage(named: "option"), level: .secondary)
     }
   }
   
@@ -153,13 +165,13 @@ final class KeypadView: UIView {
     var spaceLeftAnchor: NSLayoutXAxisAnchor!
     if KeyboardSettings.shared.needsInputModeSwitchKey {
       altKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: rowView4.leftAnchor)
-      altKeyView!.configure(withImage: SymbolsManager.getImage(named: "option"), level: .secondary)
+      updateAltState(.off)
       switchKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: altKeyView!.rightAnchor)
       switchKeyView?.configure(withImage: SymbolsManager.getImage(named: "globe"), level: .secondary)
       spaceLeftAnchor = switchKeyView!.rightAnchor
     } else {
       altKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*3, leftAnchor: rowView4.leftAnchor)
-      altKeyView!.configure(withImage: SymbolsManager.getImage(named: "option"), level: .secondary)
+      updateAltState(.off)
       spaceLeftAnchor = altKeyView!.rightAnchor
     }
     spaceKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*5, leftAnchor: spaceLeftAnchor)
