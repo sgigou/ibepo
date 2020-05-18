@@ -58,6 +58,20 @@ final class LetterKeyView: KeyView {
   
   // MARK: Drawing
   
+  func updateAltState(isActive: Bool) {
+    if isActive {
+      secondaryLabel.font = .systemFont(ofSize: 20.0)
+      secondaryLabel.textColor = ColorManager.shared.label
+      primaryLabel.font = .systemFont(ofSize: 12.0, weight: .light)
+      primaryLabel.textColor = ColorManager.shared.secondaryLabel
+    } else {
+      secondaryLabel.font = .systemFont(ofSize: 12.0, weight: .light)
+      secondaryLabel.textColor = ColorManager.shared.secondaryLabel
+      primaryLabel.font = .systemFont(ofSize: 20.0)
+      primaryLabel.textColor = ColorManager.shared.label
+    }
+  }
+  
   /**
    Update theme appearance.
    */
@@ -78,14 +92,13 @@ final class LetterKeyView: KeyView {
   func initLabels() {
     initPrimaryLabel()
     initSecondaryLabel()
+    updateAltState(isActive: false)
   }
   
   /**
    Init the secondary label. The primary label should exist.
    */
   private func initSecondaryLabel() {
-    secondaryLabel.font = .systemFont(ofSize: 12.0, weight: .light)
-    secondaryLabel.textColor = ColorManager.shared.secondaryLabel
     secondaryLabel.textAlignment = .center
     secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
     addSubview(secondaryLabel)
@@ -101,8 +114,6 @@ final class LetterKeyView: KeyView {
    Init the primary label.
    */
   private func initPrimaryLabel() {
-    primaryLabel.font = .systemFont(ofSize: 20.0)
-    primaryLabel.textColor = ColorManager.shared.label
     primaryLabel.textAlignment = .center
     primaryLabel.translatesAutoresizingMaskIntoConstraints = false
     addSubview(primaryLabel)

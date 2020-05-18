@@ -112,6 +112,9 @@ extension KeypadViewController: KeyboardActionProtocol {
   func altStateChanged(newState: Key.State) {
     delegate?.altStateChanged(newState: newState)
     (view as? KeypadView)?.updateAltState(newState)
+    for key in keySet.keys {
+      key.view.updateAltState(isActive: newState.isActive)
+    }
   }
   
 }

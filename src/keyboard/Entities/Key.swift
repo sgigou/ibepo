@@ -15,6 +15,10 @@ struct Key {
   enum State {
     case off, on
     
+    var isActive: Bool {
+      return self != .off
+    }
+    
     mutating func toggle() {
       switch self {
       case .on:

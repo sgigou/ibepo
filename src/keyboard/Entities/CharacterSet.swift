@@ -58,20 +58,18 @@ struct CharacterSet {
   }
   
   func primaryLetter(forShiftState shiftState: Key.State) -> String {
-    switch shiftState {
-    case .off:
-      return primaryLetter
-    case .on:
+    if shiftState.isActive {
       return primaryShiftLetter
+    } else {
+      return primaryLetter
     }
   }
   
   func secondaryLetter(forShiftState shiftState: Key.State) -> String {
-    switch shiftState {
-    case .off:
-      return secondaryLetter
-    case .on:
+    if shiftState.isActive {
       return secondaryShiftLetter
+    } else {
+      return secondaryLetter
     }
   }
   
