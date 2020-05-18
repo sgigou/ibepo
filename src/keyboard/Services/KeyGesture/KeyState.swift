@@ -32,6 +32,15 @@ final class KeyState {
   
   // MARK: Modifiers
   
+  /**
+   Operations to perform after a letter was tapped.
+   */
+  private func letterWasTapped() {
+    if shiftKeyState == .on {
+      tapShift()
+    }
+  }
+  
   private func tapShift() {
     shiftKeyState.toggle()
     Logger.debug("Shift key is now \(shiftKeyState).")
@@ -44,6 +53,7 @@ final class KeyState {
   private func tapLetter(at keyCoordinate: KeyCoordinate) {
     let key = keySet.key(at: keyCoordinate)
     delegate?.insert(text: key.set.letter(forShiftState: shiftKeyState, andAltState: .off))
+    letterWasTapped()
   }
   
   private func tapReturn() {
