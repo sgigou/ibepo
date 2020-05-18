@@ -34,17 +34,25 @@ final class LetterKeyView: KeyView {
   private var secondaryLabel = UILabel()
   
   private var primaryFontSize: CGFloat {
-    if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
-      return 20.0
+    if UIDevice.current.userInterfaceIdiom == .phone {
+      if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
+        return 20.0
+      } else {
+        return 16.0
+      }
     } else {
-      return 16.0
+      return 30.0
     }
   }
   private var secondaryFontSize: CGFloat {
-    if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
-      return 12.0
+    if UIDevice.current.userInterfaceIdiom == .phone {
+      if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
+        return 12.0
+      } else {
+        return 10.0
+      }
     } else {
-      return 10.0
+      return 16.0
     }
   }
   
@@ -84,15 +92,16 @@ final class LetterKeyView: KeyView {
   override func updateAppearance() {
     super.updateAppearance()
     let primaryColor = level == .primary ? ColorManager.shared.label : ColorManager.shared.secondaryLabel
+    let primaryWeight: UIFont.Weight = UIDevice.current.userInterfaceIdiom == .phone ? .regular : .light
     if isAltActivated {
-      secondaryLabel.font = .systemFont(ofSize: primaryFontSize)
+      secondaryLabel.font = .systemFont(ofSize: primaryFontSize, weight: primaryWeight)
       secondaryLabel.textColor = primaryColor
       primaryLabel.font = .systemFont(ofSize: secondaryFontSize, weight: .light)
       primaryLabel.textColor = ColorManager.shared.secondaryLabel
     } else {
       secondaryLabel.font = .systemFont(ofSize: secondaryFontSize, weight: .light)
       secondaryLabel.textColor = ColorManager.shared.secondaryLabel
-      primaryLabel.font = .systemFont(ofSize: primaryFontSize)
+      primaryLabel.font = .systemFont(ofSize: primaryFontSize, weight: primaryWeight)
       primaryLabel.textColor = primaryColor
     }
   }
