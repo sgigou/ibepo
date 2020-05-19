@@ -14,10 +14,21 @@ import UIKit
 /// Manages autocorrect and displaying suggestions.
 final class AutocorrectViewController: UIViewController {
   
+  /// Autocorrect engine.
+  private let autocorrect = Autocorrect()
+  
+  
   // MARK: Life cycle
   
   override func loadView() {
     self.view = AutocorrectView()
+  }
+  
+  
+  // MARK: User input
+  
+  func insert(_ text: String) {
+    autocorrect.insert(text)
   }
   
 }

@@ -72,6 +72,7 @@ extension InputViewController: KeyboardActionProtocol {
   
   func insert(text: String) {
     delegate?.insert(text: text)
+    autocorrectViewController.insert(text)
   }
   
   func deleteBackward() {
