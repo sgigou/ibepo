@@ -9,12 +9,26 @@
 import UIKit
 
 
+// MARK: - AutocorrectProtocol
+
+protocol AutocorrectProtocol: class {
+  func autocorrectEnded(_ corrections: [Correction])
+}
+
+
 // MARK: - Autocorrect
 
 /// Autocorrect engine.
 final class Autocorrect {
   
+  var delegate: AutocorrectProtocol?
+  
+  /// Result of the last autocorrect search.
+  private(set) var corrections = [Correction]()
+  
+  /// Text checker.
   private let checker = UITextChecker()
+  /// Queue used to perform check
   private let queue = DispatchQueue(label: "com.novesoft.ibepo.autocorrect")
   
   /// Queue to look for words
@@ -68,7 +82,12 @@ final class Autocorrect {
     let guesses = checker.guesses(forWordRange: range, in: currentWord, language: "fr") ?? []
     let completions = checker.completions(forPartialWordRange: range, in: currentWord, language: "fr") ?? []
     isSearching = false
-    Logger.debug("Spellcheck is over")
+    corrections.removeAll()
+    corrections.append(Correction(word: currentWord, isPreferred: true, kind: .sic))
+    for guess in guesses {
+      corrections.append(Correction(word: guess, isPreferred: false, kind: .guess))
+    }
+    delegate?.autocorrectEnded(corrections)
   }
   
 }
