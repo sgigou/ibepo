@@ -31,6 +31,21 @@ final class Autocorrect {
    Indicates that the user added a letter to the current word.
    */
   func insert(_ text: String) {
+    if text == "" || text == "\n" {
+      currentWord = ""
+    } else {
+      currentWord += text
+      launchSearch()
+    }
+  }
+  
+  
+  // MARK: Autocorrect
+  
+  /**
+   Launches a search in background.
+   */
+  private func launchSearch() {
     if isSearching {
       Logger.debug("Cancelling running search")
       workItem?.cancel()
@@ -41,12 +56,8 @@ final class Autocorrect {
       Logger.debug("Looking for guesses for: \(self?.currentWord ?? "UNKNOWN")")
       self?.loadSuggestions()
     }
-    currentWord += text
     queue.async(execute: workItem!)
   }
-  
-  
-  // MARK: Autocorrect
   
   /**
    Analyses the current word to find suggestions.
