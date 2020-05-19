@@ -11,6 +11,8 @@
 		391BF06A24600AF8004F8497 /* CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06824600AF8004F8497 /* CharacterSet.swift */; };
 		391BF071246012EC004F8497 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06F246012EC004F8497 /* KeyView.swift */; };
 		391BF07424602208004F8497 /* UI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF07224602208004F8497 /* UI+Extension.swift */; };
+		391CF4C72473CD6B00C36FA6 /* AutocorrectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391CF4C62473CD6B00C36FA6 /* AutocorrectViewController.swift */; };
+		391CF4C82473CD6B00C36FA6 /* AutocorrectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391CF4C62473CD6B00C36FA6 /* AutocorrectViewController.swift */; };
 		392159BD246D39BF00F2E013 /* KeyboardActionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392159BC246D39BF00F2E013 /* KeyboardActionProtocol.swift */; };
 		392159BE246D3A4900F2E013 /* KeyboardActionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392159BC246D39BF00F2E013 /* KeyboardActionProtocol.swift */; };
 		392AD047245D72D9008252F1 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392AD046245D72D9008252F1 /* KeyboardViewController.swift */; };
@@ -101,6 +103,7 @@
 		391BF06B24600D98004F8497 /* KeySetFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeySetFactory.swift; sourceTree = "<group>"; };
 		391BF06F246012EC004F8497 /* KeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyView.swift; sourceTree = "<group>"; };
 		391BF07224602208004F8497 /* UI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+Extension.swift"; sourceTree = "<group>"; };
+		391CF4C62473CD6B00C36FA6 /* AutocorrectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocorrectViewController.swift; sourceTree = "<group>"; };
 		392159BC246D39BF00F2E013 /* KeyboardActionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardActionProtocol.swift; sourceTree = "<group>"; };
 		392AD044245D72D9008252F1 /* keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		392AD046245D72D9008252F1 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
@@ -186,13 +189,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		391BF07524602501004F8497 /* ViewControllers */ = {
+		391BF07524602501004F8497 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				3994E3A1245D6D10008B1099 /* InputViewController.swift */,
-				391BF06124600625004F8497 /* KeypadViewController.swift */,
+				391CF4C92473CDA300C36FA6 /* Keypad */,
+				391CF4CA2473CDB300C36FA6 /* Autocorrect */,
 			);
-			path = ViewControllers;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		391BF0762460251C004F8497 /* Extensions */ = {
@@ -204,6 +208,24 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		391CF4C92473CDA300C36FA6 /* Keypad */ = {
+			isa = PBXGroup;
+			children = (
+				391BF06124600625004F8497 /* KeypadViewController.swift */,
+				39814959246048C9007C9754 /* KeypadView.swift */,
+				3981495B246048F5007C9754 /* Keys */,
+			);
+			path = Keypad;
+			sourceTree = "<group>";
+		};
+		391CF4CA2473CDB300C36FA6 /* Autocorrect */ = {
+			isa = PBXGroup;
+			children = (
+				391CF4C62473CD6B00C36FA6 /* AutocorrectViewController.swift */,
+			);
+			path = Autocorrect;
+			sourceTree = "<group>";
+		};
 		392AD045245D72D9008252F1 /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,8 +234,7 @@
 				391BF0762460251C004F8497 /* Extensions */,
 				391BF06E246012DA004F8497 /* Services */,
 				391BF06724600869004F8497 /* Entities */,
-				391BF07524602501004F8497 /* ViewControllers */,
-				3994E3A3245D6D13008B1099 /* Views */,
+				391BF07524602501004F8497 /* UI */,
 			);
 			path = keyboard;
 			sourceTree = "<group>";
@@ -286,15 +307,6 @@
 				3981495224604393007C9754 /* SpecialKeyView.swift */,
 			);
 			path = Keys;
-			sourceTree = "<group>";
-		};
-		3994E3A3245D6D13008B1099 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				39814959246048C9007C9754 /* KeypadView.swift */,
-				3981495B246048F5007C9754 /* Keys */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		3994E3A8245D6E86008B1099 /* ViewControllers */ = {
@@ -517,6 +529,7 @@
 				391BF07424602208004F8497 /* UI+Extension.swift in Sources */,
 				3974AFFB24657FA3004901B7 /* KeyboardSettings.swift in Sources */,
 				391BF06324600625004F8497 /* KeypadViewController.swift in Sources */,
+				391CF4C82473CD6B00C36FA6 /* AutocorrectViewController.swift in Sources */,
 				398149562460444C007C9754 /* KeySetFactory.swift in Sources */,
 				391BF06A24600AF8004F8497 /* CharacterSet.swift in Sources */,
 				399E642124640E7A00D25C6D /* Logger.swift in Sources */,
@@ -547,6 +560,7 @@
 				39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */,
 				399E64252464381A00D25C6D /* KeyState.swift in Sources */,
 				39814961246051F9007C9754 /* KeySetFactory.swift in Sources */,
+				391CF4C72473CD6B00C36FA6 /* AutocorrectViewController.swift in Sources */,
 				399E642024640E7A00D25C6D /* Logger.swift in Sources */,
 				39514A552462A4D700F05A48 /* ColorManager.swift in Sources */,
 				398149652460521D007C9754 /* LetterKeyView.swift in Sources */,
