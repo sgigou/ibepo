@@ -8,6 +8,16 @@
 
 import UIKit
 
-class AutocorrectViewController: UIViewController {
+
+// MARK: - AutocorrectViewController
+
+/// Manages autocorrect and displaying suggestions.
+final class AutocorrectViewController: UIViewController {
+  
+  // MARK: Life cycle
+  
+  override func loadView() {
+    self.view = AutocorrectView()
+  }
   
 }

@@ -13,6 +13,8 @@
 		391BF07424602208004F8497 /* UI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF07224602208004F8497 /* UI+Extension.swift */; };
 		391CF4C72473CD6B00C36FA6 /* AutocorrectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391CF4C62473CD6B00C36FA6 /* AutocorrectViewController.swift */; };
 		391CF4C82473CD6B00C36FA6 /* AutocorrectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391CF4C62473CD6B00C36FA6 /* AutocorrectViewController.swift */; };
+		391CF4CC2473CDD700C36FA6 /* AutocorrectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391CF4CB2473CDD700C36FA6 /* AutocorrectView.swift */; };
+		391CF4CD2473CDD700C36FA6 /* AutocorrectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391CF4CB2473CDD700C36FA6 /* AutocorrectView.swift */; };
 		392159BD246D39BF00F2E013 /* KeyboardActionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392159BC246D39BF00F2E013 /* KeyboardActionProtocol.swift */; };
 		392159BE246D3A4900F2E013 /* KeyboardActionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392159BC246D39BF00F2E013 /* KeyboardActionProtocol.swift */; };
 		392AD047245D72D9008252F1 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392AD046245D72D9008252F1 /* KeyboardViewController.swift */; };
@@ -104,6 +106,7 @@
 		391BF06F246012EC004F8497 /* KeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyView.swift; sourceTree = "<group>"; };
 		391BF07224602208004F8497 /* UI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+Extension.swift"; sourceTree = "<group>"; };
 		391CF4C62473CD6B00C36FA6 /* AutocorrectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocorrectViewController.swift; sourceTree = "<group>"; };
+		391CF4CB2473CDD700C36FA6 /* AutocorrectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocorrectView.swift; sourceTree = "<group>"; };
 		392159BC246D39BF00F2E013 /* KeyboardActionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardActionProtocol.swift; sourceTree = "<group>"; };
 		392AD044245D72D9008252F1 /* keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		392AD046245D72D9008252F1 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				391CF4C62473CD6B00C36FA6 /* AutocorrectViewController.swift */,
+				391CF4CB2473CDD700C36FA6 /* AutocorrectView.swift */,
 			);
 			path = Autocorrect;
 			sourceTree = "<group>";
@@ -532,6 +536,7 @@
 				391CF4C82473CD6B00C36FA6 /* AutocorrectViewController.swift in Sources */,
 				398149562460444C007C9754 /* KeySetFactory.swift in Sources */,
 				391BF06A24600AF8004F8497 /* CharacterSet.swift in Sources */,
+				391CF4CD2473CDD700C36FA6 /* AutocorrectView.swift in Sources */,
 				399E642124640E7A00D25C6D /* Logger.swift in Sources */,
 				391BF071246012EC004F8497 /* KeyView.swift in Sources */,
 				39514A542462A44000F05A48 /* ColorManager.swift in Sources */,
@@ -562,6 +567,7 @@
 				39814961246051F9007C9754 /* KeySetFactory.swift in Sources */,
 				391CF4C72473CD6B00C36FA6 /* AutocorrectViewController.swift in Sources */,
 				399E642024640E7A00D25C6D /* Logger.swift in Sources */,
+				391CF4CC2473CDD700C36FA6 /* AutocorrectView.swift in Sources */,
 				39514A552462A4D700F05A48 /* ColorManager.swift in Sources */,
 				398149652460521D007C9754 /* LetterKeyView.swift in Sources */,
 				3981495D246051F0007C9754 /* KeypadViewController.swift in Sources */,

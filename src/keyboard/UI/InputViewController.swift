@@ -18,7 +18,9 @@ final class InputViewController: UIViewController {
   weak var delegate: KeyboardActionProtocol?
   
   /// The actual keyboard.
-  private var keypadViewController: KeypadViewController?
+  private var keypadViewController: KeypadViewController!
+  /// The autocorrect zone.
+  private var autocorrectViewController: AutocorrectViewController!
   
   
   // MARK: Life cycle
@@ -46,12 +48,18 @@ final class InputViewController: UIViewController {
    */
   private func loadViews() {
     keypadViewController = KeypadViewController()
-    keypadViewController!.delegate = self
+    keypadViewController.delegate = self
     add(keypadViewController!, with: [
-      keypadViewController!.view.topAnchor.constraint(equalTo: view.topAnchor),
-      keypadViewController!.view.rightAnchor.constraint(equalTo: view.rightAnchor),
-      keypadViewController!.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-      keypadViewController!.view.leftAnchor.constraint(equalTo: view.leftAnchor)
+      keypadViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor),
+      keypadViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      keypadViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
+    ])
+    autocorrectViewController = AutocorrectViewController()
+    add(autocorrectViewController, with: [
+      autocorrectViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
+      autocorrectViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor),
+      autocorrectViewController.view.bottomAnchor.constraint(equalTo: keypadViewController.view.topAnchor),
+      autocorrectViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
     ])
   }
   
