@@ -14,4 +14,11 @@ import UIKit
 /// Displays autocorrect suggestions and allow to select one.
 final class AutocorrectView: UIView {
   
+  // MARK: Life cycle
+  
+  override func didMoveToSuperview() {
+    super.didMoveToSuperview()
+    heightAnchor.constraint(equalToConstant: 40.0).isActive = true
+  }
+  
 }
