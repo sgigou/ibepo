@@ -22,5 +22,26 @@ struct Correction {
   let isPreferred: Bool
   /// What kind of correction is it
   let kind: Kind
+  /// Does the word exists in the dictionary
+  let exists: Bool
+  
+  var description: String {
+    return "Correction[word: \(word), kind: \(kind), isPreferred: \(isPreferred)]"
+  }
+  
+}
+
+
+// MARK: - CorrectionSet
+
+struct CorrectionSet {
+  
+  let correction1: Correction?
+  let correction2: Correction?
+  let correction3: Correction?
+  
+  static var empty: CorrectionSet {
+    return CorrectionSet(correction1: nil, correction2: nil, correction3: nil)
+  }
   
 }

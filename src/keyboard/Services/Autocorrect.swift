@@ -12,7 +12,7 @@ import UIKit
 // MARK: - AutocorrectProtocol
 
 protocol AutocorrectProtocol: class {
-  func autocorrectEnded(_ corrections: [Correction])
+  func autocorrectEnded(with correctionSet: CorrectionSet)
 }
 
 
@@ -23,8 +23,8 @@ final class Autocorrect {
   
   var delegate: AutocorrectProtocol?
   
-  /// Result of the last autocorrect search.
-  private(set) var corrections = [Correction]()
+  /// Current correction set
+  private(set) var correctionSet: CorrectionSet = .empty
   
   /// Text checker.
   private let checker = UITextChecker()
@@ -73,21 +73,54 @@ final class Autocorrect {
   private func loadSuggestions() {
     let currentWord = KeyboardSettings.shared.textDocumentProxyAnalyzer.currentWord
     if currentWord == "" {
-      corrections.removeAll()
-      delegate?.autocorrectEnded(corrections)
-      return
+      return emptyCorrections()
     }
     let range = NSRange(location: 0, length: currentWord.count)
-    let existingWord = checker.rangeOfMisspelledWord(in: currentWord, range: range, startingAt: 0, wrap: false, language: "fr").length == 0
+    let wordExists = checker.rangeOfMisspelledWord(in: currentWord, range: range, startingAt: 0, wrap: false, language: "fr").length == 0
     let guesses = checker.guesses(forWordRange: range, in: currentWord, language: "fr") ?? []
     let completions = checker.completions(forPartialWordRange: range, in: currentWord, language: "fr") ?? []
+    sortCorrections(enteredWord: currentWord, guesses: guesses, completions: completions, enteredWordExists: wordExists)
+  }
+  
+  /**
+   Removes all corrections and notify the delegate.
+   */
+  private func emptyCorrections() {
+    correctionSet = .empty
     isSearching = false
-    corrections.removeAll()
-    corrections.append(Correction(word: currentWord, isPreferred: true, kind: .sic))
-    for guess in guesses {
-      corrections.append(Correction(word: guess, isPreferred: false, kind: .guess))
+    delegate?.autocorrectEnded(with: correctionSet)
+  }
+  
+  /**
+   Sort corrections by probability and notify the delegate.
+   */
+  private func sortCorrections(enteredWord: String, guesses: [String], completions: [String], enteredWordExists: Bool) {
+    let prefersEnteredWord = enteredWordExists || (guesses.isEmpty && completions.isEmpty)
+    let correction1 = Correction(word: enteredWord, isPreferred: prefersEnteredWord, kind: .sic, exists: enteredWordExists)
+    let correction2: Correction?
+    if !guesses.isEmpty {
+      correction2 = Correction(word: guesses.first!, isPreferred: !enteredWordExists, kind: .guess, exists: true)
+    } else {
+      if completions.count >= 2 {
+        correction2 = Correction(word: completions[1], isPreferred: false, kind: .completion, exists: true)
+      } else {
+        correction2 = nil
+      }
     }
-    delegate?.autocorrectEnded(corrections)
+    let correction3: Correction?
+    if !completions.isEmpty {
+      correction3 = Correction(word: completions.first!, isPreferred: !enteredWordExists && guesses.isEmpty, kind: .completion, exists: true)
+    } else {
+      if guesses.count >= 2 {
+        correction3 = Correction(word: guesses[1], isPreferred: false, kind: .guess, exists: true)
+      } else {
+        correction3 = nil
+      }
+    }
+    correctionSet = CorrectionSet(correction1: correction1, correction2: correction2, correction3: correction3)
+    // Logger.debug("Autocorrection ended with:\n1. \(correction1.description)\n2. \(correction2?.description ?? "nil")\n3. \(correction3?.description ?? "nil")")
+    isSearching = false
+    delegate?.autocorrectEnded(with: correctionSet)
   }
   
 }
