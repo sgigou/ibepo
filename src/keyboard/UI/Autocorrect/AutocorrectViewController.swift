@@ -36,8 +36,13 @@ final class AutocorrectViewController: UIViewController {
   
   // MARK: User input
   
-  func insert(_ text: String) {
-    autocorrect.insert(text)
+  /**
+   Updates the corrections.
+   
+   - parameter text: The letter inserted by the user, if any.
+   */
+  func update(_ text: String? = nil) {
+    autocorrect.update(text)
   }
   
 }

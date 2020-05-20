@@ -40,9 +40,11 @@ final class Autocorrect {
   // MARK: User input
   
   /**
-   Indicates that the user added a letter to the current word.
+   Recalculates corrections.
+   
+   - parameter text: The entered text, if any.
    */
-  func insert(_ text: String) {
+  func update(_ text: String? = nil) {
     launchSearch()
   }
   
@@ -73,6 +75,7 @@ final class Autocorrect {
     if currentWord == "" {
       corrections.removeAll()
       delegate?.autocorrectEnded(corrections)
+      return
     }
     let range = NSRange(location: 0, length: currentWord.count)
     let existingWord = checker.rangeOfMisspelledWord(in: currentWord, range: range, startingAt: 0, wrap: false, language: "fr").length == 0

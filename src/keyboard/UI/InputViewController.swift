@@ -72,15 +72,17 @@ extension InputViewController: KeyboardActionProtocol {
   
   func insert(text: String) {
     delegate?.insert(text: text)
-    autocorrectViewController.insert(text)
+    autocorrectViewController.update(text)
   }
   
   func deleteBackward() {
     delegate?.deleteBackward()
+    autocorrectViewController.update()
   }
   
   func deleteBackward(amount: Int) {
     delegate?.deleteBackward(amount: amount)
+    autocorrectViewController.update()
   }
   
   func nextKeyboard() {
