@@ -21,7 +21,7 @@ class AutocorrectViewController: UIViewController {
   var delegate: KeyboardActionProtocol?
   
   /// Autocorrect engine.
-  private let autocorrect = Autocorrect()
+  let autocorrect = Autocorrect()
   
   
   // MARK: Life cycle
@@ -61,28 +61,11 @@ class AutocorrectViewController: UIViewController {
   private func select(correction: Correction?) {
     guard let correction = correction else { return }
     let analyzer = KeyboardSettings.shared.textDocumentProxyAnalyzer
-    var shouldDelete = true
+    var amountToDelete = analyzer.currentWord.count
     if #available(iOS 11.0, *) {
-      shouldDelete = analyzer.textDocumentProxy?.selectedText == nil
+      amountToDelete = analyzer.textDocumentProxy?.selectedText?.count ?? amountToDelete
     }
-    if shouldDelete {
-      let currentWordCount = analyzer.currentWord.count
-      delegate?.deleteBackward(amount: currentWordCount)
-    }
-    delegate?.insert(text: correction.word)
-    delegate?.insert(text: " ")
-  }
-  
-  
-  // MARK: Updates
-  
-  /**
-   Updates the corrections.
-   
-   - parameter text: The letter inserted by the user, if any.
-   */
-  func update(_ text: String? = nil) {
-    autocorrect.update(text)
+    delegate?.replace(charactersAmount: amountToDelete, by: "\(correction.word) ")
   }
 
 }

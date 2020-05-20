@@ -38,7 +38,7 @@ final class InputViewController: UIViewController {
    */
   func update(textDocumentProxy: UITextDocumentProxy) {
     KeyboardSettings.shared.update(textDocumentProxy)
-    autocorrectViewController.update()
+    autocorrectViewController.autocorrect.update()
   }
   
   
@@ -73,18 +73,29 @@ final class InputViewController: UIViewController {
 extension InputViewController: KeyboardActionProtocol {
   
   func insert(text: String) {
+    if let replacement = autocorrectViewController.autocorrect.correction(for: text) {
+      replace(charactersAmount: KeyboardSettings.shared.textDocumentProxyAnalyzer.currentWord.count, by: "\(replacement)")
+    } else {
+      delegate?.insert(text: text)
+      autocorrectViewController.autocorrect.update()
+    }
+  }
+  
+  func replace(charactersAmount: Int, by text: String) {
+    deleteBackward(amount: charactersAmount)
     delegate?.insert(text: text)
-    autocorrectViewController.update(text)
+    autocorrectViewController.autocorrect.update()
   }
   
   func deleteBackward() {
     delegate?.deleteBackward()
-    autocorrectViewController.update()
+    autocorrectViewController.autocorrect.update()
   }
   
   func deleteBackward(amount: Int) {
+    if amount == 0 { return }
     delegate?.deleteBackward(amount: amount)
-    autocorrectViewController.update()
+    autocorrectViewController.autocorrect.update()
   }
   
   func nextKeyboard() {

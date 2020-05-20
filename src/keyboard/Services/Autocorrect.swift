@@ -40,11 +40,32 @@ final class Autocorrect {
   // MARK: User input
   
   /**
+   Indicates if the user input must be replaced by an autocompletion.
+   
+   - parameter input: The input given by the user.
+   - returns: The text to insert *instead* of the input, nil if the input should be inserted normally.
+   */
+  func correction(for input: String) -> String? {
+    if input.count != 1 {
+      return nil
+    }
+    let character = input.first!
+    if character.isLetter {
+      return nil
+    }
+    if correctionSet.correction2?.isPreferred ?? false {
+      let replacement = "\(correctionSet.correction2?.word ?? "")\(character)"
+      return replacement
+    }
+    return nil
+  }
+  
+  /**
    Recalculates corrections.
    
    - parameter text: The entered text, if any.
    */
-  func update(_ text: String? = nil) {
+  func update() {
     launchSearch()
   }
   
