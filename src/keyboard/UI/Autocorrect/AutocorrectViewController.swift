@@ -18,6 +18,8 @@ class AutocorrectViewController: UIViewController {
   @IBOutlet weak var button2: UIButton!
   @IBOutlet weak var button3: UIButton!
   
+  var delegate: KeyboardActionProtocol?
+  
   /// Autocorrect engine.
   private let autocorrect = Autocorrect()
   
@@ -31,6 +33,48 @@ class AutocorrectViewController: UIViewController {
   
   
   // MARK: User input
+  
+  /**
+   The user tapped on the first correction.
+   */
+  @IBAction func button1Tap() {
+    select(correction: autocorrect.correctionSet.correction1)
+  }
+  
+  /**
+   The user tapped on the second correction.
+   */
+  @IBAction func button2Tap() {
+    select(correction: autocorrect.correctionSet.correction2)
+  }
+  
+  /**
+   The user tapped on the third correction.
+   */
+  @IBAction func button3Tap() {
+    select(correction: autocorrect.correctionSet.correction3)
+  }
+  
+  /**
+   Replace the current word with the selected one.
+   */
+  private func select(correction: Correction?) {
+    guard let correction = correction else { return }
+    let analyzer = KeyboardSettings.shared.textDocumentProxyAnalyzer
+    var shouldDelete = true
+    if #available(iOS 11.0, *) {
+      shouldDelete = analyzer.textDocumentProxy?.selectedText == nil
+    }
+    if shouldDelete {
+      let currentWordCount = analyzer.currentWord.count
+      delegate?.deleteBackward(amount: currentWordCount)
+    }
+    delegate?.insert(text: correction.word)
+    delegate?.insert(text: " ")
+  }
+  
+  
+  // MARK: Updates
   
   /**
    Updates the corrections.

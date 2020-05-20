@@ -56,6 +56,7 @@ final class InputViewController: UIViewController {
       keypadViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
     ])
     autocorrectViewController = AutocorrectViewController()
+    autocorrectViewController.delegate = self
     add(autocorrectViewController, with: [
       autocorrectViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
       autocorrectViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor),

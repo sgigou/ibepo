@@ -29,6 +29,9 @@
                             <state key="normal" title="Button">
                                 <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
+                            <connections>
+                                <action selector="button1Tap" destination="-1" eventType="touchUpInside" id="otK-B5-RC5"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ei1-hf-t3c">
                             <rect key="frame" x="132.5" y="0.0" width="1" height="30"/>
@@ -42,6 +45,9 @@
                             <state key="normal" title="Button">
                                 <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
+                            <connections>
+                                <action selector="button2Tap" destination="-1" eventType="touchUpInside" id="Lwr-7Q-d7E"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICr-c5-k2n">
                             <rect key="frame" x="266.5" y="0.0" width="1" height="30"/>
@@ -55,6 +61,9 @@
                             <state key="normal" title="Button">
                                 <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
+                            <connections>
+                                <action selector="button3Tap" destination="-1" eventType="touchUpInside" id="MM6-ZZ-IJj"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
