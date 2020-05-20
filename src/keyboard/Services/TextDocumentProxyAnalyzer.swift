@@ -15,11 +15,12 @@ final class TextDocumentProxyAnalyzer {
   /// Up-to-date text document proxy
   var textDocumentProxy: UITextDocumentProxy?
   
+  /// Currently editing word. An empty string if none.
   var currentWord: String {
     guard let textDocumentProxy = self.textDocumentProxy else {
       return ""
     }
-    let context = textDocumentProxy.documentContextBeforeInput ?? ""
+    let context = findContext(in: textDocumentProxy)
     var currentWord = ""
     for character in context.reversed() {
       if !character.isLetter {
@@ -28,6 +29,19 @@ final class TextDocumentProxyAnalyzer {
       currentWord.insert(character, at: currentWord.startIndex)
     }
     return currentWord
+  }
+  
+  /**
+   Find the context, based on the iOS version.
+   
+   - returns: Selected text, document context or an empty string.
+   */
+  private func findContext(in textDocumentProxy: UITextDocumentProxy) -> String {
+    if #available(iOS 11.0, *) {
+      return textDocumentProxy.selectedText ?? textDocumentProxy.documentContextBeforeInput ?? ""
+    } else {
+      return textDocumentProxy.documentContextBeforeInput ?? ""
+    }
   }
   
 }
