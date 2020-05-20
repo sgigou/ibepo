@@ -63,7 +63,7 @@ class AutocorrectViewController: UIViewController {
     let analyzer = KeyboardSettings.shared.textDocumentProxyAnalyzer
     var amountToDelete = analyzer.currentWord.count
     if #available(iOS 11.0, *) {
-      amountToDelete = analyzer.textDocumentProxy?.selectedText?.count ?? amountToDelete
+      amountToDelete = analyzer.textDocumentProxy?.selectedText != nil ? 0 : amountToDelete
     }
     delegate?.replace(charactersAmount: amountToDelete, by: "\(correction.word) ")
   }
