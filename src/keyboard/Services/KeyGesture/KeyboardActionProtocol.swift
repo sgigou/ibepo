@@ -20,6 +20,11 @@ protocol KeyboardActionProtocol: class {
   func insert(text: String)
   
   /**
+   Optional. Replaces the given amount on characters by the given text.
+   */
+  func replace(charactersAmount: Int, by text: String)
+  
+  /**
    Delete backward 1 character.
    */
   func deleteBackward()
@@ -55,5 +60,6 @@ extension KeyboardActionProtocol {
   
   func shiftStateChanged(newState: Key.State) {}
   func altStateChanged(newState: Key.State) {}
+  func replace(charactersAmount: Int, by text: String) {}
   
 }
