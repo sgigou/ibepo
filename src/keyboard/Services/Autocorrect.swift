@@ -46,13 +46,10 @@ final class Autocorrect {
    - returns: The text to insert *instead* of the input, nil if the input should be inserted normally.
    */
   func correction(for input: String) -> String? {
-    if input.count != 1 {
-      return nil
-    }
+    if !KeyboardSettings.shared.shouldAutocorrect { return nil }
+    if input.count != 1 { return nil }
     let character = input.first!
-    if character.isLetter {
-      return nil
-    }
+    if character.isLetter { return nil }
     if correctionSet.correction2?.isPreferred ?? false {
       let replacement = "\(correctionSet.correction2?.word ?? "")\(character)"
       return replacement
@@ -116,7 +113,7 @@ final class Autocorrect {
    Sort corrections by probability and notify the delegate.
    */
   private func sortCorrections(enteredWord: String, guesses: [String], completions: [String], enteredWordExists: Bool) {
-    let prefersEnteredWord = enteredWordExists || (guesses.isEmpty && completions.isEmpty)
+    let prefersEnteredWord = prefers(enteredWordExists: enteredWordExists, guessesIsEmpty: guesses.isEmpty, completionsIsEmpty: completions.isEmpty)
     let correction1 = Correction(word: enteredWord, isPreferred: prefersEnteredWord, exists: enteredWordExists)
     let suggestions = sortSuggestions(currentWord: enteredWord, guesses: guesses, completions: completions)
     let correction2: Correction?
@@ -132,7 +129,6 @@ final class Autocorrect {
       correction3 = nil
     }
     correctionSet = CorrectionSet(correction1: correction1, correction2: correction2, correction3: correction3)
-    // Logger.debug("Autocorrection ended with:\n1. \(correction1.description)\n2. \(correction2?.description ?? "nil")\n3. \(correction3?.description ?? "nil")")
     isSearching = false
     delegate?.autocorrectEnded(with: correctionSet)
   }
@@ -160,6 +156,15 @@ final class Autocorrect {
       i += 1
     }
     return corrections
+  }
+  
+  /**
+   Determines if the currently entered text should be the preferred correction.
+   */
+  private func prefers(enteredWordExists: Bool, guessesIsEmpty: Bool, completionsIsEmpty: Bool) -> Bool {
+    if !KeyboardSettings.shared.shouldAutocorrect { return true }
+    if enteredWordExists { return true }
+    return guessesIsEmpty && completionsIsEmpty
   }
   
 }

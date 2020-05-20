@@ -26,6 +26,10 @@ final class KeyboardSettings {
   /// Current type of the return key.
   private(set) var returnKeyType: UIReturnKeyType = .default
   
+  var shouldAutocorrect: Bool {
+    return textDocumentProxyAnalyzer.textDocumentProxy?.autocorrectionType != .no
+  }
+  
   /**
    Check for updates in textDocumentProxy attributes.
    */
