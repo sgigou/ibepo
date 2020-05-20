@@ -12,21 +12,15 @@
 /// A correction proposed by the autocorrect engine.
 struct Correction {
   
-  enum Kind {
-    case sic, guess, completion
-  }
-  
   /// Proposed word
   let word: String
   /// Indicates wether this correction is the preferred one
   let isPreferred: Bool
-  /// What kind of correction is it
-  let kind: Kind
   /// Does the word exists in the dictionary
   let exists: Bool
   
   var description: String {
-    return "Correction[word: \(word), kind: \(kind), isPreferred: \(isPreferred)]"
+    return "Correction[word: \(word), isPreferred: \(isPreferred)]"
   }
   
 }

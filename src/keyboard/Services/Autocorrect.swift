@@ -96,31 +96,49 @@ final class Autocorrect {
    */
   private func sortCorrections(enteredWord: String, guesses: [String], completions: [String], enteredWordExists: Bool) {
     let prefersEnteredWord = enteredWordExists || (guesses.isEmpty && completions.isEmpty)
-    let correction1 = Correction(word: enteredWord, isPreferred: prefersEnteredWord, kind: .sic, exists: enteredWordExists)
+    let correction1 = Correction(word: enteredWord, isPreferred: prefersEnteredWord, exists: enteredWordExists)
+    let suggestions = sortSuggestions(currentWord: enteredWord, guesses: guesses, completions: completions)
     let correction2: Correction?
-    if !guesses.isEmpty {
-      correction2 = Correction(word: guesses.first!, isPreferred: !enteredWordExists, kind: .guess, exists: true)
+    if let suggestion2 = suggestions[safe: 0] {
+      correction2 = Correction(word: suggestion2, isPreferred: !prefersEnteredWord, exists: true)
     } else {
-      if completions.count >= 2 {
-        correction2 = Correction(word: completions[1], isPreferred: false, kind: .completion, exists: true)
-      } else {
-        correction2 = nil
-      }
+      correction2 = nil
     }
     let correction3: Correction?
-    if !completions.isEmpty {
-      correction3 = Correction(word: completions.first!, isPreferred: !enteredWordExists && guesses.isEmpty, kind: .completion, exists: true)
+    if let suggestion3 = suggestions[safe: 1] {
+      correction3 = Correction(word: suggestion3, isPreferred: false, exists: true)
     } else {
-      if guesses.count >= 2 {
-        correction3 = Correction(word: guesses[1], isPreferred: false, kind: .guess, exists: true)
-      } else {
-        correction3 = nil
-      }
+      correction3 = nil
     }
     correctionSet = CorrectionSet(correction1: correction1, correction2: correction2, correction3: correction3)
     // Logger.debug("Autocorrection ended with:\n1. \(correction1.description)\n2. \(correction2?.description ?? "nil")\n3. \(correction3?.description ?? "nil")")
     isSearching = false
     delegate?.autocorrectEnded(with: correctionSet)
+  }
+  
+  /**
+   Order suggestions by priority.
+   */
+  private func sortSuggestions(currentWord: String, guesses: [String], completions: [String]) -> [String] {
+    var corrections = [String]()
+    var i = 0
+    while corrections.count < 2 {
+      if i >= guesses.count && i >= completions.count {
+        break
+      }
+      if let guess = guesses[safe: i] {
+        if currentWord != guess && !corrections.contains(guess) {
+          corrections.append(guess)
+        }
+      }
+      if let completion = completions[safe: i] {
+        if currentWord != completion && !corrections.contains(completion) {
+          corrections.append(completion)
+        }
+      }
+      i += 1
+    }
+    return corrections
   }
   
 }
