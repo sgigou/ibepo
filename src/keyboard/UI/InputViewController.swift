@@ -38,6 +38,7 @@ final class InputViewController: UIViewController {
    */
   func update(textDocumentProxy: UITextDocumentProxy) {
     KeyboardSettings.shared.update(textDocumentProxy)
+    autocorrectViewController.update()
   }
   
   
