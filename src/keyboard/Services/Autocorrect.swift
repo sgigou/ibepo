@@ -33,8 +33,6 @@ final class Autocorrect {
   
   /// Queue to look for words
   private var workItem: DispatchWorkItem?
-  /// Current autocorrected word
-  private var currentWord: String = ""
   /// Indicates if a search is running in background.
   private var isSearching = false
   
@@ -45,12 +43,7 @@ final class Autocorrect {
    Indicates that the user added a letter to the current word.
    */
   func insert(_ text: String) {
-    if text == "" || text == "\n" {
-      currentWord = ""
-    } else {
-      currentWord += text
-      launchSearch()
-    }
+    launchSearch()
   }
   
   
@@ -67,7 +60,6 @@ final class Autocorrect {
     isSearching = true
     workItem = DispatchWorkItem() {
       [weak self] in
-      Logger.debug("Looking for guesses for: \(self?.currentWord ?? "UNKNOWN")")
       self?.loadSuggestions()
     }
     queue.async(execute: workItem!)
@@ -77,6 +69,11 @@ final class Autocorrect {
    Analyses the current word to find suggestions.
    */
   private func loadSuggestions() {
+    let currentWord = KeyboardSettings.shared.textDocumentProxyAnalyzer.currentWord
+    if currentWord == "" {
+      corrections.removeAll()
+      delegate?.autocorrectEnded(corrections)
+    }
     let range = NSRange(location: 0, length: currentWord.count)
     let existingWord = checker.rangeOfMisspelledWord(in: currentWord, range: range, startingAt: 0, wrap: false, language: "fr").length == 0
     let guesses = checker.guesses(forWordRange: range, in: currentWord, language: "fr") ?? []

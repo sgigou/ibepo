@@ -35,6 +35,8 @@
 		39528F8C245AFC510080FBE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39528F8A245AFC510080FBE8 /* LaunchScreen.storyboard */; };
 		39528F97245AFC510080FBE8 /* ibepoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39528F96245AFC510080FBE8 /* ibepoTests.swift */; };
 		39528FA2245AFC510080FBE8 /* ibepoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39528FA1245AFC510080FBE8 /* ibepoUITests.swift */; };
+		395783BE247517D9000916DB /* TextDocumentProxyAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395783BD247517D9000916DB /* TextDocumentProxyAnalyzer.swift */; };
+		395783BF247517D9000916DB /* TextDocumentProxyAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395783BD247517D9000916DB /* TextDocumentProxyAnalyzer.swift */; };
 		3974AFFB24657FA3004901B7 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974AFFA24657FA3004901B7 /* KeyboardSettings.swift */; };
 		3974AFFC24658021004901B7 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974AFFA24657FA3004901B7 /* KeyboardSettings.swift */; };
 		3974AFFE246581ED004901B7 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974AFFD246581ED004901B7 /* Notification.swift */; };
@@ -133,6 +135,7 @@
 		39528F9D245AFC510080FBE8 /* ibepoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ibepoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39528FA1245AFC510080FBE8 /* ibepoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ibepoUITests.swift; sourceTree = "<group>"; };
 		39528FA3245AFC510080FBE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		395783BD247517D9000916DB /* TextDocumentProxyAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDocumentProxyAnalyzer.swift; sourceTree = "<group>"; };
 		3974AFFA24657FA3004901B7 /* KeyboardSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSettings.swift; sourceTree = "<group>"; };
 		3974AFFD246581ED004901B7 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		3981494E246041FC007C9754 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
@@ -195,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				399E64222464375800D25C6D /* DataManagement */,
+				395783BD247517D9000916DB /* TextDocumentProxyAnalyzer.swift */,
 				391BF06B24600D98004F8497 /* KeySetFactory.swift */,
 				3974AFFA24657FA3004901B7 /* KeyboardSettings.swift */,
 				399E64232464377B00D25C6D /* KeyGesture */,
@@ -538,6 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				395783BF247517D9000916DB /* TextDocumentProxyAnalyzer.swift in Sources */,
 				392159BD246D39BF00F2E013 /* KeyboardActionProtocol.swift in Sources */,
 				399E641E2464069D00D25C6D /* KeyGestureRecognizer.swift in Sources */,
 				39814955246043DC007C9754 /* LetterKeyView.swift in Sources */,
@@ -592,6 +597,7 @@
 				3981495E246051F7007C9754 /* CharacterSet.swift in Sources */,
 				3974AFFF2465824A004901B7 /* Notification.swift in Sources */,
 				3994E3A6245D6E82008B1099 /* HomeViewController.swift in Sources */,
+				395783BE247517D9000916DB /* TextDocumentProxyAnalyzer.swift in Sources */,
 				392159BE246D3A4900F2E013 /* KeyboardActionProtocol.swift in Sources */,
 				3981495F246051F7007C9754 /* Key.swift in Sources */,
 				39514A582462AC4100F05A48 /* SymbolsManager.swift in Sources */,

@@ -17,6 +17,9 @@ final class KeyboardSettings {
   /// Shared instance.
   static let shared = KeyboardSettings()
   
+  /// Current text document proxy.
+  let textDocumentProxyAnalyzer = TextDocumentProxyAnalyzer()
+  
   /// Does the keyboard need to display keyboard switch key?
   var needsInputModeSwitchKey = false
   
@@ -28,6 +31,7 @@ final class KeyboardSettings {
    */
   func update(_ textDocumentProxy: UITextDocumentProxy) {
     Logger.debug("Text document proxy update.")
+    textDocumentProxyAnalyzer.textDocumentProxy = textDocumentProxy
     updateAppearance(textDocumentProxy.keyboardAppearance ?? .default)
     updateReturnButton(textDocumentProxy.returnKeyType ?? .default)
   }
