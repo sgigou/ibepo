@@ -35,7 +35,8 @@ class KeypadViewController: UIViewController {
     addObservers()
     loadKeySet()
     keyState.configure(keySet: keySet, view: view as! KeypadView)
-    keyState.delegate = self
+    keyState.actionDelegate = self
+    keyState.displayDelegate = self
   }
   
   deinit {
@@ -105,8 +106,14 @@ extension KeypadViewController: KeyboardActionProtocol {
     delegate?.nextKeyboard()
   }
   
+}
+
+
+// MARK: - KeyboardDisplayProtocol
+
+extension KeypadViewController: KeyboardDisplayProtocol {
+  
   func shiftStateChanged(newState: Key.State) {
-    delegate?.shiftStateChanged(newState: newState)
     (view as? KeypadView)?.updateShiftState(newState)
     for key in keySet.keys {
       key.view.setLetters(
@@ -117,11 +124,14 @@ extension KeypadViewController: KeyboardActionProtocol {
   }
   
   func altStateChanged(newState: Key.State) {
-    delegate?.altStateChanged(newState: newState)
     (view as? KeypadView)?.updateAltState(newState)
     for key in keySet.keys {
       key.view.isAltActivated = newState.isActive
     }
+  }
+  
+  func keyWasPressed(kind: Key.Kind, at coordinate: KeyCoordinate?) {
+    // TODO: Reflect change
   }
   
 }

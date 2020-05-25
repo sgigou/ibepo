@@ -15,8 +15,8 @@
 		391CF4D02473ECBB00C36FA6 /* Autocorrect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391CF4CE2473ECBB00C36FA6 /* Autocorrect.swift */; };
 		391CF4D22473FAFE00C36FA6 /* Correction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391CF4D12473FAFE00C36FA6 /* Correction.swift */; };
 		391CF4D32473FAFE00C36FA6 /* Correction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391CF4D12473FAFE00C36FA6 /* Correction.swift */; };
-		392159BD246D39BF00F2E013 /* KeyboardActionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392159BC246D39BF00F2E013 /* KeyboardActionProtocol.swift */; };
-		392159BE246D3A4900F2E013 /* KeyboardActionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392159BC246D39BF00F2E013 /* KeyboardActionProtocol.swift */; };
+		392159BD246D39BF00F2E013 /* KeyboardProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392159BC246D39BF00F2E013 /* KeyboardProtocols.swift */; };
+		392159BE246D3A4900F2E013 /* KeyboardProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392159BC246D39BF00F2E013 /* KeyboardProtocols.swift */; };
 		392AD047245D72D9008252F1 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392AD046245D72D9008252F1 /* KeyboardViewController.swift */; };
 		392AD04B245D72D9008252F1 /* keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 392AD044245D72D9008252F1 /* keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		392AD050245D759F008252F1 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994E3A1245D6D10008B1099 /* InputViewController.swift */; };
@@ -115,7 +115,7 @@
 		391BF07224602208004F8497 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		391CF4CE2473ECBB00C36FA6 /* Autocorrect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autocorrect.swift; sourceTree = "<group>"; };
 		391CF4D12473FAFE00C36FA6 /* Correction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Correction.swift; sourceTree = "<group>"; };
-		392159BC246D39BF00F2E013 /* KeyboardActionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardActionProtocol.swift; sourceTree = "<group>"; };
+		392159BC246D39BF00F2E013 /* KeyboardProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardProtocols.swift; sourceTree = "<group>"; };
 		392AD044245D72D9008252F1 /* keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		392AD046245D72D9008252F1 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		392AD048245D72D9008252F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -350,7 +350,7 @@
 		399E64232464377B00D25C6D /* KeyGesture */ = {
 			isa = PBXGroup;
 			children = (
-				392159BC246D39BF00F2E013 /* KeyboardActionProtocol.swift */,
+				392159BC246D39BF00F2E013 /* KeyboardProtocols.swift */,
 				39FA3A04247BF4E700445602 /* KeyLocator.swift */,
 				399E64242464381A00D25C6D /* KeyState.swift */,
 				399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */,
@@ -545,7 +545,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				395783BF247517D9000916DB /* TextDocumentProxyAnalyzer.swift in Sources */,
-				392159BD246D39BF00F2E013 /* KeyboardActionProtocol.swift in Sources */,
+				392159BD246D39BF00F2E013 /* KeyboardProtocols.swift in Sources */,
 				399E641E2464069D00D25C6D /* KeyGestureRecognizer.swift in Sources */,
 				39814955246043DC007C9754 /* LetterKeyView.swift in Sources */,
 				391CF4D32473FAFE00C36FA6 /* Correction.swift in Sources */,
@@ -598,7 +598,7 @@
 				3974AFFF2465824A004901B7 /* Notification.swift in Sources */,
 				3994E3A6245D6E82008B1099 /* HomeViewController.swift in Sources */,
 				395783BE247517D9000916DB /* TextDocumentProxyAnalyzer.swift in Sources */,
-				392159BE246D3A4900F2E013 /* KeyboardActionProtocol.swift in Sources */,
+				392159BE246D3A4900F2E013 /* KeyboardProtocols.swift in Sources */,
 				3981495F246051F7007C9754 /* Key.swift in Sources */,
 				39514A582462AC4100F05A48 /* SymbolsManager.swift in Sources */,
 				391CF4D22473FAFE00C36FA6 /* Correction.swift in Sources */,

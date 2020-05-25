@@ -8,7 +8,7 @@
 
 
 /// Finds key type by their keypad coordinates.
-class KeyLocator {
+final class KeyLocator {
   
   /**
    Get the kind of key at the given coordinate.
