@@ -87,41 +87,22 @@ final class KeyState {
 extension KeyState: KeyGestureRecognizerDelegate {
   
   func touchUp(at keypadCoordinate: KeypadCoordinate) {
-    switch keypadCoordinate.row {
-    case 0, 1: // First two rows only contain letters.
+    switch KeyLocator.kind(at: keypadCoordinate) {
+    case .letter:
       let keyCoordinate = KeyCoordinate(row: keypadCoordinate.row, col: keypadCoordinate.col / 2)
       tapLetter(at: keyCoordinate)
-    case 2: // Shift, letters and Delete keys.
-      switch keypadCoordinate.col {
-      case 0...2: // Shift
-        tapShift()
-      case 19...21: // Delete
-        tapDelete()
-      default: // Letter keys
-        let keyCoordinate = KeyCoordinate(row: keypadCoordinate.row, col: (keypadCoordinate.col - 3) / 2)
-        tapLetter(at: keyCoordinate)
-      }
-    case 3:
-      switch keypadCoordinate.col {
-      case 0...5:
-        if KeyboardSettings.shared.needsInputModeSwitchKey {
-          if keypadCoordinate.col <= 2 {
-            tapAlt()
-          } else {
-            delegate?.nextKeyboard()
-          }
-        } else {
-          tapAlt()
-        }
-      case 6...15:
-        tapSpace()
-      case 16...22:
-        tapReturn()
-      default:
-        Logger.error("Unknown keypadCoordinate col: \(keypadCoordinate)")
-      }
-    default:
-      Logger.error("Unknown keypadCoordinate row: \(keypadCoordinate)")
+    case .space:
+      tapSpace()
+    case .shift:
+      tapShift()
+    case .alt:
+      tapAlt()
+    case .delete:
+      tapDelete()
+    case .enter:
+      tapReturn()
+    case .next:
+      delegate?.nextKeyboard()
     }
   }
   

@@ -11,6 +11,10 @@ import UIKit
 /// A key set and its representing view.
 struct Key {
   
+  enum Kind {
+    case letter, shift, delete, alt, next, space, enter
+  }
+  
   /// Represents the state of a key.
   enum State {
     case off, on
