@@ -23,7 +23,6 @@ final class KeyState {
   /// Current state of the alt key
   private var altKeyState: Key.State = .off
   
-  private var currentTouchBeginKind: Key.Kind?
   private var currentTouchBeginCoordinate: KeypadCoordinate?
   private var currentTouchCoordinate: KeypadCoordinate?
   
@@ -93,15 +92,12 @@ extension KeyState: KeyGestureRecognizerDelegate {
   
   func touchDown(at keypadCoordinate: KeypadCoordinate) {
     let kind = KeyLocator.kind(at: keypadCoordinate)
-    currentTouchBeginKind = kind
     currentTouchBeginCoordinate = keypadCoordinate
     currentTouchCoordinate = keypadCoordinate
     Logger.debug("Touch began at \(keypadCoordinate) (\(kind)")
     switch kind {
     case .letter:
-      let col = keypadCoordinate.row == 3 ? (keypadCoordinate.col - 3) : keypadCoordinate.col
-      let keyCoordinate = KeyCoordinate(row: keypadCoordinate.row, col: col / 2)
-      displayDelegate?.keyWasPressed(kind: kind, at: keyCoordinate)
+      displayDelegate?.keyWasPressed(kind: kind, at: calculateKeyCoordinate(for: keypadCoordinate))
     default:
       displayDelegate?.keyWasPressed(kind: kind, at: nil)
     }
@@ -112,16 +108,24 @@ extension KeyState: KeyGestureRecognizerDelegate {
       return
     }
     Logger.debug("Touch moved from \(currentTouchCoordinate.debugDescription) to \(keypadCoordinate).")
+    guard let currentTouchBeginCoordinate = self.currentTouchBeginCoordinate else {
+      return Logger.error("currentTouchBeginCoordinate shourd not be nil")
+    }
+    let beginKind = KeyLocator.kind(at: currentTouchBeginCoordinate)
     let kind = KeyLocator.kind(at: keypadCoordinate)
+    if beginKind == .letter && (kind != .letter && kind != .space) {
+      Logger.debug("User cannot move from letter to modifier key.")
+      return
+    }
     currentTouchCoordinate = keypadCoordinate
   }
   
   func touchUp(at keypadCoordinate: KeypadCoordinate) {
-    Logger.debug("Touch ended at \(keypadCoordinate).")
-    switch KeyLocator.kind(at: keypadCoordinate) {
+    Logger.debug("Touch ended at \(keypadCoordinate). Using \(currentTouchCoordinate.debugDescription).")
+    let finalCoordinate = currentTouchCoordinate ?? keypadCoordinate
+    switch KeyLocator.kind(at: finalCoordinate) {
     case .letter:
-      let keyCoordinate = KeyCoordinate(row: keypadCoordinate.row, col: keypadCoordinate.col / 2)
-      tapLetter(at: keyCoordinate)
+      tapLetter(at: calculateKeyCoordinate(for: finalCoordinate))
     case .space:
       tapSpace()
     case .shift:
@@ -144,9 +148,14 @@ extension KeyState: KeyGestureRecognizerDelegate {
   }
   
   private func resetCurrentTouch() {
-    currentTouchBeginKind = nil
     currentTouchBeginCoordinate = nil
     currentTouchCoordinate = nil
+  }
+  
+  private func calculateKeyCoordinate(for keypadCoordinate: KeypadCoordinate) -> KeyCoordinate {
+    let col = keypadCoordinate.row == 2 ? (keypadCoordinate.col - 3) : keypadCoordinate.col
+    let keyCoordinate = KeyCoordinate(row: keypadCoordinate.row, col: col / 2)
+    return keyCoordinate
   }
   
 }
