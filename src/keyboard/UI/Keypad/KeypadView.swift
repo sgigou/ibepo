@@ -27,16 +27,19 @@ final class KeypadView: UIView {
   
   // MARK: Life cycle
   
+  /// Add observers.
   override init(frame: CGRect) {
     super.init(frame: frame)
     addObservers()
   }
   
+  /// Add observers.
   required init?(coder: NSCoder) {
     super.init(coder: coder)
     addObservers()
   }
   
+  /// Remove from observers.
   deinit {
     NotificationCenter.default.removeObserver(self)
   }
@@ -44,9 +47,7 @@ final class KeypadView: UIView {
   
   // MARK: Drawing
   
-  /**
-   Draws the shift key for the given state.
-   */
+  /// Draws the shift key for the given state.
   func updateShiftState(_ status: Key.State) {
     switch status {
     case .on:
@@ -56,9 +57,7 @@ final class KeypadView: UIView {
     }
   }
   
-  /**
-   Draws the alt key for the given state.
-   */
+  /// Draws the alt key for the given state.
   func updateAltState(_ state: Key.State) {
     switch state {
     case .on:
@@ -68,9 +67,7 @@ final class KeypadView: UIView {
     }
   }
   
-  /**
-   Update the theme appearance.
-  */
+  /// Update the theme appearance.
   func updateAppearance() {
     shiftKeyView?.updateAppearance()
     deleteKeyView?.updateAppearance()
@@ -80,6 +77,7 @@ final class KeypadView: UIView {
     returnKeyView?.updateAppearance()
   }
   
+  /// Updates the return key appearance to match the given type.
   private func updateReturnKey(type: UIReturnKeyType) {
     switch type {
     case .default:
@@ -91,13 +89,36 @@ final class KeypadView: UIView {
   }
   
   
+  // MARK: View finding
+  
+  /// Find the view for the given kind.
+  /// - Parameter kind: The kind of the wanted key.
+  /// - returns: The view if found, nil otherwise.
+  func view(for kind: Key.Kind) -> SpecialKeyView? {
+    switch kind {
+    case .shift:
+      return shiftKeyView
+    case .alt:
+      return altKeyView
+    case .delete:
+      return deleteKeyView
+    case .space:
+      return spaceKeyView
+    case .enter:
+      return returnKeyView
+    case .next:
+      return switchKeyView
+    default:
+      Logger.error("This function should not be called for \(kind).")
+      return nil
+    }
+  }
+  
+  
   // MARK: Loading
   
-  /**
-   Load the given keyset and creates views for the rows and the letters.
-   
-   - parameter keySet: The KeySet to load and display.
-   */
+  /// Load the given keyset and creates views for the rows and the letters.
+  /// - Parameter keySet: The KeySet to load and display.
   func load(keySet: KeySet) {
     translatesAutoresizingMaskIntoConstraints = false
     backgroundColor = UIColor.gray.withAlphaComponent(0.001) // Gestures do not work on transparent view.

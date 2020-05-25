@@ -65,9 +65,10 @@ protocol KeyboardDisplayProtocol: class {
    */
   func altStateChanged(newState: Key.State)
   
-  /**
-   Called when a key is pressed by the user.
-   */
-  func keyWasPressed(kind: Key.Kind, at coordinate: KeyCoordinate?)
+  /// No key should be pressed on the keyboard at this moment.
+  func noKeyIsPressed()
+  
+  /// Called when a key is pressed by the user.
+  func keyIsPressed(kind: Key.Kind, at coordinate: KeyCoordinate?)
   
 }

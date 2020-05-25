@@ -52,17 +52,11 @@ final class KeyState {
     displayDelegate?.altStateChanged(newState: altKeyState)
   }
   
-  /// Resets all current touch stored values.
+  /// Resets all current touch stored values and tells the delegate to reset pressed state.
   private func resetCurrentTouch() {
     currentTouchBeginCoordinate = nil
     currentTouchCoordinate = nil
-  }
-  
-  /// Calculates the key coordinate from the given keypad coordinate.
-  private func calculateKeyCoordinate(for keypadCoordinate: KeypadCoordinate) -> KeyCoordinate {
-    let col = keypadCoordinate.row == 2 ? (keypadCoordinate.col - 3) : keypadCoordinate.col
-    let keyCoordinate = KeyCoordinate(row: keypadCoordinate.row, col: col / 2)
-    return keyCoordinate
+    displayDelegate?.noKeyIsPressed()
   }
   
   /// Tells the display delegate that the key at the given coordinate is pressed.
@@ -70,9 +64,9 @@ final class KeyState {
     let kind = KeyLocator.kind(at: keypadCoordinate)
     switch kind {
     case .letter:
-      displayDelegate?.keyWasPressed(kind: kind, at: calculateKeyCoordinate(for: keypadCoordinate))
+      displayDelegate?.keyIsPressed(kind: kind, at: KeyLocator.calculateKeyCoordinate(for: keypadCoordinate))
     default:
-      displayDelegate?.keyWasPressed(kind: kind, at: nil)
+      displayDelegate?.keyIsPressed(kind: kind, at: nil)
     }
   }
   
@@ -163,7 +157,7 @@ extension KeyState: KeyGestureRecognizerDelegate {
     let finalKind = KeyLocator.kind(at: finalCoordinate)
     switch finalKind {
     case .letter:
-      tapLetter(at: calculateKeyCoordinate(for: finalCoordinate))
+      tapLetter(at: KeyLocator.calculateKeyCoordinate(for: finalCoordinate))
     case .space:
       tapSpace()
     case .delete:

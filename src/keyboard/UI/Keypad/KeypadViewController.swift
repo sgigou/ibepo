@@ -19,9 +19,10 @@ class KeypadViewController: UIViewController {
   
   /// Key state manager
   private let keyState = KeyState()
-  
   /// Currently displayed key set.
   private var keySet: KeySet!
+  /// The pressed key, if any
+  private var pressedKeyView: KeyView?
 
   
   // MARK: Life cycle
@@ -30,6 +31,7 @@ class KeypadViewController: UIViewController {
     self.view = KeypadView()
   }
   
+  /// Loads the key set.
   override func viewDidLoad() {
     super.viewDidLoad()
     addObservers()
@@ -130,8 +132,36 @@ extension KeypadViewController: KeyboardDisplayProtocol {
     }
   }
   
-  func keyWasPressed(kind: Key.Kind, at coordinate: KeyCoordinate?) {
-    // TODO: Reflect change
+  /// Unpress the currently pressed key and press the given key
+  func keyIsPressed(kind: Key.Kind, at coordinate: KeyCoordinate?) {
+    let keyViewToPress: KeyView
+    switch kind {
+    case .letter:
+      guard let coordinate = coordinate else {
+        return Logger.error("The key should have a coordinate.")
+      }
+      let key = keySet.key(at: coordinate)
+      keyViewToPress = key.view
+    default:
+      guard let view = view as? KeypadView else {
+        return Logger.error("The view should be a KeypadView.")
+      }
+      guard let keyView = view.view(for: kind) else {
+        return Logger.error("Could not find key view")
+      }
+      keyViewToPress = keyView
+    }
+    if keyViewToPress != pressedKeyView {
+      pressedKeyView?.togglePression()
+      keyViewToPress.togglePression()
+    }
+    pressedKeyView = keyViewToPress
+  }
+  
+  /// Unpress the currently pressed view (if any).
+  func noKeyIsPressed() {
+    pressedKeyView?.togglePression()
+    pressedKeyView = nil
   }
   
 }

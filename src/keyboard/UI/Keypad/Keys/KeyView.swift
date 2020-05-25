@@ -18,6 +18,8 @@ class KeyView: UIView {
   var backgroundView: UIView!
   /// Indicates if the key is highlighted (colorized).
   var isHighlighted = false
+  /// Is the key pressed
+  var isPressed = false
   
   
   // MARK: Life cycle
@@ -71,6 +73,16 @@ class KeyView: UIView {
       backgroundView.leftAnchor.constraint(equalTo: leftAnchor, constant: 3)
     ])
     self.backgroundView = backgroundView
+  }
+  
+  /// Toggles the `isPressed` boolean and updates the appearance.
+  func togglePression() {
+    isPressed.toggle()
+    if isPressed {
+      backgroundView.layer.shadowOffset = CGSize(width: 0, height: 0)
+    } else {
+      backgroundView.layer.shadowOffset = CGSize(width: 0, height: 1)
+    }
   }
   
 }

@@ -52,4 +52,11 @@ final class KeyLocator {
     }
   }
   
+  /// Calculates the key coordinate from the given keypad coordinate.
+  static func calculateKeyCoordinate(for keypadCoordinate: KeypadCoordinate) -> KeyCoordinate {
+    let col = keypadCoordinate.row == 2 ? (keypadCoordinate.col - 3) : keypadCoordinate.col
+    let keyCoordinate = KeyCoordinate(row: keypadCoordinate.row, col: col / 2)
+    return keyCoordinate
+  }
+  
 }
