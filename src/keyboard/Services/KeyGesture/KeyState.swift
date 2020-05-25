@@ -82,11 +82,10 @@ final class KeyState {
   
   /// Resets the shift or alt status if the touch began on it.
   private func switchShiftAndAltAfterLetter() {
-    guard let beginCoordinate = currentTouchBeginCoordinate else { return }
-    let beginKind = KeyLocator.kind(at: beginCoordinate)
-    if beginKind == .shift {
+    if shiftKeyState == .on {
       tapShift()
-    } else if beginKind == .alt {
+    }
+    if altKeyState == .on {
       tapAlt()
     }
   }
