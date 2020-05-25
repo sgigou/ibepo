@@ -7,7 +7,7 @@
 //
 
 
-// MARK: - KeyStateDelegate
+// MARK: - KeyboardActionProtocol
 
 /// Protocol used to interact with the input field.
 protocol KeyboardActionProtocol: class {
@@ -41,25 +41,34 @@ protocol KeyboardActionProtocol: class {
    */
   func nextKeyboard()
   
-  /**
-   Optional. Called when the shift key state changed.
-   */
-  func shiftStateChanged(newState: Key.State)
+}
+
+extension KeyboardActionProtocol {
   
-  /**
-   Optional. Called when the alt key state changed.
-   */
-  func altStateChanged(newState: Key.State)
+  func replace(charactersAmount: Int, by text: String) {}
   
 }
 
 
-// MARK: - Extension
+// MARK: - KeyboardDisplayProtocol
 
-extension KeyboardActionProtocol {
+/// Protocol used to display changes on the keypad.
+protocol KeyboardDisplayProtocol: class {
   
-  func shiftStateChanged(newState: Key.State) {}
-  func altStateChanged(newState: Key.State) {}
-  func replace(charactersAmount: Int, by text: String) {}
+  /**
+   Called when the shift key state changed.
+   */
+  func shiftStateChanged(newState: Key.State)
+  
+  /**
+   Called when the alt key state changed.
+   */
+  func altStateChanged(newState: Key.State)
+  
+  /// No key should be pressed on the keyboard at this moment.
+  func noKeyIsPressed()
+  
+  /// Called when a key is pressed by the user.
+  func keyIsPressed(kind: Key.Kind, at coordinate: KeyCoordinate?)
   
 }

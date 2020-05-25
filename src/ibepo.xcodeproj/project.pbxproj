@@ -15,8 +15,8 @@
 		391CF4D02473ECBB00C36FA6 /* Autocorrect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391CF4CE2473ECBB00C36FA6 /* Autocorrect.swift */; };
 		391CF4D22473FAFE00C36FA6 /* Correction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391CF4D12473FAFE00C36FA6 /* Correction.swift */; };
 		391CF4D32473FAFE00C36FA6 /* Correction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391CF4D12473FAFE00C36FA6 /* Correction.swift */; };
-		392159BD246D39BF00F2E013 /* KeyboardActionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392159BC246D39BF00F2E013 /* KeyboardActionProtocol.swift */; };
-		392159BE246D3A4900F2E013 /* KeyboardActionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392159BC246D39BF00F2E013 /* KeyboardActionProtocol.swift */; };
+		392159BD246D39BF00F2E013 /* KeyboardProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392159BC246D39BF00F2E013 /* KeyboardProtocols.swift */; };
+		392159BE246D3A4900F2E013 /* KeyboardProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392159BC246D39BF00F2E013 /* KeyboardProtocols.swift */; };
 		392AD047245D72D9008252F1 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392AD046245D72D9008252F1 /* KeyboardViewController.swift */; };
 		392AD04B245D72D9008252F1 /* keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 392AD044245D72D9008252F1 /* keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		392AD050245D759F008252F1 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994E3A1245D6D10008B1099 /* InputViewController.swift */; };
@@ -65,6 +65,8 @@
 		399E64252464381A00D25C6D /* KeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E64242464381A00D25C6D /* KeyState.swift */; };
 		399E64262464381A00D25C6D /* KeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E64242464381A00D25C6D /* KeyState.swift */; };
 		39A197E42462D39E00974C58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39528F88245AFC510080FBE8 /* Assets.xcassets */; };
+		39FA3A05247BF4E700445602 /* KeyLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA3A04247BF4E700445602 /* KeyLocator.swift */; };
+		39FA3A06247BF4E700445602 /* KeyLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA3A04247BF4E700445602 /* KeyLocator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,7 +115,7 @@
 		391BF07224602208004F8497 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		391CF4CE2473ECBB00C36FA6 /* Autocorrect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autocorrect.swift; sourceTree = "<group>"; };
 		391CF4D12473FAFE00C36FA6 /* Correction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Correction.swift; sourceTree = "<group>"; };
-		392159BC246D39BF00F2E013 /* KeyboardActionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardActionProtocol.swift; sourceTree = "<group>"; };
+		392159BC246D39BF00F2E013 /* KeyboardProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardProtocols.swift; sourceTree = "<group>"; };
 		392AD044245D72D9008252F1 /* keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		392AD046245D72D9008252F1 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		392AD048245D72D9008252F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyGestureRecognizer.swift; sourceTree = "<group>"; };
 		399E641F24640E7A00D25C6D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		399E64242464381A00D25C6D /* KeyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyState.swift; sourceTree = "<group>"; };
+		39FA3A04247BF4E700445602 /* KeyLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyLocator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,7 +350,8 @@
 		399E64232464377B00D25C6D /* KeyGesture */ = {
 			isa = PBXGroup;
 			children = (
-				392159BC246D39BF00F2E013 /* KeyboardActionProtocol.swift */,
+				392159BC246D39BF00F2E013 /* KeyboardProtocols.swift */,
+				39FA3A04247BF4E700445602 /* KeyLocator.swift */,
 				399E64242464381A00D25C6D /* KeyState.swift */,
 				399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */,
 			);
@@ -541,7 +545,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				395783BF247517D9000916DB /* TextDocumentProxyAnalyzer.swift in Sources */,
-				392159BD246D39BF00F2E013 /* KeyboardActionProtocol.swift in Sources */,
+				392159BD246D39BF00F2E013 /* KeyboardProtocols.swift in Sources */,
 				399E641E2464069D00D25C6D /* KeyGestureRecognizer.swift in Sources */,
 				39814955246043DC007C9754 /* LetterKeyView.swift in Sources */,
 				391CF4D32473FAFE00C36FA6 /* Correction.swift in Sources */,
@@ -550,6 +554,7 @@
 				3974AFFB24657FA3004901B7 /* KeyboardSettings.swift in Sources */,
 				391BF06324600625004F8497 /* KeypadViewController.swift in Sources */,
 				398149562460444C007C9754 /* KeySetFactory.swift in Sources */,
+				39FA3A06247BF4E700445602 /* KeyLocator.swift in Sources */,
 				391BF06A24600AF8004F8497 /* CharacterSet.swift in Sources */,
 				399E642124640E7A00D25C6D /* Logger.swift in Sources */,
 				391BF071246012EC004F8497 /* KeyView.swift in Sources */,
@@ -579,6 +584,7 @@
 				3974AFFC24658021004901B7 /* KeyboardSettings.swift in Sources */,
 				39814960246051F7007C9754 /* KeySet.swift in Sources */,
 				399E641D2464069D00D25C6D /* KeyGestureRecognizer.swift in Sources */,
+				39FA3A05247BF4E700445602 /* KeyLocator.swift in Sources */,
 				39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */,
 				399E64252464381A00D25C6D /* KeyState.swift in Sources */,
 				39814961246051F9007C9754 /* KeySetFactory.swift in Sources */,
@@ -592,7 +598,7 @@
 				3974AFFF2465824A004901B7 /* Notification.swift in Sources */,
 				3994E3A6245D6E82008B1099 /* HomeViewController.swift in Sources */,
 				395783BE247517D9000916DB /* TextDocumentProxyAnalyzer.swift in Sources */,
-				392159BE246D3A4900F2E013 /* KeyboardActionProtocol.swift in Sources */,
+				392159BE246D3A4900F2E013 /* KeyboardProtocols.swift in Sources */,
 				3981495F246051F7007C9754 /* Key.swift in Sources */,
 				39514A582462AC4100F05A48 /* SymbolsManager.swift in Sources */,
 				391CF4D22473FAFE00C36FA6 /* Correction.swift in Sources */,

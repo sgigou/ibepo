@@ -11,7 +11,8 @@
 /// Represents the keyboard state at any moment.
 final class KeyState {
   
-  weak var delegate: KeyboardActionProtocol?
+  weak var actionDelegate: KeyboardActionProtocol?
+  weak var displayDelegate: KeyboardDisplayProtocol?
   
   /// Currently displayed key set.
   private var keySet: KeySet!
@@ -21,6 +22,9 @@ final class KeyState {
   private var shiftKeyState: Key.State = .off
   /// Current state of the alt key
   private var altKeyState: Key.State = .off
+  
+  private var currentTouchBeginCoordinate: KeypadCoordinate?
+  private var currentTouchCoordinate: KeypadCoordinate?
   
   
   // MARK: Configuration
@@ -34,10 +38,50 @@ final class KeyState {
   
   // MARK: Modifiers
   
-  /**
-   Operations to perform after a letter was tapped.
-   */
-  private func letterWasTapped() {
+  /// Toggle the shift status and tell the display delegate.
+  private func tapShift() {
+    shiftKeyState.toggle()
+    Logger.debug("Shift key is now \(shiftKeyState).")
+    displayDelegate?.shiftStateChanged(newState: shiftKeyState)
+  }
+  
+  /// Toggle the alt status and tell the display delegate.
+  private func tapAlt() {
+    altKeyState.toggle()
+    Logger.debug("Alt key is now \(altKeyState).")
+    displayDelegate?.altStateChanged(newState: altKeyState)
+  }
+  
+  /// Resets all current touch stored values and tells the delegate to reset pressed state.
+  private func resetCurrentTouch() {
+    currentTouchBeginCoordinate = nil
+    currentTouchCoordinate = nil
+    displayDelegate?.noKeyIsPressed()
+  }
+  
+  /// Tells the display delegate that the key at the given coordinate is pressed.
+  private func displayPressedKey(at keypadCoordinate: KeypadCoordinate) {
+    let kind = KeyLocator.kind(at: keypadCoordinate)
+    switch kind {
+    case .letter:
+      displayDelegate?.keyIsPressed(kind: kind, at: KeyLocator.calculateKeyCoordinate(for: keypadCoordinate))
+    default:
+      displayDelegate?.keyIsPressed(kind: kind, at: nil)
+    }
+  }
+  
+  /// Tells if the move from `beginKind` to `endKind` is allowed.
+  /// 
+  /// Touches can go from a modifier key to a letter, but not the other way.
+  private func isMoveValid(beginKind: Key.Kind, endKind: Key.Kind) -> Bool {
+    if !beginKind.isModifier && !endKind.isModifier {
+      return true
+    }
+    return beginKind.isModifier && !endKind.isModifier
+  }
+  
+  /// Resets the shift or alt status if the touch began on it.
+  private func switchShiftAndAltAfterLetter() {
     if shiftKeyState == .on {
       tapShift()
     }
@@ -46,37 +90,24 @@ final class KeyState {
     }
   }
   
-  private func tapShift() {
-    shiftKeyState.toggle()
-    Logger.debug("Shift key is now \(shiftKeyState).")
-    delegate?.shiftStateChanged(newState: shiftKeyState)
-  }
-  
-  private func tapAlt() {
-    altKeyState.toggle()
-    Logger.debug("Alt key is now \(altKeyState).")
-    delegate?.altStateChanged(newState: altKeyState)
-  }
-  
   
   // MARK: Delegate communication
   
   private func tapLetter(at keyCoordinate: KeyCoordinate) {
     let key = keySet.key(at: keyCoordinate)
-    delegate?.insert(text: key.set.letter(forShiftState: shiftKeyState, andAltState: altKeyState))
-    letterWasTapped()
+    actionDelegate?.insert(text: key.set.letter(forShiftState: shiftKeyState, andAltState: altKeyState))
   }
   
   private func tapReturn() {
-    delegate?.insert(text: "\n")
+    actionDelegate?.insert(text: "\n")
   }
   
   private func tapSpace() {
-    delegate?.insert(text: " ")
+    actionDelegate?.insert(text: " ")
   }
   
   private func tapDelete() {
-    delegate?.deleteBackward()
+    actionDelegate?.deleteBackward()
   }
   
 }
@@ -86,43 +117,64 @@ final class KeyState {
 
 extension KeyState: KeyGestureRecognizerDelegate {
   
-  func touchUp(at keypadCoordinate: KeypadCoordinate) {
-    switch keypadCoordinate.row {
-    case 0, 1: // First two rows only contain letters.
-      let keyCoordinate = KeyCoordinate(row: keypadCoordinate.row, col: keypadCoordinate.col / 2)
-      tapLetter(at: keyCoordinate)
-    case 2: // Shift, letters and Delete keys.
-      switch keypadCoordinate.col {
-      case 0...2: // Shift
-        tapShift()
-      case 19...21: // Delete
-        tapDelete()
-      default: // Letter keys
-        let keyCoordinate = KeyCoordinate(row: keypadCoordinate.row, col: (keypadCoordinate.col - 3) / 2)
-        tapLetter(at: keyCoordinate)
-      }
-    case 3:
-      switch keypadCoordinate.col {
-      case 0...5:
-        if KeyboardSettings.shared.needsInputModeSwitchKey {
-          if keypadCoordinate.col <= 2 {
-            tapAlt()
-          } else {
-            delegate?.nextKeyboard()
-          }
-        } else {
-          tapAlt()
-        }
-      case 6...15:
-        tapSpace()
-      case 16...22:
-        tapReturn()
-      default:
-        Logger.error("Unknown keypadCoordinate col: \(keypadCoordinate)")
-      }
+  func touchDown(at keypadCoordinate: KeypadCoordinate) {
+    let kind = KeyLocator.kind(at: keypadCoordinate)
+    currentTouchBeginCoordinate = keypadCoordinate
+    currentTouchCoordinate = keypadCoordinate
+    Logger.debug("Touch began at \(keypadCoordinate) (\(kind)")
+    switch kind {
+    case .shift:
+      tapShift()
+    case .alt:
+      tapAlt()
     default:
-      Logger.error("Unknown keypadCoordinate row: \(keypadCoordinate)")
+      break
     }
+    displayPressedKey(at: keypadCoordinate)
+  }
+  
+  func touchMoved(to keypadCoordinate: KeypadCoordinate) {
+    if currentTouchCoordinate != nil && currentTouchCoordinate! == keypadCoordinate {
+      return
+    }
+    Logger.debug("Touch moved from \(currentTouchCoordinate.debugDescription) to \(keypadCoordinate).")
+    guard let currentTouchBeginCoordinate = self.currentTouchBeginCoordinate else {
+      return Logger.error("currentTouchBeginCoordinate shourd not be nil")
+    }
+    let beginKind = KeyLocator.kind(at: currentTouchBeginCoordinate)
+    let kind = KeyLocator.kind(at: keypadCoordinate)
+    if !isMoveValid(beginKind: beginKind, endKind: kind) {
+      return Logger.debug("User cannot move from \(beginKind) to \(kind).")
+    }
+    currentTouchCoordinate = keypadCoordinate
+    displayPressedKey(at: keypadCoordinate)
+  }
+  
+  func touchUp(at keypadCoordinate: KeypadCoordinate) {
+    Logger.debug("Touch ended at \(keypadCoordinate). Using \(currentTouchCoordinate.debugDescription).")
+    let finalCoordinate = currentTouchCoordinate ?? keypadCoordinate
+    let finalKind = KeyLocator.kind(at: finalCoordinate)
+    switch finalKind {
+    case .letter:
+      tapLetter(at: KeyLocator.calculateKeyCoordinate(for: finalCoordinate))
+    case .space:
+      tapSpace()
+    case .delete:
+      tapDelete()
+    case .enter:
+      tapReturn()
+    case .next:
+      actionDelegate?.nextKeyboard()
+    default:
+      break
+    }
+    if !finalKind.isModifier { switchShiftAndAltAfterLetter() }
+    resetCurrentTouch()
+  }
+  
+  func touchCancelled(at keypadCoordinate: KeypadCoordinate) {
+    Logger.debug("Touch cancelled at \(keypadCoordinate).")
+    resetCurrentTouch()
   }
   
 }
