@@ -6,6 +6,9 @@
 //  Copyright © 2020 Novesoft. All rights reserved.
 //
 
+import UIKit
+
+
 // MARK: - KeyState
 
 /// Represents the keyboard state at any moment.
@@ -117,11 +120,10 @@ final class KeyState {
 
 extension KeyState: KeyGestureRecognizerDelegate {
   
-  func touchDown(at keypadCoordinate: KeypadCoordinate) {
+  func touchDown(at keypadCoordinate: KeypadCoordinate, with touch: UITouch) {
     let kind = KeyLocator.kind(at: keypadCoordinate)
     currentTouchBeginCoordinate = keypadCoordinate
     currentTouchCoordinate = keypadCoordinate
-    Logger.debug("Touch began at \(keypadCoordinate) (\(kind)")
     switch kind {
     case .shift:
       tapShift()
@@ -133,11 +135,10 @@ extension KeyState: KeyGestureRecognizerDelegate {
     displayPressedKey(at: keypadCoordinate)
   }
   
-  func touchMoved(to keypadCoordinate: KeypadCoordinate) {
+  func touchMoved(to keypadCoordinate: KeypadCoordinate, with touch: UITouch) {
     if currentTouchCoordinate != nil && currentTouchCoordinate! == keypadCoordinate {
       return
     }
-    Logger.debug("Touch moved from \(currentTouchCoordinate.debugDescription) to \(keypadCoordinate).")
     guard let currentTouchBeginCoordinate = self.currentTouchBeginCoordinate else {
       return Logger.error("currentTouchBeginCoordinate shourd not be nil")
     }
@@ -150,8 +151,7 @@ extension KeyState: KeyGestureRecognizerDelegate {
     displayPressedKey(at: keypadCoordinate)
   }
   
-  func touchUp(at keypadCoordinate: KeypadCoordinate) {
-    Logger.debug("Touch ended at \(keypadCoordinate). Using \(currentTouchCoordinate.debugDescription).")
+  func touchUp(at keypadCoordinate: KeypadCoordinate, with touch: UITouch) {
     let finalCoordinate = currentTouchCoordinate ?? keypadCoordinate
     let finalKind = KeyLocator.kind(at: finalCoordinate)
     switch finalKind {
@@ -169,11 +169,6 @@ extension KeyState: KeyGestureRecognizerDelegate {
       break
     }
     if !finalKind.isModifier { switchShiftAndAltAfterLetter() }
-    resetCurrentTouch()
-  }
-  
-  func touchCancelled(at keypadCoordinate: KeypadCoordinate) {
-    Logger.debug("Touch cancelled at \(keypadCoordinate).")
     resetCurrentTouch()
   }
   
