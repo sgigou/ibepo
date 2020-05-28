@@ -120,6 +120,9 @@ final class KeyState {
 extension KeyState: KeyGestureRecognizerDelegate {
   
   func touchDown(at keypadCoordinate: KeypadCoordinate, with touch: UITouch) {
+    if let writingTouch = self.writingTouch {
+      touchUp(at: writingTouch.currentCoordinate, with: writingTouch.touch)
+    }
     writingTouch = KeyState.Touch(touch: touch, coordinate: keypadCoordinate)
     switch writingTouch!.beginKind {
     case .shift:
@@ -146,6 +149,7 @@ extension KeyState: KeyGestureRecognizerDelegate {
   
   func touchUp(at keypadCoordinate: KeypadCoordinate, with touch: UITouch) {
     guard let writingTouch = self.writingTouch else { return }
+    if touch != writingTouch.touch { return }
     switch writingTouch.currentKind {
     case .letter:
       tapLetter(at: KeyLocator.calculateKeyCoordinate(for: writingTouch.currentCoordinate))
