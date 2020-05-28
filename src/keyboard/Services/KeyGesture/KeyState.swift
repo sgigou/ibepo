@@ -28,6 +28,8 @@ final class KeyState {
   
   /// Touch that will output a letter.
   private var writingTouch: Touch?
+  /// Touch that will keep a modifier on.
+  private var modifierTouch: Touch?
   
   
   // MARK: Configuration
@@ -84,6 +86,7 @@ final class KeyState {
   
   /// Resets the shift or alt status if the touch began on it.
   private func switchShiftAndAltAfterLetter() {
+    if modifierTouch != nil { return }
     if shiftKeyState == .on {
       tapShift()
     }
@@ -121,7 +124,11 @@ extension KeyState: KeyGestureRecognizerDelegate {
   
   func touchDown(at keypadCoordinate: KeypadCoordinate, with touch: UITouch) {
     if let writingTouch = self.writingTouch {
-      touchUp(at: writingTouch.currentCoordinate, with: writingTouch.touch)
+      if writingTouch.beginKind.isModifier {
+        modifierTouch = writingTouch
+      } else {
+        touchUp(at: writingTouch.currentCoordinate, with: writingTouch.touch)
+      }
     }
     writingTouch = KeyState.Touch(touch: touch, coordinate: keypadCoordinate)
     switch writingTouch!.beginKind {
@@ -148,6 +155,11 @@ extension KeyState: KeyGestureRecognizerDelegate {
   }
   
   func touchUp(at keypadCoordinate: KeypadCoordinate, with touch: UITouch) {
+    if modifierTouch != nil && modifierTouch!.touch == touch {
+      modifierTouch = nil
+      switchShiftAndAltAfterLetter()
+      return
+    }
     guard let writingTouch = self.writingTouch else { return }
     if touch != writingTouch.touch { return }
     switch writingTouch.currentKind {
