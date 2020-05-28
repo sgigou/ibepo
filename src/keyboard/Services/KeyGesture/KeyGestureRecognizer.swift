@@ -14,10 +14,9 @@ typealias KeypadCoordinate = (row: Int, col: Int)
 // MARK: - KeyGestureRecognizerDelegate
 
 protocol KeyGestureRecognizerDelegate: class {
-  func touchDown(at keypadCoordinate: KeypadCoordinate)
-  func touchMoved(to keypadCoordinate: KeypadCoordinate)
-  func touchUp(at keypadCoordinate: KeypadCoordinate)
-  func touchCancelled(at keypadCoordinate: KeypadCoordinate)
+  func touchDown(at keypadCoordinate: KeypadCoordinate, with touch: UITouch)
+  func touchMoved(to keypadCoordinate: KeypadCoordinate, with touch: UITouch)
+  func touchUp(at keypadCoordinate: KeypadCoordinate, with touch: UITouch)
 }
 
 
@@ -45,33 +44,37 @@ final class KeyGestureRecognizer: UIGestureRecognizer {
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
     super.touchesBegan(touches, with: event)
-    guard let touch = touches.first else {  return Logger.debug("No touch in recognizer") }
-    if let coordinate = findCoordinate(for: touch) {
-      customDelegate?.touchDown(at: coordinate)
+    for touch in touches {
+      if let coordinates = findCoordinates(for: touch) {
+        customDelegate?.touchDown(at: coordinates, with: touch)
+      }
     }
   }
   
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
     super.touchesMoved(touches, with: event)
-    guard let touch = touches.first else {  return Logger.debug("No touch in recognizer") }
-    if let coordinate = findCoordinate(for: touch) {
-      customDelegate?.touchMoved(to: coordinate)
+    for touch in touches {
+      if let coordinates = findCoordinates(for: touch) {
+        customDelegate?.touchMoved(to: coordinates, with: touch)
+      }
     }
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
     super.touchesEnded(touches, with: event)
-    guard let touch = touches.first else {  return Logger.debug("No touch in recognizer") }
-    if let coordinate = findCoordinate(for: touch) {
-      customDelegate?.touchUp(at: coordinate)
+    for touch in touches {
+      if let coordinates = findCoordinates(for: touch) {
+        customDelegate?.touchUp(at: coordinates, with: touch)
+      }
     }
   }
   
   override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
     super.touchesCancelled(touches, with: event)
-    guard let touch = touches.first else {  return Logger.debug("No touch in recognizer") }
-    if let coordinate = findCoordinate(for: touch) {
-      customDelegate?.touchCancelled(at: coordinate)
+    for touch in touches {
+      if let coordinates = findCoordinates(for: touch) {
+        customDelegate?.touchUp(at: coordinates, with: touch)
+      }
     }
   }
   
@@ -81,7 +84,7 @@ final class KeyGestureRecognizer: UIGestureRecognizer {
   /**
    Find the KeypadCoordinate of the given touch.
    */
-  private func findCoordinate(for touch: UITouch) -> KeypadCoordinate? {
+  private func findCoordinates(for touch: UITouch) -> KeypadCoordinate? {
     let location = touch.location(in: view)
     if !(view?.bounds.contains(location) ?? true) {
       return nil
