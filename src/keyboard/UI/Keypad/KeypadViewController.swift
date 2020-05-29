@@ -167,6 +167,11 @@ extension KeypadViewController: KeyboardDisplayProtocol {
     if keyViewToPress != pressedKeyView {
       pressedKeyView?.togglePression()
       keyViewToPress.togglePression()
+      if kind == .letter {
+        popupView.showPopup(over: keyViewToPress)
+      } else {
+        popupView.hidePopup()
+      }
     }
     pressedKeyView = keyViewToPress
   }
@@ -175,6 +180,7 @@ extension KeypadViewController: KeyboardDisplayProtocol {
   func noKeyIsPressed() {
     pressedKeyView?.togglePression()
     pressedKeyView = nil
+    popupView.hidePopup()
   }
   
 }

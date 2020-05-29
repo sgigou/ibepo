@@ -59,18 +59,18 @@ class KeyView: UIView {
     let backgroundView = UIView()
     backgroundView.backgroundColor = ColorManager.shared.background
     backgroundView.translatesAutoresizingMaskIntoConstraints = false
-    backgroundView.layer.cornerRadius = 5.0
+    backgroundView.layer.cornerRadius = Constants.keyCornerRadius
     backgroundView.layer.shadowColor = UIColor.black.cgColor
-    backgroundView.layer.shadowOffset = CGSize(width: 0, height: 1)
+    backgroundView.layer.shadowOffset = CGSize(width: 0, height: Constants.keyShadowOffset)
     backgroundView.layer.shadowRadius = .zero
     backgroundView.layer.shadowOpacity = 0.25
     backgroundView.layer.shadowPath = UIBezierPath(roundedRect: backgroundView.bounds, cornerRadius: 5.0).cgPath
     addSubview(backgroundView)
     NSLayoutConstraint.activate([
-      backgroundView.topAnchor.constraint(equalTo: topAnchor, constant: 6),
-      backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -6),
-      backgroundView.rightAnchor.constraint(equalTo: rightAnchor, constant: -3),
-      backgroundView.leftAnchor.constraint(equalTo: leftAnchor, constant: 3)
+      backgroundView.topAnchor.constraint(equalTo: topAnchor, constant: Constants.keyVerticalPadding),
+      backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.keyVerticalPadding),
+      backgroundView.rightAnchor.constraint(equalTo: rightAnchor, constant: -Constants.keyHorizontalPadding),
+      backgroundView.leftAnchor.constraint(equalTo: leftAnchor, constant: Constants.keyHorizontalPadding)
     ])
     self.backgroundView = backgroundView
   }
@@ -81,7 +81,7 @@ class KeyView: UIView {
     if isPressed {
       backgroundView.layer.shadowOffset = CGSize(width: 0, height: 0)
     } else {
-      backgroundView.layer.shadowOffset = CGSize(width: 0, height: 1)
+      backgroundView.layer.shadowOffset = CGSize(width: 0, height: Constants.keyShadowOffset)
     }
   }
   

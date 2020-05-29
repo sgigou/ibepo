@@ -244,7 +244,7 @@ final class KeypadView: UIView {
   private func add(_ key: Key, in row: UIView, leftAnchor: NSLayoutXAxisAnchor) {
     key.view.translatesAutoresizingMaskIntoConstraints = false
     row.addSubview(key.view)
-    key.view.widthAnchor.constraint(equalTo: row.widthAnchor, multiplier: 1 / 11).isActive = true
+    key.view.widthAnchor.constraint(equalTo: row.widthAnchor, multiplier: Constants.keySlotMultiplier).isActive = true
     key.view.topAnchor.constraint(equalTo: row.topAnchor).isActive = true
     key.view.bottomAnchor.constraint(equalTo: row.bottomAnchor).isActive = true
     key.view.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
