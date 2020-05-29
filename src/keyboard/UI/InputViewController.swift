@@ -63,6 +63,7 @@ final class InputViewController: UIViewController {
       autocorrectViewController.view.bottomAnchor.constraint(equalTo: keypadViewController.view.topAnchor),
       autocorrectViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
     ])
+    keypadViewController.view.layer.zPosition = 10.0
   }
   
 }
