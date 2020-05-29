@@ -19,6 +19,8 @@ class KeypadViewController: UIViewController {
   
   /// Key state manager
   private let keyState = KeyState()
+  private let popupView = PopupView()
+  
   /// Currently displayed key set.
   private var keySet: KeySet!
   /// The pressed key, if any
@@ -28,7 +30,8 @@ class KeypadViewController: UIViewController {
   // MARK: Life cycle
   
   override func loadView() {
-    self.view = KeypadView()
+    view = KeypadView()
+    addPopupView()
   }
   
   /// Loads the key set.
@@ -83,6 +86,16 @@ class KeypadViewController: UIViewController {
     let factory = KeySetFactory()
     keySet = factory.generate()
     view.load(keySet: keySet)
+    view.bringSubviewToFront(popupView)
+  }
+  
+  private func addPopupView() {
+    popupView.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(popupView)
+    popupView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+    popupView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+    popupView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    popupView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
   }
   
 }

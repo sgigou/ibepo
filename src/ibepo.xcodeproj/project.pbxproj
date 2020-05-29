@@ -65,6 +65,8 @@
 		399E64252464381A00D25C6D /* KeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E64242464381A00D25C6D /* KeyState.swift */; };
 		399E64262464381A00D25C6D /* KeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E64242464381A00D25C6D /* KeyState.swift */; };
 		39A197E42462D39E00974C58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39528F88245AFC510080FBE8 /* Assets.xcassets */; };
+		39C6E5A82480FF0700EDB1EA /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C6E5A72480FF0700EDB1EA /* PopupView.swift */; };
+		39C6E5A92480FF0700EDB1EA /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C6E5A72480FF0700EDB1EA /* PopupView.swift */; };
 		39FA3A05247BF4E700445602 /* KeyLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA3A04247BF4E700445602 /* KeyLocator.swift */; };
 		39FA3A06247BF4E700445602 /* KeyLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA3A04247BF4E700445602 /* KeyLocator.swift */; };
 /* End PBXBuildFile section */
@@ -148,6 +150,7 @@
 		399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyGestureRecognizer.swift; sourceTree = "<group>"; };
 		399E641F24640E7A00D25C6D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		399E64242464381A00D25C6D /* KeyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyState.swift; sourceTree = "<group>"; };
+		39C6E5A72480FF0700EDB1EA /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		39FA3A04247BF4E700445602 /* KeyLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyLocator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -230,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				391BF06124600625004F8497 /* KeypadViewController.swift */,
+				39C6E5A72480FF0700EDB1EA /* PopupView.swift */,
 				39814959246048C9007C9754 /* KeypadView.swift */,
 				3981495B246048F5007C9754 /* Keys */,
 			);
@@ -569,6 +573,7 @@
 				3981495824604498007C9754 /* KeySet.swift in Sources */,
 				392AD050245D759F008252F1 /* InputViewController.swift in Sources */,
 				3981495324604393007C9754 /* SpecialKeyView.swift in Sources */,
+				39C6E5A92480FF0700EDB1EA /* PopupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +590,7 @@
 				39814960246051F7007C9754 /* KeySet.swift in Sources */,
 				399E641D2464069D00D25C6D /* KeyGestureRecognizer.swift in Sources */,
 				39FA3A05247BF4E700445602 /* KeyLocator.swift in Sources */,
+				39C6E5A82480FF0700EDB1EA /* PopupView.swift in Sources */,
 				39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */,
 				399E64252464381A00D25C6D /* KeyState.swift in Sources */,
 				39814961246051F9007C9754 /* KeySetFactory.swift in Sources */,
