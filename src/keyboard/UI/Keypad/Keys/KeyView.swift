@@ -64,7 +64,7 @@ class KeyView: UIView {
     backgroundView.layer.shadowOffset = CGSize(width: 0, height: Constants.keyShadowOffset)
     backgroundView.layer.shadowRadius = .zero
     backgroundView.layer.shadowOpacity = 0.25
-    backgroundView.layer.shadowPath = UIBezierPath(roundedRect: backgroundView.bounds, cornerRadius: 5.0).cgPath
+    backgroundView.layer.shadowPath = UIBezierPath(roundedRect: backgroundView.bounds, cornerRadius: Constants.keyCornerRadius).cgPath
     addSubview(backgroundView)
     NSLayoutConstraint.activate([
       backgroundView.topAnchor.constraint(equalTo: topAnchor, constant: Constants.keyVerticalPadding),

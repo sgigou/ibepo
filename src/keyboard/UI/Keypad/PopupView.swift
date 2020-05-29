@@ -31,8 +31,8 @@ class PopupView: UIView {
   // MARK: Setup
   
   private func setupViews() {
-    setupTailView()
     setupPopupView()
+    setupTailView()
     hidePopup()
   }
   
@@ -42,7 +42,18 @@ class PopupView: UIView {
   }
   
   private func setupPopupView() {
-    // TODO: Code it
+    popupView.backgroundColor = ColorManager.shared.background
+    popupView.layer.cornerRadius = Constants.keyCornerRadius
+    popupView.layer.shadowColor = UIColor.black.cgColor
+    popupView.layer.shadowOffset = CGSize(width: 0, height: Constants.keyShadowOffset)
+    popupView.layer.shadowRadius = 2 * Constants.keyShadowOffset
+    popupView.layer.shadowOpacity = 0.25
+    popupView.layer.shadowPath = .none
+    addSubview(popupView)
+  }
+  
+  private func updatePopupViewShadowPath() {
+    popupView.layer.shadowPath = UIBezierPath(roundedRect: popupView.bounds, cornerRadius: Constants.keyCornerRadius).cgPath
   }
   
   // MARK: Actions
@@ -60,7 +71,15 @@ class PopupView: UIView {
       width: keyView.frame.width - 2 * Constants.keyHorizontalPadding - 2 * Constants.keyCornerRadius,
       height: Constants.keyVerticalPadding
     )
+    popupView.frame = CGRect(
+      x: keyView.frame.minX,
+      y: rowY - keyView.frame.height,
+      width: keyView.frame.width,
+      height: keyView.frame.height
+    )
+    updatePopupViewShadowPath()
     tailView.isHidden = false
+    popupView.isHidden = false
   }
   
 }
