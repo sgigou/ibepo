@@ -22,6 +22,10 @@ final class InputViewController: UIViewController {
   /// The autocorrect zone.
   private var autocorrectViewController: AutocorrectViewController!
   
+  private var rowHeight: CGFloat {
+    return 50.0
+  }
+  
   
   // MARK: Life cycle
   
@@ -54,6 +58,7 @@ final class InputViewController: UIViewController {
       keypadViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor),
       keypadViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
       keypadViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
+      keypadViewController.view.heightAnchor.constraint(equalToConstant: rowHeight * 4)
     ])
     autocorrectViewController = AutocorrectViewController()
     autocorrectViewController.delegate = self
@@ -62,6 +67,7 @@ final class InputViewController: UIViewController {
       autocorrectViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor),
       autocorrectViewController.view.bottomAnchor.constraint(equalTo: keypadViewController.view.topAnchor),
       autocorrectViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
+      autocorrectViewController.view.heightAnchor.constraint(equalToConstant: rowHeight)
     ])
     keypadViewController.view.layer.zPosition = 10.0
   }

@@ -16,12 +16,14 @@ class KeyboardViewController: UIInputViewController {
   
   /// Full input view controller with keyboard and suggestions.
   private var customInputViewController: InputViewController!
+  private var constraintsHaveBeenAdded = false
   
   
   // MARK: Life cycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.translatesAutoresizingMaskIntoConstraints = false
     initSettings()
     guard let inputView = inputView else { return }
     customInputViewController = InputViewController()
@@ -39,6 +41,11 @@ class KeyboardViewController: UIInputViewController {
     customInputViewController.update(textDocumentProxy: textDocumentProxy)
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    initKeyboardViewConstraints()
+  }
+  
   
   // MARK: Configuration
   
@@ -50,6 +57,15 @@ class KeyboardViewController: UIInputViewController {
       Logger.debug("needsInputModeSwitchKey set to \(needsInputModeSwitchKey)")
       KeyboardSettings.shared.needsInputModeSwitchKey = needsInputModeSwitchKey
     }
+  }
+  
+  private func initKeyboardViewConstraints() {
+    if constraintsHaveBeenAdded { return }
+    guard let superview = view.superview else { return Logger.error("Keyboard has no superview.") }
+    view.leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
+    view.bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
+    view.rightAnchor.constraint(equalTo: superview.rightAnchor).isActive = true
+    constraintsHaveBeenAdded = true
   }
 
 }

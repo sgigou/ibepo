@@ -70,7 +70,6 @@
                     <constraints>
                         <constraint firstItem="uE9-Ip-BzI" firstAttribute="width" secondItem="8cf-Gh-Eil" secondAttribute="width" id="k10-TS-lGo"/>
                         <constraint firstItem="FMX-Qe-yY8" firstAttribute="width" secondItem="8cf-Gh-Eil" secondAttribute="width" id="t7H-ec-Wy7"/>
-                        <constraint firstAttribute="height" constant="40" id="yES-zI-RbO"/>
                     </constraints>
                 </stackView>
             </subviews>
