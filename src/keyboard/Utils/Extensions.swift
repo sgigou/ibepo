@@ -16,6 +16,14 @@ extension Collection {
   
 }
 
+extension UIDevice {
+  
+  static var isPhone: Bool {
+    return current.userInterfaceIdiom == .phone
+  }
+  
+}
+
 extension UIViewController {
   
   /**
@@ -41,6 +49,14 @@ extension UIViewController {
     willMove(toParent: nil)
     view.removeFromSuperview()
     removeFromParent()
+  }
+  
+}
+
+extension UIScreen {
+  
+  static var isPortrait: Bool {
+    return main.bounds.width < main.bounds.height
   }
   
 }

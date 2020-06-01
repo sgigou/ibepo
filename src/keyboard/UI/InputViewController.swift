@@ -23,15 +23,15 @@ final class InputViewController: UIViewController {
   private var autocorrectHeightConstraint: NSLayoutConstraint!
   
   private var rowHeight: CGFloat {
-    if UIDevice.current.userInterfaceIdiom == .phone {
-      if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
+    if UIDevice.isPhone {
+      if UIScreen.isPortrait {
         return 50.0
       } else {
-        return 45.0
+        return 40.0
       }
     } else {
-      if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
-        return 75.0
+      if UIScreen.isPortrait {
+        return 70.0
       } else {
         return 70.0
       }

@@ -34,9 +34,9 @@ final class LetterKeyView: KeyView {
   private var secondaryLabel = UILabel()
   
   private var primaryFontSize: CGFloat {
-    if UIDevice.current.userInterfaceIdiom == .phone {
-      if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
-        return 20.0
+    if UIDevice.isPhone {
+      if UIScreen.isPortrait {
+        return 18.0
       } else {
         return 16.0
       }
@@ -46,10 +46,10 @@ final class LetterKeyView: KeyView {
   }
   private var secondaryFontSize: CGFloat {
     if UIDevice.current.userInterfaceIdiom == .phone {
-      if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
+      if UIScreen.isPortrait {
         return 12.0
       } else {
-        return 10.0
+        return 16.0
       }
     } else {
       return 16.0
@@ -93,16 +93,21 @@ final class LetterKeyView: KeyView {
     super.updateAppearance()
     let primaryColor = level == .primary ? ColorManager.shared.label : ColorManager.shared.secondaryLabel
     let primaryWeight: UIFont.Weight = UIDevice.current.userInterfaceIdiom == .phone ? .regular : .light
+    let shouldHideInactiveLabel = UIDevice.isPhone && !UIScreen.isPortrait
     if isAltActivated {
       secondaryLabel.font = .systemFont(ofSize: secondaryFontSize, weight: primaryWeight)
       secondaryLabel.textColor = primaryColor
       primaryLabel.font = .systemFont(ofSize: primaryFontSize, weight: .light)
       primaryLabel.textColor = ColorManager.shared.secondaryLabel
+      secondaryLabel.isHidden = false
+      primaryLabel.isHidden = shouldHideInactiveLabel
     } else {
       secondaryLabel.font = .systemFont(ofSize: secondaryFontSize, weight: .light)
       secondaryLabel.textColor = ColorManager.shared.secondaryLabel
       primaryLabel.font = .systemFont(ofSize: primaryFontSize, weight: primaryWeight)
       primaryLabel.textColor = primaryColor
+      secondaryLabel.isHidden = shouldHideInactiveLabel
+      primaryLabel.isHidden = false
     }
   }
   
@@ -126,7 +131,6 @@ final class LetterKeyView: KeyView {
       secondaryLabel.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 2),
       secondaryLabel.rightAnchor.constraint(equalTo: backgroundView.rightAnchor),
       secondaryLabel.leftAnchor.constraint(equalTo: backgroundView.leftAnchor),
-      secondaryLabel.bottomAnchor.constraint(equalTo: primaryLabel.topAnchor),
     ])
   }
   
