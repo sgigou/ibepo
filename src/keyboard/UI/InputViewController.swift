@@ -17,13 +17,25 @@ final class InputViewController: UIViewController {
   /// Delegate that will get text CRUD.
   weak var delegate: KeyboardActionProtocol?
   
-  /// The actual keyboard.
-  private var keypadViewController: KeypadViewController!
-  /// The autocorrect zone.
   private var autocorrectViewController: AutocorrectViewController!
+  private var keypadViewController: KeypadViewController!
+  private var keypadHeightConstraint: NSLayoutConstraint!
+  private var autocorrectHeightConstraint: NSLayoutConstraint!
   
   private var rowHeight: CGFloat {
-    return 50.0
+    if UIDevice.current.userInterfaceIdiom == .phone {
+      if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
+        return 50.0
+      } else {
+        return 45.0
+      }
+    } else {
+      if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
+        return 75.0
+      } else {
+        return 70.0
+      }
+    }
   }
   
   
@@ -45,21 +57,32 @@ final class InputViewController: UIViewController {
     autocorrectViewController.autocorrect.update()
   }
   
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    updateHeights()
+  }
   
   // MARK: Loading
   
-  /**
-   Load the key pad and the autocomplete view (if needed).
-   */
   private func loadViews() {
+    loadKeypadView()
+    loadSuggestionsView()
+  }
+  
+  private func loadKeypadView() {
     keypadViewController = KeypadViewController()
     keypadViewController.delegate = self
-    add(keypadViewController!, with: [
+    add(keypadViewController, with: [
       keypadViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor),
       keypadViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
       keypadViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
-      keypadViewController.view.heightAnchor.constraint(equalToConstant: rowHeight * 4)
     ])
+    keypadHeightConstraint = NSLayoutConstraint(item: keypadViewController.view as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: rowHeight * 4)
+    keypadHeightConstraint.isActive = true
+    keypadViewController.view.layer.zPosition = 10.0
+  }
+  
+  private func loadSuggestionsView() {
     autocorrectViewController = AutocorrectViewController()
     autocorrectViewController.delegate = self
     add(autocorrectViewController, with: [
@@ -67,9 +90,14 @@ final class InputViewController: UIViewController {
       autocorrectViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor),
       autocorrectViewController.view.bottomAnchor.constraint(equalTo: keypadViewController.view.topAnchor),
       autocorrectViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
-      autocorrectViewController.view.heightAnchor.constraint(equalToConstant: rowHeight)
     ])
-    keypadViewController.view.layer.zPosition = 10.0
+    autocorrectHeightConstraint = NSLayoutConstraint(item: autocorrectViewController.view as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: rowHeight)
+    autocorrectHeightConstraint.isActive = true
+  }
+  
+  private func updateHeights() {
+    autocorrectHeightConstraint.constant = rowHeight
+    keypadHeightConstraint.constant = rowHeight * 4
   }
   
 }

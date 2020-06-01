@@ -94,9 +94,9 @@ final class LetterKeyView: KeyView {
     let primaryColor = level == .primary ? ColorManager.shared.label : ColorManager.shared.secondaryLabel
     let primaryWeight: UIFont.Weight = UIDevice.current.userInterfaceIdiom == .phone ? .regular : .light
     if isAltActivated {
-      secondaryLabel.font = .systemFont(ofSize: primaryFontSize, weight: primaryWeight)
+      secondaryLabel.font = .systemFont(ofSize: secondaryFontSize, weight: primaryWeight)
       secondaryLabel.textColor = primaryColor
-      primaryLabel.font = .systemFont(ofSize: secondaryFontSize, weight: .light)
+      primaryLabel.font = .systemFont(ofSize: primaryFontSize, weight: .light)
       primaryLabel.textColor = ColorManager.shared.secondaryLabel
     } else {
       secondaryLabel.font = .systemFont(ofSize: secondaryFontSize, weight: .light)
