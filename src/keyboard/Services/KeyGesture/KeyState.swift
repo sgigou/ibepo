@@ -33,7 +33,6 @@ final class KeyState {
   private var longPressTimer: Timer?
   private var subLetterOriginKeyCoordinate: KeyCoordinate?
   
-  
   // MARK: Configuration
   
   func configure(keySet: KeySet, view: KeypadView) {
@@ -106,7 +105,6 @@ final class KeyState {
   }
   
   @objc private func activateLongPress() {
-    Logger.debug("Long press detected.")
     guard let writingTouch = self.writingTouch else { return }
     switch KeyLocator.kind(at: writingTouch.currentCoordinate) {
     case .letter:
@@ -120,10 +118,22 @@ final class KeyState {
     guard let writingTouch = self.writingTouch else { return }
     let keyCoordinate = KeyLocator.calculateKeyCoordinate(for: writingTouch.currentCoordinate)
     let key = keySet.key(at: keyCoordinate)
-    if key.set.subLetters(forShiftState: shiftState, andAltState: altState).count == 1 { return }
+    if key.set.subLetters(forShiftState: shiftState, andAltState: altState).count <= 1 { return }
+    Logger.debug("Launching sub letter selection.")
     currentMode = .selectingSubLetter
     subLetterOriginKeyCoordinate = keyCoordinate
-    displayDelegate?.selectSubSymbol(for: key, shiftState: shiftState, altState: altState)
+    displayDelegate?.launchSubLetterSelection(for: key, shiftState: shiftState, altState: altState)
+  }
+  
+  private func moveSubLetterSelection(to keypadCoordinate: KeypadCoordinate) {
+    let selectedSubLetter = calculateSubLetterIndex(for: keypadCoordinate)
+    displayDelegate?.selectSubLetter(at: selectedSubLetter)
+  }
+  
+  private func calculateSubLetterIndex(for keypadCoordinate: KeypadCoordinate) -> Int {
+    guard let originCoordinate = subLetterOriginKeyCoordinate else { return 0 }
+    let keyCoordinate = KeyLocator.calculateKeyCoordinate(for: keypadCoordinate)
+    return keyCoordinate.col - originCoordinate.col
   }
   
   // MARK: Delegate communication
@@ -177,6 +187,9 @@ extension KeyState: KeyGestureRecognizerDelegate {
     guard let writingTouch = self.writingTouch else { return }
     if touch != writingTouch.touch { return }
     if writingTouch.currentCoordinate == keypadCoordinate { return }
+    if currentMode == .selectingSubLetter {
+      return moveSubLetterSelection(to: keypadCoordinate)
+    }
     let kind = KeyLocator.kind(at: keypadCoordinate)
     if !isMoveValid(beginKind: writingTouch.beginKind, endKind: kind) {
       return

@@ -54,7 +54,7 @@ final class KeySetFactory {
     row.append(generateKey(for: CharacterSet("à", nil, nil, "(", nil, nil)))
     row.append(generateKey(for: CharacterSet("y", nil, nil, ")", nil, nil)))
     row.append(generateKey(for: CharacterSet("x", nil, nil, ",", nil, nil)))
-    row.append(generateKey(for: CharacterSet("k", nil, nil, "!", nil, nil)))
+    row.append(generateKey(for: CharacterSet("k", nil, ["x", "k", "q"], "!", nil, nil)))
     row.append(generateKey(for: CharacterSet("q", nil, nil, "?", nil, nil)))
     row.append(generateKey(for: CharacterSet("g", nil, nil, ".", nil, nil)))
     row.append(generateKey(for: CharacterSet("h", nil, nil, "«", nil, nil)))

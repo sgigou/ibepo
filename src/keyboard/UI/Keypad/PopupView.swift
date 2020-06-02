@@ -143,6 +143,10 @@ class PopupView: UIView {
   
   // MARK: Letter stack view
   
+  func selectSubLetter(at index: Int) {
+    Logger.debug("Letter selected at \(index)")
+  }
+  
   private func generateLetterStackViewList(for letters: [String]) {
     letterStackView.removeAllArrangedSubviews()
     for letter in letters {
