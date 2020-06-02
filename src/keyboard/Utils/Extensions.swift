@@ -60,3 +60,19 @@ extension UIScreen {
   }
   
 }
+
+extension UIStackView {
+  
+  @discardableResult
+  func removeAllArrangedSubviews() -> [UIView] {
+    return arrangedSubviews.reduce([UIView]()) { $0 + [removeArrangedSubviewWithoutWarning($1)] }
+  }
+  
+  func removeArrangedSubviewWithoutWarning(_ view: UIView) -> UIView {
+    removeArrangedSubview(view)
+    NSLayoutConstraint.deactivate(view.constraints)
+    view.removeFromSuperview()
+    return view
+  }
+  
+}

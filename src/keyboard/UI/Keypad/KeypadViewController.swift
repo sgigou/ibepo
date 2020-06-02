@@ -168,7 +168,11 @@ extension KeypadViewController: KeyboardDisplayProtocol {
       pressedKeyView?.togglePression()
       keyViewToPress.togglePression()
       if kind == .letter {
-        popupView.showPopup(over: keyViewToPress)
+        guard let coordinate = coordinate else {
+          return Logger.error("The key should have a coordinate.")
+        }
+        let key = keySet.key(at: coordinate)
+        popupView.showPopup(for: key)
       } else {
         popupView.hidePopup()
       }

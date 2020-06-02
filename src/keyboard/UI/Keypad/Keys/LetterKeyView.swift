@@ -19,18 +19,17 @@ final class LetterKeyView: KeyView {
     case primary, secondary
   }
   
-  /// Indicates if the alt display is activated.
+  var currentLabelText: String? {
+    return isAltActivated ? secondaryLabel.text : primaryLabel.text
+  }
   var isAltActivated = false {
     didSet { updateAppearance() }
   }
-  /// The level of the key.
   var level: Level = .primary {
     didSet { updateAppearance() }
   }
   
-  /// Label displaying the main letter.
   private var primaryLabel = UILabel()
-  /// Label displaying the alternative letter.
   private var secondaryLabel = UILabel()
   
   private var primaryFontSize: CGFloat {
