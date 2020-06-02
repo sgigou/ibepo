@@ -31,6 +31,8 @@ final class KeyState {
   /// Touch that will keep a modifier on.
   private var modifierTouch: Touch?
   
+  private var longPressTimer: Timer?
+  
   
   // MARK: Configuration
   
@@ -95,6 +97,24 @@ final class KeyState {
     }
   }
   
+  // MARK: Long press
+  
+  private func invalidateTimer() {
+    if longPressTimer != nil {
+      longPressTimer!.invalidate()
+    }
+  }
+  
+  private func launchLongPressTimer() {
+    invalidateTimer()
+    longPressTimer = Timer(timeInterval: 1.5, target: self, selector: #selector(activateLongPress), userInfo: nil, repeats: false)
+    longPressTimer?.tolerance = 0.250
+    RunLoop.current.add(longPressTimer!, forMode: .common)
+  }
+  
+  @objc private func activateLongPress() {
+    Logger.debug("Long press detected.")
+  }
   
   // MARK: Delegate communication
   
@@ -140,6 +160,7 @@ extension KeyState: KeyGestureRecognizerDelegate {
       break
     }
     displayPressedKey(at: keypadCoordinate)
+    launchLongPressTimer()
   }
   
   func touchMoved(to keypadCoordinate: KeypadCoordinate, with touch: UITouch) {
@@ -150,8 +171,11 @@ extension KeyState: KeyGestureRecognizerDelegate {
     if !isMoveValid(beginKind: writingTouch.beginKind, endKind: kind) {
       return
     }
+    if !KeyLocator.isSameKey(keypadCoordinate1: writingTouch.currentCoordinate, keypadCoordinate2: keypadCoordinate) {
+      displayPressedKey(at: keypadCoordinate)
+      launchLongPressTimer()
+    }
     writingTouch.currentCoordinate = keypadCoordinate
-    displayPressedKey(at: keypadCoordinate)
   }
   
   func touchUp(at keypadCoordinate: KeypadCoordinate, with touch: UITouch) {
@@ -160,6 +184,7 @@ extension KeyState: KeyGestureRecognizerDelegate {
       switchShiftAndAltAfterLetter()
       return
     }
+    invalidateTimer()
     guard let writingTouch = self.writingTouch else { return }
     if touch != writingTouch.touch { return }
     switch writingTouch.currentKind {
