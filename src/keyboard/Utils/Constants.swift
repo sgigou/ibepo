@@ -15,6 +15,8 @@ class Constants {
   static let keyHorizontalPadding: CGFloat = 3.0
   static let keyShadowOffset: CGFloat = 1.0
   static let keyCornerRadius: CGFloat = 5.0
+  
   static let longPressDelay: Double = 0.5
+  static let subLettersSpacing: CGFloat = 2.0
   
 }

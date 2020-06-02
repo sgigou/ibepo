@@ -21,10 +21,6 @@ class PopupView: UIView {
     let fontSize: CGFloat = UIDevice.isPhone ? 30.0 : 50.0
     return .systemFont(ofSize: fontSize, weight: .light)
   }()
-  private lazy var selectedSubLetterFont: UIFont = {
-    let fontSize: CGFloat = UIDevice.isPhone ? 30.0 : 50.0
-    return .systemFont(ofSize: fontSize, weight: .bold)
-  }()
   
   // MARK: Life cycle
   
@@ -69,12 +65,13 @@ class PopupView: UIView {
   
   private func setupLetterStackView() {
     letterStackView.distribution = .fillEqually
+    letterStackView.spacing = Constants.keyHorizontalPadding * 2
     letterStackView.translatesAutoresizingMaskIntoConstraints = false
     popupView.addSubview(letterStackView)
-    letterStackView.topAnchor.constraint(equalTo: popupView.topAnchor).isActive = true
-    letterStackView.rightAnchor.constraint(equalTo: popupView.rightAnchor).isActive = true
-    letterStackView.bottomAnchor.constraint(equalTo: popupView.bottomAnchor).isActive = true
-    letterStackView.leftAnchor.constraint(equalTo: popupView.leftAnchor).isActive = true
+    letterStackView.topAnchor.constraint(equalTo: popupView.topAnchor, constant: Constants.keyVerticalPadding).isActive = true
+    letterStackView.rightAnchor.constraint(equalTo: popupView.rightAnchor, constant: -Constants.keyHorizontalPadding).isActive = true
+    letterStackView.bottomAnchor.constraint(equalTo: popupView.bottomAnchor, constant: -Constants.keyVerticalPadding).isActive = true
+    letterStackView.leftAnchor.constraint(equalTo: popupView.leftAnchor, constant: Constants.keyHorizontalPadding).isActive = true
   }
   
   // MARK: Actions
@@ -151,11 +148,13 @@ class PopupView: UIView {
   func select(subLetter: String) {
     for case let label as UILabel in letterStackView.arrangedSubviews {
       if label.text == subLetter {
-        label.font = selectedSubLetterFont
-        label.textColor = ColorManager.shared.mainColor
+        label.font = subLetterFont
+        label.textColor = ColorManager.shared.background
+        label.backgroundColor = ColorManager.shared.mainColor
       } else {
         label.font = subLetterFont
         label.textColor = ColorManager.shared.label
+        label.backgroundColor = .clear
       }
     }
   }
@@ -172,6 +171,8 @@ class PopupView: UIView {
     label.font = subLetterFont
     label.textAlignment = .center
     label.text = letter
+    label.layer.cornerRadius = Constants.keyCornerRadius
+    label.clipsToBounds = true
     return label
   }
   
