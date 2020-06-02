@@ -39,7 +39,7 @@ final class KeySetFactory {
     row.append(generateKey(for: CharacterSet("a", nil, nil, "&", nil, nil)))
     row.append(generateKey(for: CharacterSet("u", nil, nil, "œ", nil, nil)))
     row.append(generateKey(for: CharacterSet("i", nil, nil, "%", nil, nil)))
-    row.append(generateKey(for: CharacterSet("e", nil, nil, "€", nil, nil)))
+    row.append(generateKey(for: CharacterSet("e", nil, ["e", "é", "è"], "€", nil, ["€", "$"])))
     row.append(generateKey(for: CharacterSet("c", nil, nil, "’", nil, nil), level: .secondary))
     row.append(generateKey(for: CharacterSet("t", nil, nil, "+", nil, nil)))
     row.append(generateKey(for: CharacterSet("s", nil, nil, "-", nil, nil)))

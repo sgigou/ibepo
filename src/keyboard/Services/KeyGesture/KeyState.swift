@@ -14,24 +14,24 @@ import UIKit
 /// Represents the keyboard state at any moment.
 final class KeyState {
   
+  enum Mode {
+    case writing, selectingSubLetter
+  }
+  
   weak var actionDelegate: KeyboardActionProtocol?
   weak var displayDelegate: KeyboardDisplayProtocol?
   
-  /// Currently displayed key set.
   private var keySet: KeySet!
-  /// Gesture recognizer for keys
+  private var currentMode: Mode = .writing
+
   private var gestureRecognizer: KeyGestureRecognizer!
-  /// Current state of the shift key
-  private var shiftKeyState: Key.State = .off
-  /// Current state of the alt key
-  private var altKeyState: Key.State = .off
-  
-  /// Touch that will output a letter.
+  private var shiftState: Key.State = .off
+  private var altState: Key.State = .off
   private var writingTouch: Touch?
-  /// Touch that will keep a modifier on.
   private var modifierTouch: Touch?
   
   private var longPressTimer: Timer?
+  private var subLetterOriginKeyCoordinate: KeyCoordinate?
   
   
   // MARK: Configuration
@@ -45,27 +45,23 @@ final class KeyState {
   
   // MARK: Modifiers
   
-  /// Toggle the shift status and tell the display delegate.
   private func tapShift() {
-    shiftKeyState.toggle()
-    Logger.debug("Shift key is now \(shiftKeyState).")
-    displayDelegate?.shiftStateChanged(newState: shiftKeyState)
+    shiftState.toggle()
+    Logger.debug("Shift key is now \(shiftState).")
+    displayDelegate?.shiftStateChanged(newState: shiftState)
   }
   
-  /// Toggle the alt status and tell the display delegate.
   private func tapAlt() {
-    altKeyState.toggle()
-    Logger.debug("Alt key is now \(altKeyState).")
-    displayDelegate?.altStateChanged(newState: altKeyState)
+    altState.toggle()
+    Logger.debug("Alt key is now \(altState).")
+    displayDelegate?.altStateChanged(newState: altState)
   }
   
-  /// Resets all current touch stored values and tells the delegate to reset pressed state.
   private func resetCurrentTouch() {
     writingTouch = nil
     displayDelegate?.noKeyIsPressed()
   }
   
-  /// Tells the display delegate that the key at the given coordinate is pressed.
   private func displayPressedKey(at keypadCoordinate: KeypadCoordinate) {
     let kind = KeyLocator.kind(at: keypadCoordinate)
     switch kind {
@@ -76,9 +72,6 @@ final class KeyState {
     }
   }
   
-  /// Tells if the move from `beginKind` to `endKind` is allowed.
-  /// 
-  /// Touches can go from a modifier key to a letter, but not the other way.
   private func isMoveValid(beginKind: Key.Kind, endKind: Key.Kind) -> Bool {
     if !beginKind.isModifier && !endKind.isModifier {
       return true
@@ -89,10 +82,10 @@ final class KeyState {
   /// Resets the shift or alt status if the touch began on it.
   private func switchShiftAndAltAfterLetter() {
     if modifierTouch != nil { return }
-    if shiftKeyState == .on {
+    if shiftState == .on {
       tapShift()
     }
-    if altKeyState == .on {
+    if altState == .on {
       tapAlt()
     }
   }
@@ -107,20 +100,37 @@ final class KeyState {
   
   private func launchLongPressTimer() {
     invalidateTimer()
-    longPressTimer = Timer(timeInterval: 1.5, target: self, selector: #selector(activateLongPress), userInfo: nil, repeats: false)
+    longPressTimer = Timer(timeInterval: Constants.longPressDelay, target: self, selector: #selector(activateLongPress), userInfo: nil, repeats: false)
     longPressTimer?.tolerance = 0.250
     RunLoop.current.add(longPressTimer!, forMode: .common)
   }
   
   @objc private func activateLongPress() {
     Logger.debug("Long press detected.")
+    guard let writingTouch = self.writingTouch else { return }
+    switch KeyLocator.kind(at: writingTouch.currentCoordinate) {
+    case .letter:
+      launchSubSymbolSelection()
+    default:
+      break
+    }
+  }
+  
+  private func launchSubSymbolSelection() {
+    guard let writingTouch = self.writingTouch else { return }
+    let keyCoordinate = KeyLocator.calculateKeyCoordinate(for: writingTouch.currentCoordinate)
+    let key = keySet.key(at: keyCoordinate)
+    if key.set.subLetters(forShiftState: shiftState, andAltState: altState).count == 1 { return }
+    currentMode = .selectingSubLetter
+    subLetterOriginKeyCoordinate = keyCoordinate
+    displayDelegate?.selectSubSymbol(for: key, shiftState: shiftState, altState: altState)
   }
   
   // MARK: Delegate communication
   
   private func tapLetter(at keyCoordinate: KeyCoordinate) {
     let key = keySet.key(at: keyCoordinate)
-    actionDelegate?.insert(text: key.set.letter(forShiftState: shiftKeyState, andAltState: altKeyState))
+    actionDelegate?.insert(text: key.set.letter(forShiftState: shiftState, andAltState: altState))
   }
   
   private func tapReturn() {

@@ -99,14 +99,55 @@ class PopupView: UIView {
     updatePopupViewShadowPath()
     tailView.isHidden = false
     popupView.isHidden = false
-    generateLetterStackViewList(for: key.view.currentLabelText ?? "�")
+    let currentLetter = key.view.currentLabelText ?? "�"
+    generateLetterStackViewList(for: [currentLetter])
+  }
+  
+  func showPopupWithSubLetters(for key: Key, shiftState: Key.State, altState: Key.State) {
+    guard let rowY = key.view.superview?.frame.minY else {
+      return Logger.error("keyView should have a superview.")
+    }
+    tailView.frame = CGRect(
+      x: key.view.frame.minX + Constants.keyHorizontalPadding + Constants.keyCornerRadius,
+      y: rowY,
+      width: key.view.frame.width - 2 * Constants.keyHorizontalPadding - 2 * Constants.keyCornerRadius,
+      height: Constants.keyVerticalPadding
+    )
+    let keyLetter = key.set.letter(forShiftState: shiftState, andAltState: altState)
+    let letters = key.set.subLetters(forShiftState: shiftState, andAltState: altState)
+    var beforeLetters = 0
+    var afterLetters = 0
+    var keyLetterFound = false
+    for letter in letters {
+      if letter == keyLetter {
+        keyLetterFound = true
+        continue
+      }
+      if keyLetterFound {
+        afterLetters += 1
+      } else {
+        beforeLetters += 1
+      }
+    }
+    popupView.frame = CGRect(
+      x: key.view.frame.minX - CGFloat(beforeLetters) * key.view.frame.width,
+      y: rowY - key.view.frame.height,
+      width: key.view.frame.width * CGFloat(beforeLetters + 1 + afterLetters),
+      height: key.view.frame.height
+    )
+    updatePopupViewShadowPath()
+    tailView.isHidden = false
+    popupView.isHidden = false
+    generateLetterStackViewList(for: letters)
   }
   
   // MARK: Letter stack view
   
-  private func generateLetterStackViewList(for letter: String) {
+  private func generateLetterStackViewList(for letters: [String]) {
     letterStackView.removeAllArrangedSubviews()
-    letterStackView.addArrangedSubview(generateLetterView(for: letter))
+    for letter in letters {
+      letterStackView.addArrangedSubview(generateLetterView(for: letter))
+    }
   }
   
   private func generateLetterView(for letter: String) -> UILabel {

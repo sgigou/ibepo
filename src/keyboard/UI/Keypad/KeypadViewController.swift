@@ -187,4 +187,8 @@ extension KeypadViewController: KeyboardDisplayProtocol {
     popupView.hidePopup()
   }
   
+  func selectSubSymbol(for key: Key, shiftState: Key.State, altState: Key.State) {
+    popupView.showPopupWithSubLetters(for: key, shiftState: shiftState, altState: altState)
+  }
+  
 }
