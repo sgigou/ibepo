@@ -126,11 +126,20 @@ final class KeyState {
   }
   
   private func moveSubLetterSelection(to keypadCoordinate: KeypadCoordinate) {
-    let selectedSubLetter = calculateSubLetterIndex(for: keypadCoordinate)
-    displayDelegate?.selectSubLetter(at: selectedSubLetter)
+    guard let subLetterOriginKeyCoordinate = self.subLetterOriginKeyCoordinate else { return }
+    let originKey = keySet.key(at: subLetterOriginKeyCoordinate)
+    let selectedShift = calculateSubLetterShift(for: keypadCoordinate)
+    let mainLetter = originKey.set.letter(forShiftState: shiftState, andAltState: altState)
+    let subLetters = originKey.set.subLetters(forShiftState: shiftState, andAltState: altState)
+    let mainLetterIndex = subLetters.firstIndex(of: mainLetter) ?? 0
+    var selectedIndex = mainLetterIndex + selectedShift
+    selectedIndex = max(0, selectedIndex)
+    selectedIndex = min(subLetters.count - 1, selectedIndex)
+    let selectedLetter = subLetters[safe: selectedIndex] ?? mainLetter
+    displayDelegate?.select(subLetter: selectedLetter)
   }
   
-  private func calculateSubLetterIndex(for keypadCoordinate: KeypadCoordinate) -> Int {
+  private func calculateSubLetterShift(for keypadCoordinate: KeypadCoordinate) -> Int {
     guard let originCoordinate = subLetterOriginKeyCoordinate else { return 0 }
     let keyCoordinate = KeyLocator.calculateKeyCoordinate(for: keypadCoordinate)
     return keyCoordinate.col - originCoordinate.col

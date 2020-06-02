@@ -17,9 +17,13 @@ class PopupView: UIView {
   private let popupView = UIView()
   private let letterStackView = UIStackView(arrangedSubviews: [])
   
-  private lazy var lettersFont: UIFont = {
+  private lazy var subLetterFont: UIFont = {
     let fontSize: CGFloat = UIDevice.isPhone ? 30.0 : 50.0
     return .systemFont(ofSize: fontSize, weight: .light)
+  }()
+  private lazy var selectedSubLetterFont: UIFont = {
+    let fontSize: CGFloat = UIDevice.isPhone ? 30.0 : 50.0
+    return .systemFont(ofSize: fontSize, weight: .bold)
   }()
   
   // MARK: Life cycle
@@ -139,12 +143,21 @@ class PopupView: UIView {
     tailView.isHidden = false
     popupView.isHidden = false
     generateLetterStackViewList(for: letters)
+    select(subLetter: keyLetter)
   }
   
   // MARK: Letter stack view
   
-  func selectSubLetter(at index: Int) {
-    Logger.debug("Letter selected at \(index)")
+  func select(subLetter: String) {
+    for case let label as UILabel in letterStackView.arrangedSubviews {
+      if label.text == subLetter {
+        label.font = selectedSubLetterFont
+        label.textColor = ColorManager.shared.mainColor
+      } else {
+        label.font = subLetterFont
+        label.textColor = ColorManager.shared.label
+      }
+    }
   }
   
   private func generateLetterStackViewList(for letters: [String]) {
@@ -156,7 +169,7 @@ class PopupView: UIView {
   
   private func generateLetterView(for letter: String) -> UILabel {
     let label = UILabel()
-    label.font = lettersFont
+    label.font = subLetterFont
     label.textAlignment = .center
     label.text = letter
     return label

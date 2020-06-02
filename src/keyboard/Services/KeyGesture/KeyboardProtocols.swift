@@ -60,6 +60,6 @@ protocol KeyboardDisplayProtocol: class {
   func noKeyIsPressed()
   func keyIsPressed(kind: Key.Kind, at coordinate: KeyCoordinate?)
   func launchSubLetterSelection(for key: Key, shiftState: Key.State, altState: Key.State)
-  func selectSubLetter(at index: Int)
+  func select(subLetter: String)
   
 }

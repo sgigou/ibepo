@@ -191,8 +191,8 @@ extension KeypadViewController: KeyboardDisplayProtocol {
     popupView.showPopupWithSubLetters(for: key, shiftState: shiftState, altState: altState)
   }
   
-  func selectSubLetter(at index: Int) {
-    popupView.selectSubLetter(at: index)
+  func select(subLetter: String) {
+    popupView.select(subLetter: subLetter)
   }
   
 }
