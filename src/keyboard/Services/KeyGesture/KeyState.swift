@@ -100,7 +100,7 @@ final class KeyState {
   private func launchLongPressTimer() {
     invalidateTimer()
     longPressTimer = Timer(timeInterval: Constants.longPressDelay, target: self, selector: #selector(activateLongPress), userInfo: nil, repeats: false)
-    longPressTimer?.tolerance = 0.250
+    longPressTimer?.tolerance = 0.100
     RunLoop.current.add(longPressTimer!, forMode: .common)
   }
   
