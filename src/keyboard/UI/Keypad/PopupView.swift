@@ -170,6 +170,7 @@ class PopupView: UIView {
     let label = UILabel()
     label.font = subLetterFont
     label.textAlignment = .center
+    label.adjustsFontSizeToFitWidth = true
     label.text = letter
     label.layer.cornerRadius = Constants.keyCornerRadius
     label.clipsToBounds = true
