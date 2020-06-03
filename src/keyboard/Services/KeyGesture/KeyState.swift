@@ -32,6 +32,7 @@ final class KeyState {
   
   private var longPressTimer: Timer?
   private var subLetterOriginKeyCoordinate: KeyCoordinate?
+  private var currentSubLetter = " "
   
   // MARK: Configuration
   
@@ -89,16 +90,26 @@ final class KeyState {
     }
   }
   
+  private func writeCurrentLetter() {
+    guard let writingTouch = self.writingTouch else { return }
+    switch currentMode {
+    case .selectingSubLetter:
+      actionDelegate?.insert(text: currentSubLetter)
+    default:
+      tapLetter(at: KeyLocator.calculateKeyCoordinate(for: writingTouch.currentCoordinate))
+    }
+  }
+  
   // MARK: Long press
   
-  private func invalidateTimer() {
+  private func invalidateLongPressTimer() {
     if longPressTimer != nil {
       longPressTimer!.invalidate()
     }
   }
   
   private func launchLongPressTimer() {
-    invalidateTimer()
+    invalidateLongPressTimer()
     longPressTimer = Timer(timeInterval: Constants.longPressDelay, target: self, selector: #selector(activateLongPress), userInfo: nil, repeats: false)
     longPressTimer?.tolerance = 0.100
     RunLoop.current.add(longPressTimer!, forMode: .common)
@@ -122,6 +133,7 @@ final class KeyState {
     Logger.debug("Launching sub letter selection.")
     currentMode = .selectingSubLetter
     subLetterOriginKeyCoordinate = keyCoordinate
+    currentSubLetter = key.set.letter(forShiftState: shiftState, andAltState: altState)
     displayDelegate?.launchSubLetterSelection(for: key, shiftState: shiftState, altState: altState)
   }
   
@@ -135,8 +147,8 @@ final class KeyState {
     var selectedIndex = mainLetterIndex + selectedShift
     selectedIndex = max(0, selectedIndex)
     selectedIndex = min(subLetters.count - 1, selectedIndex)
-    let selectedLetter = subLetters[safe: selectedIndex] ?? mainLetter
-    displayDelegate?.select(subLetter: selectedLetter)
+    currentSubLetter = subLetters[safe: selectedIndex] ?? mainLetter
+    displayDelegate?.select(subLetter: currentSubLetter)
   }
   
   private func calculateSubLetterShift(for keypadCoordinate: KeypadCoordinate) -> Int {
@@ -216,12 +228,12 @@ extension KeyState: KeyGestureRecognizerDelegate {
       switchShiftAndAltAfterLetter()
       return
     }
-    invalidateTimer()
+    invalidateLongPressTimer()
     guard let writingTouch = self.writingTouch else { return }
     if touch != writingTouch.touch { return }
     switch writingTouch.currentKind {
     case .letter:
-      tapLetter(at: KeyLocator.calculateKeyCoordinate(for: writingTouch.currentCoordinate))
+      writeCurrentLetter()
     case .space:
       tapSpace()
     case .delete:
