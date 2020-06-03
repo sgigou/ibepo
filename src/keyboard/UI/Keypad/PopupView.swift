@@ -14,7 +14,7 @@ import UIKit
 class PopupView: UIView {
   
   private let tailView = UIView()
-  private let popupView = UIView()
+  private let popupView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0))
   private let letterStackView = UIStackView(arrangedSubviews: [])
   
   private lazy var subLetterFont: UIFont = {
