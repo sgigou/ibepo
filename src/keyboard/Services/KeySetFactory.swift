@@ -6,7 +6,6 @@
 //  Copyright © 2020 Novesoft. All rights reserved.
 //
 
-/// Create a filled KeyList entity.
 final class KeySetFactory {
   
   func generate() -> KeySet {
