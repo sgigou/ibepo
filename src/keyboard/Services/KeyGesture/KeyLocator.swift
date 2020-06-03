@@ -59,4 +59,18 @@ final class KeyLocator {
     return keyCoordinate
   }
   
+  static func isSameKey(keypadCoordinate1: KeypadCoordinate, keypadCoordinate2: KeypadCoordinate) -> Bool {
+    let kind1 = kind(at: keypadCoordinate1)
+    let kind2 = kind(at: keypadCoordinate2)
+    if kind1 != kind2 { return true }
+    switch kind1 {
+    case .letter:
+      let keyCoordinate1 = calculateKeyCoordinate(for: keypadCoordinate1)
+      let keyCoordinate2 = calculateKeyCoordinate(for: keypadCoordinate2)
+      return keyCoordinate1 == keyCoordinate2
+    default:
+      return kind1 == kind2
+    }
+  }
+  
 }

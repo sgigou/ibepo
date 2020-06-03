@@ -19,6 +19,8 @@ class KeypadViewController: UIViewController {
   
   /// Key state manager
   private let keyState = KeyState()
+  private let popupView = PopupView()
+  
   /// Currently displayed key set.
   private var keySet: KeySet!
   /// The pressed key, if any
@@ -28,7 +30,8 @@ class KeypadViewController: UIViewController {
   // MARK: Life cycle
   
   override func loadView() {
-    self.view = KeypadView()
+    view = KeypadView()
+    addPopupView()
   }
   
   /// Loads the key set.
@@ -83,6 +86,16 @@ class KeypadViewController: UIViewController {
     let factory = KeySetFactory()
     keySet = factory.generate()
     view.load(keySet: keySet)
+    view.bringSubviewToFront(popupView)
+  }
+  
+  private func addPopupView() {
+    popupView.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(popupView)
+    popupView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+    popupView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+    popupView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    popupView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
   }
   
 }
@@ -154,6 +167,15 @@ extension KeypadViewController: KeyboardDisplayProtocol {
     if keyViewToPress != pressedKeyView {
       pressedKeyView?.togglePression()
       keyViewToPress.togglePression()
+      if kind == .letter {
+        guard let coordinate = coordinate else {
+          return Logger.error("The key should have a coordinate.")
+        }
+        let key = keySet.key(at: coordinate)
+        popupView.showPopup(for: key)
+      } else {
+        popupView.hidePopup()
+      }
     }
     pressedKeyView = keyViewToPress
   }
@@ -162,6 +184,15 @@ extension KeypadViewController: KeyboardDisplayProtocol {
   func noKeyIsPressed() {
     pressedKeyView?.togglePression()
     pressedKeyView = nil
+    popupView.hidePopup()
+  }
+  
+  func launchSubLetterSelection(for key: Key, shiftState: Key.State, altState: Key.State) {
+    popupView.showPopupWithSubLetters(for: key, shiftState: shiftState, altState: altState)
+  }
+  
+  func select(subLetter: String) {
+    popupView.select(subLetter: subLetter)
   }
   
 }

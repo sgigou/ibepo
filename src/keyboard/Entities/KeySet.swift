@@ -9,25 +9,18 @@
 import Foundation
 
 
-// MARK: - KeyCoordinate
+// MARK: - typealias KeyCoordinate
 
-/// A key position in a KeySet.
 typealias KeyCoordinate = (row: Int, col: Int)
 
+// MARK: - typealias Row
 
-// MARK: - Row
-
-/// A row in the KeySet.
 typealias Row = [Key]
 
+// MARK: - struct KeySet
 
-// MARK: - KeySet
-
-/// A keypad configuration
 struct KeySet {
   
-  /// The letters on the keyboard.
-  /// - warning: It does not contain special keys.
   let rows: [Row]
   
   var keys: [Key] {
@@ -37,7 +30,6 @@ struct KeySet {
     }
     return keys
   }
-  
   
   // MARK: Key finding
   

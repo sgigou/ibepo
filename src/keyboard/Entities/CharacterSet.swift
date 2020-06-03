@@ -18,7 +18,7 @@ struct CharacterSet {
   let primaryShiftLetter: String
   
   /// Letters to display when the key is long pressed.
-  let primaryAdditions: [String]?
+  let primaryAdditions: [String]
   
   // MARK: Secondary letters
   
@@ -29,7 +29,7 @@ struct CharacterSet {
   let secondaryShiftLetter: String
   
   /// Letters to display when the key is long pressed with Alt activated.
-  let secondaryAdditions: [String]?
+  let secondaryAdditions: [String]
   
   // MARK: Life cycle
   
@@ -39,10 +39,10 @@ struct CharacterSet {
   ) {
     self.primaryLetter = primaryLetter
     self.primaryShiftLetter = primaryShiftLetter ?? primaryLetter.uppercased()
-    self.primaryAdditions = primaryAdditions
+    self.primaryAdditions = primaryAdditions ?? [primaryLetter]
     self.secondaryLetter = secondaryLetter
     self.secondaryShiftLetter = secondaryShiftLetter ?? secondaryLetter.uppercased()
-    self.secondaryAdditions = secondaryAdditions
+    self.secondaryAdditions = secondaryAdditions ?? [secondaryLetter]
   }
   
   
@@ -53,6 +53,22 @@ struct CharacterSet {
       return secondaryLetter(forShiftState: shiftState)
     } else {
       return primaryLetter(forShiftState: shiftState)
+    }
+  }
+  
+  func subLetters(forShiftState shiftState: Key.State, andAltState altState: Key.State) -> [String] {
+    if altState.isActive {
+      if shiftState.isActive {
+        return secondaryAdditions.map { $0.uppercased() }
+      } else {
+        return secondaryAdditions
+      }
+    } else {
+      if shiftState.isActive {
+        return primaryAdditions.map { $0.uppercased() }
+      } else {
+        return primaryAdditions
+      }
     }
   }
   

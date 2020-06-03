@@ -16,6 +16,14 @@ extension Collection {
   
 }
 
+extension UIDevice {
+  
+  static var isPhone: Bool {
+    return current.userInterfaceIdiom == .phone
+  }
+  
+}
+
 extension UIViewController {
   
   /**
@@ -41,6 +49,30 @@ extension UIViewController {
     willMove(toParent: nil)
     view.removeFromSuperview()
     removeFromParent()
+  }
+  
+}
+
+extension UIScreen {
+  
+  static var isPortrait: Bool {
+    return main.bounds.width < main.bounds.height
+  }
+  
+}
+
+extension UIStackView {
+  
+  @discardableResult
+  func removeAllArrangedSubviews() -> [UIView] {
+    return arrangedSubviews.reduce([UIView]()) { $0 + [removeArrangedSubviewWithoutWarning($1)] }
+  }
+  
+  func removeArrangedSubviewWithoutWarning(_ view: UIView) -> UIView {
+    removeArrangedSubview(view)
+    NSLayoutConstraint.deactivate(view.constraints)
+    view.removeFromSuperview()
+    return view
   }
   
 }

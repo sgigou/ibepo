@@ -29,6 +29,16 @@ class AutocorrectViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     autocorrect.delegate = self
+    setupButtons()
+  }
+  
+  // MARK: Setup
+  
+  private func setupButtons() {
+    // The background color is not set to clear to allow a tap on the whole surface of the button.
+    button1.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.0, alpha: 0.001)
+    button2.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.0, alpha: 0.001)
+    button3.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.0, alpha: 0.001)
   }
   
   

@@ -55,20 +55,11 @@ extension KeyboardActionProtocol {
 /// Protocol used to display changes on the keypad.
 protocol KeyboardDisplayProtocol: class {
   
-  /**
-   Called when the shift key state changed.
-   */
   func shiftStateChanged(newState: Key.State)
-  
-  /**
-   Called when the alt key state changed.
-   */
   func altStateChanged(newState: Key.State)
-  
-  /// No key should be pressed on the keyboard at this moment.
   func noKeyIsPressed()
-  
-  /// Called when a key is pressed by the user.
   func keyIsPressed(kind: Key.Kind, at coordinate: KeyCoordinate?)
+  func launchSubLetterSelection(for key: Key, shiftState: Key.State, altState: Key.State)
+  func select(subLetter: String)
   
 }
