@@ -32,7 +32,7 @@ final class KeyState {
   
   private var longPressTimer: Timer?
   private var subLetterOriginKeyCoordinate: KeyCoordinate?
-  private var currentSubLetter = " "
+  private var currentSubLetter = ""
   
   // MARK: Configuration
   
@@ -57,8 +57,11 @@ final class KeyState {
     displayDelegate?.altStateChanged(newState: altState)
   }
   
-  private func resetCurrentTouch() {
+  private func resetWritingTouch() {
     writingTouch = nil
+    currentMode = .writing
+    subLetterOriginKeyCoordinate = nil
+    currentSubLetter = ""
     displayDelegate?.noKeyIsPressed()
   }
   
@@ -138,6 +141,9 @@ final class KeyState {
   }
   
   private func moveSubLetterSelection(to keypadCoordinate: KeypadCoordinate) {
+    if shouldCancelSubSelection(for: keypadCoordinate) {
+      resetWritingTouch()
+    }
     guard let subLetterOriginKeyCoordinate = self.subLetterOriginKeyCoordinate else { return }
     let originKey = keySet.key(at: subLetterOriginKeyCoordinate)
     let selectedShift = calculateSubLetterShift(for: keypadCoordinate)
@@ -155,6 +161,11 @@ final class KeyState {
     guard let originCoordinate = subLetterOriginKeyCoordinate else { return 0 }
     let keyCoordinate = KeyLocator.calculateKeyCoordinate(for: keypadCoordinate)
     return keyCoordinate.col - originCoordinate.col
+  }
+  
+  private func shouldCancelSubSelection(for newKeypadCoordinate: KeypadCoordinate) -> Bool {
+    guard let subLetterOriginKeyCoordinate = self.subLetterOriginKeyCoordinate else { return true }
+    return newKeypadCoordinate.row != subLetterOriginKeyCoordinate.row && newKeypadCoordinate.row != subLetterOriginKeyCoordinate.row - 1
   }
   
   // MARK: Delegate communication
@@ -246,7 +257,7 @@ extension KeyState: KeyGestureRecognizerDelegate {
       break
     }
     if !writingTouch.currentKind.isModifier { switchShiftAndAltAfterLetter() }
-    resetCurrentTouch()
+    resetWritingTouch()
   }
   
 }
