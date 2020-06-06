@@ -64,18 +64,24 @@ final class KeyState {
   private func tapShift() {
     if isDoubleTap(kind: .shift) {
       Logger.debug("Double tap on shift.")
+      lastTap = nil
+      shiftState = .locked
+    } else {
+      if !shiftState.isActive { registerTap(on: .shift) }
+      shiftState.toggle()
     }
-    registerTap(on: .shift)
-    shiftState.toggle()
     displayDelegate?.shiftStateChanged(newState: shiftState)
   }
   
   private func tapAlt() {
     if isDoubleTap(kind: .alt) {
       Logger.debug("Double tap on alt.")
+      lastTap = nil
+      altState = .locked
+    } else {
+      if !altState.isActive { registerTap(on: .alt) }
+      altState.toggle()
     }
-    registerTap(on: .alt)
-    altState.toggle()
     displayDelegate?.altStateChanged(newState: altState)
   }
   
