@@ -15,7 +15,7 @@ import UIKit
 final class KeyState {
   
   enum Mode {
-    case writing, selectingSubLetter
+    case writing, selectingSubLetter, deletionLoop
   }
   
   weak var actionDelegate: KeyboardActionProtocol?
@@ -33,6 +33,8 @@ final class KeyState {
   private var longPressTimer: Timer?
   private var subLetterOriginKeyCoordinate: KeyCoordinate?
   private var currentSubLetter = ""
+  
+  private var deletionLoopTimer: Timer?
   
   // MARK: Configuration
   
@@ -123,6 +125,8 @@ final class KeyState {
     switch KeyLocator.kind(at: writingTouch.currentCoordinate) {
     case .letter:
       launchSubSymbolSelection()
+    case .delete:
+      enterInDeletionLoop()
     default:
       break
     }
@@ -168,6 +172,23 @@ final class KeyState {
     return newKeypadCoordinate.row != subLetterOriginKeyCoordinate.row && newKeypadCoordinate.row != subLetterOriginKeyCoordinate.row - 1
   }
   
+  // MARK: Deletion
+  
+  private func enterInDeletionLoop() {
+    currentMode = .deletionLoop
+    deletionLoopTimer = Timer(timeInterval: Constants.deletionLoopDelay, target: self, selector: #selector(deletionLoop), userInfo: nil, repeats: true)
+    RunLoop.current.add(deletionLoopTimer!, forMode: .common)
+  }
+  
+  @objc private func deletionLoop() {
+    tapDelete()
+  }
+  
+  private func invalidateDeletionLoopTimer() {
+    deletionLoopTimer?.invalidate()
+    deletionLoopTimer = nil
+  }
+  
   // MARK: Delegate communication
   
   private func tapLetter(at keyCoordinate: KeyCoordinate) {
@@ -196,6 +217,7 @@ extension KeyState: KeyGestureRecognizerDelegate {
   
   func touchDown(at keypadCoordinate: KeypadCoordinate, with touch: UITouch) {
     if let writingTouch = self.writingTouch {
+      if currentMode == .deletionLoop { return }
       if writingTouch.beginKind.isModifier {
         modifierTouch = writingTouch
       } else {
@@ -216,6 +238,7 @@ extension KeyState: KeyGestureRecognizerDelegate {
   }
   
   func touchMoved(to keypadCoordinate: KeypadCoordinate, with touch: UITouch) {
+    if currentMode == .deletionLoop { return }
     guard let writingTouch = self.writingTouch else { return }
     if touch != writingTouch.touch { return }
     if writingTouch.currentCoordinate == keypadCoordinate { return }
@@ -248,7 +271,11 @@ extension KeyState: KeyGestureRecognizerDelegate {
     case .space:
       tapSpace()
     case .delete:
-      tapDelete()
+      if currentMode == .deletionLoop {
+        invalidateDeletionLoopTimer()
+      } else {
+        tapDelete()
+      }
     case .enter:
       tapReturn()
     case .next:
