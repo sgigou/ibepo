@@ -14,6 +14,8 @@ import UIKit
 /// Represents the keyboard state at any moment.
 final class KeyState {
   
+  typealias LetterTapTimestamp = (kind: Key.Kind, date: Date)
+  
   enum Mode {
     case writing, selectingSubLetter, deletionLoop
   }
@@ -36,6 +38,8 @@ final class KeyState {
   
   private var deletionLoopTimer: Timer?
   
+  private var lastTap: LetterTapTimestamp?
+  
   // MARK: Configuration
   
   func configure(keySet: KeySet, view: KeypadView) {
@@ -43,19 +47,41 @@ final class KeyState {
     gestureRecognizer = KeyGestureRecognizer(delegate: self)
     view.addGestureRecognizer(gestureRecognizer)
   }
+    
+  // MARK: Double-tap
   
+  private func isDoubleTap(kind: Key.Kind) -> Bool {
+    guard let lastTap = self.lastTap else { return false }
+    return lastTap.kind == kind && Date().timeIntervalSince(lastTap.date) < Constants.doubleTapDelay
+  }
+  
+  private func registerTap(on kind: Key.Kind) {
+    lastTap = LetterTapTimestamp(kind: kind, date: Date())
+  }
   
   // MARK: Modifiers
   
   private func tapShift() {
-    shiftState.toggle()
-    Logger.debug("Shift key is now \(shiftState).")
+    if isDoubleTap(kind: .shift) {
+      Logger.debug("Double tap on shift.")
+      lastTap = nil
+      shiftState = .locked
+    } else {
+      if !shiftState.isActive { registerTap(on: .shift) }
+      shiftState.toggle()
+    }
     displayDelegate?.shiftStateChanged(newState: shiftState)
   }
   
   private func tapAlt() {
-    altState.toggle()
-    Logger.debug("Alt key is now \(altState).")
+    if isDoubleTap(kind: .alt) {
+      Logger.debug("Double tap on alt.")
+      lastTap = nil
+      altState = .locked
+    } else {
+      if !altState.isActive { registerTap(on: .alt) }
+      altState.toggle()
+    }
     displayDelegate?.altStateChanged(newState: altState)
   }
   
@@ -188,6 +214,8 @@ final class KeyState {
     deletionLoopTimer?.invalidate()
     deletionLoopTimer = nil
   }
+  
+  // MARK:
   
   // MARK: Delegate communication
   

@@ -49,22 +49,32 @@ final class KeypadView: UIView {
   
   /// Draws the shift key for the given state.
   func updateShiftState(_ status: Key.State) {
+    shiftKeyView?.isHighlighted = false
     switch status {
+    case .locked:
+      shiftKeyView?.configure(withImage: SymbolsManager.getImage(named: "shift.fill"), level: .primary)
+      shiftKeyView?.isHighlighted = true
     case .on:
-      shiftKeyView!.configure(withImage: SymbolsManager.getImage(named: "shift.fill"), level: .primary)
+      shiftKeyView?.configure(withImage: SymbolsManager.getImage(named: "shift.fill"), level: .primary)
     case .off:
-      shiftKeyView!.configure(withImage: SymbolsManager.getImage(named: "shift"), level: .secondary)
+      shiftKeyView?.configure(withImage: SymbolsManager.getImage(named: "shift"), level: .secondary)
     }
+    shiftKeyView?.updateAppearance()
   }
   
   /// Draws the alt key for the given state.
   func updateAltState(_ state: Key.State) {
+    altKeyView?.isHighlighted = false
     switch state {
+    case .locked:
+      altKeyView?.configure(withImage: SymbolsManager.getImage(named: "option"), level: .primary)
+      altKeyView?.isHighlighted = true
     case .on:
-      altKeyView!.configure(withImage: SymbolsManager.getImage(named: "option"), level: .primary)
+      altKeyView?.configure(withImage: SymbolsManager.getImage(named: "option"), level: .primary)
     case .off:
-      altKeyView!.configure(withImage: SymbolsManager.getImage(named: "option"), level: .secondary)
+      altKeyView?.configure(withImage: SymbolsManager.getImage(named: "option"), level: .secondary)
     }
+    altKeyView?.updateAppearance()
   }
   
   /// Update the theme appearance.
