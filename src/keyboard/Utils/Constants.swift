@@ -18,5 +18,6 @@ class Constants {
   
   static let longPressDelay: Double = 0.5
   static let subLettersSpacing: CGFloat = 2.0
+  static let deletionLoopDelay: Double = 0.125
   
 }
