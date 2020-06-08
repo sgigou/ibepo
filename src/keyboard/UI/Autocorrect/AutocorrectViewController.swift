@@ -76,6 +76,7 @@ class AutocorrectViewController: UIViewController {
       amountToDelete = analyzer.textDocumentProxy?.selectedText != nil ? 0 : amountToDelete
     }
     delegate?.replace(charactersAmount: amountToDelete, by: "\(correction.word) ")
+    NotificationCenter.default.post(name: .userSelectedASuggestion, object: nil)
   }
 
 }

@@ -57,11 +57,6 @@ final class Autocorrect {
     return nil
   }
   
-  /**
-   Recalculates corrections.
-   
-   - parameter text: The entered text, if any.
-   */
   func update() {
     launchSearch()
   }
@@ -69,9 +64,6 @@ final class Autocorrect {
   
   // MARK: Autocorrect
   
-  /**
-   Launches a search in background.
-   */
   private func launchSearch() {
     if isSearching {
       Logger.debug("Cancelling running search")
