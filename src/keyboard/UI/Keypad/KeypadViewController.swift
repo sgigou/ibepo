@@ -18,7 +18,7 @@ class KeypadViewController: UIViewController {
   weak var delegate: KeyboardActionProtocol?
   
   /// Key state manager
-  private let keyState = KeyState()
+  private let keyboardState = KeyboardState()
   private let popupView = PopupView()
   
   /// Currently displayed key set.
@@ -39,9 +39,9 @@ class KeypadViewController: UIViewController {
     super.viewDidLoad()
     addObservers()
     loadKeySet()
-    keyState.configure(keySet: keySet, view: view as! KeypadView)
-    keyState.actionDelegate = self
-    keyState.displayDelegate = self
+    keyboardState.configure(keySet: keySet, view: view as! KeypadView)
+    keyboardState.actionDelegate = self
+    keyboardState.displayDelegate = self
   }
   
   deinit {

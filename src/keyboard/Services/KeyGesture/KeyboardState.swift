@@ -1,5 +1,5 @@
 //
-//  KeyState.swift
+//  KeyboardState.swift
 //  ibepo
 //
 //  Created by Steve Gigou on 2020-05-07.
@@ -9,10 +9,10 @@
 import UIKit
 
 
-// MARK: - KeyState
+// MARK: - KeyboardState
 
 /// Represents the keyboard state at any moment.
-final class KeyState {
+final class KeyboardState {
   
   typealias LetterTapTimestamp = (kind: Key.Kind, date: Date)
   
@@ -240,7 +240,7 @@ final class KeyState {
 
 // MARK: - KeyGestureRecognizerDelegate
 
-extension KeyState: KeyGestureRecognizerDelegate {
+extension KeyboardState: KeyGestureRecognizerDelegate {
   
   func touchDown(at keypadCoordinate: KeypadCoordinate, with touch: UITouch) {
     if let writingTouch = self.writingTouch {
@@ -251,7 +251,7 @@ extension KeyState: KeyGestureRecognizerDelegate {
         touchUp(at: writingTouch.currentCoordinate, with: writingTouch.touch)
       }
     }
-    writingTouch = KeyState.Touch(touch: touch, coordinate: keypadCoordinate)
+    writingTouch = KeyboardState.Touch(touch: touch, coordinate: keypadCoordinate)
     switch writingTouch!.beginKind {
     case .shift:
       tapShift()
@@ -317,9 +317,9 @@ extension KeyState: KeyGestureRecognizerDelegate {
 }
 
 
-// MARK: - KeyState.Touch
+// MARK: - KeyboardState.Touch
 
-extension KeyState {
+extension KeyboardState {
   
   class Touch {
     
