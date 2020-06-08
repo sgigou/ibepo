@@ -20,6 +20,7 @@ class NonBreakingSpaceInserter {
 extension NonBreakingSpaceInserter: TextModifier {
   
   func modify() {
+    if !KeyboardSettings.shared.shouldAutocorrect { return }
     let lastCharacters = KeyboardSettings.shared.textDocumentProxyAnalyzer.getLastCharacters(amount: 3)
     if lastCharacters.count < 3 { return }
     if !lastCharacters.getElement(at: 0).isLetter { return }
