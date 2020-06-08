@@ -72,6 +72,8 @@
 		399E64262464381A00D25C6D /* KeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E64242464381A00D25C6D /* KeyState.swift */; };
 		399FBB77248E525B004F365D /* SpaceRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FBB76248E525B004F365D /* SpaceRemover.swift */; };
 		399FBB78248E525B004F365D /* SpaceRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FBB76248E525B004F365D /* SpaceRemover.swift */; };
+		399FBB7A248E5B06004F365D /* NonBreakingSpaceInserter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FBB79248E5B06004F365D /* NonBreakingSpaceInserter.swift */; };
+		399FBB7B248E5B06004F365D /* NonBreakingSpaceInserter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FBB79248E5B06004F365D /* NonBreakingSpaceInserter.swift */; };
 		39A197E42462D39E00974C58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39528F88245AFC510080FBE8 /* Assets.xcassets */; };
 		39C6E5A82480FF0700EDB1EA /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C6E5A72480FF0700EDB1EA /* PopupView.swift */; };
 		39C6E5A92480FF0700EDB1EA /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C6E5A72480FF0700EDB1EA /* PopupView.swift */; };
@@ -164,6 +166,7 @@
 		399E641F24640E7A00D25C6D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		399E64242464381A00D25C6D /* KeyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyState.swift; sourceTree = "<group>"; };
 		399FBB76248E525B004F365D /* SpaceRemover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceRemover.swift; sourceTree = "<group>"; };
+		399FBB79248E5B06004F365D /* NonBreakingSpaceInserter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonBreakingSpaceInserter.swift; sourceTree = "<group>"; };
 		39C6E5A72480FF0700EDB1EA /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		39C6E5AA248108F400EDB1EA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		39FA3A04247BF4E700445602 /* KeyLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyLocator.swift; sourceTree = "<group>"; };
@@ -365,6 +368,7 @@
 				39991308248E2F2100AD614E /* TextModifiersFactory.swift */,
 				39991305248E2E9900AD614E /* DotInserter.swift */,
 				399FBB76248E525B004F365D /* SpaceRemover.swift */,
+				399FBB79248E5B06004F365D /* NonBreakingSpaceInserter.swift */,
 			);
 			path = TextModifiers;
 			sourceTree = "<group>";
@@ -607,6 +611,7 @@
 				3981495324604393007C9754 /* SpecialKeyView.swift in Sources */,
 				39C6E5A92480FF0700EDB1EA /* PopupView.swift in Sources */,
 				39C6E5AC248108F400EDB1EA /* Constants.swift in Sources */,
+				399FBB7B248E5B06004F365D /* NonBreakingSpaceInserter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +640,7 @@
 				39514A552462A4D700F05A48 /* ColorManager.swift in Sources */,
 				398149652460521D007C9754 /* LetterKeyView.swift in Sources */,
 				391CF4CF2473ECBB00C36FA6 /* Autocorrect.swift in Sources */,
+				399FBB7A248E5B06004F365D /* NonBreakingSpaceInserter.swift in Sources */,
 				3981495D246051F0007C9754 /* KeypadViewController.swift in Sources */,
 				3981496324605219007C9754 /* KeypadView.swift in Sources */,
 				3981495E246051F7007C9754 /* CharacterSet.swift in Sources */,

@@ -12,6 +12,7 @@ class TextModifiersFactory {
     return TextModifierSet(modifiers: [
       DotInserter(delegate),
       SpaceRemover(delegate),
+      NonBreakingSpaceInserter(delegate)
     ])
   }
   
