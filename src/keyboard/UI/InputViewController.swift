@@ -21,6 +21,7 @@ final class InputViewController: UIViewController {
   private var keypadViewController: KeypadViewController!
   private var keypadHeightConstraint: NSLayoutConstraint!
   private var autocorrectHeightConstraint: NSLayoutConstraint!
+  private var textModifiers: TextModifierSet!
   
   private var rowHeight: CGFloat {
     if UIDevice.isPhone {
@@ -44,6 +45,7 @@ final class InputViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     loadViews()
+    textModifiers = TextModifiersFactory.generate(for: self)
   }
   
   
@@ -55,6 +57,7 @@ final class InputViewController: UIViewController {
   func update(textDocumentProxy: UITextDocumentProxy) {
     KeyboardSettings.shared.update(textDocumentProxy)
     autocorrectViewController.autocorrect.update()
+    textModifiers.moveOccured()
   }
   
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -113,6 +116,7 @@ extension InputViewController: KeyboardActionProtocol {
     } else {
       delegate?.insert(text: text)
       autocorrectViewController.autocorrect.update()
+      textModifiers.modify()
     }
   }
   
@@ -120,11 +124,13 @@ extension InputViewController: KeyboardActionProtocol {
     deleteBackward(amount: charactersAmount)
     delegate?.insert(text: text)
     autocorrectViewController.autocorrect.update()
+    textModifiers.modify()
   }
   
   func deleteBackward() {
     delegate?.deleteBackward()
     autocorrectViewController.autocorrect.update()
+    textModifiers.deletionOccured()
   }
   
   func deleteBackward(amount: Int) {
