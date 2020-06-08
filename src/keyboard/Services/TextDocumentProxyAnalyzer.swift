@@ -17,10 +17,7 @@ final class TextDocumentProxyAnalyzer {
   
   /// Currently editing word. An empty string if none.
   var currentWord: String {
-    guard let textDocumentProxy = self.textDocumentProxy else {
-      return ""
-    }
-    let context = findContext(in: textDocumentProxy)
+    let context = findContext()
     var currentWord = ""
     for character in context.reversed() {
       if !character.isLetter {
@@ -33,10 +30,7 @@ final class TextDocumentProxyAnalyzer {
   
   func getLastCharacters(amount: Int) -> String {
     if amount <= 0 { return "" }
-    guard let textDocumentProxy = self.textDocumentProxy else {
-      return ""
-    }
-    let context = findContext(in: textDocumentProxy)
+    let context = findContext()
     return String(context.suffix(amount))
   }
   
@@ -45,7 +39,10 @@ final class TextDocumentProxyAnalyzer {
    
    - returns: Selected text, document context or an empty string.
    */
-  private func findContext(in textDocumentProxy: UITextDocumentProxy) -> String {
+  func findContext() -> String {
+    guard let textDocumentProxy = self.textDocumentProxy else {
+      return ""
+    }
     if #available(iOS 11.0, *) {
       return textDocumentProxy.selectedText ?? textDocumentProxy.documentContextBeforeInput ?? ""
     } else {

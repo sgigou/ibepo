@@ -10,6 +10,8 @@ class DotInserter {
   
   weak var delegate: KeyboardActionProtocol?
   
+  private var isTemporaryDisabled = false
+  
   convenience init(_ delegate: KeyboardActionProtocol) {
     self.init()
     self.delegate = delegate
@@ -20,6 +22,14 @@ class DotInserter {
 extension DotInserter: TextModifier {
   
   func modify() {
+    if !KeyboardSettings.shared.shouldAutocorrect { return }
+    if isTemporaryDisabled {
+      let lastCharacter = KeyboardSettings.shared.textDocumentProxyAnalyzer.findContext().last
+      if lastCharacter != nil && lastCharacter!.isLetter {
+        isTemporaryDisabled = false
+      }
+      return
+    }
     let lastCharacters = KeyboardSettings.shared.textDocumentProxyAnalyzer.getLastCharacters(amount: 3)
     if lastCharacters.getSubSequence(from: 1, to: 2) != "  " { return }
     if !lastCharacters.getElement(at: 0).isLetter { return }
@@ -28,11 +38,11 @@ extension DotInserter: TextModifier {
   }
   
   func deletionOccured() {
-    
+    isTemporaryDisabled = true
   }
   
   func moveOccured() {
-    
+    isTemporaryDisabled = true
   }
   
 }
