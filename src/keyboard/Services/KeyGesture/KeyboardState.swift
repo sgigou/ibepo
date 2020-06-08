@@ -243,8 +243,14 @@ final class KeyboardState {
   }
   
   private func tapDelete() {
+    let shouldUppercase = (shiftState == .locked) ? true : autoCapitalizer.shouldCapitalizeAfterDeletion()
     actionDelegate?.deleteBackward()
-    readAutoCapitalization()
+    if shouldUppercase && !shiftState.isActive {
+      shiftState = .on
+      displayDelegate?.shiftStateChanged(newState: shiftState)
+    } else {
+      readAutoCapitalization()
+    }
   }
   
   private func insert(_ text: String) {

@@ -22,6 +22,13 @@ class AutoCapitalizer {
     }
   }
   
+  func shouldCapitalizeAfterDeletion() -> Bool {
+    guard let lastCharacter = KeyboardSettings.shared.textDocumentProxyAnalyzer.findContext().last else {
+      return false
+    }
+    return lastCharacter.isUppercase
+  }
+  
   private func calculateForWordsType() -> Bool {
     guard let lastCharacter = KeyboardSettings.shared.textDocumentProxyAnalyzer.findContext().last else {
       return true
