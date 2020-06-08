@@ -40,7 +40,7 @@ extension SpaceRemover: TextModifier {
     if !lastCharacters.getElement(at: 0).isLetter { return }
     if lastCharacters.getElement(at: 1) != " " { return }
     let punctuation = (lastCharacters.last)!
-    if !([".", ","].contains(punctuation)) { return }
+    if !([".", ",", "…"].contains(punctuation)) { return }
     delegate?.deleteBackward(amount: 2)
     delegate?.insert(text: String(punctuation))
   }
