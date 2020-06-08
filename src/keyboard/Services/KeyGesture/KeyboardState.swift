@@ -91,11 +91,8 @@ final class KeyboardState {
     displayDelegate?.altStateChanged(newState: altState)
   }
   
-  private func switchShiftAndAltAfterLetter() {
+  private func switchAltAfterLetter() {
     if modifierTouch != nil { return }
-    if shiftState == .on {
-      tapShift()
-    }
     if altState == .on {
       tapAlt()
     }
@@ -103,6 +100,7 @@ final class KeyboardState {
   
   private func readAutoCapitalization() {
     if shiftState == .locked { return }
+    if modifierTouch != nil { return }
     if autoCapitalizer.shouldCapitalize() != shiftState.isActive {
       shiftState.toggle()
       displayDelegate?.shiftStateChanged(newState: shiftState)
@@ -305,7 +303,8 @@ extension KeyboardState: KeyGestureRecognizerDelegate {
   func touchUp(at keypadCoordinate: KeypadCoordinate, with touch: UITouch) {
     if modifierTouch != nil && modifierTouch!.touch == touch {
       modifierTouch = nil
-      switchShiftAndAltAfterLetter()
+      switchAltAfterLetter()
+      readAutoCapitalization()
       return
     }
     invalidateLongPressTimer()
@@ -329,7 +328,7 @@ extension KeyboardState: KeyGestureRecognizerDelegate {
     default:
       break
     }
-    if !writingTouch.currentKind.isModifier { switchShiftAndAltAfterLetter() }
+    if !writingTouch.currentKind.isModifier { switchAltAfterLetter() }
     resetWritingTouch()
   }
   

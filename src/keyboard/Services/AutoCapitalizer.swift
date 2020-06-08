@@ -11,6 +11,8 @@ class AutoCapitalizer {
   func shouldCapitalize() -> Bool {
     let type = KeyboardSettings.shared.autoCapitalizationType
     switch type {
+    case .allCharacters:
+      return true
     default:
       return false
     }
