@@ -85,6 +85,16 @@ final class KeyState {
     displayDelegate?.altStateChanged(newState: altState)
   }
   
+  private func switchShiftAndAltAfterLetter() {
+    if modifierTouch != nil { return }
+    if shiftState == .on {
+      tapShift()
+    }
+    if altState == .on {
+      tapAlt()
+    }
+  }
+  
   private func resetWritingTouch() {
     writingTouch = nil
     currentMode = .writing
@@ -108,17 +118,6 @@ final class KeyState {
       return true
     }
     return beginKind.isModifier && !endKind.isModifier
-  }
-  
-  /// Resets the shift or alt status if the touch began on it.
-  private func switchShiftAndAltAfterLetter() {
-    if modifierTouch != nil { return }
-    if shiftState == .on {
-      tapShift()
-    }
-    if altState == .on {
-      tapAlt()
-    }
   }
   
   private func writeCurrentLetter() {
