@@ -75,6 +75,11 @@ class KeypadViewController: UIViewController {
     }
   }
   
+  // MARK: Update
+  
+  func textDocumentProxyWasUpdated() {
+    keyboardState.textDocumentProxyWasUpdated()
+  }
   
   // MARK: Loading
   

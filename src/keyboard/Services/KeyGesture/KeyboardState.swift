@@ -23,6 +23,8 @@ final class KeyboardState {
   weak var actionDelegate: KeyboardActionProtocol?
   weak var displayDelegate: KeyboardDisplayProtocol?
   
+  private let autoCapitalizer = AutoCapitalizer()
+  
   private var keySet: KeySet!
   private var currentMode: Mode = .writing
 
@@ -46,6 +48,10 @@ final class KeyboardState {
     self.keySet = keySet
     gestureRecognizer = KeyGestureRecognizer(delegate: self)
     view.addGestureRecognizer(gestureRecognizer)
+  }
+  
+  func textDocumentProxyWasUpdated() {
+    readAutoCapitalization()
   }
     
   // MARK: Double-tap
@@ -95,6 +101,14 @@ final class KeyboardState {
     }
   }
   
+  private func readAutoCapitalization() {
+    if shiftState == .locked { return }
+    if autoCapitalizer.shouldCapitalize() != shiftState.isActive {
+      shiftState.toggle()
+      displayDelegate?.shiftStateChanged(newState: shiftState)
+    }
+  }
+  
   private func resetWritingTouch() {
     writingTouch = nil
     currentMode = .writing
@@ -124,7 +138,7 @@ final class KeyboardState {
     guard let writingTouch = self.writingTouch else { return }
     switch currentMode {
     case .selectingSubLetter:
-      actionDelegate?.insert(text: currentSubLetter)
+      insert(currentSubLetter)
     default:
       tapLetter(at: KeyLocator.calculateKeyCoordinate(for: writingTouch.currentCoordinate))
     }
@@ -214,25 +228,30 @@ final class KeyboardState {
     deletionLoopTimer = nil
   }
   
-  // MARK:
-  
   // MARK: Delegate communication
   
   private func tapLetter(at keyCoordinate: KeyCoordinate) {
     let key = keySet.key(at: keyCoordinate)
-    actionDelegate?.insert(text: key.set.letter(forShiftState: shiftState, andAltState: altState))
+    let text = key.set.letter(forShiftState: shiftState, andAltState: altState)
+    insert(text)
   }
   
   private func tapReturn() {
-    actionDelegate?.insert(text: "\n")
+    insert("\n")
   }
   
   private func tapSpace() {
-    actionDelegate?.insert(text: " ")
+    insert(" ")
   }
   
   private func tapDelete() {
     actionDelegate?.deleteBackward()
+    readAutoCapitalization()
+  }
+  
+  private func insert(_ text: String) {
+    actionDelegate?.insert(text: text)
+    readAutoCapitalization()
   }
   
 }
