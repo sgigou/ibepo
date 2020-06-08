@@ -31,6 +31,15 @@ final class TextDocumentProxyAnalyzer {
     return currentWord
   }
   
+  func getLastCharacters(amount: Int) -> String {
+    if amount <= 0 { return "" }
+    guard let textDocumentProxy = self.textDocumentProxy else {
+      return ""
+    }
+    let context = findContext(in: textDocumentProxy)
+    return String(context.suffix(amount))
+  }
+  
   /**
    Find the context, based on the iOS version.
    

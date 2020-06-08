@@ -20,7 +20,11 @@ class DotInserter {
 extension DotInserter: TextModifier {
   
   func modify() {
-    
+    let lastCharacters = KeyboardSettings.shared.textDocumentProxyAnalyzer.getLastCharacters(amount: 3)
+    if lastCharacters.getSubSequence(from: 1, to: 2) != "  " { return }
+    if !lastCharacters.getElement(at: 0).isLetter { return }
+    delegate?.deleteBackward(amount: 2)
+    delegate?.insert(text: ". ")
   }
   
   func deletionOccured() {

@@ -16,6 +16,21 @@ extension Collection {
   
 }
 
+extension String {
+  
+  func getElement(at charIndex: Int) -> String.Element {
+    let index = self.index(startIndex, offsetBy: charIndex)
+    return self[index]
+  }
+  
+  func getSubSequence(from beginCharIndex: Int, to endCharIndex: Int) -> SubSequence {
+    let beginIndex = index(startIndex, offsetBy: beginCharIndex)
+    let endIndex = index(startIndex, offsetBy: endCharIndex)
+    return self[beginIndex...endIndex]
+  }
+  
+}
+
 extension UIDevice {
   
   static var isPhone: Bool {
