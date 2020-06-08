@@ -58,6 +58,7 @@ final class InputViewController: UIViewController {
     KeyboardSettings.shared.update(textDocumentProxy)
     autocorrectViewController.autocorrect.update()
     textModifiers.moveOccured()
+    keypadViewController.textDocumentProxyWasUpdated()
   }
   
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

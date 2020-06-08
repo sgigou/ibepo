@@ -26,9 +26,11 @@ final class KeyboardSettings {
   /// Current type of the return key.
   private(set) var returnKeyType: UIReturnKeyType = .default
   
-  /// Indicates if the autocorrection is activated.
   var shouldAutocorrect: Bool {
     return textDocumentProxyAnalyzer.textDocumentProxy?.autocorrectionType != .no
+  }
+  var autoCapitalizationType: UITextAutocapitalizationType {
+    return textDocumentProxyAnalyzer.textDocumentProxy?.autocapitalizationType ?? .sentences
   }
   
   /**

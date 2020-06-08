@@ -1,5 +1,5 @@
 //
-//  KeyState.swift
+//  KeyboardState.swift
 //  ibepo
 //
 //  Created by Steve Gigou on 2020-05-07.
@@ -9,10 +9,10 @@
 import UIKit
 
 
-// MARK: - KeyState
+// MARK: - KeyboardState
 
 /// Represents the keyboard state at any moment.
-final class KeyState {
+final class KeyboardState {
   
   typealias LetterTapTimestamp = (kind: Key.Kind, date: Date)
   
@@ -22,6 +22,8 @@ final class KeyState {
   
   weak var actionDelegate: KeyboardActionProtocol?
   weak var displayDelegate: KeyboardDisplayProtocol?
+  
+  private let autoCapitalizer = AutoCapitalizer()
   
   private var keySet: KeySet!
   private var currentMode: Mode = .writing
@@ -46,6 +48,10 @@ final class KeyState {
     self.keySet = keySet
     gestureRecognizer = KeyGestureRecognizer(delegate: self)
     view.addGestureRecognizer(gestureRecognizer)
+  }
+  
+  func textDocumentProxyWasUpdated() {
+    readAutoCapitalization()
   }
     
   // MARK: Double-tap
@@ -85,6 +91,22 @@ final class KeyState {
     displayDelegate?.altStateChanged(newState: altState)
   }
   
+  private func switchAltAfterLetter() {
+    if modifierTouch != nil { return }
+    if altState == .on {
+      tapAlt()
+    }
+  }
+  
+  private func readAutoCapitalization() {
+    if shiftState == .locked { return }
+    if modifierTouch != nil { return }
+    if autoCapitalizer.shouldCapitalize() != shiftState.isActive {
+      shiftState.toggle()
+      displayDelegate?.shiftStateChanged(newState: shiftState)
+    }
+  }
+  
   private func resetWritingTouch() {
     writingTouch = nil
     currentMode = .writing
@@ -110,22 +132,11 @@ final class KeyState {
     return beginKind.isModifier && !endKind.isModifier
   }
   
-  /// Resets the shift or alt status if the touch began on it.
-  private func switchShiftAndAltAfterLetter() {
-    if modifierTouch != nil { return }
-    if shiftState == .on {
-      tapShift()
-    }
-    if altState == .on {
-      tapAlt()
-    }
-  }
-  
   private func writeCurrentLetter() {
     guard let writingTouch = self.writingTouch else { return }
     switch currentMode {
     case .selectingSubLetter:
-      actionDelegate?.insert(text: currentSubLetter)
+      insert(currentSubLetter)
     default:
       tapLetter(at: KeyLocator.calculateKeyCoordinate(for: writingTouch.currentCoordinate))
     }
@@ -215,25 +226,36 @@ final class KeyState {
     deletionLoopTimer = nil
   }
   
-  // MARK:
-  
   // MARK: Delegate communication
   
   private func tapLetter(at keyCoordinate: KeyCoordinate) {
     let key = keySet.key(at: keyCoordinate)
-    actionDelegate?.insert(text: key.set.letter(forShiftState: shiftState, andAltState: altState))
+    let text = key.set.letter(forShiftState: shiftState, andAltState: altState)
+    insert(text)
   }
   
   private func tapReturn() {
-    actionDelegate?.insert(text: "\n")
+    insert("\n")
   }
   
   private func tapSpace() {
-    actionDelegate?.insert(text: " ")
+    insert(" ")
   }
   
   private func tapDelete() {
+    let shouldUppercase = (shiftState == .locked) ? true : autoCapitalizer.shouldCapitalizeAfterDeletion()
     actionDelegate?.deleteBackward()
+    if shouldUppercase && !shiftState.isActive {
+      shiftState = .on
+      displayDelegate?.shiftStateChanged(newState: shiftState)
+    } else {
+      readAutoCapitalization()
+    }
+  }
+  
+  private func insert(_ text: String) {
+    actionDelegate?.insert(text: text)
+    readAutoCapitalization()
   }
   
 }
@@ -241,7 +263,7 @@ final class KeyState {
 
 // MARK: - KeyGestureRecognizerDelegate
 
-extension KeyState: KeyGestureRecognizerDelegate {
+extension KeyboardState: KeyGestureRecognizerDelegate {
   
   func touchDown(at keypadCoordinate: KeypadCoordinate, with touch: UITouch) {
     if let writingTouch = self.writingTouch {
@@ -252,7 +274,7 @@ extension KeyState: KeyGestureRecognizerDelegate {
         touchUp(at: writingTouch.currentCoordinate, with: writingTouch.touch)
       }
     }
-    writingTouch = KeyState.Touch(touch: touch, coordinate: keypadCoordinate)
+    writingTouch = KeyboardState.Touch(touch: touch, coordinate: keypadCoordinate)
     switch writingTouch!.beginKind {
     case .shift:
       tapShift()
@@ -287,7 +309,8 @@ extension KeyState: KeyGestureRecognizerDelegate {
   func touchUp(at keypadCoordinate: KeypadCoordinate, with touch: UITouch) {
     if modifierTouch != nil && modifierTouch!.touch == touch {
       modifierTouch = nil
-      switchShiftAndAltAfterLetter()
+      switchAltAfterLetter()
+      readAutoCapitalization()
       return
     }
     invalidateLongPressTimer()
@@ -311,16 +334,16 @@ extension KeyState: KeyGestureRecognizerDelegate {
     default:
       break
     }
-    if !writingTouch.currentKind.isModifier { switchShiftAndAltAfterLetter() }
+    if !writingTouch.currentKind.isModifier { switchAltAfterLetter() }
     resetWritingTouch()
   }
   
 }
 
 
-// MARK: - KeyState.Touch
+// MARK: - KeyboardState.Touch
 
-extension KeyState {
+extension KeyboardState {
   
   class Touch {
     
