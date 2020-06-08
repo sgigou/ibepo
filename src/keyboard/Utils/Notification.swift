@@ -10,9 +10,8 @@ import Foundation
 
 extension Notification.Name {
   
-  /// The keyboard appearance needs to be updated.
   static let keyboardAppearanceDidChange = Notification.Name("keyboardAppearanceDidChange")
-  /// The return key needs to be updated
   static let returnKeyTypeDidChange = Notification.Name("returnKeyTypeDidChange")
+  static let userSelectedASuggestion = Notification.Name("userSelectedASuggestion")
   
 }

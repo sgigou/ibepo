@@ -6,13 +6,26 @@
 //  Copyright © 2020 Novesoft. All rights reserved.
 //
 
+import Foundation
+
 class SpaceRemover {
   
   weak var delegate: KeyboardActionProtocol?
   
+  private var isActivated = false
+  
   convenience init(_ delegate: KeyboardActionProtocol) {
     self.init()
     self.delegate = delegate
+    NotificationCenter.default.addObserver(self, selector: #selector(userSelectedASuggestion), name: .userSelectedASuggestion, object: nil)
+  }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
+  
+  @objc private func userSelectedASuggestion() {
+    isActivated = true
   }
   
 }
@@ -20,6 +33,8 @@ class SpaceRemover {
 extension SpaceRemover: TextModifier {
   
   func modify() {
+    if !isActivated { return }
+    isActivated = false
     let lastCharacters = KeyboardSettings.shared.textDocumentProxyAnalyzer.getLastCharacters(amount: 3)
     if lastCharacters.count < 3 { return }
     if !lastCharacters.getElement(at: 0).isLetter { return }
@@ -30,8 +45,12 @@ extension SpaceRemover: TextModifier {
     delegate?.insert(text: String(punctuation))
   }
   
-  func deletionOccured() {}
+  func deletionOccured() {
+    isActivated = false
+  }
   
-  func moveOccured() {}
+  func moveOccured() {
+    isActivated = false
+  }
   
 }
