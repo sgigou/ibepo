@@ -70,6 +70,8 @@
 		399E642124640E7A00D25C6D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E641F24640E7A00D25C6D /* Logger.swift */; };
 		399E64252464381A00D25C6D /* KeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E64242464381A00D25C6D /* KeyState.swift */; };
 		399E64262464381A00D25C6D /* KeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E64242464381A00D25C6D /* KeyState.swift */; };
+		399FBB77248E525B004F365D /* SpaceRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FBB76248E525B004F365D /* SpaceRemover.swift */; };
+		399FBB78248E525B004F365D /* SpaceRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FBB76248E525B004F365D /* SpaceRemover.swift */; };
 		39A197E42462D39E00974C58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39528F88245AFC510080FBE8 /* Assets.xcassets */; };
 		39C6E5A82480FF0700EDB1EA /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C6E5A72480FF0700EDB1EA /* PopupView.swift */; };
 		39C6E5A92480FF0700EDB1EA /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C6E5A72480FF0700EDB1EA /* PopupView.swift */; };
@@ -161,6 +163,7 @@
 		399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyGestureRecognizer.swift; sourceTree = "<group>"; };
 		399E641F24640E7A00D25C6D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		399E64242464381A00D25C6D /* KeyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyState.swift; sourceTree = "<group>"; };
+		399FBB76248E525B004F365D /* SpaceRemover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceRemover.swift; sourceTree = "<group>"; };
 		39C6E5A72480FF0700EDB1EA /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		39C6E5AA248108F400EDB1EA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		39FA3A04247BF4E700445602 /* KeyLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyLocator.swift; sourceTree = "<group>"; };
@@ -361,6 +364,7 @@
 				39991302248E2E4C00AD614E /* TextModifier.swift */,
 				39991308248E2F2100AD614E /* TextModifiersFactory.swift */,
 				39991305248E2E9900AD614E /* DotInserter.swift */,
+				399FBB76248E525B004F365D /* SpaceRemover.swift */,
 			);
 			path = TextModifiers;
 			sourceTree = "<group>";
@@ -572,6 +576,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				399FBB78248E525B004F365D /* SpaceRemover.swift in Sources */,
 				395783BF247517D9000916DB /* TextDocumentProxyAnalyzer.swift in Sources */,
 				392159BD246D39BF00F2E013 /* KeyboardProtocols.swift in Sources */,
 				399E641E2464069D00D25C6D /* KeyGestureRecognizer.swift in Sources */,
@@ -634,6 +639,7 @@
 				3981496324605219007C9754 /* KeypadView.swift in Sources */,
 				3981495E246051F7007C9754 /* CharacterSet.swift in Sources */,
 				3974AFFF2465824A004901B7 /* Notification.swift in Sources */,
+				399FBB77248E525B004F365D /* SpaceRemover.swift in Sources */,
 				3994E3A6245D6E82008B1099 /* HomeViewController.swift in Sources */,
 				395783BE247517D9000916DB /* TextDocumentProxyAnalyzer.swift in Sources */,
 				392159BE246D3A4900F2E013 /* KeyboardProtocols.swift in Sources */,
