@@ -15,6 +15,8 @@ class AutoCapitalizer {
       return true
     case .words:
       return calculateForWordsType()
+    case .sentences:
+      return calculateForSentencesType()
     default:
       return false
     }
@@ -25,6 +27,18 @@ class AutoCapitalizer {
       return true
     }
     return lastCharacter.isWhitespace || lastCharacter.isNewline
+  }
+  
+  private func calculateForSentencesType() -> Bool {
+    guard let lastCharacter = KeyboardSettings.shared.textDocumentProxyAnalyzer.findContext().last else {
+      return true
+    }
+    if lastCharacter.isNewline { return true }
+    if !lastCharacter.isWhitespace { return false }
+    let lastNonWhiteChar = KeyboardSettings.shared.textDocumentProxyAnalyzer.findContext().last { (Character) -> Bool in
+      return !Character.isWhitespace
+    }
+    return lastNonWhiteChar != nil && [".", "!", "?", "…"].contains(lastNonWhiteChar!)
   }
   
 }
