@@ -11,13 +11,10 @@ import UIKit
 
 // MARK: - KeyboardViewController
 
-/// View for custom keyboard extension
-class KeyboardViewController: UIInputViewController {
+final class KeyboardViewController: UIInputViewController {
   
-  /// Full input view controller with keyboard and suggestions.
   private var customInputViewController: InputViewController!
   private var constraintsHaveBeenAdded = false
-  
   
   // MARK: Life cycle
   
@@ -46,12 +43,8 @@ class KeyboardViewController: UIInputViewController {
     initKeyboardViewConstraints()
   }
   
-  
   // MARK: Configuration
   
-  /**
-   Read keyboard values and store them into the KeyboardSettings.
-   */
   private func initSettings() {
     if #available(iOSApplicationExtension 11.0, *) {
       Logger.debug("needsInputModeSwitchKey set to \(needsInputModeSwitchKey)")
@@ -69,7 +62,6 @@ class KeyboardViewController: UIInputViewController {
   }
 
 }
-
 
 // MARK: - KeyboardActionProtocol
 
