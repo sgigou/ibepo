@@ -74,6 +74,11 @@ class PopupView: UIView {
     letterStackView.leftAnchor.constraint(equalTo: popupView.leftAnchor, constant: Constants.keyHorizontalPadding).isActive = true
   }
   
+  func updateAppearance() {
+    tailView.backgroundColor = ColorManager.shared.background
+    popupView.backgroundColor = ColorManager.shared.background
+  }
+  
   // MARK: Actions
   
   func hidePopup() {
@@ -149,7 +154,7 @@ class PopupView: UIView {
     for case let label as UILabel in letterStackView.arrangedSubviews {
       if label.text == subLetter {
         label.font = subLetterFont
-        label.textColor = ColorManager.shared.background
+        label.textColor = ColorManager.shared.colorAppearance == .dark ? ColorManager.shared.label : ColorManager.shared.background
         label.backgroundColor = ColorManager.shared.mainColor
       } else {
         label.font = subLetterFont

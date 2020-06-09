@@ -11,11 +11,31 @@ import UIKit
 /// Create keyboard colors based on current theme and iOS version.
 final class ColorManager {
   
-  /// Default instance of the ColorManager.
+  enum ColorAppearance {
+    case unspecified, light, dark
+  }
+  
   static let shared = ColorManager()
   
-  /// Current appearence of the keyboard.
-  var keyboardAppearance: UIKeyboardAppearance = .default
+  var keyboardAppearance: ColorAppearance = .unspecified {
+    didSet {
+      if oldValue == keyboardAppearance { return }
+      NotificationCenter.default.post(name: .keyboardAppearanceDidChange, object: nil)
+    }
+  }
+  
+  var systemAppearance: ColorAppearance = .unspecified {
+    didSet {
+      if oldValue == systemAppearance { return }
+      NotificationCenter.default.post(name: .keyboardAppearanceDidChange, object: nil)
+    }
+  }
+  
+  var colorAppearance: ColorAppearance {
+    if keyboardAppearance != .unspecified { return keyboardAppearance }
+    if systemAppearance != .unspecified { return systemAppearance }
+    return .unspecified
+  }
   
   var mainColor: UIColor {
     if #available(iOS 13, *) {
@@ -29,7 +49,7 @@ final class ColorManager {
     if #available(iOS 13, *) {
       return .label
     } else {
-      return keyboardAppearance == .dark ? .white : .black
+      return colorAppearance == .dark ? .white : .black
     }
   }
   
@@ -37,22 +57,26 @@ final class ColorManager {
     if #available(iOS 13, *) {
       return .secondaryLabel
     } else {
-      return keyboardAppearance == .dark ?
+      return colorAppearance == .dark ?
         UIColor(red: 0.922, green: 0.922, blue: 0.961, alpha: 0.6) :
         UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
     }
   }
   
   var background: UIColor {
-    return keyboardAppearance == .dark ?
-      UIColor(red: 0.424, green: 0.424, blue: 0.424, alpha: 1.0) :
-      .white
+    if colorAppearance == .dark {
+      return UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
+    } else {
+      return .white
+    }
   }
   
   var secondaryBackground: UIColor {
-    return keyboardAppearance == .dark ?
-      UIColor(red: 0.286, green: 0.286, blue: 0.286, alpha: 1.0) :
-      UIColor(red: 0.698, green: 0.714, blue: 0.761, alpha: 1.0)
+    if colorAppearance == .dark {
+      return UIColor(red: 0.37, green: 0.37, blue: 0.37, alpha: 1.0)
+    } else {
+      return UIColor(red: 0.698, green: 0.714, blue: 0.761, alpha: 1.0)
+    }
   }
   
 }

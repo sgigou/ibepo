@@ -37,11 +37,11 @@ class KeypadViewController: UIViewController {
   /// Loads the key set.
   override func viewDidLoad() {
     super.viewDidLoad()
-    addObservers()
     loadKeySet()
     keyboardState.configure(keySet: keySet, view: view as! KeypadView)
     keyboardState.actionDelegate = self
     keyboardState.displayDelegate = self
+    addObservers()
   }
   
   deinit {
@@ -73,6 +73,7 @@ class KeypadViewController: UIViewController {
         key.view.updateAppearance()
       }
     }
+    popupView.updateAppearance()
   }
   
   // MARK: Update

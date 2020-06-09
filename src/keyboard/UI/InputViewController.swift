@@ -39,15 +39,19 @@ final class InputViewController: UIViewController {
     }
   }
   
-  
   // MARK: Life cycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    updateColorAppearance()
     loadViews()
     textModifiers = TextModifiersFactory.generate(for: self)
   }
   
+  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    super.traitCollectionDidChange(previousTraitCollection)
+    updateColorAppearance()
+  }
   
   // MARK: Configuration
   
@@ -64,6 +68,21 @@ final class InputViewController: UIViewController {
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
     updateHeights()
+  }
+  
+  private func updateColorAppearance() {
+    if #available(iOS 12.0, *) {
+      switch traitCollection.userInterfaceStyle {
+      case .light:
+        ColorManager.shared.systemAppearance = .light
+      case .dark:
+        ColorManager.shared.systemAppearance = .dark
+      default:
+        ColorManager.shared.systemAppearance = .unspecified
+      }
+    } else {
+      ColorManager.shared.systemAppearance = .unspecified
+    }
   }
   
   // MARK: Loading
