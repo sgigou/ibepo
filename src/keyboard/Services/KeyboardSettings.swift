@@ -47,10 +47,13 @@ final class KeyboardSettings {
    Updates the appearance of the keyboard if needed.
    */
   private func updateAppearance(_ keyboardAppearance: UIKeyboardAppearance) {
-    if ColorManager.shared.keyboardAppearance != keyboardAppearance {
-      Logger.debug("Keyboard appearance switching from \(ColorManager.shared.keyboardAppearance.rawValue) to \(keyboardAppearance.rawValue)")
-      ColorManager.shared.keyboardAppearance = keyboardAppearance
-      NotificationCenter.default.post(name: .keyboardAppearanceDidChange, object: nil)
+    switch keyboardAppearance {
+    case .light:
+      ColorManager.shared.keyboardAppearance = .light
+    case .dark:
+      ColorManager.shared.keyboardAppearance = .dark
+    default:
+      ColorManager.shared.keyboardAppearance = .unspecified
     }
   }
   

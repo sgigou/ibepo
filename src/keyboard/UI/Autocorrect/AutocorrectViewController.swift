@@ -75,7 +75,13 @@ class AutocorrectViewController: UIViewController {
     if #available(iOS 11.0, *) {
       amountToDelete = analyzer.textDocumentProxy?.selectedText != nil ? 0 : amountToDelete
     }
-    delegate?.replace(charactersAmount: amountToDelete, by: "\(correction.word) ")
+    let nextCharacter = analyzer.textDocumentProxy?.documentContextAfterInput?.first
+    let isInsertingBeforeSpace = [" ", " "].contains(nextCharacter)
+    let separator = isInsertingBeforeSpace ? "" : " "
+    delegate?.replace(charactersAmount: amountToDelete, by: "\(correction.word)\(separator)")
+    if isInsertingBeforeSpace {
+      delegate?.moveCursor(by: 1)
+    }
     NotificationCenter.default.post(name: .userSelectedASuggestion, object: nil)
   }
 
