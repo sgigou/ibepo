@@ -35,6 +35,7 @@ final class Autocorrect {
   private var workItem: DispatchWorkItem?
   /// Indicates if a search is running in background.
   private var isSearching = false
+  private var lastCorrectedWord: String?
   
   
   // MARK: User input
@@ -46,11 +47,13 @@ final class Autocorrect {
    - returns: The text to insert *instead* of the input, nil if the input should be inserted normally.
    */
   func correction(for input: String) -> String? {
+    lastCorrectedWord = nil
     if !KeyboardSettings.shared.shouldAutocorrect { return nil }
     if input.count != 1 { return nil }
     let character = input.first!
-    if character.isLetter { return nil }
+    if character.isLetter || ["’", "'", "-"].contains(character) { return nil }
     if correctionSet.correction2?.isPreferred ?? false {
+      lastCorrectedWord = correctionSet.correction1?.word
       let replacement = "\(correctionSet.correction2?.word ?? "")\(character)"
       return replacement
     }
@@ -85,11 +88,15 @@ final class Autocorrect {
     if currentWord == "" {
       return emptyCorrections()
     }
-    let range = NSRange(location: 0, length: currentWord.count)
-    let wordExists = checker.rangeOfMisspelledWord(in: currentWord, range: range, startingAt: 0, wrap: false, language: "fr").length == 0
-    let guesses = checker.guesses(forWordRange: range, in: currentWord, language: "fr") ?? []
-    let completions = checker.completions(forPartialWordRange: range, in: currentWord, language: "fr") ?? []
-    sortCorrections(enteredWord: currentWord, guesses: guesses, completions: completions, enteredWordExists: wordExists)
+    let wordToCorrect = lastCorrectedWord ?? currentWord
+    let range = NSRange(location: 0, length: wordToCorrect.count)
+    let wordExists = checker.rangeOfMisspelledWord(in: wordToCorrect, range: range, startingAt: 0, wrap: false, language: "fr").length == 0
+    let guesses = checker.guesses(forWordRange: range, in: wordToCorrect, language: "fr") ?? []
+    let completions = checker.completions(forPartialWordRange: range, in: wordToCorrect, language: "fr") ?? []
+    sortCorrections(enteredWord: wordToCorrect, guesses: guesses, completions: completions, enteredWordExists: wordExists)
+    if currentWord != "" {
+      lastCorrectedWord = nil
+    }
   }
   
   /**
