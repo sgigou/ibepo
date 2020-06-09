@@ -144,4 +144,8 @@ extension InputViewController: KeyboardActionProtocol {
     delegate?.nextKeyboard()
   }
   
+  func moveCursor(by offset: Int) {
+    delegate?.moveCursor(by: offset)
+  }
+  
 }

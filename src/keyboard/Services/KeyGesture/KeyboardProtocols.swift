@@ -41,11 +41,14 @@ protocol KeyboardActionProtocol: class {
    */
   func nextKeyboard()
   
+  func moveCursor(by offset: Int)
+  
 }
 
 extension KeyboardActionProtocol {
   
   func replace(charactersAmount: Int, by text: String) {}
+  func moveCursor(by offset: Int) {}
   
 }
 
