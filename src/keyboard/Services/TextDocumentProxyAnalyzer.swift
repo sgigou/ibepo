@@ -20,7 +20,7 @@ final class TextDocumentProxyAnalyzer {
     let context = findContext()
     var currentWord = ""
     for character in context.reversed() {
-      if !character.isLetter {
+      if !character.isLetter && !["'", "’", "-"].contains(character) {
         break
       }
       currentWord.insert(character, at: currentWord.startIndex)
