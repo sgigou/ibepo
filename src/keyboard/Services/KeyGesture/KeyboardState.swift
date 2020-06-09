@@ -73,7 +73,7 @@ final class KeyboardState {
       lastTap = nil
       shiftState = .locked
     } else {
-      if !shiftState.isActive { registerTap(on: .shift) }
+      registerTap(on: .shift)
       shiftState.toggle()
     }
     displayDelegate?.shiftStateChanged(newState: shiftState)
