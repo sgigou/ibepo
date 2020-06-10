@@ -6,7 +6,8 @@
 //  Copyright © 2020 Novesoft. All rights reserved.
 //
 
-class TextModifiersFactory {
+
+final class TextModifiersFactory {
   
   static func generate(for delegate: KeyboardActionProtocol) -> TextModifierSet {
     return TextModifierSet(modifiers: [

@@ -6,7 +6,9 @@
 //  Copyright © 2020 Novesoft. All rights reserved.
 //
 
-class AutoCapitalizer {
+final class AutoCapitalizer {
+  
+  // MARK: API
   
   func shouldCapitalize() -> Bool {
     let type = KeyboardSettings.shared.autoCapitalizationType
@@ -28,6 +30,8 @@ class AutoCapitalizer {
     }
     return lastCharacter.isUppercase
   }
+  
+  // MARK: Calculations
   
   private func calculateForWordsType() -> Bool {
     guard let lastCharacter = KeyboardSettings.shared.textDocumentProxyAnalyzer.findContext().last else {

@@ -8,8 +8,7 @@
 
 import Foundation
 
-/// Lightweight logger to print only in DEBUG.
-class Logger {
+final class Logger {
   
   static func debug(_ message: String) {
     printIfDebug(tag: "DEBUG", message: message)

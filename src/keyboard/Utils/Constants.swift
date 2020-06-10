@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Constants {
+final class Constants {
   
   static let keySlotMultiplier: CGFloat = 1.0 / 11.0
   static let keyVerticalPadding: CGFloat = 6.0
@@ -20,5 +20,7 @@ class Constants {
   static let subLettersSpacing: CGFloat = 2.0
   static let deletionLoopDelay: Double = 0.125
   static let doubleTapDelay: Double = 0.250
+  
+  static let popupHideDelay: Double = 0.050
   
 }

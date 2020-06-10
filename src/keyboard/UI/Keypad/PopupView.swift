@@ -10,12 +10,14 @@ import UIKit
 
 // MARK: - PopupView
 
-/// Displays the magnifying popup over letter keys.
-class PopupView: UIView {
+/// Displays the key letter and its subletters.
+final class PopupView: UIView {
   
   private let tailView = UIView()
   private let popupView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0))
   private let letterStackView = UIStackView(arrangedSubviews: [])
+  
+  private var hideDelayTimer = Timer()
   
   private lazy var subLetterFont: UIFont = {
     let fontSize: CGFloat = UIDevice.isPhone ? 30.0 : 50.0
@@ -82,11 +84,22 @@ class PopupView: UIView {
   // MARK: Actions
   
   func hidePopup() {
-    tailView.isHidden = true
-    popupView.isHidden = true
+    hideDelayTimer.invalidate()
+    hideDelayTimer = Timer(timeInterval: Constants.popupHideDelay, target: self, selector: #selector(hidePopupParts), userInfo: nil, repeats: false)
+    hideDelayTimer.tolerance = Constants.popupHideDelay / 2
+    RunLoop.current.add(hideDelayTimer, forMode: .common)
+  }
+  
+  @objc func hidePopupParts() {
+    DispatchQueue.main.async {
+      [weak self] in
+      self?.tailView.isHidden = true
+      self?.popupView.isHidden = true
+    }
   }
   
   func showPopup(for key: Key) {
+    hideDelayTimer.invalidate()
     guard let rowY = key.view.superview?.frame.minY else {
       return Logger.error("keyView should have a superview.")
     }
@@ -110,6 +123,7 @@ class PopupView: UIView {
   }
   
   func showPopupWithSubLetters(for key: Key, shiftState: Key.State, altState: Key.State) {
+    hideDelayTimer.invalidate()
     guard let rowY = key.view.superview?.frame.minY else {
       return Logger.error("keyView should have a superview.")
     }

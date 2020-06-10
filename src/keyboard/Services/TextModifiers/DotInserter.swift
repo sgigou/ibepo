@@ -6,7 +6,7 @@
 //  Copyright © 2020 Novesoft. All rights reserved.
 //
 
-class DotInserter {
+final class DotInserter {
   
   weak var delegate: KeyboardActionProtocol?
   
@@ -18,6 +18,7 @@ class DotInserter {
   }
   
 }
+
 
 extension DotInserter: TextModifier {
   

@@ -9,14 +9,10 @@
 
 // MARK: - Correction
 
-/// A correction proposed by the autocorrect engine.
 struct Correction {
   
-  /// Proposed word
   let word: String
-  /// Indicates wether this correction is the preferred one
   let isPreferred: Bool
-  /// Does the word exists in the dictionary
   let exists: Bool
   
   var description: String {

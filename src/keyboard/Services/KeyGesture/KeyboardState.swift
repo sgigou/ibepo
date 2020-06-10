@@ -11,7 +11,6 @@ import UIKit
 
 // MARK: - KeyboardState
 
-/// Represents the keyboard state at any moment.
 final class KeyboardState {
   
   typealias LetterTapTimestamp = (kind: Key.Kind, date: Date)

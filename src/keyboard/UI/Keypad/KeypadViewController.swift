@@ -12,20 +12,15 @@ import UIKit
 // MARK: - KeypadViewController
 
 /// Key pad part of the input view.
-class KeypadViewController: UIViewController {
+final class KeypadViewController: UIViewController {
   
-  /// Delegate that will receive text updates.
   weak var delegate: KeyboardActionProtocol?
   
-  /// Key state manager
   private let keyboardState = KeyboardState()
   private let popupView = PopupView()
   
-  /// Currently displayed key set.
   private var keySet: KeySet!
-  /// The pressed key, if any
   private var pressedKeyView: KeyView?
-
   
   // MARK: Life cycle
   
@@ -34,7 +29,6 @@ class KeypadViewController: UIViewController {
     addPopupView()
   }
   
-  /// Loads the key set.
   override func viewDidLoad() {
     super.viewDidLoad()
     loadKeySet()
@@ -55,16 +49,12 @@ class KeypadViewController: UIViewController {
     }
   }
   
-  
   // MARK: Notifications
   
   private func addObservers() {
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardAppearanceDidChange), name: .keyboardAppearanceDidChange, object: nil)
   }
   
-  /**
-   Update theme appearance.
-   */
   @objc func keyboardAppearanceDidChange() {
     let view = self.view as! KeypadView
     view.updateAppearance()
@@ -84,9 +74,6 @@ class KeypadViewController: UIViewController {
   
   // MARK: Loading
   
-  /**
-   Load the key set and display it in the KeypadView.
-  */
   private func loadKeySet() {
     let view = self.view as! KeypadView
     let factory = KeySetFactory()
@@ -151,7 +138,6 @@ extension KeypadViewController: KeyboardDisplayProtocol {
     }
   }
   
-  /// Unpress the currently pressed key and press the given key
   func keyIsPressed(kind: Key.Kind, at coordinate: KeyCoordinate?) {
     let keyViewToPress: KeyView
     switch kind {
@@ -186,7 +172,6 @@ extension KeypadViewController: KeyboardDisplayProtocol {
     pressedKeyView = keyViewToPress
   }
   
-  /// Unpress the currently pressed view (if any).
   func noKeyIsPressed() {
     pressedKeyView?.togglePression()
     pressedKeyView = nil
