@@ -15,7 +15,39 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Da-OW-rm1">
+                                <rect key="frame" x="16" y="382.5" width="382" height="131.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le clavier Bépo pour iOS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeW-co-LmJ">
+                                        <rect key="frame" x="106.5" y="81.5" width="169" height="18"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iBépo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGl-QZ-nnz">
+                                        <rect key="frame" x="156.5" y="32" width="69.5" height="33.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="aeW-co-LmJ" secondAttribute="bottom" constant="32" id="40b-JB-d0x"/>
+                                    <constraint firstItem="eGl-QZ-nnz" firstAttribute="top" secondItem="0Da-OW-rm1" secondAttribute="top" constant="32" id="EsO-L4-GvH"/>
+                                    <constraint firstItem="aeW-co-LmJ" firstAttribute="centerX" secondItem="0Da-OW-rm1" secondAttribute="centerX" id="X45-xL-GRQ"/>
+                                    <constraint firstItem="eGl-QZ-nnz" firstAttribute="centerX" secondItem="0Da-OW-rm1" secondAttribute="centerX" id="ZHH-tP-KZ1"/>
+                                    <constraint firstItem="aeW-co-LmJ" firstAttribute="top" secondItem="eGl-QZ-nnz" secondAttribute="bottom" constant="16" id="xTn-eU-LEf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Da-OW-rm1" secondAttribute="trailing" constant="16" id="Gk6-6H-W0Y"/>
+                            <constraint firstItem="0Da-OW-rm1" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Iso-pq-oap"/>
+                            <constraint firstItem="0Da-OW-rm1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="XBT-KX-Z47"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
