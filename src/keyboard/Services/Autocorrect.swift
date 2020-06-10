@@ -20,7 +20,7 @@ protocol AutocorrectProtocol: class {
 
 final class Autocorrect {
   
-  var delegate: AutocorrectProtocol?
+  weak var delegate: AutocorrectProtocol?
   
   private(set) var correctionSet: CorrectionSet = .empty
   

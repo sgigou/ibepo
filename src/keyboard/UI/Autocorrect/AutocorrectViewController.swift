@@ -18,7 +18,7 @@ final class AutocorrectViewController: UIViewController {
   @IBOutlet weak var button2: UIButton!
   @IBOutlet weak var button3: UIButton!
   
-  var delegate: KeyboardActionProtocol?
+  weak var delegate: KeyboardActionProtocol?
   
   let autocorrectEngine = Autocorrect()
   
