@@ -52,6 +52,7 @@
 		398149642460521D007C9754 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391BF06F246012EC004F8497 /* KeyView.swift */; };
 		398149652460521D007C9754 /* LetterKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39814954246043DC007C9754 /* LetterKeyView.swift */; };
 		398149662460521D007C9754 /* SpecialKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3981495224604393007C9754 /* SpecialKeyView.swift */; };
+		398D0E1A2490DCC400C99BB0 /* KeyboardAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 398D0E192490DCC400C99BB0 /* KeyboardAssets.xcassets */; };
 		39936945247527FC00D53EA1 /* AutocorrectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39936943247527FC00D53EA1 /* AutocorrectViewController.swift */; };
 		39936946247527FC00D53EA1 /* AutocorrectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39936943247527FC00D53EA1 /* AutocorrectViewController.swift */; };
 		39936947247527FC00D53EA1 /* AutocorrectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39936944247527FC00D53EA1 /* AutocorrectViewController.xib */; };
@@ -156,6 +157,7 @@
 		39814954246043DC007C9754 /* LetterKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterKeyView.swift; sourceTree = "<group>"; };
 		3981495724604498007C9754 /* KeySet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeySet.swift; sourceTree = "<group>"; };
 		39814959246048C9007C9754 /* KeypadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadView.swift; sourceTree = "<group>"; };
+		398D0E192490DCC400C99BB0 /* KeyboardAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = KeyboardAssets.xcassets; sourceTree = "<group>"; };
 		39936943247527FC00D53EA1 /* AutocorrectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocorrectViewController.swift; sourceTree = "<group>"; };
 		39936944247527FC00D53EA1 /* AutocorrectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutocorrectViewController.xib; sourceTree = "<group>"; };
 		3994E3A1245D6D10008B1099 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				391BF06E246012DA004F8497 /* Services */,
 				391BF06724600869004F8497 /* Entities */,
 				391BF07524602501004F8497 /* UI */,
+				398D0E192490DCC400C99BB0 /* KeyboardAssets.xcassets */,
 			);
 			path = keyboard;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39936948247527FC00D53EA1 /* AutocorrectViewController.xib in Resources */,
+				398D0E1A2490DCC400C99BB0 /* KeyboardAssets.xcassets in Resources */,
 				39A197E42462D39E00974C58 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
