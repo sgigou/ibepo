@@ -8,7 +8,12 @@
 
 import UIKit
 
-/// Main app view controller
+
 class HomeViewController: UIViewController {
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    navigationController?.setNavigationBarHidden(true, animated: false)
+  }
 
 }
