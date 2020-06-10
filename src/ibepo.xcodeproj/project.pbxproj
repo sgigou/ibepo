@@ -260,7 +260,6 @@
 			isa = PBXGroup;
 			children = (
 				39528F88245AFC510080FBE8 /* Assets.xcassets */,
-				39528F8A245AFC510080FBE8 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -292,7 +291,7 @@
 			children = (
 				39528F7F245AFC4D0080FBE8 /* AppDelegate.swift */,
 				39528F8D245AFC510080FBE8 /* Info.plist */,
-				3994E3A8245D6E86008B1099 /* ViewControllers */,
+				3994E3A8245D6E86008B1099 /* UI */,
 				394657A0245B0EF20039E88F /* Resources */,
 			);
 			path = ibepo;
@@ -326,13 +325,14 @@
 			path = Keys;
 			sourceTree = "<group>";
 		};
-		3994E3A8245D6E86008B1099 /* ViewControllers */ = {
+		3994E3A8245D6E86008B1099 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				39528F8A245AFC510080FBE8 /* LaunchScreen.storyboard */,
 				3994E3A4245D6E82008B1099 /* HomeViewController.swift */,
 				3994E3A5245D6E82008B1099 /* HomeViewController.xib */,
 			);
-			path = ViewControllers;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		39991301248E2E3400AD614E /* TextModifiers */ = {
