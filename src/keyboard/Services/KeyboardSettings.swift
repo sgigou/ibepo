@@ -11,31 +11,26 @@ import UIKit
 
 // MARK: - KeyboardSettings
 
-/// Service that posts notifications if textDocumentProxy attributes change.
 final class KeyboardSettings {
   
-  /// Shared instance.
   static let shared = KeyboardSettings()
   
-  /// Current text document proxy.
   let textDocumentProxyAnalyzer = TextDocumentProxyAnalyzer()
   
-  /// Does the keyboard need to display keyboard switch key?
   var needsInputModeSwitchKey = false
   
-  /// Current type of the return key.
   private(set) var returnKeyType: UIReturnKeyType = .default
   
   var shouldAutocorrect: Bool {
     return textDocumentProxyAnalyzer.textDocumentProxy?.autocorrectionType != .no
   }
+  
   var autoCapitalizationType: UITextAutocapitalizationType {
     return textDocumentProxyAnalyzer.textDocumentProxy?.autocapitalizationType ?? .sentences
   }
   
-  /**
-   Check for updates in textDocumentProxy attributes.
-   */
+  // MARK: Update
+  
   func update(_ textDocumentProxy: UITextDocumentProxy) {
     Logger.debug("Text document proxy update.")
     textDocumentProxyAnalyzer.textDocumentProxy = textDocumentProxy
@@ -43,9 +38,6 @@ final class KeyboardSettings {
     updateReturnButton(textDocumentProxy.returnKeyType ?? .default)
   }
   
-  /**
-   Updates the appearance of the keyboard if needed.
-   */
   private func updateAppearance(_ keyboardAppearance: UIKeyboardAppearance) {
     switch keyboardAppearance {
     case .light:
@@ -57,9 +49,6 @@ final class KeyboardSettings {
     }
   }
   
-  /**
-   Updates the return button appearance.
-   */
   private func updateReturnButton(_ returnKeyType: UIReturnKeyType) {
     if self.returnKeyType != returnKeyType {
       Logger.debug("Return key type switching from \(self.returnKeyType.rawValue) to \(returnKeyType.rawValue)")

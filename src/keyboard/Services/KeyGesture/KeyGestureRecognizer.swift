@@ -11,26 +11,25 @@ import UIKit
 /// Represents a tap on the keyboard. It has two times more columns than the KeySet.
 typealias KeypadCoordinate = (row: Int, col: Int)
 
+
 // MARK: - KeyGestureRecognizerDelegate
 
 protocol KeyGestureRecognizerDelegate: class {
+  
   func touchDown(at keypadCoordinate: KeypadCoordinate, with touch: UITouch)
   func touchMoved(to keypadCoordinate: KeypadCoordinate, with touch: UITouch)
   func touchUp(at keypadCoordinate: KeypadCoordinate, with touch: UITouch)
+  
 }
 
 
 // MARK: - KeyGestureRecognizer
 
-/// Recognizer used to manage gestures in the app.
 final class KeyGestureRecognizer: UIGestureRecognizer {
   
-  /// Custom delegate allowing to manage more interactions with the gesture recognizer.
   private weak var customDelegate: KeyGestureRecognizerDelegate?
   
-  /// Default coordinate to return in case of error.
   private let defaultCoordinate = KeyCoordinate(row: 0, col: 1)
-  
   
   // MARK: Life cycle
   
@@ -38,7 +37,6 @@ final class KeyGestureRecognizer: UIGestureRecognizer {
     self.init()
     customDelegate = delegate
   }
-  
   
   // MARK: Touches
   
@@ -78,12 +76,8 @@ final class KeyGestureRecognizer: UIGestureRecognizer {
     }
   }
   
-  
   // MARK: Calculations
   
-  /**
-   Find the KeypadCoordinate of the given touch.
-   */
   private func findCoordinates(for touch: UITouch) -> KeypadCoordinate? {
     let location = touch.location(in: view)
     if !(view?.bounds.contains(location) ?? true) {
@@ -94,9 +88,6 @@ final class KeyGestureRecognizer: UIGestureRecognizer {
     return KeypadCoordinate(row: row, col: col)
   }
   
-  /**
-   Find the row number for the given touch.
-   */
   private func findRow(for touch: UITouch) -> Int {
     guard let view = self.view else {
       Logger.debug("Touch view not found.")
@@ -106,9 +97,6 @@ final class KeyGestureRecognizer: UIGestureRecognizer {
     return findPosition(location: location.y, size: view.frame.height, chunkAmount: 4)
   }
   
-  /**
-   Find the col number for the given touch, in the given row.
-   */
   private func findCol(for touch: UITouch, in row: Int) -> Int {
     guard let view = self.view else {
       Logger.debug("Touch view not found.")
@@ -118,9 +106,6 @@ final class KeyGestureRecognizer: UIGestureRecognizer {
     return findPosition(location: location.x, size: view.frame.width, chunkAmount: 22)
   }
   
-  /**
-   Split the given `size` in `chunkAmount` chunks, and tells in which chunk `location` is.
-   */
   private func findPosition(location: CGFloat, size: CGFloat, chunkAmount: Int) -> Int {
     let chunkSize = size / CGFloat(chunkAmount)
     let chunk = Int(location / chunkSize)

@@ -11,16 +11,11 @@ import UIKit
 
 // MARK: - KeyView
 
-/// A key on the keypad.
 class KeyView: UIView {
   
-  /// The key shape.
   var backgroundView: UIView!
-  /// Indicates if the key is highlighted (colorized).
   var isHighlighted = false
-  /// Is the key pressed
   var isPressed = false
-  
   
   // MARK: Life cycle
   
@@ -40,21 +35,12 @@ class KeyView: UIView {
     }
   }
   
-  
   // MARK: Display
   
-  /**
-   Update theme appearance.
-   */
   func updateAppearance() {
     backgroundView.backgroundColor = ColorManager.shared.background
   }
   
-  /**
-   Creates and adds the background view for the letter.
-   
-   The view has ColorManager.background color by default.
-   */
   func initBackground() {
     let backgroundView = UIView()
     backgroundView.backgroundColor = ColorManager.shared.background
@@ -75,7 +61,6 @@ class KeyView: UIView {
     self.backgroundView = backgroundView
   }
   
-  /// Toggles the `isPressed` boolean and updates the appearance.
   func togglePression() {
     isPressed.toggle()
     if isPressed {

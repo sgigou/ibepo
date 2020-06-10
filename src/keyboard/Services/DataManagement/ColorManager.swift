@@ -8,7 +8,6 @@
 
 import UIKit
 
-/// Create keyboard colors based on current theme and iOS version.
 final class ColorManager {
   
   enum ColorAppearance {

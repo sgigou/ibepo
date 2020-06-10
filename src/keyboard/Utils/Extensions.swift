@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - Collection
+
 extension Collection {
   
   subscript (safe index: Index) -> Element? {
@@ -15,6 +17,8 @@ extension Collection {
   }
   
 }
+
+// MARK: - String
 
 extension String {
   
@@ -31,6 +35,8 @@ extension String {
   
 }
 
+// MARK: - UIDevice
+
 extension UIDevice {
   
   static var isPhone: Bool {
@@ -39,14 +45,10 @@ extension UIDevice {
   
 }
 
+// MARK: - UIViewController
+
 extension UIViewController {
   
-  /**
-   Add the given child view controller to the view controller, and activate given constraints.
-   - parameter child: UIViewController to add.
-   - parameter constraints: Constraints to automatically add and activate.
-   - warning: This function will deactivate autoresizing mask translation.
-   */
   func add(_ child: UIViewController, with constraints: [NSLayoutConstraint]) {
     child.view.translatesAutoresizingMaskIntoConstraints = false
     willMove(toParent: self)
@@ -56,9 +58,6 @@ extension UIViewController {
     child.didMove(toParent: self)
   }
   
-  /**
-   Remove the view controller from its parent.
-   */
   func remove() {
     guard parent != nil else { return }
     willMove(toParent: nil)
@@ -68,6 +67,8 @@ extension UIViewController {
   
 }
 
+// MARK: - UIScreen
+
 extension UIScreen {
   
   static var isPortrait: Bool {
@@ -75,6 +76,8 @@ extension UIScreen {
   }
   
 }
+
+// MARK: - UIStackView
 
 extension UIStackView {
   

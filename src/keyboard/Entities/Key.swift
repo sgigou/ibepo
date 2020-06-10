@@ -8,19 +8,16 @@
 
 import UIKit
 
+
 /// A key set and its representing view.
 struct Key {
   
-  /// The type of the letter
   enum Kind {
-    
     case letter, shift, delete, alt, next, space, enter
     
-    /// Indicates if the current kind is a modifier one.
     var isModifier: Bool {
       return self == .shift || self == .alt || self == .next
     }
-    
   }
   
   enum State {

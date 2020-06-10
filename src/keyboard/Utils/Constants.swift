@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Constants {
+final class Constants {
   
   static let keySlotMultiplier: CGFloat = 1.0 / 11.0
   static let keyVerticalPadding: CGFloat = 6.0

@@ -13,9 +13,11 @@ import Foundation
 
 typealias KeyCoordinate = (row: Int, col: Int)
 
+
 // MARK: - typealias Row
 
 typealias Row = [Key]
+
 
 // MARK: - struct KeySet
 

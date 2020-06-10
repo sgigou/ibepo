@@ -8,7 +8,8 @@
 
 import Foundation
 
-class SpaceRemover {
+
+final class SpaceRemover {
   
   weak var delegate: KeyboardActionProtocol?
   
@@ -29,6 +30,7 @@ class SpaceRemover {
   }
   
 }
+
 
 extension SpaceRemover: TextModifier {
   

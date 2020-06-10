@@ -11,8 +11,8 @@ import UIKit
 
 // MARK: - AutocorrectViewController
 
-/// Manages autocorrect and displaying corrections.
-class AutocorrectViewController: UIViewController {
+/// Autocorrect suggestions bar
+final class AutocorrectViewController: UIViewController {
   
   @IBOutlet weak var button1: UIButton!
   @IBOutlet weak var button2: UIButton!
@@ -20,15 +20,13 @@ class AutocorrectViewController: UIViewController {
   
   var delegate: KeyboardActionProtocol?
   
-  /// Autocorrect engine.
-  let autocorrect = Autocorrect()
-  
+  let autocorrectEngine = Autocorrect()
   
   // MARK: Life cycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    autocorrect.delegate = self
+    autocorrectEngine.delegate = self
     setupButtons()
   }
   
@@ -44,30 +42,18 @@ class AutocorrectViewController: UIViewController {
   
   // MARK: User input
   
-  /**
-   The user tapped on the first correction.
-   */
   @IBAction func button1Tap() {
-    select(correction: autocorrect.correctionSet.correction1)
+    select(correction: autocorrectEngine.correctionSet.correction1)
   }
   
-  /**
-   The user tapped on the second correction.
-   */
   @IBAction func button2Tap() {
-    select(correction: autocorrect.correctionSet.correction2)
+    select(correction: autocorrectEngine.correctionSet.correction2)
   }
   
-  /**
-   The user tapped on the third correction.
-   */
   @IBAction func button3Tap() {
-    select(correction: autocorrect.correctionSet.correction3)
+    select(correction: autocorrectEngine.correctionSet.correction3)
   }
   
-  /**
-   Replace the current word with the selected one.
-   */
   private func select(correction: Correction?) {
     guard let correction = correction else { return }
     let analyzer = KeyboardSettings.shared.textDocumentProxyAnalyzer

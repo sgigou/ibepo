@@ -14,7 +14,6 @@ import UIKit
 /// Full keyboard view
 final class InputViewController: UIViewController {
   
-  /// Delegate that will get text CRUD.
   weak var delegate: KeyboardActionProtocol?
   
   private var autocorrectViewController: AutocorrectViewController!
@@ -55,12 +54,9 @@ final class InputViewController: UIViewController {
   
   // MARK: Configuration
   
-  /**
-   Refresh document proxy values.
-   */
   func update(textDocumentProxy: UITextDocumentProxy) {
     KeyboardSettings.shared.update(textDocumentProxy)
-    autocorrectViewController.autocorrect.update()
+    autocorrectViewController.autocorrectEngine.update()
     textModifiers.moveOccured()
     keypadViewController.textDocumentProxyWasUpdated()
   }
@@ -131,11 +127,11 @@ final class InputViewController: UIViewController {
 extension InputViewController: KeyboardActionProtocol {
   
   func insert(text: String) {
-    if let replacement = autocorrectViewController.autocorrect.correction(for: text) {
+    if let replacement = autocorrectViewController.autocorrectEngine.correction(for: text) {
       replace(charactersAmount: KeyboardSettings.shared.textDocumentProxyAnalyzer.currentWord.count, by: "\(replacement)")
     } else {
       delegate?.insert(text: text)
-      autocorrectViewController.autocorrect.update()
+      autocorrectViewController.autocorrectEngine.update()
       textModifiers.modify()
     }
   }
@@ -143,20 +139,20 @@ extension InputViewController: KeyboardActionProtocol {
   func replace(charactersAmount: Int, by text: String) {
     deleteBackward(amount: charactersAmount)
     delegate?.insert(text: text)
-    autocorrectViewController.autocorrect.update()
+    autocorrectViewController.autocorrectEngine.update()
     textModifiers.modify()
   }
   
   func deleteBackward() {
     delegate?.deleteBackward()
-    autocorrectViewController.autocorrect.update()
+    autocorrectViewController.autocorrectEngine.update()
     textModifiers.deletionOccured()
   }
   
   func deleteBackward(amount: Int) {
     if amount == 0 { return }
     delegate?.deleteBackward(amount: amount)
-    autocorrectViewController.autocorrect.update()
+    autocorrectViewController.autocorrectEngine.update()
   }
   
   func nextKeyboard() {

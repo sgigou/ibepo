@@ -6,13 +6,8 @@
 //  Copyright © 2020 Novesoft. All rights reserved.
 //
 
-
-/// Finds key type by their keypad coordinates.
 final class KeyLocator {
   
-  /**
-   Get the kind of key at the given coordinate.
-   */
   static func kind(at coordinate: KeypadCoordinate) -> Key.Kind {
     switch coordinate.row {
     case 0, 1: // First two rows only contain letters.
@@ -52,7 +47,6 @@ final class KeyLocator {
     }
   }
   
-  /// Calculates the key coordinate from the given keypad coordinate.
   static func calculateKeyCoordinate(for keypadCoordinate: KeypadCoordinate) -> KeyCoordinate {
     let col = keypadCoordinate.row == 2 ? (keypadCoordinate.col - 3) : keypadCoordinate.col
     let keyCoordinate = KeyCoordinate(row: keypadCoordinate.row, col: col / 2)

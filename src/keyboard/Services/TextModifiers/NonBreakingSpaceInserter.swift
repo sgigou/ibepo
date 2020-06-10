@@ -6,6 +6,7 @@
 //  Copyright © 2020 Novesoft. All rights reserved.
 //
 
+
 class NonBreakingSpaceInserter {
   
   weak var delegate: KeyboardActionProtocol?
@@ -16,6 +17,7 @@ class NonBreakingSpaceInserter {
   }
   
 }
+
 
 extension NonBreakingSpaceInserter: TextModifier {
   

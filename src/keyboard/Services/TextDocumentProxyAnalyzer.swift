@@ -9,13 +9,10 @@
 import UIKit
 
 
-/// Calculator for the textDocumentProxy.
 final class TextDocumentProxyAnalyzer {
   
-  /// Up-to-date text document proxy
   var textDocumentProxy: UITextDocumentProxy?
   
-  /// Currently editing word. An empty string if none.
   var currentWord: String {
     let context = findContext()
     var currentWord = ""
@@ -34,11 +31,6 @@ final class TextDocumentProxyAnalyzer {
     return String(context.suffix(amount))
   }
   
-  /**
-   Find the context, based on the iOS version.
-   
-   - returns: Selected text, document context or an empty string.
-   */
   func findContext() -> String {
     guard let textDocumentProxy = self.textDocumentProxy else {
       return ""

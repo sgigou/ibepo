@@ -6,6 +6,7 @@
 //  Copyright © 2020 Novesoft. All rights reserved.
 //
 
+
 protocol TextModifier {
   
   func modify()
@@ -13,6 +14,7 @@ protocol TextModifier {
   func moveOccured()
   
 }
+
 
 struct TextModifierSet {
   
