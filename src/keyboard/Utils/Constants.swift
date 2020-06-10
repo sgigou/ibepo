@@ -21,4 +21,6 @@ class Constants {
   static let deletionLoopDelay: Double = 0.125
   static let doubleTapDelay: Double = 0.250
   
+  static let popupHideDelay: Double = 0.050
+  
 }
