@@ -39,10 +39,14 @@ final class Autocorrect {
     if input.count != 1 { return nil }
     let character = input.first!
     if character.isLetter || ["’", "'", "-"].contains(character) { return nil }
+    while isSearching {
+      Logger.debug("Waiting for autocorrect to end search.")
+      continue
+    }
     let correction = correctionSet.preferredCorrection
     if let correction = correction {
       lastCorrectedWord = correctionSet.correction1?.word
-      let replacement = "\(correction.word)\(character)"
+      let replacement = correction.word + input
       return replacement
     }
     return nil
@@ -59,10 +63,11 @@ final class Autocorrect {
       Logger.debug("Cancelling running search")
       workItem?.cancel()
     }
-    isSearching = true
     workItem = DispatchWorkItem() {
       [weak self] in
+      DispatchQueue.main.sync { self?.isSearching = true }
       self?.loadSuggestions()
+      DispatchQueue.main.sync { self?.isSearching = false }
     }
     queue.async(execute: workItem!)
   }
@@ -78,14 +83,10 @@ final class Autocorrect {
     let guesses = checker.guesses(forWordRange: range, in: wordToCorrect, language: "fr") ?? []
     let completions = checker.completions(forPartialWordRange: range, in: wordToCorrect, language: "fr") ?? []
     sortCorrections(enteredWord: wordToCorrect, guesses: guesses, completions: completions, enteredWordExists: wordExists)
-    if currentWord != "" {
-      lastCorrectedWord = nil
-    }
   }
   
   private func emptyCorrections() {
     correctionSet = .empty
-    isSearching = false
     delegate?.autocorrectEnded(with: correctionSet)
   }
   
@@ -106,7 +107,7 @@ final class Autocorrect {
       correction3 = nil
     }
     correctionSet = CorrectionSet(correction1: correction1, correction2: correction2, correction3: correction3)
-    isSearching = false
+    lastCorrectedWord = nil
     delegate?.autocorrectEnded(with: correctionSet)
   }
   
