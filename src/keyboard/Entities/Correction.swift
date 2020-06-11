@@ -34,4 +34,10 @@ struct CorrectionSet {
     return CorrectionSet(correction1: nil, correction2: nil, correction3: nil)
   }
   
+  var preferredCorrection: Correction? {
+    if correction1?.isPreferred ?? false { return correction1 }
+    if correction2?.isPreferred ?? false { return correction2 }
+    return nil
+  }
+  
 }

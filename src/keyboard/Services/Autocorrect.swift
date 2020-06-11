@@ -39,9 +39,10 @@ final class Autocorrect {
     if input.count != 1 { return nil }
     let character = input.first!
     if character.isLetter || ["’", "'", "-"].contains(character) { return nil }
-    if correctionSet.correction2?.isPreferred ?? false {
+    let correction = correctionSet.preferredCorrection
+    if let correction = correction {
       lastCorrectedWord = correctionSet.correction1?.word
-      let replacement = "\(correctionSet.correction2?.word ?? "")\(character)"
+      let replacement = "\(correction.word)\(character)"
       return replacement
     }
     return nil
@@ -135,6 +136,7 @@ final class Autocorrect {
   private func prefers(enteredWordExists: Bool, guessesIsEmpty: Bool, completionsIsEmpty: Bool) -> Bool {
     if !KeyboardSettings.shared.shouldAutocorrect { return true }
     if enteredWordExists { return true }
+    if lastCorrectedWord != nil { return true }
     return guessesIsEmpty && completionsIsEmpty
   }
   
