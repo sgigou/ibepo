@@ -21,10 +21,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lI1-zP-OYR" userLabel="Content View">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="533.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="556"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q95-H2-97l">
-                                    <rect key="frame" x="16" y="32" width="382" height="469.5"/>
+                                    <rect key="frame" x="16" y="32" width="382" height="492"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iBépo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foh-tu-Ntt">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="33.5"/>
@@ -51,18 +51,27 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajoutez le clavier « Bépo » dans les paramètres." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2v-ca-BKv">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajoutez le clavier « Bépo » dans les paramètres" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2v-ca-BKv">
                                             <rect key="frame" x="0.0" y="177.5" width="382" height="20.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Général &gt; Clavier &gt; Claviers)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCU-aJ-Pj6">
+                                            <rect key="frame" x="0.0" y="206" width="382" height="14.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghT-Jo-HqK">
-                                            <rect key="frame" x="0.0" y="214" width="382" height="30"/>
+                                            <rect key="frame" x="0.0" y="236.5" width="382" height="30"/>
                                             <state key="normal" title="Accéder aux paramètres"/>
+                                            <connections>
+                                                <action selector="settingsTap" destination="-1" eventType="touchUpInside" id="ana-ZP-bVc"/>
+                                            </connections>
                                         </button>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Essayer le clavier" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oFX-Qw-V5W">
-                                            <rect key="frame" x="0.0" y="260" width="382" height="34"/>
+                                            <rect key="frame" x="0.0" y="282.5" width="382" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
@@ -70,39 +79,40 @@
                                             </connections>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYk-Oc-1X9" userLabel="Separator">
-                                            <rect key="frame" x="0.0" y="326" width="382" height="1"/>
+                                            <rect key="frame" x="0.0" y="348.5" width="382" height="1"/>
                                             <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="R1i-vS-d7O"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liens utiles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ip1-yl-LMH">
-                                            <rect key="frame" x="0.0" y="359" width="382" height="26.5"/>
+                                            <rect key="frame" x="0.0" y="381.5" width="382" height="26.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG1-Xx-2Jd">
-                                            <rect key="frame" x="0.0" y="401.5" width="382" height="30"/>
+                                            <rect key="frame" x="0.0" y="424" width="382" height="30"/>
                                             <state key="normal" title="Site du projet"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtY-RB-D3V">
-                                            <rect key="frame" x="0.0" y="439.5" width="382" height="30"/>
+                                            <rect key="frame" x="0.0" y="462" width="382" height="30"/>
                                             <state key="normal" title="Me contacter"/>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
                                         <constraint firstItem="ghT-Jo-HqK" firstAttribute="leading" secondItem="q95-H2-97l" secondAttribute="leading" id="1QZ-C4-srG"/>
+                                        <constraint firstItem="fCU-aJ-Pj6" firstAttribute="top" secondItem="l2v-ca-BKv" secondAttribute="bottom" constant="8" id="2ag-gf-HrM"/>
                                         <constraint firstAttribute="trailing" secondItem="8JT-p2-ftC" secondAttribute="trailing" id="4Eb-aj-8PI"/>
                                         <constraint firstAttribute="trailing" secondItem="qtY-RB-D3V" secondAttribute="trailing" id="Ane-tr-gcY"/>
                                         <constraint firstItem="l2v-ca-BKv" firstAttribute="top" secondItem="RJY-KN-Z3j" secondAttribute="bottom" constant="16" id="DCS-gi-vlT"/>
                                         <constraint firstItem="l2v-ca-BKv" firstAttribute="leading" secondItem="q95-H2-97l" secondAttribute="leading" id="DaM-iI-H1d"/>
+                                        <constraint firstItem="ghT-Jo-HqK" firstAttribute="top" secondItem="fCU-aJ-Pj6" secondAttribute="bottom" constant="16" id="EBe-Zm-V6K"/>
                                         <constraint firstItem="G34-K9-rNc" firstAttribute="leading" secondItem="q95-H2-97l" secondAttribute="leading" id="Etb-q5-EDU"/>
                                         <constraint firstAttribute="trailing" secondItem="Ip1-yl-LMH" secondAttribute="trailing" id="FV7-gv-0an"/>
                                         <constraint firstItem="oFX-Qw-V5W" firstAttribute="leading" secondItem="q95-H2-97l" secondAttribute="leading" id="Fc8-5i-mtP"/>
                                         <constraint firstAttribute="trailing" secondItem="ghT-Jo-HqK" secondAttribute="trailing" id="FxS-zV-lvI"/>
-                                        <constraint firstItem="ghT-Jo-HqK" firstAttribute="top" secondItem="l2v-ca-BKv" secondAttribute="bottom" constant="16" id="HBW-I5-SAr"/>
                                         <constraint firstItem="wG1-Xx-2Jd" firstAttribute="leading" secondItem="q95-H2-97l" secondAttribute="leading" id="IEN-IG-RQR"/>
                                         <constraint firstItem="foh-tu-Ntt" firstAttribute="leading" secondItem="q95-H2-97l" secondAttribute="leading" id="Lhn-4I-B6h"/>
                                         <constraint firstItem="RJY-KN-Z3j" firstAttribute="top" secondItem="8JT-p2-ftC" secondAttribute="bottom" constant="32" id="MSN-rh-y1K"/>
@@ -110,8 +120,10 @@
                                         <constraint firstAttribute="trailing" secondItem="wG1-Xx-2Jd" secondAttribute="trailing" id="Ou4-nu-Szx"/>
                                         <constraint firstAttribute="trailing" secondItem="RJY-KN-Z3j" secondAttribute="trailing" id="TNK-nO-XqP"/>
                                         <constraint firstItem="foh-tu-Ntt" firstAttribute="top" secondItem="q95-H2-97l" secondAttribute="top" id="W0h-rf-yoE"/>
+                                        <constraint firstAttribute="trailing" secondItem="fCU-aJ-Pj6" secondAttribute="trailing" id="W3S-Pd-r70"/>
                                         <constraint firstAttribute="trailing" secondItem="oFX-Qw-V5W" secondAttribute="trailing" id="WuF-aF-Pgy"/>
                                         <constraint firstItem="oFX-Qw-V5W" firstAttribute="top" secondItem="ghT-Jo-HqK" secondAttribute="bottom" constant="16" id="XCP-2p-qng"/>
+                                        <constraint firstItem="fCU-aJ-Pj6" firstAttribute="leading" secondItem="q95-H2-97l" secondAttribute="leading" id="Zk1-GZ-0s7"/>
                                         <constraint firstAttribute="trailing" secondItem="foh-tu-Ntt" secondAttribute="trailing" id="eXX-1N-5OZ"/>
                                         <constraint firstItem="qtY-RB-D3V" firstAttribute="leading" secondItem="q95-H2-97l" secondAttribute="leading" id="fpy-zY-ftP"/>
                                         <constraint firstItem="G34-K9-rNc" firstAttribute="top" secondItem="foh-tu-Ntt" secondAttribute="bottom" constant="16" id="gbf-1x-43K"/>

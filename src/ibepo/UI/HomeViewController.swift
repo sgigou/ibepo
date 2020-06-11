@@ -17,7 +17,16 @@ class HomeViewController: UIViewController {
     super.viewDidLoad()
     navigationController?.setNavigationBarHidden(true, animated: false)
   }
-
+  
+  @IBAction func settingsTap() {
+    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+      return
+    }
+    if UIApplication.shared.canOpenURL(settingsUrl) {
+      UIApplication.shared.openURL(settingsUrl)
+    }
+  }
+  
 }
 
 
