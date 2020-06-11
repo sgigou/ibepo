@@ -39,12 +39,7 @@ final class Autocorrect {
     if input.count != 1 { return nil }
     let character = input.first!
     if character.isLetter || ["’", "'", "-"].contains(character) { return nil }
-    while isSearching {
-      Logger.debug("Waiting for autocorrect to end search.")
-      continue
-    }
-    let correction = correctionSet.preferredCorrection
-    if let correction = correction {
+    if let correction = correctionSet.preferredCorrection {
       lastCorrectedWord = correctionSet.correction1?.word
       let replacement = correction.word + input
       return replacement

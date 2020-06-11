@@ -73,7 +73,7 @@
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Essayer le clavier" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oFX-Qw-V5W">
                                             <rect key="frame" x="0.0" y="282.5" width="382" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
                                             <connections>
                                                 <outlet property="delegate" destination="-1" id="g7H-eJ-DR8"/>
                                             </connections>
