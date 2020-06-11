@@ -101,6 +101,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtY-RB-D3V">
                                             <rect key="frame" x="0.0" y="462" width="382" height="30"/>
                                             <state key="normal" title="Me contacter"/>
+                                            <connections>
+                                                <action selector="twitterTap" destination="-1" eventType="touchUpInside" id="zKp-Ec-zSv"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

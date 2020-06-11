@@ -36,6 +36,15 @@ class HomeViewController: UIViewController {
     }
   }
   
+  @IBAction func twitterTap() {
+    guard let websiteUrl = URL(string: "https://twitter.com/stevegigou") else {
+      return
+    }
+    if UIApplication.shared.canOpenURL(websiteUrl) {
+      UIApplication.shared.openURL(websiteUrl)
+    }
+  }
+  
 }
 
 
