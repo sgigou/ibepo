@@ -27,6 +27,15 @@ class HomeViewController: UIViewController {
     }
   }
   
+  @IBAction func websiteTap() {
+    guard let websiteUrl = URL(string: "https://github.com/sgigou/ibepo") else {
+      return
+    }
+    if UIApplication.shared.canOpenURL(websiteUrl) {
+      UIApplication.shared.openURL(websiteUrl)
+    }
+  }
+  
 }
 
 
