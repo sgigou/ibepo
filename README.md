@@ -20,7 +20,7 @@ N'hésitez pas à me contacter si vous souhaitez plus d'informations !
 
 ## License
 
-Ce clavier est sous license GNU GPL v3. Voir le fichier `LICENSE` pour plus d'informations.
+Ce clavier est sous license [Common Clause v1.0](https://commonsclause.com). Voir le fichier `LICENSE` pour plus d'informations.
 
 
 ## Auteurs
