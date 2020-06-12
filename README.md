@@ -4,8 +4,6 @@
 
 <p align="center"><img src="doc/img/logo@2x.png" height="385"></p>
 
-Le clavier Bépo pour iOS.
-
 
 ## Fonctionnalités
 
