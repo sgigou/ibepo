@@ -1,6 +1,6 @@
 # iBépo
 
-Note: As this keyboard is made for French, the whole repository will be in French.
+> Note: As this keyboard is made for French, the whole repository will be in French.
 
 <p align="center"><img src="doc/img/logo@2x.png" height="385"></p>
 
@@ -15,20 +15,20 @@ Le clavier Bépo pour iOS.
 
 #### L’agencement des touches
 
-- [ ] Clavier standard
+<p align="center"><img src="doc/img/disposition@2x.png" height="385"></p>
 
 La disposition du clavier est très proche du clavier Bépo officiel, mais elle diffère en certains points :
 * certains caractères sont manquants, car le clavier ne peut pas comporter autant de touches qu’un clavier physique sous peine d’être trop petit,
 * certains caractères de droite ont été déplacés à gauche, car sur un téléphone, les zones du bord de l’écran sont les moins accessibles.
 
-- [ ] Clavier avec les zones d’accès
+<p align="center"><img src="doc/img/access@2x.png" height="385"></p>
 
 Vous trouverez plus d’informations sur la [page du Wiki](https://github.com/sgigou/ibepo/wiki/L%E2%80%99agencement).
 
 
 #### Caractères disponibles
 
-- [ ] Clavier avec une touche enfoncée
+<p align="center"><img src="doc/img/popup@2x.png" height="385"></p>
 
 iBépo vous permet d’accéder à de très nombreux caractères, et couvre une majorité de symboles latins et mathématiques.
 
@@ -48,7 +48,7 @@ Le clavier iBépo s’adapte au champ de texte dans lequel vous écrivez, et res
 
 #### Vitesse et précision
 
-- [ ] Clavier avec Æ
+<p align="center"><img src="doc/img/gestures@2x.png" height="385"></p>
 
 iBépo est axé sur la vitesse d’exécution, afin de ne pas vous gêner dans vos opérations quotidiennes. L’optimisation est une priorité.
 
@@ -57,7 +57,7 @@ De plus, de nombreux gestes et raccourcis ont été implémentés afin de vous p
 
 #### Intégré au système
 
-- [ ] Image du mode nuit
+<p align="center"><img src="doc/img/dark@2x.png" height="385"></p>
 
 Le clavier iBépo est fait pour s’intégrer parfaitement au système, et ressembler autant que possible au clavier système.
 
@@ -68,7 +68,7 @@ Il dispose également d’un mode sombre qui s’active automatiquement lorsque 
 
 ### Le dictionnaire intégré
 
-- [ ] Image de la barre de suggestion
+<p align="center"><img src="doc/img/correct@2x.png" height="385"></p>
 
 
 #### Barre de suggestion
