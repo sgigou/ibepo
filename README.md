@@ -2,12 +2,13 @@
 
 Note: As this keyboard is made for French, the whole repository will be in French.
 
-- [ ] Image de couverture
+<p align="center"><img src="doc/img/logo@2x.png" height="385"></p>
 
 Le clavier Bépo pour iOS.
 
 
 ## Fonctionnalités
+
 
 ### Le clavier
 
@@ -15,10 +16,6 @@ Le clavier Bépo pour iOS.
 #### L’agencement des touches
 
 - [ ] Clavier standard
-
-<p align="center">
-  <img src="doc/img/logo@2x.png">
-</p>
 
 La disposition du clavier est très proche du clavier Bépo officiel, mais elle diffère en certains points :
 * certains caractères sont manquants, car le clavier ne peut pas comporter autant de touches qu’un clavier physique sous peine d’être trop petit,
