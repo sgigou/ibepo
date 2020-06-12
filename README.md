@@ -16,6 +16,10 @@ Le clavier Bépo pour iOS.
 
 - [ ] Clavier standard
 
+<p align="center">
+  <img src="doc/img/logo@2x.png">
+</p>
+
 La disposition du clavier est très proche du clavier Bépo officiel, mais elle diffère en certains points :
 * certains caractères sont manquants, car le clavier ne peut pas comporter autant de touches qu’un clavier physique sous peine d’être trop petit,
 * certains caractères de droite ont été déplacés à gauche, car sur un téléphone, les zones du bord de l’écran sont les moins accessibles.
