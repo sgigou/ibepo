@@ -185,7 +185,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L’agencement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ZS-lo-0y1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agencement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ZS-lo-0y1">
                                 <rect key="frame" x="20" y="16" width="360" height="41"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
@@ -241,7 +241,7 @@ et adapté pour une utilisation mobile.</string>
                         <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Les suggestions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCE-bq-vAP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCE-bq-vAP">
                                 <rect key="frame" x="20" y="16" width="360" height="41"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
@@ -286,10 +286,64 @@ et adapté pour une utilisation mobile.</string>
             </objects>
             <point key="canvasLocation" x="2157" y="719"/>
         </scene>
+        <!--Page View Controller-->
+        <scene sceneID="BR2-pq-ioe">
+            <objects>
+                <viewController storyboardIdentifier="page4" id="stz-6W-iCS" customClass="PageViewController" customModule="iBépo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7c5-Ae-hnz">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caractères spéciaux" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JC8-BV-ulu">
+                                <rect key="frame" x="20" y="16" width="360" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="popup" translatesAutoresizingMaskIntoConstraints="NO" id="1tw-Ch-rWN">
+                                <rect key="frame" x="16" y="123.5" width="368" height="626"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vous pouvez utiliser ce geste avec la touche Alt activée !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5g-UG-jWB">
+                                <rect key="frame" x="12" y="757.5" width="368" height="42.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="En appuyant longuement sur une touche, vous accédez à plus de caractères." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nru-WJ-HfZ">
+                                <rect key="frame" x="20" y="73" width="360" height="42.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="b5g-UG-jWB" firstAttribute="top" secondItem="1tw-Ch-rWN" secondAttribute="bottom" constant="8" id="3rq-2J-23o"/>
+                            <constraint firstItem="Nru-WJ-HfZ" firstAttribute="top" secondItem="JC8-BV-ulu" secondAttribute="bottom" constant="16" id="Duu-Gi-26g"/>
+                            <constraint firstItem="JC8-BV-ulu" firstAttribute="top" secondItem="7c5-Ae-hnz" secondAttribute="topMargin" constant="16" id="Ezl-xB-BQH"/>
+                            <constraint firstItem="Nru-WJ-HfZ" firstAttribute="trailing" secondItem="7c5-Ae-hnz" secondAttribute="trailingMargin" id="IWu-AF-Che"/>
+                            <constraint firstItem="JC8-BV-ulu" firstAttribute="leading" secondItem="7c5-Ae-hnz" secondAttribute="leadingMargin" id="K00-BC-0Gl"/>
+                            <constraint firstItem="b5g-UG-jWB" firstAttribute="leadingMargin" secondItem="7c5-Ae-hnz" secondAttribute="leadingMargin" id="RL7-sq-pl1"/>
+                            <constraint firstItem="1tw-Ch-rWN" firstAttribute="top" secondItem="Nru-WJ-HfZ" secondAttribute="bottom" constant="8" id="TRt-BT-jm7"/>
+                            <constraint firstAttribute="trailing" secondItem="1tw-Ch-rWN" secondAttribute="trailing" constant="16" id="er1-oQ-rit"/>
+                            <constraint firstAttribute="bottom" secondItem="b5g-UG-jWB" secondAttribute="bottom" id="hTE-lj-9fZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JC8-BV-ulu" secondAttribute="trailing" id="qfs-ID-4tQ"/>
+                            <constraint firstItem="Nru-WJ-HfZ" firstAttribute="leading" secondItem="7c5-Ae-hnz" secondAttribute="leadingMargin" id="r5y-mh-enr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="b5g-UG-jWB" secondAttribute="trailing" id="rCX-eh-R5X"/>
+                            <constraint firstItem="1tw-Ch-rWN" firstAttribute="leading" secondItem="7c5-Ae-hnz" secondAttribute="leading" constant="16" id="ywQ-dw-YJF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cbP-5l-NWv"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="800"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OBx-n7-jJm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2800" y="719"/>
+        </scene>
     </scenes>
     <resources>
         <image name="access" width="1125" height="770"/>
         <image name="correct" width="1125" height="770"/>
         <image name="globe" width="44" height="44"/>
+        <image name="popup" width="1125" height="770"/>
     </resources>
 </document>
