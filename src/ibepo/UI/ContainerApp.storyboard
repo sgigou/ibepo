@@ -84,31 +84,112 @@
             </objects>
             <point key="canvasLocation" x="897" y="75"/>
         </scene>
-        <!--View Controller-->
+        <!--Page View Controller-->
         <scene sceneID="EVo-RX-Q6c">
             <objects>
-                <viewController storyboardIdentifier="page1" id="6on-4a-pTF" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jqO-XD-5Wf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                <viewController storyboardIdentifier="page1" id="6on-4a-pTF" customClass="PageViewController" customModule="iBépo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jqO-XD-5Wf">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yn-MI-tWC">
-                                <rect key="frame" x="0.0" y="0.0" width="8" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activer iBépo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sED-Z0-b3X">
+                                <rect key="frame" x="20" y="16" width="360" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnc-El-Vtn">
+                                <rect key="frame" x="20" y="290.5" width="360" height="219"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Ajouter le clavier « Bépo »" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzb-U8-eDC">
+                                        <rect key="frame" x="0.0" y="0.0" width="360" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allez dans Paramètres &gt; Général &gt; Claviers &gt; Clavier &gt; Ajouter un clavier…" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0T-yh-b38">
+                                        <rect key="frame" x="0.0" y="28.5" width="360" height="38"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Yd-ip-9yH">
+                                        <rect key="frame" x="0.0" y="74.5" width="360" height="30"/>
+                                        <state key="normal" title="Ouvrir les paramètres"/>
+                                        <connections>
+                                            <action selector="onSettingsTap" destination="RGP-ZI-gXN" eventType="touchUpInside" id="6jQ-bJ-5hy"/>
+                                            <action selector="onSettingsTap" destination="6on-4a-pTF" eventType="touchUpInside" id="tSn-ry-rYz"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Activer le clavier" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ai-4v-RX4">
+                                        <rect key="frame" x="0.0" y="120.5" width="360" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ouvrez le clavier et appuyez longuement sur la touche « globe » pour changer de clavier." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekN-EZ-E34">
+                                        <rect key="frame" x="0.0" y="149" width="360" height="38"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="globe" translatesAutoresizingMaskIntoConstraints="NO" id="HVR-WN-NJE">
+                                        <rect key="frame" x="0.0" y="195" width="360" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="vwM-Hu-beo"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="0Yd-ip-9yH" firstAttribute="leading" secondItem="fnc-El-Vtn" secondAttribute="leading" id="ADi-Um-mJ9"/>
+                                    <constraint firstItem="7ai-4v-RX4" firstAttribute="leading" secondItem="fnc-El-Vtn" secondAttribute="leading" id="CSU-8P-FV8"/>
+                                    <constraint firstItem="e0T-yh-b38" firstAttribute="leading" secondItem="fnc-El-Vtn" secondAttribute="leading" id="EcY-xd-QE1"/>
+                                    <constraint firstAttribute="trailing" secondItem="ekN-EZ-E34" secondAttribute="trailing" id="Hni-Tn-n6C"/>
+                                    <constraint firstItem="Wzb-U8-eDC" firstAttribute="top" secondItem="fnc-El-Vtn" secondAttribute="top" id="Pt7-3e-LLE"/>
+                                    <constraint firstAttribute="trailing" secondItem="HVR-WN-NJE" secondAttribute="trailing" id="QYP-Hp-dZS"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wzb-U8-eDC" secondAttribute="trailing" id="RAK-Ia-ztg"/>
+                                    <constraint firstItem="HVR-WN-NJE" firstAttribute="leading" secondItem="fnc-El-Vtn" secondAttribute="leading" id="WjH-xY-plC"/>
+                                    <constraint firstItem="e0T-yh-b38" firstAttribute="top" secondItem="Wzb-U8-eDC" secondAttribute="bottom" constant="8" id="Ybp-k8-jlZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="7ai-4v-RX4" secondAttribute="trailing" id="ZZP-Cn-dQO"/>
+                                    <constraint firstAttribute="bottom" secondItem="HVR-WN-NJE" secondAttribute="bottom" id="Zhd-mH-gPw"/>
+                                    <constraint firstItem="Wzb-U8-eDC" firstAttribute="leading" secondItem="fnc-El-Vtn" secondAttribute="leading" id="d2W-4e-jQb"/>
+                                    <constraint firstItem="ekN-EZ-E34" firstAttribute="top" secondItem="7ai-4v-RX4" secondAttribute="bottom" constant="8" id="epk-p7-2pa"/>
+                                    <constraint firstItem="HVR-WN-NJE" firstAttribute="top" secondItem="ekN-EZ-E34" secondAttribute="bottom" constant="8" id="hrF-H0-vaR"/>
+                                    <constraint firstItem="7ai-4v-RX4" firstAttribute="top" secondItem="0Yd-ip-9yH" secondAttribute="bottom" constant="16" id="rYc-Ow-QXr"/>
+                                    <constraint firstItem="ekN-EZ-E34" firstAttribute="leading" secondItem="fnc-El-Vtn" secondAttribute="leading" id="twY-KE-K7I"/>
+                                    <constraint firstAttribute="trailing" secondItem="e0T-yh-b38" secondAttribute="trailing" id="uZf-sx-vzl"/>
+                                    <constraint firstItem="0Yd-ip-9yH" firstAttribute="top" secondItem="e0T-yh-b38" secondAttribute="bottom" constant="8" id="ucV-r3-ajW"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Yd-ip-9yH" secondAttribute="trailing" id="xZq-pd-dif"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faites défiler pour en savoir plus &gt;&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="719-31-XFq">
+                                <rect key="frame" x="0.0" y="763" width="400" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="YnQ-fL-OhQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="sED-Z0-b3X" secondAttribute="trailing" id="8aC-2N-Fv8"/>
+                            <constraint firstItem="sED-Z0-b3X" firstAttribute="top" secondItem="jqO-XD-5Wf" secondAttribute="topMargin" constant="16" id="JXO-QW-g8D"/>
+                            <constraint firstItem="719-31-XFq" firstAttribute="leading" secondItem="jqO-XD-5Wf" secondAttribute="leading" id="O3x-8O-Y7G"/>
+                            <constraint firstAttribute="trailing" secondItem="719-31-XFq" secondAttribute="trailing" id="Szb-Kc-paN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fnc-El-Vtn" secondAttribute="trailing" id="c2q-Jw-lay"/>
+                            <constraint firstItem="sED-Z0-b3X" firstAttribute="leading" secondItem="jqO-XD-5Wf" secondAttribute="leadingMargin" id="d4t-Jn-3PT"/>
+                            <constraint firstItem="fnc-El-Vtn" firstAttribute="leading" secondItem="jqO-XD-5Wf" secondAttribute="leadingMargin" id="has-pv-SPP"/>
+                            <constraint firstAttribute="bottom" secondItem="719-31-XFq" secondAttribute="bottom" constant="16" id="oMp-gq-SEI"/>
+                            <constraint firstItem="fnc-El-Vtn" firstAttribute="centerY" secondItem="jqO-XD-5Wf" secondAttribute="centerY" id="whF-YD-9ce"/>
+                        </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="200"/>
+                    <size key="freeformSize" width="400" height="800"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ey-RA-Ckl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="RGP-ZI-gXN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="841" y="772"/>
+            <point key="canvasLocation" x="798.55072463768124" y="718.52678571428567"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="RsE-lM-2dy">
@@ -135,4 +216,7 @@
             <point key="canvasLocation" x="1623" y="769"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="globe" width="44" height="44"/>
+    </resources>
 </document>
