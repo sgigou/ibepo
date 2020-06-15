@@ -17,12 +17,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vD3-Wv-fmh">
-                                <rect key="frame" x="0.0" y="821" width="414" height="41"/>
+                                <rect key="frame" x="0.0" y="801" width="414" height="61"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Essayez le clavier ici" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CaI-H4-opH">
-                                        <rect key="frame" x="10" y="1" width="394" height="40"/>
+                                        <rect key="frame" x="10" y="1" width="394" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="owY-8R-OhB"/>
+                                            <constraint firstAttribute="height" constant="60" id="owY-8R-OhB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
@@ -50,7 +50,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08Q-2n-YFF">
-                                <rect key="frame" x="0.0" y="44" width="414" height="777"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="757"/>
                                 <connections>
                                     <segue destination="CoQ-gB-4Uc" kind="embed" id="Cp7-d5-It2"/>
                                 </connections>
@@ -68,6 +68,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="37E-w8-aed"/>
                     </view>
+                    <connections>
+                        <outlet property="textFieldBottomConstraint" destination="3Zb-XM-OJI" id="wLc-YU-IOz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T4A-BF-fg6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
