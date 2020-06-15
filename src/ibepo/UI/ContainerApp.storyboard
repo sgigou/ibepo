@@ -50,7 +50,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08Q-2n-YFF">
-                                <rect key="frame" x="0.0" y="44" width="414" height="757"/>
+                                <rect key="frame" x="0.0" y="128" width="453" height="757"/>
                                 <connections>
                                     <segue destination="CoQ-gB-4Uc" kind="embed" id="Cp7-d5-It2"/>
                                 </connections>
@@ -82,7 +82,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="CoQ-gB-4Uc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pyy-5d-sIx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="780" y="75"/>
+            <point key="canvasLocation" x="897" y="75"/>
         </scene>
     </scenes>
 </document>
