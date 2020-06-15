@@ -19,6 +19,7 @@
 		392AD050245D759F008252F1 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994E3A1245D6D10008B1099 /* InputViewController.swift */; };
 		3939138A249796760061DB78 /* ContainerApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39391389249796760061DB78 /* ContainerApp.storyboard */; };
 		3939138C249799F30061DB78 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3939138B249799F30061DB78 /* MainViewController.swift */; };
+		393913902497A5100061DB78 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3939138F2497A5100061DB78 /* TutorialPageViewController.swift */; };
 		39514A542462A44000F05A48 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39514A532462A44000F05A48 /* ColorManager.swift */; };
 		39514A572462AB4F00F05A48 /* SymbolsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39514A562462AB4F00F05A48 /* SymbolsManager.swift */; };
 		39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39528F7F245AFC4D0080FBE8 /* AppDelegate.swift */; };
@@ -107,6 +108,7 @@
 		392AD048245D72D9008252F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39391389249796760061DB78 /* ContainerApp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContainerApp.storyboard; sourceTree = "<group>"; };
 		3939138B249799F30061DB78 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		3939138F2497A5100061DB78 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		39514A532462A44000F05A48 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		39514A562462AB4F00F05A48 /* SymbolsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsManager.swift; sourceTree = "<group>"; };
 		39528F7C245AFC4D0080FBE8 /* iBépo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iBépo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -335,6 +337,7 @@
 				39528F8A245AFC510080FBE8 /* LaunchScreen.storyboard */,
 				39391389249796760061DB78 /* ContainerApp.storyboard */,
 				3939138B249799F30061DB78 /* MainViewController.swift */,
+				3939138F2497A5100061DB78 /* TutorialPageViewController.swift */,
 				3994E3A4245D6E82008B1099 /* HomeViewController.swift */,
 				3994E3A5245D6E82008B1099 /* HomeViewController.xib */,
 			);
@@ -622,6 +625,7 @@
 			files = (
 				3939138C249799F30061DB78 /* MainViewController.swift in Sources */,
 				39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */,
+				393913902497A5100061DB78 /* TutorialPageViewController.swift in Sources */,
 				3994E3A6245D6E82008B1099 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
