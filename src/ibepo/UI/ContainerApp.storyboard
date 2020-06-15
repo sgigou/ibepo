@@ -32,9 +32,6 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="dMX-PL-OEh" id="WkK-Js-8rj"/>
-                                        </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Hk-R6-TBl">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
@@ -69,6 +66,7 @@
                         <viewLayoutGuide key="safeArea" id="37E-w8-aed"/>
                     </view>
                     <connections>
+                        <outlet property="testTextField" destination="CaI-H4-opH" id="4YX-Mk-H6D"/>
                         <outlet property="textFieldBottomConstraint" destination="3Zb-XM-OJI" id="wLc-YU-IOz"/>
                     </connections>
                 </viewController>
@@ -98,89 +96,77 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnc-El-Vtn">
-                                <rect key="frame" x="20" y="290.5" width="360" height="219"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Ajouter le clavier « Bépo »" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzb-U8-eDC">
-                                        <rect key="frame" x="0.0" y="0.0" width="360" height="20.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allez dans Paramètres &gt; Général &gt; Claviers &gt; Clavier &gt; Ajouter un clavier…" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0T-yh-b38">
-                                        <rect key="frame" x="0.0" y="28.5" width="360" height="38"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Yd-ip-9yH">
-                                        <rect key="frame" x="0.0" y="74.5" width="360" height="30"/>
-                                        <state key="normal" title="Ouvrir les paramètres"/>
-                                        <connections>
-                                            <action selector="onSettingsTap" destination="RGP-ZI-gXN" eventType="touchUpInside" id="6jQ-bJ-5hy"/>
-                                            <action selector="onSettingsTap" destination="6on-4a-pTF" eventType="touchUpInside" id="tSn-ry-rYz"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Activer le clavier" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ai-4v-RX4">
-                                        <rect key="frame" x="0.0" y="120.5" width="360" height="20.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ouvrez le clavier et appuyez longuement sur la touche « globe » pour changer de clavier." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekN-EZ-E34">
-                                        <rect key="frame" x="0.0" y="149" width="360" height="38"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="globe" translatesAutoresizingMaskIntoConstraints="NO" id="HVR-WN-NJE">
-                                        <rect key="frame" x="0.0" y="195" width="360" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="vwM-Hu-beo"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Ajouter le clavier « Bépo »" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzb-U8-eDC">
+                                <rect key="frame" x="20" y="73" width="360" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allez dans Paramètres &gt; Général &gt; Claviers &gt; Clavier &gt; Ajouter un clavier…" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0T-yh-b38">
+                                <rect key="frame" x="20" y="101.5" width="360" height="38"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Activer le clavier" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ai-4v-RX4">
+                                <rect key="frame" x="20" y="193.5" width="360" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ouvrez le clavier et appuyez longuement sur la touche « globe » pour changer de clavier." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekN-EZ-E34">
+                                <rect key="frame" x="20" y="222" width="360" height="38"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="globe" translatesAutoresizingMaskIntoConstraints="NO" id="HVR-WN-NJE">
+                                <rect key="frame" x="20" y="268" width="360" height="24"/>
                                 <constraints>
-                                    <constraint firstItem="0Yd-ip-9yH" firstAttribute="leading" secondItem="fnc-El-Vtn" secondAttribute="leading" id="ADi-Um-mJ9"/>
-                                    <constraint firstItem="7ai-4v-RX4" firstAttribute="leading" secondItem="fnc-El-Vtn" secondAttribute="leading" id="CSU-8P-FV8"/>
-                                    <constraint firstItem="e0T-yh-b38" firstAttribute="leading" secondItem="fnc-El-Vtn" secondAttribute="leading" id="EcY-xd-QE1"/>
-                                    <constraint firstAttribute="trailing" secondItem="ekN-EZ-E34" secondAttribute="trailing" id="Hni-Tn-n6C"/>
-                                    <constraint firstItem="Wzb-U8-eDC" firstAttribute="top" secondItem="fnc-El-Vtn" secondAttribute="top" id="Pt7-3e-LLE"/>
-                                    <constraint firstAttribute="trailing" secondItem="HVR-WN-NJE" secondAttribute="trailing" id="QYP-Hp-dZS"/>
-                                    <constraint firstAttribute="trailing" secondItem="Wzb-U8-eDC" secondAttribute="trailing" id="RAK-Ia-ztg"/>
-                                    <constraint firstItem="HVR-WN-NJE" firstAttribute="leading" secondItem="fnc-El-Vtn" secondAttribute="leading" id="WjH-xY-plC"/>
-                                    <constraint firstItem="e0T-yh-b38" firstAttribute="top" secondItem="Wzb-U8-eDC" secondAttribute="bottom" constant="8" id="Ybp-k8-jlZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="7ai-4v-RX4" secondAttribute="trailing" id="ZZP-Cn-dQO"/>
-                                    <constraint firstAttribute="bottom" secondItem="HVR-WN-NJE" secondAttribute="bottom" id="Zhd-mH-gPw"/>
-                                    <constraint firstItem="Wzb-U8-eDC" firstAttribute="leading" secondItem="fnc-El-Vtn" secondAttribute="leading" id="d2W-4e-jQb"/>
-                                    <constraint firstItem="ekN-EZ-E34" firstAttribute="top" secondItem="7ai-4v-RX4" secondAttribute="bottom" constant="8" id="epk-p7-2pa"/>
-                                    <constraint firstItem="HVR-WN-NJE" firstAttribute="top" secondItem="ekN-EZ-E34" secondAttribute="bottom" constant="8" id="hrF-H0-vaR"/>
-                                    <constraint firstItem="7ai-4v-RX4" firstAttribute="top" secondItem="0Yd-ip-9yH" secondAttribute="bottom" constant="16" id="rYc-Ow-QXr"/>
-                                    <constraint firstItem="ekN-EZ-E34" firstAttribute="leading" secondItem="fnc-El-Vtn" secondAttribute="leading" id="twY-KE-K7I"/>
-                                    <constraint firstAttribute="trailing" secondItem="e0T-yh-b38" secondAttribute="trailing" id="uZf-sx-vzl"/>
-                                    <constraint firstItem="0Yd-ip-9yH" firstAttribute="top" secondItem="e0T-yh-b38" secondAttribute="bottom" constant="8" id="ucV-r3-ajW"/>
-                                    <constraint firstAttribute="trailing" secondItem="0Yd-ip-9yH" secondAttribute="trailing" id="xZq-pd-dif"/>
+                                    <constraint firstAttribute="height" constant="24" id="vwM-Hu-beo"/>
                                 </constraints>
-                            </view>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faites défiler pour en savoir plus &gt;&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="719-31-XFq">
-                                <rect key="frame" x="0.0" y="763" width="400" height="21"/>
+                                <rect key="frame" x="0.0" y="308" width="400" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Yd-ip-9yH">
+                                <rect key="frame" x="20" y="147.5" width="360" height="30"/>
+                                <state key="normal" title="Ouvrir les paramètres"/>
+                                <connections>
+                                    <action selector="onSettingsTap" destination="RGP-ZI-gXN" eventType="touchUpInside" id="6jQ-bJ-5hy"/>
+                                    <action selector="onSettingsTap" destination="6on-4a-pTF" eventType="touchUpInside" id="tSn-ry-rYz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="ekN-EZ-E34" firstAttribute="trailing" secondItem="jqO-XD-5Wf" secondAttribute="trailingMargin" id="5fR-6t-Ugm"/>
+                            <constraint firstItem="HVR-WN-NJE" firstAttribute="top" secondItem="ekN-EZ-E34" secondAttribute="bottom" constant="8" id="6EF-8p-pPL"/>
+                            <constraint firstItem="719-31-XFq" firstAttribute="top" secondItem="HVR-WN-NJE" secondAttribute="bottom" constant="16" id="7Tl-1w-GbX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sED-Z0-b3X" secondAttribute="trailing" id="8aC-2N-Fv8"/>
+                            <constraint firstItem="0Yd-ip-9yH" firstAttribute="top" secondItem="e0T-yh-b38" secondAttribute="bottom" constant="8" id="Fep-f1-IWU"/>
+                            <constraint firstItem="7ai-4v-RX4" firstAttribute="leading" secondItem="jqO-XD-5Wf" secondAttribute="leadingMargin" id="GSh-Sa-SsJ"/>
+                            <constraint firstItem="Wzb-U8-eDC" firstAttribute="top" secondItem="sED-Z0-b3X" secondAttribute="bottom" constant="16" id="JF6-yT-Et5"/>
                             <constraint firstItem="sED-Z0-b3X" firstAttribute="top" secondItem="jqO-XD-5Wf" secondAttribute="topMargin" constant="16" id="JXO-QW-g8D"/>
                             <constraint firstItem="719-31-XFq" firstAttribute="leading" secondItem="jqO-XD-5Wf" secondAttribute="leading" id="O3x-8O-Y7G"/>
+                            <constraint firstItem="e0T-yh-b38" firstAttribute="top" secondItem="Wzb-U8-eDC" secondAttribute="bottom" constant="8" id="OWz-LC-mcz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="e0T-yh-b38" secondAttribute="trailing" id="Ohe-ux-1hz"/>
+                            <constraint firstItem="0Yd-ip-9yH" firstAttribute="leading" secondItem="jqO-XD-5Wf" secondAttribute="leadingMargin" id="Pvo-PB-fjH"/>
+                            <constraint firstItem="e0T-yh-b38" firstAttribute="leading" secondItem="jqO-XD-5Wf" secondAttribute="leadingMargin" id="RvS-Iw-bhi"/>
                             <constraint firstAttribute="trailing" secondItem="719-31-XFq" secondAttribute="trailing" id="Szb-Kc-paN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fnc-El-Vtn" secondAttribute="trailing" id="c2q-Jw-lay"/>
+                            <constraint firstItem="Wzb-U8-eDC" firstAttribute="leading" secondItem="jqO-XD-5Wf" secondAttribute="leadingMargin" id="WRG-Ex-ygx"/>
+                            <constraint firstItem="7ai-4v-RX4" firstAttribute="top" secondItem="0Yd-ip-9yH" secondAttribute="bottom" constant="16" id="bSi-tH-kAj"/>
                             <constraint firstItem="sED-Z0-b3X" firstAttribute="leading" secondItem="jqO-XD-5Wf" secondAttribute="leadingMargin" id="d4t-Jn-3PT"/>
-                            <constraint firstItem="fnc-El-Vtn" firstAttribute="leading" secondItem="jqO-XD-5Wf" secondAttribute="leadingMargin" id="has-pv-SPP"/>
-                            <constraint firstAttribute="bottom" secondItem="719-31-XFq" secondAttribute="bottom" constant="16" id="oMp-gq-SEI"/>
-                            <constraint firstItem="fnc-El-Vtn" firstAttribute="centerY" secondItem="jqO-XD-5Wf" secondAttribute="centerY" id="whF-YD-9ce"/>
+                            <constraint firstItem="ekN-EZ-E34" firstAttribute="top" secondItem="7ai-4v-RX4" secondAttribute="bottom" constant="8" id="hPy-7X-H7s"/>
+                            <constraint firstItem="HVR-WN-NJE" firstAttribute="leading" secondItem="jqO-XD-5Wf" secondAttribute="leadingMargin" id="iNF-cJ-Rvb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wzb-U8-eDC" secondAttribute="trailing" id="kWI-Lb-gcu"/>
+                            <constraint firstItem="ekN-EZ-E34" firstAttribute="leading" secondItem="jqO-XD-5Wf" secondAttribute="leadingMargin" id="laR-6u-hcF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0Yd-ip-9yH" secondAttribute="trailing" id="mvG-3X-uPY"/>
+                            <constraint firstItem="7ai-4v-RX4" firstAttribute="trailing" secondItem="jqO-XD-5Wf" secondAttribute="trailingMargin" id="nbH-cM-2aC"/>
+                            <constraint firstItem="HVR-WN-NJE" firstAttribute="trailing" secondItem="jqO-XD-5Wf" secondAttribute="trailingMargin" id="pfu-pk-R1S"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -191,32 +177,63 @@
             </objects>
             <point key="canvasLocation" x="798.55072463768124" y="718.52678571428567"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="RsE-lM-2dy">
+        <!--Page View Controller-->
+        <scene sceneID="h7Z-Gq-Vtk">
             <objects>
-                <viewController storyboardIdentifier="page2" id="L7E-ci-Vd5" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1xl-Vx-2Jk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <viewController storyboardIdentifier="page2" id="Uwj-kQ-W23" customClass="PageViewController" customModule="iBépo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="f2T-9A-YGJ">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODI-WI-1EX">
-                                <rect key="frame" x="151" y="419" width="10" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L’agencement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ZS-lo-0y1">
+                                <rect key="frame" x="20" y="16" width="360" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="access" translatesAutoresizingMaskIntoConstraints="NO" id="dUQ-5E-9fB">
+                                <rect key="frame" x="8" y="354" width="384" height="404"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V24-4H-Vzf">
+                                <rect key="frame" x="0.0" y="757.5" width="400" height="42.5"/>
+                                <string key="text">Les touches les plus utilisées sont au centre
+et les moins utilisées au milieu et sur les côtés.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxc-39-SeU">
+                                <rect key="frame" x="0.0" y="283" width="400" height="42.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">Les touches les plus utilisées sont au centre
+et les moins utilisées au milieu et sur les côtés.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="Igb-AU-lZc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="V24-4H-Vzf" firstAttribute="leading" secondItem="f2T-9A-YGJ" secondAttribute="leading" id="0LL-IC-0oZ"/>
+                            <constraint firstItem="pPP-LF-Iq2" firstAttribute="trailing" secondItem="dUQ-5E-9fB" secondAttribute="trailing" constant="8" id="0x7-rr-RTT"/>
+                            <constraint firstItem="pPP-LF-Iq2" firstAttribute="trailing" secondItem="V24-4H-Vzf" secondAttribute="trailing" id="L6d-jt-h18"/>
+                            <constraint firstItem="V24-4H-Vzf" firstAttribute="top" secondItem="dUQ-5E-9fB" secondAttribute="bottom" id="QRi-vg-QQk"/>
+                            <constraint firstItem="7ZS-lo-0y1" firstAttribute="leading" secondItem="f2T-9A-YGJ" secondAttribute="leadingMargin" id="TRl-OS-jiO"/>
+                            <constraint firstItem="dUQ-5E-9fB" firstAttribute="leading" secondItem="pPP-LF-Iq2" secondAttribute="leading" constant="8" id="VnC-De-gMe"/>
+                            <constraint firstItem="7ZS-lo-0y1" firstAttribute="top" secondItem="f2T-9A-YGJ" secondAttribute="topMargin" constant="16" id="Y3J-Pf-cYN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7ZS-lo-0y1" secondAttribute="trailing" id="Ynk-Nb-l3G"/>
+                            <constraint firstItem="pPP-LF-Iq2" firstAttribute="bottom" secondItem="V24-4H-Vzf" secondAttribute="bottom" id="cau-ZL-tWI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pPP-LF-Iq2"/>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="800"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F1H-2F-heG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wcd-bX-97h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1623" y="769"/>
+            <point key="canvasLocation" x="1508.6956521739132" y="718.52678571428567"/>
         </scene>
     </scenes>
     <resources>
+        <image name="access" width="1125" height="770"/>
         <image name="globe" width="44" height="44"/>
     </resources>
 </document>

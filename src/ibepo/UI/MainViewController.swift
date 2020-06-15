@@ -13,6 +13,7 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+  @IBOutlet weak var testTextField: UITextField!
   @IBOutlet weak var textFieldBottomConstraint: NSLayoutConstraint!
   
   // MARK: Life cycle
@@ -21,6 +22,11 @@ class MainViewController: UIViewController {
     super.viewDidLoad()
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    testTextField.becomeFirstResponder()
   }
   
   deinit {
@@ -57,18 +63,6 @@ class MainViewController: UIViewController {
       return view.window?.safeAreaInsets.bottom ?? 0.0
     }
     return 0.0
-  }
-  
-}
-
-
-// MARK: - UITextFieldDelegate
-
-extension MainViewController: UITextFieldDelegate {
-  
-  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    textField.resignFirstResponder()
-    return true
   }
   
 }
