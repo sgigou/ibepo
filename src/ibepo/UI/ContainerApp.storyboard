@@ -191,19 +191,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="access" translatesAutoresizingMaskIntoConstraints="NO" id="dUQ-5E-9fB">
-                                <rect key="frame" x="8" y="354" width="384" height="404"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="access" translatesAutoresizingMaskIntoConstraints="NO" id="dUQ-5E-9fB">
+                                <rect key="frame" x="16" y="123.5" width="368" height="626"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V24-4H-Vzf">
-                                <rect key="frame" x="0.0" y="757.5" width="400" height="42.5"/>
+                                <rect key="frame" x="12" y="757.5" width="368" height="42.5"/>
                                 <string key="text">Les touches les plus utilisées sont au centre
 et les moins utilisées au milieu et sur les côtés.</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxc-39-SeU">
-                                <rect key="frame" x="0.0" y="283" width="400" height="42.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxc-39-SeU">
+                                <rect key="frame" x="20" y="73" width="360" height="42.5"/>
                                 <string key="text">Les touches les plus utilisées sont au centre
 et les moins utilisées au milieu et sur les côtés.</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -212,17 +211,20 @@ et les moins utilisées au milieu et sur les côtés.</string>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="V24-4H-Vzf" firstAttribute="leading" secondItem="f2T-9A-YGJ" secondAttribute="leading" id="0LL-IC-0oZ"/>
-                            <constraint firstItem="pPP-LF-Iq2" firstAttribute="trailing" secondItem="dUQ-5E-9fB" secondAttribute="trailing" constant="8" id="0x7-rr-RTT"/>
-                            <constraint firstItem="pPP-LF-Iq2" firstAttribute="trailing" secondItem="V24-4H-Vzf" secondAttribute="trailing" id="L6d-jt-h18"/>
-                            <constraint firstItem="V24-4H-Vzf" firstAttribute="top" secondItem="dUQ-5E-9fB" secondAttribute="bottom" id="QRi-vg-QQk"/>
+                            <constraint firstItem="V24-4H-Vzf" firstAttribute="leadingMargin" secondItem="f2T-9A-YGJ" secondAttribute="leadingMargin" id="0LL-IC-0oZ"/>
+                            <constraint firstAttribute="trailing" secondItem="dUQ-5E-9fB" secondAttribute="trailing" constant="16" id="0x7-rr-RTT"/>
+                            <constraint firstItem="Lxc-39-SeU" firstAttribute="top" secondItem="7ZS-lo-0y1" secondAttribute="bottom" constant="16" id="1ZC-vz-Snp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V24-4H-Vzf" secondAttribute="trailing" id="L6d-jt-h18"/>
+                            <constraint firstItem="Lxc-39-SeU" firstAttribute="leading" secondItem="f2T-9A-YGJ" secondAttribute="leadingMargin" id="ONc-KB-Dbg"/>
                             <constraint firstItem="7ZS-lo-0y1" firstAttribute="leading" secondItem="f2T-9A-YGJ" secondAttribute="leadingMargin" id="TRl-OS-jiO"/>
-                            <constraint firstItem="dUQ-5E-9fB" firstAttribute="leading" secondItem="pPP-LF-Iq2" secondAttribute="leading" constant="8" id="VnC-De-gMe"/>
+                            <constraint firstItem="dUQ-5E-9fB" firstAttribute="leading" secondItem="f2T-9A-YGJ" secondAttribute="leading" constant="16" id="VnC-De-gMe"/>
                             <constraint firstItem="7ZS-lo-0y1" firstAttribute="top" secondItem="f2T-9A-YGJ" secondAttribute="topMargin" constant="16" id="Y3J-Pf-cYN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7ZS-lo-0y1" secondAttribute="trailing" id="Ynk-Nb-l3G"/>
-                            <constraint firstItem="pPP-LF-Iq2" firstAttribute="bottom" secondItem="V24-4H-Vzf" secondAttribute="bottom" id="cau-ZL-tWI"/>
+                            <constraint firstAttribute="bottom" secondItem="V24-4H-Vzf" secondAttribute="bottom" id="cau-ZL-tWI"/>
+                            <constraint firstItem="dUQ-5E-9fB" firstAttribute="top" secondItem="Lxc-39-SeU" secondAttribute="bottom" constant="8" id="eqR-M1-KcQ"/>
+                            <constraint firstItem="V24-4H-Vzf" firstAttribute="top" secondItem="dUQ-5E-9fB" secondAttribute="bottom" constant="8" id="lNE-Gt-wJB"/>
+                            <constraint firstItem="Lxc-39-SeU" firstAttribute="trailing" secondItem="f2T-9A-YGJ" secondAttribute="trailingMargin" id="w6b-P1-EVa"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="pPP-LF-Iq2"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="400" height="800"/>
