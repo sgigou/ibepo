@@ -40,7 +40,9 @@ final class ColorManager {
     if #available(iOS 13, *) {
       return .systemBlue
     } else {
-      return .blue
+      return colorAppearance == .dark ?
+        UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0) :
+        UIColor(red: 10.0/255.0, green: 132.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     }
   }
   
