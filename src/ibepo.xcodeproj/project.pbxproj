@@ -17,6 +17,7 @@
 		392AD047245D72D9008252F1 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392AD046245D72D9008252F1 /* KeyboardViewController.swift */; };
 		392AD04B245D72D9008252F1 /* keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 392AD044245D72D9008252F1 /* keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		392AD050245D759F008252F1 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994E3A1245D6D10008B1099 /* InputViewController.swift */; };
+		3939138A249796760061DB78 /* ContainerApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39391389249796760061DB78 /* ContainerApp.storyboard */; };
 		39514A542462A44000F05A48 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39514A532462A44000F05A48 /* ColorManager.swift */; };
 		39514A572462AB4F00F05A48 /* SymbolsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39514A562462AB4F00F05A48 /* SymbolsManager.swift */; };
 		39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39528F7F245AFC4D0080FBE8 /* AppDelegate.swift */; };
@@ -103,6 +104,7 @@
 		392AD044245D72D9008252F1 /* keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		392AD046245D72D9008252F1 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		392AD048245D72D9008252F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39391389249796760061DB78 /* ContainerApp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContainerApp.storyboard; sourceTree = "<group>"; };
 		39514A532462A44000F05A48 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		39514A562462AB4F00F05A48 /* SymbolsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsManager.swift; sourceTree = "<group>"; };
 		39528F7C245AFC4D0080FBE8 /* iBépo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iBépo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -329,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				39528F8A245AFC510080FBE8 /* LaunchScreen.storyboard */,
+				39391389249796760061DB78 /* ContainerApp.storyboard */,
 				3994E3A4245D6E82008B1099 /* HomeViewController.swift */,
 				3994E3A5245D6E82008B1099 /* HomeViewController.xib */,
 			);
@@ -509,6 +512,7 @@
 			files = (
 				39528F8C245AFC510080FBE8 /* LaunchScreen.storyboard in Resources */,
 				39528F89245AFC510080FBE8 /* Assets.xcassets in Resources */,
+				3939138A249796760061DB78 /* ContainerApp.storyboard in Resources */,
 				3994E3A7245D6E82008B1099 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
