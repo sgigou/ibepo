@@ -16,6 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08Q-2n-YFF">
+                                <rect key="frame" x="0.0" y="44" width="414" height="757"/>
+                                <connections>
+                                    <segue destination="CoQ-gB-4Uc" kind="embed" id="Cp7-d5-It2"/>
+                                </connections>
+                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vD3-Wv-fmh">
                                 <rect key="frame" x="0.0" y="801" width="414" height="61"/>
                                 <subviews>
@@ -49,12 +55,6 @@
                                     <constraint firstItem="1Hk-R6-TBl" firstAttribute="top" secondItem="vD3-Wv-fmh" secondAttribute="top" id="rka-fn-Cds"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08Q-2n-YFF">
-                                <rect key="frame" x="0.0" y="128" width="453" height="757"/>
-                                <connections>
-                                    <segue destination="CoQ-gB-4Uc" kind="embed" id="Cp7-d5-It2"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -62,7 +62,7 @@
                             <constraint firstItem="08Q-2n-YFF" firstAttribute="top" secondItem="37E-w8-aed" secondAttribute="top" id="78S-Ed-npQ"/>
                             <constraint firstItem="08Q-2n-YFF" firstAttribute="leading" secondItem="37E-w8-aed" secondAttribute="leading" id="FmX-53-YBe"/>
                             <constraint firstItem="37E-w8-aed" firstAttribute="trailing" secondItem="08Q-2n-YFF" secondAttribute="trailing" id="adi-tg-wmP"/>
-                            <constraint firstItem="vD3-Wv-fmh" firstAttribute="top" secondItem="08Q-2n-YFF" secondAttribute="bottom" id="jjP-id-3LQ"/>
+                            <constraint firstItem="vD3-Wv-fmh" firstAttribute="top" secondItem="08Q-2n-YFF" secondAttribute="bottom" id="mdH-YN-tvR"/>
                             <constraint firstItem="vD3-Wv-fmh" firstAttribute="leading" secondItem="37E-w8-aed" secondAttribute="leading" id="ooa-Iv-rG1"/>
                             <constraint firstItem="vD3-Wv-fmh" firstAttribute="trailing" secondItem="37E-w8-aed" secondAttribute="trailing" id="zBk-OE-yi2"/>
                         </constraints>
@@ -74,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T4A-BF-fg6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-35" y="75"/>
+            <point key="canvasLocation" x="-36.231884057971016" y="75"/>
         </scene>
         <!--Tutorial Page View Controller-->
         <scene sceneID="AjE-RW-i0i">
@@ -89,20 +89,22 @@
             <objects>
                 <viewController storyboardIdentifier="page1" id="6on-4a-pTF" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jqO-XD-5Wf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yn-MI-tWC">
-                                <rect key="frame" x="186" y="438" width="8" height="21"/>
+                                <rect key="frame" x="0.0" y="0.0" width="8" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="YnQ-fL-OhQ"/>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="200"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ey-RA-Ckl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -124,7 +126,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Igb-AU-lZc"/>
                     </view>
                 </viewController>

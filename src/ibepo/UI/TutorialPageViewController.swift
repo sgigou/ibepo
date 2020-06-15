@@ -19,6 +19,7 @@ class TutorialPageViewController: UIPageViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    loadPageControl()
     loadPages()
     dataSource = self
     if let firstViewController = pages.first {
@@ -27,6 +28,12 @@ class TutorialPageViewController: UIPageViewController {
   }
   
   // MARK: Loading
+  
+  private func loadPageControl() {
+    let pageControl = UIPageControl.appearance()
+    pageControl.pageIndicatorTintColor = ColorManager.shared.secondaryLabel
+    pageControl.currentPageIndicatorTintColor = ColorManager.shared.label
+  }
   
   private func loadPages() {
     for pageIndex in 1...2 {
@@ -39,7 +46,7 @@ class TutorialPageViewController: UIPageViewController {
 }
 
 
-// MARK: -
+// MARK: - UIPageViewController
 
 extension TutorialPageViewController: UIPageViewControllerDataSource {
   
@@ -53,6 +60,14 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
     guard let index = pages.firstIndex(of: viewController) else { return nil }
     if index == pages.count - 1 { return nil }
     return pages[index + 1]
+  }
+  
+  func presentationCount(for pageViewController: UIPageViewController) -> Int {
+    return pages.count
+  }
+  
+  func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+    return 0
   }
   
 }
