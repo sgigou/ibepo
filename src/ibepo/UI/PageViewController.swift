@@ -1,29 +1,32 @@
 //
-//  HomeViewController.swift
+//  PageViewController.swift
 //  ibepo
 //
-//  Created by Steve Gigou on 2020-05-02.
+//  Created by Steve Gigou on 2020-06-15.
 //  Copyright © 2020 Novesoft. All rights reserved.
 //
 
 import UIKit
 
-
-// MARK: - HomeViewController
-
-class HomeViewController: UIViewController {
+class PageViewController: UIViewController {
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    navigationController?.setNavigationBarHidden(true, animated: false)
-  }
+  // MARK: Actions
   
-  @IBAction func settingsTap() {
+  @IBAction func onSettingsTap() {
     guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
       return
     }
     if UIApplication.shared.canOpenURL(settingsUrl) {
       UIApplication.shared.openURL(settingsUrl)
+    }
+  }
+  
+  @IBAction func bepoWebsiteTap() {
+    guard let websiteUrl = URL(string: "https://bepo.fr") else {
+      return
+    }
+    if UIApplication.shared.canOpenURL(websiteUrl) {
+      UIApplication.shared.openURL(websiteUrl)
     }
   }
   
@@ -44,17 +47,5 @@ class HomeViewController: UIViewController {
       UIApplication.shared.openURL(websiteUrl)
     }
   }
-  
-}
 
-
-// MARK: - UITextFieldDelegate
-
-extension HomeViewController: UITextFieldDelegate {
-  
-  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    textField.resignFirstResponder()
-    return true
-  }
-  
 }

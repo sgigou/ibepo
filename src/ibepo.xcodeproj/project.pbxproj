@@ -17,6 +17,12 @@
 		392AD047245D72D9008252F1 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392AD046245D72D9008252F1 /* KeyboardViewController.swift */; };
 		392AD04B245D72D9008252F1 /* keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 392AD044245D72D9008252F1 /* keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		392AD050245D759F008252F1 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994E3A1245D6D10008B1099 /* InputViewController.swift */; };
+		3939138A249796760061DB78 /* ContainerApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39391389249796760061DB78 /* ContainerApp.storyboard */; };
+		3939138C249799F30061DB78 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3939138B249799F30061DB78 /* MainViewController.swift */; };
+		393913902497A5100061DB78 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3939138F2497A5100061DB78 /* TutorialPageViewController.swift */; };
+		393913912497ACB00061DB78 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39514A532462A44000F05A48 /* ColorManager.swift */; };
+		393913922497AD0A0061DB78 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974AFFD246581ED004901B7 /* Notification.swift */; };
+		393913952497B6820061DB78 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393913942497B6820061DB78 /* PageViewController.swift */; };
 		39514A542462A44000F05A48 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39514A532462A44000F05A48 /* ColorManager.swift */; };
 		39514A572462AB4F00F05A48 /* SymbolsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39514A562462AB4F00F05A48 /* SymbolsManager.swift */; };
 		39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39528F7F245AFC4D0080FBE8 /* AppDelegate.swift */; };
@@ -36,8 +42,6 @@
 		398D0E1A2490DCC400C99BB0 /* KeyboardAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 398D0E192490DCC400C99BB0 /* KeyboardAssets.xcassets */; };
 		39936946247527FC00D53EA1 /* AutocorrectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39936943247527FC00D53EA1 /* AutocorrectViewController.swift */; };
 		39936948247527FC00D53EA1 /* AutocorrectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39936944247527FC00D53EA1 /* AutocorrectViewController.xib */; };
-		3994E3A6245D6E82008B1099 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994E3A4245D6E82008B1099 /* HomeViewController.swift */; };
-		3994E3A7245D6E82008B1099 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3994E3A5245D6E82008B1099 /* HomeViewController.xib */; };
 		39991304248E2E4C00AD614E /* TextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39991302248E2E4C00AD614E /* TextModifier.swift */; };
 		39991307248E2E9900AD614E /* DotInserter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39991305248E2E9900AD614E /* DotInserter.swift */; };
 		3999130A248E2F2100AD614E /* TextModifiersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39991308248E2F2100AD614E /* TextModifiersFactory.swift */; };
@@ -103,6 +107,10 @@
 		392AD044245D72D9008252F1 /* keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		392AD046245D72D9008252F1 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		392AD048245D72D9008252F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39391389249796760061DB78 /* ContainerApp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContainerApp.storyboard; sourceTree = "<group>"; };
+		3939138B249799F30061DB78 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		3939138F2497A5100061DB78 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
+		393913942497B6820061DB78 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		39514A532462A44000F05A48 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		39514A562462AB4F00F05A48 /* SymbolsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsManager.swift; sourceTree = "<group>"; };
 		39528F7C245AFC4D0080FBE8 /* iBépo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iBépo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,8 +136,6 @@
 		39936943247527FC00D53EA1 /* AutocorrectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocorrectViewController.swift; sourceTree = "<group>"; };
 		39936944247527FC00D53EA1 /* AutocorrectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutocorrectViewController.xib; sourceTree = "<group>"; };
 		3994E3A1245D6D10008B1099 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
-		3994E3A4245D6E82008B1099 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		3994E3A5245D6E82008B1099 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		39991302248E2E4C00AD614E /* TextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifier.swift; sourceTree = "<group>"; };
 		39991305248E2E9900AD614E /* DotInserter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotInserter.swift; sourceTree = "<group>"; };
 		39991308248E2F2100AD614E /* TextModifiersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifiersFactory.swift; sourceTree = "<group>"; };
@@ -329,8 +335,10 @@
 			isa = PBXGroup;
 			children = (
 				39528F8A245AFC510080FBE8 /* LaunchScreen.storyboard */,
-				3994E3A4245D6E82008B1099 /* HomeViewController.swift */,
-				3994E3A5245D6E82008B1099 /* HomeViewController.xib */,
+				39391389249796760061DB78 /* ContainerApp.storyboard */,
+				3939138B249799F30061DB78 /* MainViewController.swift */,
+				3939138F2497A5100061DB78 /* TutorialPageViewController.swift */,
+				393913942497B6820061DB78 /* PageViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -509,7 +517,7 @@
 			files = (
 				39528F8C245AFC510080FBE8 /* LaunchScreen.storyboard in Resources */,
 				39528F89245AFC510080FBE8 /* Assets.xcassets in Resources */,
-				3994E3A7245D6E82008B1099 /* HomeViewController.xib in Resources */,
+				3939138A249796760061DB78 /* ContainerApp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,8 +621,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3939138C249799F30061DB78 /* MainViewController.swift in Sources */,
+				393913952497B6820061DB78 /* PageViewController.swift in Sources */,
+				393913912497ACB00061DB78 /* ColorManager.swift in Sources */,
+				393913922497AD0A0061DB78 /* Notification.swift in Sources */,
 				39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */,
-				3994E3A6245D6E82008B1099 /* HomeViewController.swift in Sources */,
+				393913902497A5100061DB78 /* TutorialPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
