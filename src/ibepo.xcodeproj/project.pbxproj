@@ -22,7 +22,6 @@
 		393913902497A5100061DB78 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3939138F2497A5100061DB78 /* TutorialPageViewController.swift */; };
 		393913912497ACB00061DB78 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39514A532462A44000F05A48 /* ColorManager.swift */; };
 		393913922497AD0A0061DB78 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974AFFD246581ED004901B7 /* Notification.swift */; };
-		393913932497B4830061DB78 /* KeyboardAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 398D0E192490DCC400C99BB0 /* KeyboardAssets.xcassets */; };
 		393913952497B6820061DB78 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393913942497B6820061DB78 /* PageViewController.swift */; };
 		39514A542462A44000F05A48 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39514A532462A44000F05A48 /* ColorManager.swift */; };
 		39514A572462AB4F00F05A48 /* SymbolsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39514A562462AB4F00F05A48 /* SymbolsManager.swift */; };
@@ -525,7 +524,6 @@
 				39528F8C245AFC510080FBE8 /* LaunchScreen.storyboard in Resources */,
 				39528F89245AFC510080FBE8 /* Assets.xcassets in Resources */,
 				3939138A249796760061DB78 /* ContainerApp.storyboard in Resources */,
-				393913932497B4830061DB78 /* KeyboardAssets.xcassets in Resources */,
 				3994E3A7245D6E82008B1099 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
