@@ -463,6 +463,79 @@
             </objects>
             <point key="canvasLocation" x="4143" y="-11"/>
         </scene>
+        <!--Page View Controller-->
+        <scene sceneID="FvY-Dy-YQu">
+            <objects>
+                <viewController storyboardIdentifier="page6" id="jKx-VS-9zA" customClass="PageViewController" customModule="iBépo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pbf-qP-b06">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="500"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v75-dE-EPf">
+                                <rect key="frame" x="16" y="168.5" width="368" height="163"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="En savoir plus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lN-iN-l5i">
+                                        <rect key="frame" x="0.0" y="0.0" width="368" height="41"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAs-4p-2xt">
+                                        <rect key="frame" x="0.0" y="57" width="368" height="30"/>
+                                        <state key="normal" title="Le site officiel de la disposition Bépo"/>
+                                        <connections>
+                                            <action selector="bepoWebsiteTap" destination="jKx-VS-9zA" eventType="touchUpInside" id="NzU-Xy-lUv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6z8-t4-XuH">
+                                        <rect key="frame" x="0.0" y="95" width="368" height="30"/>
+                                        <state key="normal" title="Site du projet iBépo"/>
+                                        <connections>
+                                            <action selector="websiteTap" destination="jKx-VS-9zA" eventType="touchUpInside" id="Gcg-jT-xWf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DM0-Hy-BWk">
+                                        <rect key="frame" x="0.0" y="133" width="368" height="30"/>
+                                        <state key="normal" title="Me contacter sur Twitter"/>
+                                        <connections>
+                                            <action selector="twitterTap" destination="jKx-VS-9zA" eventType="touchUpInside" id="DUz-AT-cav"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="MAs-4p-2xt" secondAttribute="trailing" id="4Ze-4B-b1x"/>
+                                    <constraint firstItem="6z8-t4-XuH" firstAttribute="top" secondItem="MAs-4p-2xt" secondAttribute="bottom" constant="8" id="7gl-KD-7zf"/>
+                                    <constraint firstItem="3lN-iN-l5i" firstAttribute="leading" secondItem="v75-dE-EPf" secondAttribute="leading" id="Ii5-NO-Fon"/>
+                                    <constraint firstAttribute="trailing" secondItem="3lN-iN-l5i" secondAttribute="trailing" id="JeJ-zp-ceJ"/>
+                                    <constraint firstItem="MAs-4p-2xt" firstAttribute="top" secondItem="3lN-iN-l5i" secondAttribute="bottom" constant="16" id="Y6T-f8-Y9w"/>
+                                    <constraint firstItem="DM0-Hy-BWk" firstAttribute="leading" secondItem="v75-dE-EPf" secondAttribute="leading" id="aqo-QE-xGU"/>
+                                    <constraint firstItem="DM0-Hy-BWk" firstAttribute="top" secondItem="6z8-t4-XuH" secondAttribute="bottom" constant="8" id="erR-Kg-QL5"/>
+                                    <constraint firstItem="MAs-4p-2xt" firstAttribute="leading" secondItem="v75-dE-EPf" secondAttribute="leading" id="leb-if-bwr"/>
+                                    <constraint firstAttribute="trailing" secondItem="6z8-t4-XuH" secondAttribute="trailing" id="m0e-1f-1fp"/>
+                                    <constraint firstAttribute="bottom" secondItem="DM0-Hy-BWk" secondAttribute="bottom" id="ors-h4-5DP"/>
+                                    <constraint firstItem="6z8-t4-XuH" firstAttribute="leading" secondItem="v75-dE-EPf" secondAttribute="leading" id="pMh-mv-iYh"/>
+                                    <constraint firstItem="3lN-iN-l5i" firstAttribute="top" secondItem="v75-dE-EPf" secondAttribute="top" id="upk-Ey-Xqr"/>
+                                    <constraint firstAttribute="trailing" secondItem="DM0-Hy-BWk" secondAttribute="trailing" id="xXX-c0-Wo3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="v75-dE-EPf" firstAttribute="leading" secondItem="52M-fM-e1T" secondAttribute="leading" constant="16" id="2Ax-o9-Rt7"/>
+                            <constraint firstItem="v75-dE-EPf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="52M-fM-e1T" secondAttribute="top" id="B3r-co-kVo"/>
+                            <constraint firstItem="52M-fM-e1T" firstAttribute="trailing" secondItem="v75-dE-EPf" secondAttribute="trailing" constant="16" id="stK-gM-tKL"/>
+                            <constraint firstItem="v75-dE-EPf" firstAttribute="centerY" secondItem="pbf-qP-b06" secondAttribute="centerY" priority="750" id="udq-mM-9HE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="52M-fM-e1T"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="500"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6au-xL-q6R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4778" y="-11"/>
+        </scene>
     </scenes>
     <resources>
         <image name="access" width="1125" height="770"/>

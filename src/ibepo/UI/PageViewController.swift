@@ -20,5 +20,32 @@ class PageViewController: UIViewController {
       UIApplication.shared.openURL(settingsUrl)
     }
   }
+  
+  @IBAction func bepoWebsiteTap() {
+    guard let websiteUrl = URL(string: "https://bepo.fr") else {
+      return
+    }
+    if UIApplication.shared.canOpenURL(websiteUrl) {
+      UIApplication.shared.openURL(websiteUrl)
+    }
+  }
+  
+  @IBAction func websiteTap() {
+    guard let websiteUrl = URL(string: "https://github.com/sgigou/ibepo") else {
+      return
+    }
+    if UIApplication.shared.canOpenURL(websiteUrl) {
+      UIApplication.shared.openURL(websiteUrl)
+    }
+  }
+  
+  @IBAction func twitterTap() {
+    guard let websiteUrl = URL(string: "https://twitter.com/stevegigou") else {
+      return
+    }
+    if UIApplication.shared.canOpenURL(websiteUrl) {
+      UIApplication.shared.openURL(websiteUrl)
+    }
+  }
 
 }
