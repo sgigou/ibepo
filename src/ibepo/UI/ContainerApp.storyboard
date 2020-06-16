@@ -44,7 +44,10 @@
                                         <rect key="frame" x="362" y="1" width="44" height="50"/>
                                         <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="imageEdgeInsets" minX="2" minY="0.0" maxX="2" maxY="0.0"/>
-                                        <state key="normal" image="SF_keyboard_chevron_compact_down"/>
+                                        <state key="normal" image="SF_keyboard"/>
+                                        <connections>
+                                            <action selector="onKeyboardButtonTap" destination="dMX-PL-OEh" eventType="touchUpInside" id="I4q-S5-dwq"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -549,7 +552,7 @@
     </scenes>
     <resources>
         <image name="SF_globe" width="44" height="44"/>
-        <image name="SF_keyboard_chevron_compact_down" width="44" height="44"/>
+        <image name="SF_keyboard" width="44" height="44"/>
         <image name="access" width="1125" height="770"/>
         <image name="correct" width="1125" height="770"/>
         <image name="gestures" width="1125" height="770"/>

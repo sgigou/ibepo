@@ -46,6 +46,12 @@ class MainViewController: UIViewController {
     updateTextFieldPosition(forKeyboardHeight: 0.0)
   }
   
+  // MARK: Actions
+  
+  @IBAction func onKeyboardButtonTap() {
+    testTextField.resignFirstResponder()
+  }
+  
   // MARK: Constants
   
   private func updateTextFieldPosition(forKeyboardHeight keyboardHeight: CGFloat) {
