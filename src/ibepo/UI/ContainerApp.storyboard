@@ -168,6 +168,7 @@
                             <constraint firstItem="7ai-4v-RX4" firstAttribute="trailing" secondItem="jqO-XD-5Wf" secondAttribute="trailingMargin" id="nbH-cM-2aC"/>
                             <constraint firstItem="HVR-WN-NJE" firstAttribute="trailing" secondItem="jqO-XD-5Wf" secondAttribute="trailingMargin" id="pfu-pk-R1S"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="6x7-fu-Ayg"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="400" height="800"/>
@@ -182,7 +183,7 @@
             <objects>
                 <viewController storyboardIdentifier="page2" id="Uwj-kQ-W23" customClass="PageViewController" customModule="iBépo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="f2T-9A-YGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agencement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ZS-lo-0y1">
@@ -192,10 +193,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="access" translatesAutoresizingMaskIntoConstraints="NO" id="dUQ-5E-9fB">
-                                <rect key="frame" x="16" y="123.5" width="368" height="626"/>
+                                <rect key="frame" x="16" y="123.5" width="368" height="726"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V24-4H-Vzf">
-                                <rect key="frame" x="12" y="757.5" width="368" height="42.5"/>
+                                <rect key="frame" x="12" y="857.5" width="368" height="42.5"/>
                                 <string key="text">Les touches les plus utilisées sont au centre
 et les moins utilisées au milieu et sur les côtés.</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -225,9 +226,10 @@ et adapté pour une utilisation mobile.</string>
                             <constraint firstItem="V24-4H-Vzf" firstAttribute="top" secondItem="dUQ-5E-9fB" secondAttribute="bottom" constant="8" id="lNE-Gt-wJB"/>
                             <constraint firstItem="Lxc-39-SeU" firstAttribute="trailing" secondItem="f2T-9A-YGJ" secondAttribute="trailingMargin" id="w6b-P1-EVa"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="jhx-nR-zLR"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="800"/>
+                    <size key="freeformSize" width="400" height="900"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wcd-bX-97h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -339,10 +341,64 @@ et adapté pour une utilisation mobile.</string>
             </objects>
             <point key="canvasLocation" x="2800" y="719"/>
         </scene>
+        <!--Page View Controller-->
+        <scene sceneID="OGL-Fp-RwP">
+            <objects>
+                <viewController storyboardIdentifier="page5" id="Am1-0F-0mo" customClass="PageViewController" customModule="iBépo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KTJ-gW-6ue">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gestes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbh-fI-tHY">
+                                <rect key="frame" x="20" y="16" width="360" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="gestures" translatesAutoresizingMaskIntoConstraints="NO" id="twt-RW-0lh">
+                                <rect key="frame" x="16" y="101.5" width="368" height="648"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N’hésitez pas à expérimenter pour trouver votre style de frappe favori !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRB-aS-AgE">
+                                <rect key="frame" x="12" y="757.5" width="368" height="42.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le clavier supporte le glissé-relâché." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPY-Kf-npB">
+                                <rect key="frame" x="20" y="73" width="360" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="SPY-Kf-npB" firstAttribute="trailing" secondItem="KTJ-gW-6ue" secondAttribute="trailingMargin" id="0ti-g7-VkZ"/>
+                            <constraint firstItem="twt-RW-0lh" firstAttribute="leading" secondItem="KTJ-gW-6ue" secondAttribute="leading" constant="16" id="5ET-2p-1EY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qbh-fI-tHY" secondAttribute="trailing" id="9dX-xD-ae2"/>
+                            <constraint firstItem="XRB-aS-AgE" firstAttribute="top" secondItem="twt-RW-0lh" secondAttribute="bottom" constant="8" id="Kb4-QV-nRE"/>
+                            <constraint firstAttribute="trailing" secondItem="twt-RW-0lh" secondAttribute="trailing" constant="16" id="NbE-De-GCD"/>
+                            <constraint firstItem="Qbh-fI-tHY" firstAttribute="leading" secondItem="KTJ-gW-6ue" secondAttribute="leadingMargin" id="OVr-CW-dSH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XRB-aS-AgE" secondAttribute="trailing" id="PYl-14-Skv"/>
+                            <constraint firstItem="SPY-Kf-npB" firstAttribute="top" secondItem="Qbh-fI-tHY" secondAttribute="bottom" constant="16" id="PiJ-xI-8mV"/>
+                            <constraint firstItem="Qbh-fI-tHY" firstAttribute="top" secondItem="KTJ-gW-6ue" secondAttribute="topMargin" constant="16" id="Tfg-FJ-muO"/>
+                            <constraint firstItem="XRB-aS-AgE" firstAttribute="leadingMargin" secondItem="KTJ-gW-6ue" secondAttribute="leadingMargin" id="gZX-6F-9C7"/>
+                            <constraint firstItem="twt-RW-0lh" firstAttribute="top" secondItem="SPY-Kf-npB" secondAttribute="bottom" constant="8" id="qEF-z8-XHf"/>
+                            <constraint firstAttribute="bottom" secondItem="XRB-aS-AgE" secondAttribute="bottom" id="rEd-AG-AXA"/>
+                            <constraint firstItem="SPY-Kf-npB" firstAttribute="leading" secondItem="KTJ-gW-6ue" secondAttribute="leadingMargin" id="t5u-QT-mVm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4gN-KM-Rqz"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="800"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vD7-XJ-SGs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3436" y="719"/>
+        </scene>
     </scenes>
     <resources>
         <image name="access" width="1125" height="770"/>
         <image name="correct" width="1125" height="770"/>
+        <image name="gestures" width="1125" height="770"/>
         <image name="globe" width="44" height="44"/>
         <image name="popup" width="1125" height="770"/>
     </resources>

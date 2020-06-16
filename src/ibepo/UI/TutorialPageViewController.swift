@@ -36,7 +36,7 @@ class TutorialPageViewController: UIPageViewController {
   }
   
   private func loadPages() {
-    for pageIndex in 1...4 {
+    for pageIndex in 1...5 {
       if let page = storyboard?.instantiateViewController(withIdentifier: "page\(pageIndex)") {
         pages.append(page)
       }
