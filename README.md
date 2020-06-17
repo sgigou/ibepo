@@ -15,7 +15,7 @@
 
 <p align="center">
 	<img src="doc/img/disposition@2x.png" width="375">
-	[Voir sur le store](https://apps.apple.com/fr/app/id1509479154)
+	<p><a href="https://apps.apple.com/fr/app/id1509479154">Télécharger sur l’App Store</a></p>
 </p>
 
 La disposition du clavier est très proche du clavier Bépo officiel, mais elle diffère en certains points :
