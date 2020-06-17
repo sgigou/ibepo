@@ -13,7 +13,10 @@
 
 #### L’agencement des touches
 
-<p align="center"><img src="doc/img/disposition@2x.png" width="375"></p>
+<p align="center">
+	<img src="doc/img/disposition@2x.png" width="375">
+	[Voir sur le store](https://apps.apple.com/fr/app/id1509479154)
+</p>
 
 La disposition du clavier est très proche du clavier Bépo officiel, mais elle diffère en certains points :
 * certains caractères sont manquants, car le clavier ne peut pas comporter autant de touches qu’un clavier physique sous peine d’être trop petit,
@@ -110,9 +113,12 @@ Ces fonctionnalités seront peut-être proposées _optionnellement_ si elles me 
 
 
 ## Installation
+
 iBépo est un clavier universel pour iPhone et iPad, rétro-compatible jusqu’à iOS 9.
 
 Cela signifie que vous pouvez en profiter sur tous vos appareils, même les plus anciens.
+
+[Télécharger iBépo sur l’App Store.](https://apps.apple.com/fr/app/id1509479154)
 
 
 ### Activation du clavier
@@ -141,9 +147,11 @@ Si vous ne souhaitez pas payer pour l’application, vous avez la possibilité d
 Il est également possible de [demander un remboursement pour des apps ou des contenus achetés auprès d’Apple](https://support.apple.com/fr-fr/HT204084) si le clavier ne vous convient pas.
 
 
-## Références
+## Liens
 
 * [Site officiel de la disposition Bépo](https://bepo.fr/wiki/Accueil)
+* [iBépo sur l’App Store](https://apps.apple.com/fr/app/id1509479154)
+* [Site marketing du projet](https://steve.gigou.fr/ibepo.php)
 
 
 ## License
