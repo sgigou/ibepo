@@ -5,6 +5,13 @@
 <p align="center"><img src="doc/img/logo@2x.png" width="375"></p>
 
 
+## Téléchargement
+
+Le clavire iBépo pour iOS est disponible [sur l’App Store](https://apps.apple.com/fr/app/id1509479154).
+
+Vous trouverez les instructions d’installation plus bas sur cette page.
+
+
 ## Fonctionnalités
 
 
@@ -13,10 +20,7 @@
 
 #### L’agencement des touches
 
-<p align="center">
-	<img src="doc/img/disposition@2x.png" width="375">
-	<p><a href="https://apps.apple.com/fr/app/id1509479154">Télécharger sur l’App Store</a></p>
-</p>
+<p align="center"><img src="doc/img/disposition@2x.png" width="375"></p>
 
 La disposition du clavier est très proche du clavier Bépo officiel, mais elle diffère en certains points :
 * certains caractères sont manquants, car le clavier ne peut pas comporter autant de touches qu’un clavier physique sous peine d’être trop petit,
