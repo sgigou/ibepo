@@ -76,6 +76,7 @@ extension KeyboardViewController: KeyboardActionProtocol {
   }
   
   func deleteBackward(amount: Int) {
+    if amount <= 0 { return }
     for _ in 1...amount {
       deleteBackward()
     }
