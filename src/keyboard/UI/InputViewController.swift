@@ -130,7 +130,7 @@ extension InputViewController: KeyboardActionProtocol {
   
   func insert(text: String) {
     if let replacement = autocorrectViewController.autocorrectEngine.correction(for: text) {
-      replace(charactersAmount: KeyboardSettings.shared.textDocumentProxyAnalyzer.currentWord.count, by: replacement, followedBy: text)
+      replace(charactersAmount: KeyboardSettings.shared.textDocumentProxyAnalyzer.currentWord.count, by: replacement, separator: text)
     } else {
       delegate?.insert(text: text)
       autocorrectViewController.autocorrectEngine.update()
@@ -138,10 +138,10 @@ extension InputViewController: KeyboardActionProtocol {
     }
   }
   
-  func replace(charactersAmount: Int, by text: String, followedBy nextChar: String) {
+  func replace(charactersAmount: Int, by text: String, separator: String) {
     delegate?.deleteBackward(amount: charactersAmount)
     delegate?.insert(text: text)
-    delegate?.insert(text: nextChar)
+    delegate?.insert(text: separator)
     autocorrectViewController.autocorrectEngine.update()
     textModifiers.modify()
   }

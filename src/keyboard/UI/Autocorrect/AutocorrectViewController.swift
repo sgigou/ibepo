@@ -64,7 +64,7 @@ final class AutocorrectViewController: UIViewController {
     let nextCharacter = analyzer.textDocumentProxy?.documentContextAfterInput?.first
     let isInsertingBeforeSpace = [" ", " "].contains(nextCharacter)
     let separator = isInsertingBeforeSpace ? "" : " "
-    delegate?.replace(charactersAmount: amountToDelete, by: "\(correction.word)\(separator)")
+    delegate?.replace(charactersAmount: amountToDelete, by: correction.word, separator: separator)
     if isInsertingBeforeSpace {
       delegate?.moveCursor(by: 1)
     }

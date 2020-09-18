@@ -14,7 +14,7 @@ protocol KeyboardActionProtocol: class {
   
   func insert(text: String)
   /// Optional
-  func replace(charactersAmount: Int, by text: String)
+  func replace(charactersAmount: Int, by text: String, separator: String)
   func deleteBackward()
   func deleteBackward(amount: Int)
   func nextKeyboard()
@@ -25,7 +25,7 @@ protocol KeyboardActionProtocol: class {
 
 extension KeyboardActionProtocol {
   
-  func replace(charactersAmount: Int, by text: String) {}
+  func replace(charactersAmount: Int, by text: String, separator: String) {}
   func moveCursor(by offset: Int) {}
   
 }
