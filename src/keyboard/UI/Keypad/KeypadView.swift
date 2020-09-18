@@ -106,7 +106,7 @@ final class KeypadView: UIView {
     case .next:
       return switchKeyView
     default:
-      Logger.error("This function should not be called for \(kind).")
+      UniversalLogger.error("This function should not be called for \(kind).")
       return nil
     }
   }

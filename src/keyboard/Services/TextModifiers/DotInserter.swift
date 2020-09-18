@@ -35,7 +35,6 @@ extension DotInserter: TextModifier {
     if lastCharacters.count < 3 { return }
     if lastCharacters.getSubSequence(from: 1, to: 2) != "  " { return }
     if !lastCharacters.getElement(at: 0).isLetter { return }
-    Logger.debug("Inserting a dot after two spaces.")
     delegate?.deleteBackward(amount: 2)
     delegate?.insert(text: ". ")
   }

@@ -90,7 +90,7 @@ final class KeyGestureRecognizer: UIGestureRecognizer {
   
   private func findRow(for touch: UITouch) -> Int {
     guard let view = self.view else {
-      Logger.debug("Touch view not found.")
+      UniversalLogger.debug("Touch view not found.")
       return 3
     }
     let location = touch.location(in: view)
@@ -99,7 +99,7 @@ final class KeyGestureRecognizer: UIGestureRecognizer {
   
   private func findCol(for touch: UITouch, in row: Int) -> Int {
     guard let view = self.view else {
-      Logger.debug("Touch view not found.")
+      UniversalLogger.debug("Touch view not found.")
       return 0
     }
     let location = touch.location(in: view)

@@ -68,7 +68,7 @@ final class KeyboardState {
   
   private func tapShift() {
     if isDoubleTap(kind: .shift) {
-      Logger.debug("Double tap on shift.")
+      UniversalLogger.debug("Double tap on shift.")
       lastTap = nil
       shiftState = .locked
     } else {
@@ -80,7 +80,7 @@ final class KeyboardState {
   
   private func tapAlt() {
     if isDoubleTap(kind: .alt) {
-      Logger.debug("Double tap on alt.")
+      UniversalLogger.debug("Double tap on alt.")
       lastTap = nil
       altState = .locked
     } else {
@@ -173,7 +173,7 @@ final class KeyboardState {
     let keyCoordinate = KeyLocator.calculateKeyCoordinate(for: writingTouch.currentCoordinate)
     let key = keySet.key(at: keyCoordinate)
     if key.set.subLetters(forShiftState: shiftState, andAltState: altState).count <= 1 { return }
-    Logger.debug("Launching sub letter selection.")
+    UniversalLogger.debug("Launching sub letter selection.")
     currentMode = .selectingSubLetter
     subLetterOriginKeyCoordinate = keyCoordinate
     currentSubLetter = key.set.letter(forShiftState: shiftState, andAltState: altState)

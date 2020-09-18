@@ -101,7 +101,7 @@ final class PopupView: UIView {
   func showPopup(for key: Key) {
     hideDelayTimer.invalidate()
     guard let rowY = key.view.superview?.frame.minY else {
-      return Logger.error("keyView should have a superview.")
+      return UniversalLogger.error("keyView should have a superview.")
     }
     tailView.frame = CGRect(
       x: key.view.frame.minX + Constants.keyHorizontalPadding + Constants.keyCornerRadius,
@@ -125,7 +125,7 @@ final class PopupView: UIView {
   func showPopupWithSubLetters(for key: Key, shiftState: Key.State, altState: Key.State) {
     hideDelayTimer.invalidate()
     guard let rowY = key.view.superview?.frame.minY else {
-      return Logger.error("keyView should have a superview.")
+      return UniversalLogger.error("keyView should have a superview.")
     }
     tailView.frame = CGRect(
       x: key.view.frame.minX + Constants.keyHorizontalPadding + Constants.keyCornerRadius,

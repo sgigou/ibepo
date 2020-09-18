@@ -35,7 +35,7 @@ final class KeyboardViewController: UIInputViewController {
   
   override func textDidChange(_ textInput: UITextInput?) {
     super.textDidChange(textInput)
-    customInputViewController.update(textDocumentProxy: textDocumentProxy)
+    customInputViewController.textDidChange(textDocumentProxy)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -47,14 +47,14 @@ final class KeyboardViewController: UIInputViewController {
   
   private func initSettings() {
     if #available(iOSApplicationExtension 11.0, *) {
-      Logger.debug("needsInputModeSwitchKey set to \(needsInputModeSwitchKey)")
+      UniversalLogger.debug("needsInputModeSwitchKey set to \(needsInputModeSwitchKey)")
       KeyboardSettings.shared.needsInputModeSwitchKey = needsInputModeSwitchKey
     }
   }
   
   private func initKeyboardViewConstraints() {
     if constraintsHaveBeenAdded { return }
-    guard let superview = view.superview else { return Logger.error("Keyboard has no superview.") }
+    guard let superview = view.superview else { return UniversalLogger.error("Keyboard has no superview.") }
     view.leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
     view.bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
     view.rightAnchor.constraint(equalTo: superview.rightAnchor).isActive = true

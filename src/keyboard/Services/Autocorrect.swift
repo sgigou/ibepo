@@ -25,10 +25,7 @@ final class Autocorrect {
   private(set) var correctionSet: CorrectionSet = .empty
   
   private let checker = UITextChecker()
-  private let queue = DispatchQueue(label: "com.novesoft.ibepo.autocorrect")
-  
-  private var workItem: DispatchWorkItem?
-  private var isSearching = false
+
   private var lastCorrectedWord: String?
   
   // MARK: User input
@@ -41,7 +38,7 @@ final class Autocorrect {
     if character.isLetter || ["’", "'", "-"].contains(character) { return nil }
     if let correction = correctionSet.preferredCorrection {
       lastCorrectedWord = correctionSet.correction1?.word
-      let replacement = correction.word + input
+      let replacement = correction.word
       return replacement
     }
     return nil
@@ -54,21 +51,15 @@ final class Autocorrect {
   // MARK: Autocorrect
   
   private func launchSearch() {
-    if isSearching {
-      Logger.debug("Cancelling running search")
-      workItem?.cancel()
-    }
-    workItem = DispatchWorkItem() {
+    DispatchQueue.main.async {
       [weak self] in
-      DispatchQueue.main.sync { self?.isSearching = true }
       self?.loadSuggestions()
-      DispatchQueue.main.sync { self?.isSearching = false }
     }
-    queue.async(execute: workItem!)
   }
   
   private func loadSuggestions() {
     let currentWord = KeyboardSettings.shared.textDocumentProxyAnalyzer.currentWord
+    UniversalLogger.debug("Starting search for '\(currentWord)'")
     if currentWord == "" {
       return emptyCorrections()
     }
@@ -78,6 +69,7 @@ final class Autocorrect {
     let guesses = checker.guesses(forWordRange: range, in: wordToCorrect, language: "fr") ?? []
     let completions = checker.completions(forPartialWordRange: range, in: wordToCorrect, language: "fr") ?? []
     sortCorrections(enteredWord: wordToCorrect, guesses: guesses, completions: completions, enteredWordExists: wordExists)
+    UniversalLogger.debug("Search ended ('\(currentWord)')")
   }
   
   private func emptyCorrections() {
