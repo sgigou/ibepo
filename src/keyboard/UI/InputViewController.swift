@@ -56,7 +56,6 @@ final class InputViewController: UIViewController {
   // MARK: Configuration
 
   func textDidChange(_ textDocumentProxy: UITextDocumentProxy) {
-    UniversalLogger.debug("Updating textDocumentProxy")
     KeyboardSettings.shared.update(textDocumentProxy)
     autocorrectViewController.autocorrectEngine.update()
     textModifiers.moveOccured()
@@ -141,9 +140,22 @@ extension InputViewController: KeyboardActionProtocol {
   func replace(charactersAmount: Int, by text: String, separator: String) {
     delegate?.deleteBackward(amount: charactersAmount)
     delegate?.insert(text: text)
-    delegate?.insert(text: separator)
-    autocorrectViewController.autocorrectEngine.update()
-    textModifiers.modify()
+    if separator != "\n" {
+      delegate?.insert(text: separator)
+      autocorrectViewController.autocorrectEngine.update()
+      textModifiers.modify()
+    } else {
+      // To allow the text input to take in account the return key, it should be given separately from the replaced text.
+      // BUT, in some apps like reminders or first word of notes, textDidChange may be called after the following dispatch, but with the old context.
+      // So, only for return key, wait for the event to dispatch before applying it.
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+        [weak self] in
+        self?.delegate?.insert(text: separator)
+        self?.autocorrectViewController.autocorrectEngine.update()
+        self?.textModifiers.modify()
+        self?.keypadViewController.textDocumentProxyWasUpdated()
+      }
+    }
   }
   
   func deleteBackward() {

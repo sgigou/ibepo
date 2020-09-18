@@ -35,6 +35,7 @@ final class KeyboardViewController: UIInputViewController {
   
   override func textDidChange(_ textInput: UITextInput?) {
     super.textDidChange(textInput)
+    UniversalLogger.debug("textDidChange")
     customInputViewController.textDidChange(textDocumentProxy)
   }
   

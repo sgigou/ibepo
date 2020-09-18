@@ -73,6 +73,7 @@ final class Autocorrect {
   }
   
   private func emptyCorrections() {
+    UniversalLogger.debug("Emptying correction set")
     correctionSet = .empty
     delegate?.autocorrectEnded(with: correctionSet)
   }
