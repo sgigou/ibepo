@@ -231,6 +231,9 @@ final class KeyboardState {
 
   private func writeCurrentLetter() {
     let letter = getCurrentLetter()
+    if ["'", "’"].contains(letter) {
+      switchAltAfterLetter()
+    }
     insert(letter)
   }
   
