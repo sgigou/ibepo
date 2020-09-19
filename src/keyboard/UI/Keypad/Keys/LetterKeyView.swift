@@ -90,7 +90,7 @@ final class LetterKeyView: KeyView {
    */
   override func updateAppearance() {
     super.updateAppearance()
-    let primaryColor = level == .primary ? ColorManager.shared.label : ColorManager.shared.secondaryLabel
+    let primaryColor = ColorManager.shared.label
     let primaryWeight: UIFont.Weight = UIDevice.current.userInterfaceIdiom == .phone ? .regular : .light
     let shouldHideInactiveLabel = UIDevice.isPhone && !UIScreen.isPortrait
     if isAltActivated {
@@ -108,6 +108,9 @@ final class LetterKeyView: KeyView {
       secondaryLabel.isHidden = shouldHideInactiveLabel
       primaryLabel.isHidden = false
     }
+    let alpha: CGFloat = (level == .primary) ? 1.0 : 0.75
+    primaryLabel.alpha = alpha
+    secondaryLabel.alpha = alpha
   }
   
   /**
