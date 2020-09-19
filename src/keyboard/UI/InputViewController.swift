@@ -16,6 +16,7 @@ import os.log
 final class InputViewController: UIViewController {
   
   weak var delegate: KeyboardActionProtocol?
+  weak var switchDelegate: KeyboardSwitchProtocol?
   
   private var autocorrectViewController: AutocorrectViewController!
   private var keypadViewController: KeypadViewController!
@@ -92,6 +93,7 @@ final class InputViewController: UIViewController {
   private func loadKeypadView() {
     keypadViewController = KeypadViewController()
     keypadViewController.delegate = self
+    keypadViewController.switchDelegate = self
     add(keypadViewController, with: [
       keypadViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor),
       keypadViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -179,4 +181,14 @@ extension InputViewController: KeyboardActionProtocol {
     delegate?.moveCursor(by: offset)
   }
   
+}
+
+// MARK: - KeyboardSwitchProtocol
+
+extension InputViewController: KeyboardSwitchProtocol {
+
+  func switchKeyAdded(_ switchButton: UIView) {
+    switchDelegate?.switchKeyAdded(switchButton)
+  }
+
 }

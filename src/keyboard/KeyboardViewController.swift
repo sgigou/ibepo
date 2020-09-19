@@ -15,6 +15,8 @@ final class KeyboardViewController: UIInputViewController {
   
   private var customInputViewController: InputViewController!
   private var constraintsHaveBeenAdded = false
+  private var switchButton: UIButton?
+  private var switchKeyView: UIView?
   
   // MARK: Life cycle
   
@@ -25,6 +27,7 @@ final class KeyboardViewController: UIInputViewController {
     guard let inputView = inputView else { return }
     customInputViewController = InputViewController()
     customInputViewController.delegate = self
+    customInputViewController.switchDelegate = self
     add(customInputViewController, with: [
       customInputViewController.view.topAnchor.constraint(equalTo: inputView.topAnchor),
       customInputViewController.view.rightAnchor.constraint(equalTo: inputView.rightAnchor),
@@ -82,8 +85,10 @@ extension KeyboardViewController: KeyboardActionProtocol {
       deleteBackward()
     }
   }
-  
+
   func nextKeyboard() {
+    // This function is only a fallback if the switch button is not present.
+    UniversalLogger.error("nextKeyboard should not be called.")
     advanceToNextInputMode()
   }
   
@@ -91,4 +96,43 @@ extension KeyboardViewController: KeyboardActionProtocol {
     textDocumentProxy.adjustTextPosition(byCharacterOffset: offset)
   }
   
+}
+
+// MARK: - KeyboardSwitchProtocol
+
+extension KeyboardViewController: KeyboardSwitchProtocol {
+
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    guard switchButton != nil else { return }
+    // Hack to update frame after transition animations.
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+      [weak self] in
+      self?.updateSwitchButtonFrame()
+    }
+  }
+
+  func switchKeyAdded(_ switchKeyView: UIView) {
+    self.switchKeyView = switchKeyView
+    if switchButton?.superview == nil {
+      UniversalLogger.debug("Adding switch button overlay")
+      switchButton = UIButton()
+      if #available(iOSApplicationExtension 10.0, *) {
+        switchButton!.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+      } else {
+        switchButton!.addTarget(self, action: #selector(advanceToNextInputMode), for: .touchUpInside)
+      }
+      view.addSubview(switchButton!)
+    }
+    updateSwitchButtonFrame()
+  }
+
+  private func updateSwitchButtonFrame() {
+    guard let switchButton = self.switchButton else { return }
+    view.bringSubviewToFront(switchButton)
+    guard let keyFrame = switchKeyView?.frame else { return }
+    let newFrame = CGRect(x: keyFrame.minX, y: view.frame.maxY - keyFrame.height, width: keyFrame.width, height: keyFrame.height)
+    switchButton.frame = newFrame
+  }
+
 }

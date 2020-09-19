@@ -15,6 +15,7 @@ import UIKit
 final class KeypadViewController: UIViewController {
   
   weak var delegate: KeyboardActionProtocol?
+  weak var switchDelegate: KeyboardSwitchProtocol?
   
   private let keyboardState = KeyboardState()
   private let popupView = PopupView()
@@ -26,6 +27,7 @@ final class KeypadViewController: UIViewController {
   
   override func loadView() {
     view = KeypadView()
+    (view as! KeypadView).switchDelegate = self
     addPopupView()
   }
   
@@ -186,4 +188,14 @@ extension KeypadViewController: KeyboardDisplayProtocol {
     popupView.select(subLetter: subLetter)
   }
   
+}
+
+// MARK: - KeyboardSwitchProtocol
+
+extension KeypadViewController: KeyboardSwitchProtocol {
+
+  func switchKeyAdded(_ switchButton: UIView) {
+    switchDelegate?.switchKeyAdded(switchButton)
+  }
+
 }
