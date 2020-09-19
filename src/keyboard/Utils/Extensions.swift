@@ -21,6 +21,10 @@ extension Collection {
 // MARK: - String
 
 extension String {
+
+  var isNumber: Bool {
+    return !isEmpty && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+  }
   
   func getElement(at charIndex: Int) -> String.Element {
     let index = self.index(startIndex, offsetBy: charIndex)

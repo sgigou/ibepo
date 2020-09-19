@@ -130,14 +130,16 @@ final class KeyboardState {
     }
     return beginKind.isModifier && !endKind.isModifier
   }
-  
-  private func writeCurrentLetter() {
-    guard let writingTouch = self.writingTouch else { return }
+
+  private func getCurrentLetter() -> String {
+    guard let writingTouch = self.writingTouch else { return "" }
     switch currentMode {
     case .selectingSubLetter:
-      insert(currentSubLetter)
+      return currentSubLetter
     default:
-      tapLetter(at: KeyLocator.calculateKeyCoordinate(for: writingTouch.currentCoordinate))
+      let keyCoordinate = KeyLocator.calculateKeyCoordinate(for: writingTouch.currentCoordinate)
+      let key = keySet.key(at: keyCoordinate)
+      return key.set.letter(forShiftState: shiftState, andAltState: altState)
     }
   }
   
@@ -226,11 +228,10 @@ final class KeyboardState {
   }
   
   // MARK: Delegate communication
-  
-  private func tapLetter(at keyCoordinate: KeyCoordinate) {
-    let key = keySet.key(at: keyCoordinate)
-    let text = key.set.letter(forShiftState: shiftState, andAltState: altState)
-    insert(text)
+
+  private func writeCurrentLetter() {
+    let letter = getCurrentLetter()
+    insert(letter)
   }
   
   private func tapReturn() {
@@ -320,6 +321,7 @@ extension KeyboardState: KeyGestureRecognizerDelegate {
       writeCurrentLetter()
     case .space:
       tapSpace()
+      switchAltAfterLetter()
     case .delete:
       if currentMode == .deletionLoop {
         invalidateDeletionLoopTimer()
@@ -333,7 +335,6 @@ extension KeyboardState: KeyGestureRecognizerDelegate {
     default:
       break
     }
-    if !writingTouch.currentKind.isModifier { switchAltAfterLetter() }
     resetWritingTouch()
   }
   

@@ -38,7 +38,7 @@ struct Key {
   }
   
   /// List of characters the view should display.
-  let set: CharacterSet
+  let set: KeyCharacterSet
   
   /// View that will display the characters of the set.
   let view: LetterKeyView
