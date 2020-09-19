@@ -8,7 +8,7 @@
 
 
 /// All the character set of a key.
-struct CharacterSet {
+struct KeyCharacterSet {
   
   // MARK: Primary letters
   

@@ -64,7 +64,7 @@ final class AutocorrectViewController: UIViewController {
     let nextCharacter = analyzer.textDocumentProxy?.documentContextAfterInput?.first
     let isInsertingBeforeSpace = [" ", " "].contains(nextCharacter)
     let separator = isInsertingBeforeSpace ? "" : " "
-    delegate?.replace(charactersAmount: amountToDelete, by: "\(correction.word)\(separator)")
+    delegate?.replace(charactersAmount: amountToDelete, by: correction.word, separator: separator)
     if isInsertingBeforeSpace {
       delegate?.moveCursor(by: 1)
     }
@@ -79,11 +79,9 @@ final class AutocorrectViewController: UIViewController {
 extension AutocorrectViewController: AutocorrectProtocol {
   
   func autocorrectEnded(with correctionSet: CorrectionSet) {
-    DispatchQueue.main.sync {
-      update(button: button1, with: correctionSet.correction1)
-      update(button: button2, with: correctionSet.correction2)
-      update(button: button3, with: correctionSet.correction3)
-    }
+    update(button: button1, with: correctionSet.correction1)
+    update(button: button2, with: correctionSet.correction2)
+    update(button: button3, with: correctionSet.correction3)
   }
   
   private func update(button: UIButton, with correction: Correction?) {

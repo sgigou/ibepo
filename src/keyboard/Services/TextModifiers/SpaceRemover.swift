@@ -43,7 +43,7 @@ extension SpaceRemover: TextModifier {
     if lastCharacters.getElement(at: 1) != " " { return }
     let punctuation = (lastCharacters.last)!
     if !([".", ",", "…"].contains(punctuation)) { return }
-    Logger.debug("Removing space before '\(punctuation)'.")
+    UniversalLogger.debug("Removing space before '\(punctuation)'.")
     delegate?.deleteBackward(amount: 2)
     delegate?.insert(text: String(punctuation))
   }

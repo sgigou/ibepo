@@ -38,11 +38,11 @@ final class KeyLocator {
       case 16...22:
         return .enter
       default:
-        Logger.error("Unknown keypadCoordinate col: \(coordinate)")
+        UniversalLogger.error("Unknown keypadCoordinate col: \(coordinate)")
         return .space
       }
     default:
-      Logger.error("Unknown keypadCoordinate row: \(coordinate)")
+      UniversalLogger.error("Unknown keypadCoordinate row: \(coordinate)")
       return .space
     }
   }

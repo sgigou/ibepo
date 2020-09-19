@@ -12,6 +12,8 @@ import UIKit
 // MARK: - KeypadView
 
 final class KeypadView: UIView {
+
+  weak var switchDelegate: KeyboardSwitchProtocol?
   
   private let keyWidthMultiplier: CGFloat = 1/11
   
@@ -106,7 +108,7 @@ final class KeypadView: UIView {
     case .next:
       return switchKeyView
     default:
-      Logger.error("This function should not be called for \(kind).")
+      UniversalLogger.error("This function should not be called for \(kind).")
       return nil
     }
   }
@@ -157,6 +159,7 @@ final class KeypadView: UIView {
       switchKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*1.5, leftAnchor: altKeyView!.rightAnchor)
       switchKeyView?.configure(withImage: SymbolsManager.getImage(named: "globe"), level: .secondary)
       spaceLeftAnchor = switchKeyView!.rightAnchor
+      switchDelegate?.switchKeyAdded(switchKeyView!)
     } else {
       altKeyView = addSpecial(in: rowView4, widthMultiplier: keyWidthMultiplier*3, leftAnchor: rowView4.leftAnchor)
       updateAltState(.off)

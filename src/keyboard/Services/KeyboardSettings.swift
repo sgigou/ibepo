@@ -32,7 +32,6 @@ final class KeyboardSettings {
   // MARK: Update
   
   func update(_ textDocumentProxy: UITextDocumentProxy) {
-    Logger.debug("Text document proxy update.")
     textDocumentProxyAnalyzer.textDocumentProxy = textDocumentProxy
     updateAppearance(textDocumentProxy.keyboardAppearance ?? .default)
     updateReturnButton(textDocumentProxy.returnKeyType ?? .default)
@@ -51,7 +50,7 @@ final class KeyboardSettings {
   
   private func updateReturnButton(_ returnKeyType: UIReturnKeyType) {
     if self.returnKeyType != returnKeyType {
-      Logger.debug("Return key type switching from \(self.returnKeyType.rawValue) to \(returnKeyType.rawValue)")
+      UniversalLogger.debug("Return key type switching from \(self.returnKeyType.rawValue) to \(returnKeyType.rawValue)")
       self.returnKeyType = returnKeyType
       NotificationCenter.default.post(name: .returnKeyTypeDidChange, object: nil)
     }

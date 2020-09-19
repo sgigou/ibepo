@@ -29,7 +29,7 @@ extension NonBreakingSpaceInserter: TextModifier {
     if lastCharacters.getElement(at: 1) != " " { return }
     let punctuation = (lastCharacters.last)!
     if !(["!", "?", ":", ";"].contains(punctuation)) { return }
-    Logger.debug("Inserting a non-breaking space before '\(punctuation)'.")
+    UniversalLogger.debug("Inserting a non-breaking space before '\(punctuation)'.")
     delegate?.deleteBackward(amount: 2)
     delegate?.insert(text: " \(String(punctuation))")
   }

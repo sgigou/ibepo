@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 
 // MARK: - InputViewController
@@ -15,6 +16,7 @@ import UIKit
 final class InputViewController: UIViewController {
   
   weak var delegate: KeyboardActionProtocol?
+  weak var switchDelegate: KeyboardSwitchProtocol?
   
   private var autocorrectViewController: AutocorrectViewController!
   private var keypadViewController: KeypadViewController!
@@ -53,8 +55,8 @@ final class InputViewController: UIViewController {
   }
   
   // MARK: Configuration
-  
-  func update(textDocumentProxy: UITextDocumentProxy) {
+
+  func textDidChange(_ textDocumentProxy: UITextDocumentProxy) {
     KeyboardSettings.shared.update(textDocumentProxy)
     autocorrectViewController.autocorrectEngine.update()
     textModifiers.moveOccured()
@@ -91,6 +93,7 @@ final class InputViewController: UIViewController {
   private func loadKeypadView() {
     keypadViewController = KeypadViewController()
     keypadViewController.delegate = self
+    keypadViewController.switchDelegate = self
     add(keypadViewController, with: [
       keypadViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor),
       keypadViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -128,7 +131,7 @@ extension InputViewController: KeyboardActionProtocol {
   
   func insert(text: String) {
     if let replacement = autocorrectViewController.autocorrectEngine.correction(for: text) {
-      replace(charactersAmount: KeyboardSettings.shared.textDocumentProxyAnalyzer.currentWord.count, by: "\(replacement)")
+      replace(charactersAmount: KeyboardSettings.shared.textDocumentProxyAnalyzer.currentWord.count, by: replacement, separator: text)
     } else {
       delegate?.insert(text: text)
       autocorrectViewController.autocorrectEngine.update()
@@ -136,11 +139,25 @@ extension InputViewController: KeyboardActionProtocol {
     }
   }
   
-  func replace(charactersAmount: Int, by text: String) {
-    deleteBackward(amount: charactersAmount)
+  func replace(charactersAmount: Int, by text: String, separator: String) {
+    delegate?.deleteBackward(amount: charactersAmount)
     delegate?.insert(text: text)
-    autocorrectViewController.autocorrectEngine.update()
-    textModifiers.modify()
+    if separator != "\n" {
+      delegate?.insert(text: separator)
+      autocorrectViewController.autocorrectEngine.update()
+      textModifiers.modify()
+    } else {
+      // To allow the text input to take in account the return key, it should be given separately from the replaced text.
+      // BUT, in some apps like reminders or first word of notes, textDidChange may be called after the following dispatch, but with the old context.
+      // So, only for return key, wait for the event to dispatch before applying it.
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+        [weak self] in
+        self?.delegate?.insert(text: separator)
+        self?.autocorrectViewController.autocorrectEngine.update()
+        self?.textModifiers.modify()
+        self?.keypadViewController.textDocumentProxyWasUpdated()
+      }
+    }
   }
   
   func deleteBackward() {
@@ -153,6 +170,7 @@ extension InputViewController: KeyboardActionProtocol {
     if amount == 0 { return }
     delegate?.deleteBackward(amount: amount)
     autocorrectViewController.autocorrectEngine.update()
+    textModifiers.deletionOccured()
   }
   
   func nextKeyboard() {
@@ -163,4 +181,14 @@ extension InputViewController: KeyboardActionProtocol {
     delegate?.moveCursor(by: offset)
   }
   
+}
+
+// MARK: - KeyboardSwitchProtocol
+
+extension InputViewController: KeyboardSwitchProtocol {
+
+  func switchKeyAdded(_ switchButton: UIView) {
+    switchDelegate?.switchKeyAdded(switchButton)
+  }
+
 }

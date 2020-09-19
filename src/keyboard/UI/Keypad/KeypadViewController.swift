@@ -15,6 +15,7 @@ import UIKit
 final class KeypadViewController: UIViewController {
   
   weak var delegate: KeyboardActionProtocol?
+  weak var switchDelegate: KeyboardSwitchProtocol?
   
   private let keyboardState = KeyboardState()
   private let popupView = PopupView()
@@ -26,6 +27,7 @@ final class KeypadViewController: UIViewController {
   
   override func loadView() {
     view = KeypadView()
+    (view as! KeypadView).switchDelegate = self
     addPopupView()
   }
   
@@ -143,16 +145,16 @@ extension KeypadViewController: KeyboardDisplayProtocol {
     switch kind {
     case .letter:
       guard let coordinate = coordinate else {
-        return Logger.error("The key should have a coordinate.")
+        return UniversalLogger.error("The key should have a coordinate.")
       }
       let key = keySet.key(at: coordinate)
       keyViewToPress = key.view
     default:
       guard let view = view as? KeypadView else {
-        return Logger.error("The view should be a KeypadView.")
+        return UniversalLogger.error("The view should be a KeypadView.")
       }
       guard let keyView = view.view(for: kind) else {
-        return Logger.error("Could not find key view")
+        return UniversalLogger.error("Could not find key view")
       }
       keyViewToPress = keyView
     }
@@ -161,7 +163,7 @@ extension KeypadViewController: KeyboardDisplayProtocol {
       keyViewToPress.togglePression()
       if kind == .letter {
         guard let coordinate = coordinate else {
-          return Logger.error("The key should have a coordinate.")
+          return UniversalLogger.error("The key should have a coordinate.")
         }
         let key = keySet.key(at: coordinate)
         popupView.showPopup(for: key)
@@ -186,4 +188,14 @@ extension KeypadViewController: KeyboardDisplayProtocol {
     popupView.select(subLetter: subLetter)
   }
   
+}
+
+// MARK: - KeyboardSwitchProtocol
+
+extension KeypadViewController: KeyboardSwitchProtocol {
+
+  func switchKeyAdded(_ switchButton: UIView) {
+    switchDelegate?.switchKeyAdded(switchButton)
+  }
+
 }

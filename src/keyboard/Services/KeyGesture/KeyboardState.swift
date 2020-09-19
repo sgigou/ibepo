@@ -68,7 +68,7 @@ final class KeyboardState {
   
   private func tapShift() {
     if isDoubleTap(kind: .shift) {
-      Logger.debug("Double tap on shift.")
+      UniversalLogger.debug("Double tap on shift.")
       lastTap = nil
       shiftState = .locked
     } else {
@@ -80,7 +80,7 @@ final class KeyboardState {
   
   private func tapAlt() {
     if isDoubleTap(kind: .alt) {
-      Logger.debug("Double tap on alt.")
+      UniversalLogger.debug("Double tap on alt.")
       lastTap = nil
       altState = .locked
     } else {
@@ -130,14 +130,16 @@ final class KeyboardState {
     }
     return beginKind.isModifier && !endKind.isModifier
   }
-  
-  private func writeCurrentLetter() {
-    guard let writingTouch = self.writingTouch else { return }
+
+  private func getCurrentLetter() -> String {
+    guard let writingTouch = self.writingTouch else { return "" }
     switch currentMode {
     case .selectingSubLetter:
-      insert(currentSubLetter)
+      return currentSubLetter
     default:
-      tapLetter(at: KeyLocator.calculateKeyCoordinate(for: writingTouch.currentCoordinate))
+      let keyCoordinate = KeyLocator.calculateKeyCoordinate(for: writingTouch.currentCoordinate)
+      let key = keySet.key(at: keyCoordinate)
+      return key.set.letter(forShiftState: shiftState, andAltState: altState)
     }
   }
   
@@ -173,7 +175,7 @@ final class KeyboardState {
     let keyCoordinate = KeyLocator.calculateKeyCoordinate(for: writingTouch.currentCoordinate)
     let key = keySet.key(at: keyCoordinate)
     if key.set.subLetters(forShiftState: shiftState, andAltState: altState).count <= 1 { return }
-    Logger.debug("Launching sub letter selection.")
+    UniversalLogger.debug("Launching sub letter selection.")
     currentMode = .selectingSubLetter
     subLetterOriginKeyCoordinate = keyCoordinate
     currentSubLetter = key.set.letter(forShiftState: shiftState, andAltState: altState)
@@ -226,11 +228,13 @@ final class KeyboardState {
   }
   
   // MARK: Delegate communication
-  
-  private func tapLetter(at keyCoordinate: KeyCoordinate) {
-    let key = keySet.key(at: keyCoordinate)
-    let text = key.set.letter(forShiftState: shiftState, andAltState: altState)
-    insert(text)
+
+  private func writeCurrentLetter() {
+    let letter = getCurrentLetter()
+    if ["'", "’"].contains(letter) {
+      switchAltAfterLetter()
+    }
+    insert(letter)
   }
   
   private func tapReturn() {
@@ -320,6 +324,7 @@ extension KeyboardState: KeyGestureRecognizerDelegate {
       writeCurrentLetter()
     case .space:
       tapSpace()
+      switchAltAfterLetter()
     case .delete:
       if currentMode == .deletionLoop {
         invalidateDeletionLoopTimer()
@@ -333,7 +338,6 @@ extension KeyboardState: KeyGestureRecognizerDelegate {
     default:
       break
     }
-    if !writingTouch.currentKind.isModifier { switchAltAfterLetter() }
     resetWritingTouch()
   }
   
