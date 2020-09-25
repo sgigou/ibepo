@@ -98,6 +98,7 @@ class LandingViewController: UITableViewController {
     switch indexPath.section {
     case Sections.help.rawValue:
       switch indexPath.row {
+      case 0: open(segue: "install")
       case 1: open(url: "https://github.com/sgigou/ibepo/wiki")
       default: break
       }
@@ -113,9 +114,14 @@ class LandingViewController: UITableViewController {
   }
 
   private func open(url destination: String) {
-    if let url = URL(string: destination) {
+    guard let url = URL(string: destination) else { return }
+    if UIApplication.shared.canOpenURL(url) {
       UIApplication.shared.openURL(url)
     }
+  }
+
+  private func open(segue identifier: String) {
+    performSegue(withIdentifier: identifier, sender: self)
   }
 
 }
