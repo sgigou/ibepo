@@ -90,7 +90,32 @@ class LandingViewController: UITableViewController {
     } else {
       cell.imageView?.tintColor = .systemGray
     }
-    cell.accessoryType = .disclosureIndicator
+  }
+
+  // MARK: User interaction
+
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    switch indexPath.section {
+    case Sections.help.rawValue:
+      switch indexPath.row {
+      case 1: open(url: "https://github.com/sgigou/ibepo/wiki")
+      default: break
+      }
+    case Sections.links.rawValue:
+      switch indexPath.row {
+      case 0: open(url: "https://bepo.fr")
+      case 1: open(url: "https://github.com/sgigou/ibepo")
+      default: break
+      }
+    case Sections.contact.rawValue: open(url: "https://twitter.com/stevegigou")
+    default: break
+    }
+  }
+
+  private func open(url destination: String) {
+    if let url = URL(string: destination) {
+      UIApplication.shared.openURL(url)
+    }
   }
 
 }
