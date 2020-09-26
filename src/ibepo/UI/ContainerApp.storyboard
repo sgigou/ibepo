@@ -157,7 +157,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="G0G-4B-6Xf">
-                                <rect key="frame" x="0.0" y="44" width="320" height="387"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="436"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -173,20 +173,11 @@
                             <constraint firstItem="G0G-4B-6Xf" firstAttribute="leading" secondItem="NDB-mi-CFq" secondAttribute="leading" id="tfz-wF-kbP"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" image="trash-2" id="7gl-Ee-7Iy">
-                            <color key="tintColor" systemColor="systemRedColor"/>
-                        </barButtonItem>
-                        <barButtonItem title="Item" image="clipboard" id="v1g-EW-o8g">
-                            <color key="tintColor" systemColor="systemRedColor"/>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="hq5-0Y-SuW"/>
-                        <barButtonItem title="Item" image="copy" id="7Pu-GW-NLa"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Éditeur Bépo" id="5e4-88-qsd">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="help-circle" id="5Uv-JA-j9M"/>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="textView" destination="G0G-4B-6Xf" id="FsQ-zt-1Ey"/>
                     </connections>
@@ -200,7 +191,7 @@
             <objects>
                 <navigationController id="ejC-8V-Gcc" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sNk-Mr-8J8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -214,18 +205,12 @@
     </scenes>
     <resources>
         <image name="SF_globe" width="44" height="44"/>
-        <image name="clipboard" width="24" height="24"/>
-        <image name="copy" width="24" height="24"/>
         <image name="help-circle" width="24" height="24"/>
-        <image name="trash-2" width="24" height="24"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
