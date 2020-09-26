@@ -96,6 +96,7 @@ class LandingViewController: UITableViewController {
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     switch indexPath.section {
+    case Sections.tools.rawValue: open(segue: "editor")
     case Sections.help.rawValue:
       switch indexPath.row {
       case 0: open(segue: "install")

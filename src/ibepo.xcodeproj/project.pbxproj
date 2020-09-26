@@ -57,6 +57,7 @@
 		39C6E5AC248108F400EDB1EA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C6E5AA248108F400EDB1EA /* Constants.swift */; };
 		39C8EB05251E2D7E002D5892 /* LandingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39C8EB04251E2D7E002D5892 /* LandingHeaderView.xib */; };
 		39C8EB0F251E34F6002D5892 /* InstallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8EB0E251E34F6002D5892 /* InstallViewController.swift */; };
+		39C8EB15251E38DE002D5892 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8EB14251E38DE002D5892 /* EditorViewController.swift */; };
 		39FA3A06247BF4E700445602 /* KeyLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA3A04247BF4E700445602 /* KeyLocator.swift */; };
 /* End PBXBuildFile section */
 
@@ -153,6 +154,7 @@
 		39C6E5AA248108F400EDB1EA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		39C8EB04251E2D7E002D5892 /* LandingHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LandingHeaderView.xib; sourceTree = "<group>"; };
 		39C8EB0E251E34F6002D5892 /* InstallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallViewController.swift; sourceTree = "<group>"; };
+		39C8EB14251E38DE002D5892 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		39FA3A04247BF4E700445602 /* KeyLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyLocator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -353,6 +355,7 @@
 				39391389249796760061DB78 /* ContainerApp.storyboard */,
 				39690C66251E191C000E09AF /* LandingViewController.swift */,
 				39C8EB0E251E34F6002D5892 /* InstallViewController.swift */,
+				39C8EB14251E38DE002D5892 /* EditorViewController.swift */,
 				39690C5B251E1850000E09AF /* Cells */,
 				3939138B249799F30061DB78 /* MainViewController.swift */,
 				3939138F2497A5100061DB78 /* TutorialPageViewController.swift */,
@@ -641,6 +644,7 @@
 				3939138C249799F30061DB78 /* MainViewController.swift in Sources */,
 				393913952497B6820061DB78 /* PageViewController.swift in Sources */,
 				39690C67251E191C000E09AF /* LandingViewController.swift in Sources */,
+				39C8EB15251E38DE002D5892 /* EditorViewController.swift in Sources */,
 				393913912497ACB00061DB78 /* ColorManager.swift in Sources */,
 				393913922497AD0A0061DB78 /* Notification.swift in Sources */,
 				39C8EB0F251E34F6002D5892 /* InstallViewController.swift in Sources */,
