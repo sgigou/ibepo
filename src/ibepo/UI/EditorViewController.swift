@@ -41,7 +41,7 @@ class EditorViewController: UIViewController {
     let pasteButton = UIBarButtonItem(image: UIImage(named: "clipboard"), style: .plain, target: nil, action: nil)
     pasteButton.tintColor = .systemRed
     let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-    let copyButton = UIBarButtonItem(image: UIImage(named: "copy"), style: .plain, target: nil, action: nil)
+    let copyButton = UIBarButtonItem(image: UIImage(named: "copy"), style: .plain, target: self, action: #selector(copyText(_:)))
     toolBar.setItems([deleteButton, pasteButton, spaceButton, copyButton], animated: false)
     toolBar.sizeToFit()
     return toolBar
@@ -86,6 +86,14 @@ class EditorViewController: UIViewController {
         popoverController.barButtonItem = sender
       }
       present(alert, animated: true)
+    }
+  }
+
+  @objc func copyText(_ sender: UIBarButtonItem) {
+    UIPasteboard.general.string = textView.text
+    sender.tintColor = .systemGreen
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+      sender.tintColor = .systemBlue
     }
   }
 
