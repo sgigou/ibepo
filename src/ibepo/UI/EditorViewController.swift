@@ -36,7 +36,7 @@ class EditorViewController: UIViewController {
 
   func createToolbar() -> UIToolbar {
     let toolBar = UIToolbar()
-    let deleteButton = UIBarButtonItem(image: UIImage(named: "trash-2"), style: .plain, target: nil, action: nil)
+    let deleteButton = UIBarButtonItem(image: UIImage(named: "trash-2"), style: .plain, target: self, action: #selector(deleteText(_:)))
     deleteButton.tintColor = .systemRed
     let pasteButton = UIBarButtonItem(image: UIImage(named: "clipboard"), style: .plain, target: nil, action: nil)
     pasteButton.tintColor = .systemRed
@@ -71,7 +71,22 @@ class EditorViewController: UIViewController {
   @IBAction func displayHelp(_ sender: Any) {
     let alert = UIAlertController(title: "Éditeur pour clavier physique", message: "Cet éditeur permet de taper en bépo avec un clavier physique.\nLes boutons situés au-dessus du clavier vous permettent de rapidement supprimer, coller et copier l’ensemble du texte saisi.\n\nAssurez-vous que votre clavier est sur la disposition Français (France).", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Fermer", style: .default, handler: nil))
-    self.present(alert, animated: true)
+    present(alert, animated: true)
+  }
+
+  @objc func deleteText(_ sender: UIBarButtonItem) {
+    if !textView.text.isEmpty {
+      let alert = UIAlertController(title: "Effacer le texte", message: "Souhaitez-vous réellement effacer le texte saisi ?", preferredStyle: .actionSheet)
+      alert.addAction(UIAlertAction(title: "Annuler", style: .default, handler: nil))
+      alert.addAction(UIAlertAction(title: "Supprimer", style: .destructive, handler: {
+        [weak self] _ in
+        self?.textView.text = ""
+      }))
+      if let popoverController = alert.popoverPresentationController {
+        popoverController.barButtonItem = sender
+      }
+      present(alert, animated: true)
+    }
   }
 
 }
