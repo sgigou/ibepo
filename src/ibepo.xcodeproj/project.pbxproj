@@ -46,6 +46,8 @@
 		399E641E2464069D00D25C6D /* KeyGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */; };
 		399E64262464381A00D25C6D /* KeyboardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E64242464381A00D25C6D /* KeyboardState.swift */; };
 		399FB95C25220F1B00095E6E /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FB95B25220F1B00095E6E /* Notification.swift */; };
+		399FB981252220F200095E6E /* BepoKeymap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FB980252220F200095E6E /* BepoKeymap.swift */; };
+		399FB9872522256B00095E6E /* Swift+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FB9862522256B00095E6E /* Swift+Extension.swift */; };
 		399FBB78248E525B004F365D /* SpaceRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FBB76248E525B004F365D /* SpaceRemover.swift */; };
 		399FBB7B248E5B06004F365D /* NonBreakingSpaceInserter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FBB79248E5B06004F365D /* NonBreakingSpaceInserter.swift */; };
 		399FBB7E248E63C4004F365D /* AutoCapitalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FBB7C248E63C4004F365D /* AutoCapitalizer.swift */; };
@@ -141,6 +143,8 @@
 		399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyGestureRecognizer.swift; sourceTree = "<group>"; };
 		399E64242464381A00D25C6D /* KeyboardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardState.swift; sourceTree = "<group>"; };
 		399FB95B25220F1B00095E6E /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		399FB980252220F200095E6E /* BepoKeymap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BepoKeymap.swift; sourceTree = "<group>"; };
+		399FB9862522256B00095E6E /* Swift+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Extension.swift"; sourceTree = "<group>"; };
 		399FBB76248E525B004F365D /* SpaceRemover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceRemover.swift; sourceTree = "<group>"; };
 		399FBB79248E5B06004F365D /* NonBreakingSpaceInserter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonBreakingSpaceInserter.swift; sourceTree = "<group>"; };
 		399FBB7C248E63C4004F365D /* AutoCapitalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCapitalizer.swift; sourceTree = "<group>"; };
@@ -392,6 +396,8 @@
 			isa = PBXGroup;
 			children = (
 				399FB95B25220F1B00095E6E /* Notification.swift */,
+				399FB9862522256B00095E6E /* Swift+Extension.swift */,
+				399FB980252220F200095E6E /* BepoKeymap.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -646,6 +652,8 @@
 				39C8EB0F251E34F6002D5892 /* InstallViewController.swift in Sources */,
 				392D740D2514E589002460D0 /* UniversalLogger.swift in Sources */,
 				399FB95C25220F1B00095E6E /* Notification.swift in Sources */,
+				399FB9872522256B00095E6E /* Swift+Extension.swift in Sources */,
+				399FB981252220F200095E6E /* BepoKeymap.swift in Sources */,
 				39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

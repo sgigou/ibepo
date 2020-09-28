@@ -19,7 +19,6 @@ class EditorViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     observeNotifications()
-    textView.delegate = self
     textView.inputAccessoryView = createToolbar()
     load()
   }
@@ -131,8 +130,24 @@ class EditorViewController: UIViewController {
     }
   }
 
-}
+  // MARK: Bépo conversion
 
-extension EditorViewController: UITextViewDelegate {
+  override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+    if #available(iOS 13.4, *) {
+      guard let key = presses.first?.key else {
+        return super.pressesBegan(presses, with: event)
+      }
+      guard let character = BepoKeymap.getEquivalentChar(for: key) else {
+        return super.pressesBegan(presses, with: event)
+      }
+      if let textRange = textView.selectedTextRange {
+        textView.replace(textRange, withText: character)
+      } else {
+        textView.insertText(character)
+      }
+    } else {
+      return super.pressesBegan(presses, with: event)
+    }
+  }
 
 }
