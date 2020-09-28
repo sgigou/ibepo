@@ -38,7 +38,7 @@ class EditorViewController: UIViewController {
     let toolBar = UIToolbar()
     let deleteButton = UIBarButtonItem(image: UIImage(named: "trash-2"), style: .plain, target: self, action: #selector(deleteText(_:)))
     deleteButton.tintColor = .systemRed
-    let pasteButton = UIBarButtonItem(image: UIImage(named: "clipboard"), style: .plain, target: nil, action: nil)
+    let pasteButton = UIBarButtonItem(image: UIImage(named: "clipboard"), style: .plain, target: self, action: #selector(pasteText(_:)))
     pasteButton.tintColor = .systemRed
     let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     let copyButton = UIBarButtonItem(image: UIImage(named: "copy"), style: .plain, target: self, action: #selector(copyText(_:)))
@@ -94,6 +94,23 @@ class EditorViewController: UIViewController {
     sender.tintColor = .systemGreen
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
       sender.tintColor = .systemBlue
+    }
+  }
+
+  @objc func pasteText(_ sender: UIBarButtonItem) {
+    if textView.text.isEmpty {
+      textView.text = UIPasteboard.general.string
+    } else {
+      let alert = UIAlertController(title: "Coller le texte", message: "Souhaitez-vous réellement remplacer le text par le contenu du presse-papier ?", preferredStyle: .actionSheet)
+      alert.addAction(UIAlertAction(title: "Annuler", style: .default, handler: nil))
+      alert.addAction(UIAlertAction(title: "Coller", style: .destructive, handler: {
+        [weak self] _ in
+        self?.textView.text = UIPasteboard.general.string
+      }))
+      if let popoverController = alert.popoverPresentationController {
+        popoverController.barButtonItem = sender
+      }
+      present(alert, animated: true)
     }
   }
 
