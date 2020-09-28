@@ -175,7 +175,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Éditeur Bépo" id="5e4-88-qsd">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="help-circle" id="5Uv-JA-j9M"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="help-circle" id="5Uv-JA-j9M">
+                            <connections>
+                                <action selector="displayHelp:" destination="hwL-SM-hYi" id="GzN-AI-VTt"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -191,7 +195,7 @@
             <objects>
                 <navigationController id="ejC-8V-Gcc" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sNk-Mr-8J8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

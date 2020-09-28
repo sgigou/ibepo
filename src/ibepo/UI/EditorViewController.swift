@@ -66,6 +66,14 @@ class EditorViewController: UIViewController {
     textView.scrollRangeToVisible(textView.selectedRange)
   }
 
+  // MARK: User interaction
+
+  @IBAction func displayHelp(_ sender: Any) {
+    let alert = UIAlertController(title: "Éditeur pour clavier physique", message: "Cet éditeur permet de taper en bépo avec un clavier physique.\nLes boutons situés au-dessus du clavier vous permettent de rapidement supprimer, coller et copier l’ensemble du texte saisi.\n\nAssurez-vous que votre clavier est sur la disposition Français (France).", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "Fermer", style: .default, handler: nil))
+    self.present(alert, animated: true)
+  }
+
 }
 
 extension EditorViewController: UITextViewDelegate {
