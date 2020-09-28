@@ -10,15 +10,18 @@ import UIKit
 
 class EditorViewController: UIViewController {
 
+  static let userDefaultsTextKey = "editorText"
+
   @IBOutlet weak var textView: UITextView!
 
   // MARK: Life cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    observeKeyboardNotifications()
+    observeNotifications()
     textView.delegate = self
     textView.inputAccessoryView = createToolbar()
+    load()
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -30,6 +33,14 @@ class EditorViewController: UIViewController {
     super.viewWillDisappear(animated)
     textView.resignFirstResponder()
     NotificationCenter.default.removeObserver(self)
+    persist()
+  }
+
+  // MARK: Notifications
+
+  private func observeNotifications() {
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardFrameDidChange(_:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(persist), name: .applicationWillResignActive, object: nil)
   }
 
   // MARK: Drawing
@@ -47,12 +58,6 @@ class EditorViewController: UIViewController {
     return toolBar
   }
 
-  // MARK: Keyboard
-
-  private func observeKeyboardNotifications() {
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardFrameDidChange(_:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
-  }
-
   @objc func keyboardFrameDidChange(_ notification: NSNotification) {
     guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size else { return }
     var safeAreaBottom: CGFloat = 0.0
@@ -64,6 +69,18 @@ class EditorViewController: UIViewController {
     textView.contentInset = contentInset
     textView.scrollIndicatorInsets = contentInset
     textView.scrollRangeToVisible(textView.selectedRange)
+  }
+
+  // MARK: Persistence
+
+  @objc func persist() {
+    UniversalLogger.debug("Persisting changes")
+    UserDefaults.standard.setValue(textView.text, forKey: EditorViewController.userDefaultsTextKey)
+  }
+
+  private func load() {
+    UniversalLogger.debug("Loading changes")
+    textView.text = UserDefaults.standard.string(forKey: EditorViewController.userDefaultsTextKey)
   }
 
   // MARK: User interaction
@@ -89,14 +106,6 @@ class EditorViewController: UIViewController {
     }
   }
 
-  @objc func copyText(_ sender: UIBarButtonItem) {
-    UIPasteboard.general.string = textView.text
-    sender.tintColor = .systemGreen
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-      sender.tintColor = .systemBlue
-    }
-  }
-
   @objc func pasteText(_ sender: UIBarButtonItem) {
     if textView.text.isEmpty {
       textView.text = UIPasteboard.general.string
@@ -114,10 +123,16 @@ class EditorViewController: UIViewController {
     }
   }
 
+  @objc func copyText(_ sender: UIBarButtonItem) {
+    UIPasteboard.general.string = textView.text
+    sender.tintColor = .systemGreen
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+      sender.tintColor = .systemBlue
+    }
+  }
+
 }
 
 extension EditorViewController: UITextViewDelegate {
-
-
 
 }

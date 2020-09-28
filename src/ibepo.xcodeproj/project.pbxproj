@@ -20,11 +20,6 @@
 		392D740D2514E589002460D0 /* UniversalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392D740C2514E589002460D0 /* UniversalLogger.swift */; };
 		392D740E2514E589002460D0 /* UniversalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392D740C2514E589002460D0 /* UniversalLogger.swift */; };
 		3939138A249796760061DB78 /* ContainerApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39391389249796760061DB78 /* ContainerApp.storyboard */; };
-		3939138C249799F30061DB78 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3939138B249799F30061DB78 /* MainViewController.swift */; };
-		393913902497A5100061DB78 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3939138F2497A5100061DB78 /* TutorialPageViewController.swift */; };
-		393913912497ACB00061DB78 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39514A532462A44000F05A48 /* ColorManager.swift */; };
-		393913922497AD0A0061DB78 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974AFFD246581ED004901B7 /* Notification.swift */; };
-		393913952497B6820061DB78 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393913942497B6820061DB78 /* PageViewController.swift */; };
 		39514A542462A44000F05A48 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39514A532462A44000F05A48 /* ColorManager.swift */; };
 		39514A572462AB4F00F05A48 /* SymbolsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39514A562462AB4F00F05A48 /* SymbolsManager.swift */; };
 		39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39528F7F245AFC4D0080FBE8 /* AppDelegate.swift */; };
@@ -50,6 +45,7 @@
 		3999130A248E2F2100AD614E /* TextModifiersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39991308248E2F2100AD614E /* TextModifiersFactory.swift */; };
 		399E641E2464069D00D25C6D /* KeyGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */; };
 		399E64262464381A00D25C6D /* KeyboardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E64242464381A00D25C6D /* KeyboardState.swift */; };
+		399FB95C25220F1B00095E6E /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FB95B25220F1B00095E6E /* Notification.swift */; };
 		399FBB78248E525B004F365D /* SpaceRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FBB76248E525B004F365D /* SpaceRemover.swift */; };
 		399FBB7B248E5B06004F365D /* NonBreakingSpaceInserter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FBB79248E5B06004F365D /* NonBreakingSpaceInserter.swift */; };
 		399FBB7E248E63C4004F365D /* AutoCapitalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399FBB7C248E63C4004F365D /* AutoCapitalizer.swift */; };
@@ -113,9 +109,6 @@
 		392AD048245D72D9008252F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		392D740C2514E589002460D0 /* UniversalLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalLogger.swift; sourceTree = "<group>"; };
 		39391389249796760061DB78 /* ContainerApp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContainerApp.storyboard; sourceTree = "<group>"; };
-		3939138B249799F30061DB78 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		3939138F2497A5100061DB78 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
-		393913942497B6820061DB78 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		39514A532462A44000F05A48 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		39514A562462AB4F00F05A48 /* SymbolsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsManager.swift; sourceTree = "<group>"; };
 		39528F7C245AFC4D0080FBE8 /* iBépo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iBépo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +140,7 @@
 		39991308248E2F2100AD614E /* TextModifiersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifiersFactory.swift; sourceTree = "<group>"; };
 		399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyGestureRecognizer.swift; sourceTree = "<group>"; };
 		399E64242464381A00D25C6D /* KeyboardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardState.swift; sourceTree = "<group>"; };
+		399FB95B25220F1B00095E6E /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		399FBB76248E525B004F365D /* SpaceRemover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceRemover.swift; sourceTree = "<group>"; };
 		399FBB79248E5B06004F365D /* NonBreakingSpaceInserter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonBreakingSpaceInserter.swift; sourceTree = "<group>"; };
 		399FBB7C248E63C4004F365D /* AutoCapitalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCapitalizer.swift; sourceTree = "<group>"; };
@@ -306,6 +300,7 @@
 			children = (
 				39528F7F245AFC4D0080FBE8 /* AppDelegate.swift */,
 				39528F8D245AFC510080FBE8 /* Info.plist */,
+				399FB96125220F2100095E6E /* Utils */,
 				3994E3A8245D6E86008B1099 /* UI */,
 				394657A0245B0EF20039E88F /* Resources */,
 			);
@@ -357,9 +352,6 @@
 				39C8EB0E251E34F6002D5892 /* InstallViewController.swift */,
 				39C8EB14251E38DE002D5892 /* EditorViewController.swift */,
 				39690C5B251E1850000E09AF /* Cells */,
-				3939138B249799F30061DB78 /* MainViewController.swift */,
-				3939138F2497A5100061DB78 /* TutorialPageViewController.swift */,
-				393913942497B6820061DB78 /* PageViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -394,6 +386,14 @@
 				399E641C2464069D00D25C6D /* KeyGestureRecognizer.swift */,
 			);
 			path = KeyGesture;
+			sourceTree = "<group>";
+		};
+		399FB96125220F2100095E6E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				399FB95B25220F1B00095E6E /* Notification.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -641,16 +641,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3939138C249799F30061DB78 /* MainViewController.swift in Sources */,
-				393913952497B6820061DB78 /* PageViewController.swift in Sources */,
 				39690C67251E191C000E09AF /* LandingViewController.swift in Sources */,
 				39C8EB15251E38DE002D5892 /* EditorViewController.swift in Sources */,
-				393913912497ACB00061DB78 /* ColorManager.swift in Sources */,
-				393913922497AD0A0061DB78 /* Notification.swift in Sources */,
 				39C8EB0F251E34F6002D5892 /* InstallViewController.swift in Sources */,
 				392D740D2514E589002460D0 /* UniversalLogger.swift in Sources */,
+				399FB95C25220F1B00095E6E /* Notification.swift in Sources */,
 				39528F80245AFC4D0080FBE8 /* AppDelegate.swift in Sources */,
-				393913902497A5100061DB78 /* TutorialPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
