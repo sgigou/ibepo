@@ -48,6 +48,14 @@ struct DeadKeyConverter {
     "-": "⁻",
   ]
 
+  let tildes = [
+    "-": "≃",
+    "<": "≲",
+    ">": "≳",
+    "=": "≈",
+    "≠": "≉",
+  ]
+
   func isModificativeLetter(_ letter: String) -> Bool {
     return accentsMatchTable[letter] != nil
   }
@@ -62,6 +70,9 @@ struct DeadKeyConverter {
     }
     if let exponent = combineExponents(markedText: markedText, with: newLetter) {
       return exponent
+    }
+    if let tilde = combineTilde(markedText: markedText, with: newLetter) {
+      return tilde
     }
     return combineStandard(markedText: markedText, with: newLetter)
   }
@@ -79,6 +90,15 @@ struct DeadKeyConverter {
     if markedText == "\u{02c6}" {
       if let exponent = exponents[newLetter] {
         return exponent
+      }
+    }
+    return nil
+  }
+
+  private func combineTilde(markedText: String, with newLetter: String) -> String? {
+    if markedText == "\u{02dc}" {
+      if let tilde = tildes[newLetter] {
+        return tilde
       }
     }
     return nil
