@@ -21,6 +21,12 @@ struct DeadKeyConverter {
     "\u{02dd}": "\u{030b}", // ˝
   ]
 
+  let escapingCharacters = [
+    " ",
+    "\n",
+    "\t",
+  ]
+
   let doubleAccents = [
     "\u{02ca}": "\u{02dd}", // ´ -> ˝
   ]
@@ -46,21 +52,39 @@ struct DeadKeyConverter {
     return accentsMatchTable[letter] != nil
   }
 
+  func shouldEscape(markedText: String, with newLetter: String) -> Bool {
+    return escapingCharacters.contains(newLetter)
+  }
+
   func combine(markedText: String, with newLetter: String) -> String {
-    // Validate base character
-    // Double accents
+    if let doubleAccent = combineAccents(markedText: markedText, with: newLetter) {
+      return doubleAccent
+    }
+    if let exponent = combineExponents(markedText: markedText, with: newLetter) {
+      return exponent
+    }
+    return combineStandard(markedText: markedText, with: newLetter)
+  }
+
+  private func combineAccents(markedText: String, with newLetter: String) -> String? {
     if let doubleAccent = doubleAccents[newLetter] {
       if newLetter == markedText {
         return doubleAccent
       }
     }
-    // Exponents
+    return nil
+  }
+
+  private func combineExponents(markedText: String, with newLetter: String) -> String? {
     if markedText == "\u{02c6}" {
       if let exponent = exponents[newLetter] {
         return exponent
       }
     }
-    // Standard accents
+    return nil
+  }
+
+  private func combineStandard(markedText: String, with newLetter: String) -> String {
     guard let combiningChar = accentsMatchTable[markedText] else {
       return newLetter
     }

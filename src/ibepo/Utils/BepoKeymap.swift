@@ -20,9 +20,13 @@ struct BepoKeymap {
 
   static let values: [UIKeyboardHIDUsage: KeyValue] = [
     // Row 1
+    // Row 2
     .keyboardQ: KeyValue(standard: "b", shift: "B", alt: "|", shiftAlt: "_"),
-//    .keyboardW: KeyValue(standard: "é", shift: "É", alt: "\u{02ca}", shiftAlt: "♥"),
-    .keyboardW: KeyValue(standard: "\u{02c6}", shift: "3", alt: "\u{02ca}", shiftAlt: "♥"),
+    .keyboardW: KeyValue(standard: "é", shift: "É", alt: "\u{02ca}", shiftAlt: "♥"),
+    // Row 3
+    // Row 4
+    // Row 5
+    .keyboardSpacebar: KeyValue(standard: " ", shift: " ", alt: "_", shiftAlt: " "),
 //    .keyboardW: KeyValue(standard: "", shift: "", alt: "", shiftAlt: ""),
   ]
 

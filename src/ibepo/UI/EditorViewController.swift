@@ -144,6 +144,10 @@ class EditorViewController: UIViewController {
       }
       if let markedTextRange = textView.markedTextRange,
          let markedText = textView.text(in: markedTextRange) {
+        if deadKeyConverter.shouldEscape(markedText: markedText, with: character) {
+          textView.insertText(markedText)
+          return
+        }
         character = deadKeyConverter.combine(markedText: markedText, with: character)
       }
       if !deadKeyConverter.isModificativeLetter(character) {
