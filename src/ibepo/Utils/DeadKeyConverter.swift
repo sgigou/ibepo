@@ -25,16 +25,42 @@ struct DeadKeyConverter {
     "\u{02ca}": "\u{02dd}", // ´ -> ˝
   ]
 
+  let exponents = [
+    "1": "¹",
+    "2": "²",
+    "3": "³",
+    "4": "⁴",
+    "5": "⁵",
+    "6": "⁶",
+    "7": "⁷",
+    "8": "⁸",
+    "9": "⁹",
+    "0": "⁰",
+    "+": "⁺",
+    "(": "⁽",
+    ")": "⁾",
+    "-": "⁻",
+  ]
+
   func isModificativeLetter(_ letter: String) -> Bool {
     return accentsMatchTable[letter] != nil
   }
 
   func combine(markedText: String, with newLetter: String) -> String {
+    // Validate base character
+    // Double accents
     if let doubleAccent = doubleAccents[newLetter] {
       if newLetter == markedText {
         return doubleAccent
       }
     }
+    // Exponents
+    if markedText == "\u{02c6}" {
+      if let exponent = exponents[newLetter] {
+        return exponent
+      }
+    }
+    // Standard accents
     guard let combiningChar = accentsMatchTable[markedText] else {
       return newLetter
     }
