@@ -14,6 +14,8 @@ class EditorViewController: UIViewController {
 
   @IBOutlet weak var textView: UITextView!
 
+  private let deadKeyConverter = DeadKeyConverter()
+
   // MARK: Life cycle
 
   override func viewDidLoad() {
@@ -137,13 +139,17 @@ class EditorViewController: UIViewController {
       guard let key = presses.first?.key else {
         return super.pressesBegan(presses, with: event)
       }
-      guard let character = BepoKeymap.getEquivalentChar(for: key) else {
+      guard var character = BepoKeymap.getEquivalentChar(for: key) else {
         return super.pressesBegan(presses, with: event)
       }
-      if let textRange = textView.selectedTextRange {
-        textView.replace(textRange, withText: character)
-      } else {
+      if let markedTextRange = textView.markedTextRange,
+         let markedText = textView.text(in: markedTextRange) {
+        character = deadKeyConverter.combine(markedText: markedText, with: character)
+      }
+      if !deadKeyConverter.isModificativeLetter(character) {
         textView.insertText(character)
+      } else {
+        textView.setMarkedText(character, selectedRange: NSRange(location: 0, length: character.count))
       }
     } else {
       return super.pressesBegan(presses, with: event)

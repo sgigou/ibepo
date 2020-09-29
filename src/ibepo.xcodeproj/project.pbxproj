@@ -56,6 +56,7 @@
 		39C8EB05251E2D7E002D5892 /* LandingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39C8EB04251E2D7E002D5892 /* LandingHeaderView.xib */; };
 		39C8EB0F251E34F6002D5892 /* InstallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8EB0E251E34F6002D5892 /* InstallViewController.swift */; };
 		39C8EB15251E38DE002D5892 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8EB14251E38DE002D5892 /* EditorViewController.swift */; };
+		39F9B04C25236D0500F11BB7 /* DeadKeyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F9B04B25236D0500F11BB7 /* DeadKeyConverter.swift */; };
 		39FA3A06247BF4E700445602 /* KeyLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA3A04247BF4E700445602 /* KeyLocator.swift */; };
 /* End PBXBuildFile section */
 
@@ -153,6 +154,7 @@
 		39C8EB04251E2D7E002D5892 /* LandingHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LandingHeaderView.xib; sourceTree = "<group>"; };
 		39C8EB0E251E34F6002D5892 /* InstallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallViewController.swift; sourceTree = "<group>"; };
 		39C8EB14251E38DE002D5892 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
+		39F9B04B25236D0500F11BB7 /* DeadKeyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadKeyConverter.swift; sourceTree = "<group>"; };
 		39FA3A04247BF4E700445602 /* KeyLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyLocator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -398,6 +400,7 @@
 				399FB95B25220F1B00095E6E /* Notification.swift */,
 				399FB9862522256B00095E6E /* Swift+Extension.swift */,
 				399FB980252220F200095E6E /* BepoKeymap.swift */,
+				39F9B04B25236D0500F11BB7 /* DeadKeyConverter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				39C8EB15251E38DE002D5892 /* EditorViewController.swift in Sources */,
 				39C8EB0F251E34F6002D5892 /* InstallViewController.swift in Sources */,
 				392D740D2514E589002460D0 /* UniversalLogger.swift in Sources */,
+				39F9B04C25236D0500F11BB7 /* DeadKeyConverter.swift in Sources */,
 				399FB95C25220F1B00095E6E /* Notification.swift in Sources */,
 				399FB9872522256B00095E6E /* Swift+Extension.swift in Sources */,
 				399FB981252220F200095E6E /* BepoKeymap.swift in Sources */,

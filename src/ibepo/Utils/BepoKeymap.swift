@@ -19,7 +19,10 @@ struct BepoKeymap {
   }
 
   static let values: [UIKeyboardHIDUsage: KeyValue] = [
-    .keyboardQ: KeyValue(standard: "b", shift: "B", alt: "|", shiftAlt: "_")
+    // Row 1
+    .keyboardQ: KeyValue(standard: "b", shift: "B", alt: "|", shiftAlt: "_"),
+    .keyboardW: KeyValue(standard: "é", shift: "É", alt: "\u{02ca}", shiftAlt: "♥"),
+//    .keyboardW: KeyValue(standard: "", shift: "", alt: "", shiftAlt: ""),
   ]
 
   static func getEquivalentChar(for key: UIKey) -> String? {

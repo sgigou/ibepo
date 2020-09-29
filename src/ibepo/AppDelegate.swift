@@ -22,16 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     NotificationCenter.default.post(name: .applicationWillResignActive, object: nil)
   }
 
-  func applicationDidEnterBackground(_ application: UIApplication) {
-    UniversalLogger.debug("applicationDidEnterBackground")
-    if var topController = UIApplication.shared.keyWindow?.rootViewController {
-      while let presentedViewController = topController.presentedViewController {
-        topController = presentedViewController
-      }
-      if let editorController = topController as? EditorViewController {
-        editorController.persist()
-      }
-    }
+  func applicationWillTerminate(_ application: UIApplication) {
+      UniversalLogger.debug("applicationWillTerminate")
+      NotificationCenter.default.post(name: .applicationWillResignActive, object: nil)
   }
 
 }
