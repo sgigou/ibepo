@@ -21,11 +21,20 @@ struct DeadKeyConverter {
     "\u{02dd}": "\u{030b}", // ˝
   ]
 
+  let doubleAccents = [
+    "\u{02ca}": "\u{02dd}", // ´ -> ˝
+  ]
+
   func isModificativeLetter(_ letter: String) -> Bool {
     return accentsMatchTable[letter] != nil
   }
 
   func combine(markedText: String, with newLetter: String) -> String {
+    if let doubleAccent = doubleAccents[newLetter] {
+      if newLetter == markedText {
+        return doubleAccent
+      }
+    }
     guard let combiningChar = accentsMatchTable[markedText] else {
       return newLetter
     }
