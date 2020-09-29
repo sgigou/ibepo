@@ -10,25 +10,52 @@ import Foundation
 
 struct DeadKeyConverter {
 
-  /// Matches modificative letter and combining char.
-  ///
-  /// Based on: https://bepo.fr/wiki/Touches_mortes
-  let accentsMatchTable = [
-    "\u{02cb}": "\u{0300}", // `
-    "\u{02ca}": "\u{0301}", // ´
-    "\u{02c6}": "\u{0302}", // ^
-    "\u{02dc}": "\u{0303}", // ~
-    "\u{02dd}": "\u{030b}", // ˝
+  let accents = [
+    "\u{0300}", // dead_grave `
+    "\u{0301}", // dead_acute ´
+    "\u{0302}", // dead_circumflex ^
+    "\u{0303}", // dead_tilde ~
+    "\u{0304}", // dead_macron ¯
+    "\u{0306}", // dead_breve ˘
+    "\u{0307}", // dead_abovedot ˙
+    "\u{0308}", // dead_diaeresis ¨
+    "\u{0309}", // dead_hook
+    "\u{030a}", // dead_abovering °
+    "\u{030b}", // dead_acute dead_acute ˝
+    "\u{030c}", // dead_caron ˇ
+    "\u{030f}", // dead_grave dead_grave
+    "\u{0311}", // dead_breve dead_breve
+    "\u{031b}", // dead_horn
+    "\u{0323}", // dead_belowdot
+    "\u{0324}", // dead_diaeresis dead_diaeresis
+    "\u{0325}", // dead_abovering dead_abovering
+    "\u{0326}", // dead_belowcomma
+    "\u{0327}", // dead_cedilla
+    "\u{0328}", // dead_ogonek
+    "\u{032d}", // dead_circumflex dead_circumflex
+    "\u{0331}", // dead_macron dead_macron
+    "\u{0334}", // dead_tilde
+    "\u{0336}", // UFDD8
+    "\u{0338}", // dead_stroke
   ]
 
   let escapingCharacters = [
     " ",
+    " ",
+    " ",
     "\n",
     "\t",
   ]
 
   let doubleAccents = [
-    "\u{02ca}": "\u{02dd}", // ´ -> ˝
+    "\u{0301}": "\u{030b}", // ´ -> ˝
+    "\u{0300}": "\u{030f}", // dead_grave
+    "\u{0306}": "\u{0311}", // dead_breve
+    "\u{0308}": "\u{0324}", // dead_diaeresis
+    "\u{030a}": "\u{0325}", // dead_abovering
+    "\u{0302}": "\u{032d}", // dead_circumflex
+    "\u{0304}": "\u{0331}", // dead_macron
+    "\u{0303}": "\u{0334}", // dead_tilde
   ]
 
   let exponents = [
@@ -57,7 +84,7 @@ struct DeadKeyConverter {
   ]
 
   func isModificativeLetter(_ letter: String) -> Bool {
-    return accentsMatchTable[letter] != nil
+    return accents.contains(letter)
   }
 
   func shouldEscape(markedText: String, with newLetter: String) -> Bool {
@@ -79,7 +106,7 @@ struct DeadKeyConverter {
 
   private func combineAccents(markedText: String, with newLetter: String) -> String? {
     if let doubleAccent = doubleAccents[newLetter] {
-      if newLetter == markedText {
+      if newLetter.unicodeScalars.last == markedText.unicodeScalars.last {
         return doubleAccent
       }
     }
@@ -105,7 +132,7 @@ struct DeadKeyConverter {
   }
 
   private func combineStandard(markedText: String, with newLetter: String) -> String {
-    guard let combiningChar = accentsMatchTable[markedText] else {
+    guard let combiningChar = markedText.unicodeScalars.last else {
       return newLetter
     }
     return "\(newLetter)\(combiningChar)"

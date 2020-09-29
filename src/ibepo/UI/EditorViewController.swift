@@ -139,9 +139,11 @@ class EditorViewController: UIViewController {
       guard let key = presses.first?.key else {
         return super.pressesBegan(presses, with: event)
       }
+      print(key.keyCode.rawValue)
       guard var character = BepoKeymap.getEquivalentChar(for: key) else {
         return super.pressesBegan(presses, with: event)
       }
+      if character.isEmpty { return }
       if let markedTextRange = textView.markedTextRange,
          let markedText = textView.text(in: markedTextRange) {
         if deadKeyConverter.shouldEscape(markedText: markedText, with: character) {
@@ -153,6 +155,7 @@ class EditorViewController: UIViewController {
       if !deadKeyConverter.isModificativeLetter(character) {
         textView.insertText(character)
       } else {
+        character = " \(character)"
         textView.setMarkedText(character, selectedRange: NSRange(location: 0, length: character.count))
       }
     } else {
