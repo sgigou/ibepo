@@ -114,7 +114,7 @@ struct DeadKeyConverter {
   }
 
   private func combineExponents(markedText: String, with newLetter: String) -> String? {
-    if markedText == "\u{02c6}" {
+    if markedText.unicodeScalars.last == "\u{0302}" {
       if let exponent = exponents[newLetter] {
         return exponent
       }
@@ -123,7 +123,7 @@ struct DeadKeyConverter {
   }
 
   private func combineTilde(markedText: String, with newLetter: String) -> String? {
-    if markedText == "\u{02dc}" {
+    if markedText.unicodeScalars.last == "\u{0303}" {
       if let tilde = tildes[newLetter] {
         return tilde
       }
