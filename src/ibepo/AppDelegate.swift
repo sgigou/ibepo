@@ -17,5 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
 
+  func applicationWillResignActive(_ application: UIApplication) {
+    UniversalLogger.debug("applicationWillResignActive")
+    NotificationCenter.default.post(name: .applicationWillResignActive, object: nil)
+  }
+
+  func applicationWillTerminate(_ application: UIApplication) {
+      UniversalLogger.debug("applicationWillTerminate")
+      NotificationCenter.default.post(name: .applicationWillResignActive, object: nil)
+  }
+
 }
 
