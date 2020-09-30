@@ -415,7 +415,6 @@
 				392AD040245D72D9008252F1 /* Sources */,
 				392AD041245D72D9008252F1 /* Frameworks */,
 				392AD042245D72D9008252F1 /* Resources */,
-				391B6E4D2492676D002628E5 /* Increase Build Script */,
 			);
 			buildRules = (
 			);
@@ -433,7 +432,6 @@
 				39528F78245AFC4D0080FBE8 /* Sources */,
 				39528F79245AFC4D0080FBE8 /* Frameworks */,
 				39528F7A245AFC4D0080FBE8 /* Resources */,
-				3946579F245B0D2D0039E88F /* Increment Build */,
 				392AD04C245D72D9008252F1 /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -566,45 +564,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		391B6E4D2492676D002628E5 /* Increase Build Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Increase Build Script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
-		};
-		3946579F245B0D2D0039E88F /* Increment Build */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Increment Build";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		392AD040245D72D9008252F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -713,7 +672,9 @@
 		392AD04D245D72D9008252F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = F2M6RF7E9E;
 				INFOPLIST_FILE = keyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -723,8 +684,9 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.novesoft.ibepo.keyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.novesoft.ibepo.keyboardex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -734,7 +696,9 @@
 		392AD04E245D72D9008252F1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = F2M6RF7E9E;
 				INFOPLIST_FILE = keyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -744,8 +708,9 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.novesoft.ibepo.keyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.novesoft.ibepo.keyboardex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -871,7 +836,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = F2M6RF7E9E;
 				INFOPLIST_FILE = ibepo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -882,6 +849,7 @@
 				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.novesoft.ibepo;
 				PRODUCT_NAME = "iBépo";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -892,7 +860,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = F2M6RF7E9E;
 				INFOPLIST_FILE = ibepo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -903,6 +873,7 @@
 				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.novesoft.ibepo;
 				PRODUCT_NAME = "iBépo";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
