@@ -28,7 +28,7 @@ La disposition du clavier est très proche du clavier Bépo officiel, mais elle 
 
 <p align="center"><img src="doc/img/access@2x.png" width="375"></p>
 
-Vous trouverez plus d’informations sur la [page du Wiki](https://github.com/sgigou/ibepo/wiki/L%E2%80%99agencement).
+Vous trouverez plus d’informations sur la [page du Wiki](https://github.com/sgigou/ibepo/wiki/Agencement-des-touches).
 
 
 #### Caractères disponibles
@@ -39,7 +39,7 @@ iBépo vous permet d’accéder à de très nombreux caractères, et couvre une 
 
 Chaque touche possède une lettre, un symbole accessible en appuyant sur la touche `Alt`, et des lettres et symboles secondaires accessibles en appuyant plus longtemps sur la touche.
 
-La liste complète des caractères est disponible [dans le Wiki](https://github.com/sgigou/ibepo/wiki/Table-des-caract%C3%A8res).
+La liste complète des caractères est disponible [dans le Wiki](https://github.com/sgigou/ibepo/wiki/Liste-des-caract%C3%A8res).
 
 
 #### Capitalisation automatique
@@ -114,6 +114,13 @@ Cela signifie qu’il ne peut rien stocker, ni envoyer d’informations _via_ In
 En contrepartie, certaines actions sont indisponibles : le clavier ne peut pas produire de bruit, ni de vibration, ni proposer de dictionnaire personnalisé ou d’accès aux noms de votre répertoire.
 
 Ces fonctionnalités seront peut-être proposées _optionnellement_ si elles me sont demandées.
+
+
+### Support des claviers physiques
+
+Le système iOS ne permet pas — encore — d’ajouter de dispositions à la liste existante. L’application iBépo propose néanmoins un éditeur vous permettant de saisir du texte en Bépo avec vos claviers physiques.
+
+Pour en savoir plus, vous pouvez vous référer à [la documentation](https://github.com/sgigou/ibepo/wiki/Claviers-physiques).
 
 
 ## Installation
