@@ -139,7 +139,6 @@ class EditorViewController: UIViewController {
       guard let key = presses.first?.key else {
         return super.pressesBegan(presses, with: event)
       }
-      print(key.keyCode.rawValue)
       guard var character = BepoKeymap.getEquivalentChar(for: key) else {
         return super.pressesBegan(presses, with: event)
       }
