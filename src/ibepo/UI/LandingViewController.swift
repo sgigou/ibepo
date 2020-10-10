@@ -85,11 +85,7 @@ class LandingViewController: UITableViewController {
   private func configure(_ cell: UITableViewCell, title: String, imageName: String) {
     cell.textLabel?.text = title
     cell.imageView?.image = UIImage(named: imageName)
-    if #available(iOS 13.0, *) {
-      cell.imageView?.tintColor = .tertiaryLabel
-    } else {
-      cell.imageView?.tintColor = .systemGray
-    }
+    cell.imageView?.tintColor = .systemBlue
   }
 
   // MARK: User interaction
