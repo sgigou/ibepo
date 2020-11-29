@@ -240,6 +240,7 @@
 		391BF0762460251C004F8497 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				398DD5A1257398F500BBC8EF /* Settings.swift */,
 				39C6E5AA248108F400EDB1EA /* Constants.swift */,
 				391BF07224602208004F8497 /* Extensions.swift */,
 				3974AFFD246581ED004901B7 /* Notification.swift */,
@@ -287,7 +288,6 @@
 			isa = PBXGroup;
 			children = (
 				39528F88245AFC510080FBE8 /* Assets.xcassets */,
-				398DD5A1257398F500BBC8EF /* Settings.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
