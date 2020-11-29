@@ -7,6 +7,8 @@
 //
 
 final class KeySetFactory {
+
+  private let shouldDisplaySecondaryLetters = (Settings.get(for: .shouldDisplaySecondaryLetter) as? Bool) ?? true
   
   func generate() -> KeySet {
     var rows = [Row]()
@@ -62,7 +64,7 @@ final class KeySetFactory {
   }
   
   private func generateKey(for characterSet: KeyCharacterSet, level: LetterKeyView.Level = .primary) -> Key {
-    let view = LetterKeyView()
+    let view = LetterKeyView(shouldDisplaySecondaryLetter: shouldDisplaySecondaryLetters)
     view.setLetters(primary: characterSet.primaryLetter, secondary: characterSet.secondaryLetter, level: level)
     return Key(set: characterSet, view: view)
   }

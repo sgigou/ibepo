@@ -11,7 +11,7 @@ import UIKit
 class LandingViewController: UITableViewController {
 
   enum Sections: Int, CaseIterable {
-    case tools, help, links, contact
+    case tools, settings, help, links, contact
   }
 
   // MARK: Life cycle
@@ -40,6 +40,7 @@ class LandingViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
     case Sections.tools.rawValue: return "Outils"
+    case Sections.settings.rawValue: return "Paramètres"
     case Sections.help.rawValue: return "Aide"
     case Sections.links.rawValue: return "Liens utiles"
     case Sections.contact.rawValue: return "Contact"
@@ -50,6 +51,7 @@ class LandingViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case Sections.tools.rawValue: return 1
+    case Sections.settings.rawValue: return 1
     case Sections.help.rawValue: return 2
     case Sections.links.rawValue: return 2
     case Sections.contact.rawValue: return 1
@@ -62,9 +64,11 @@ class LandingViewController: UITableViewController {
     switch indexPath.section {
     case Sections.tools.rawValue:
       configure(cell, title: "Éditeur pour clavier physique", imageName: "command")
+    case Sections.settings.rawValue:
+      configure(cell, title: "Paramètres du clavier", imageName: "settings")
     case Sections.help.rawValue:
       switch indexPath.row {
-      case 0: configure(cell, title: "Installation", imageName: "settings")
+      case 0: configure(cell, title: "Installation", imageName: "power")
       case 1: configure(cell, title: "Documentation", imageName: "book-open")
       default: break
       }
@@ -93,6 +97,7 @@ class LandingViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     switch indexPath.section {
     case Sections.tools.rawValue: open(segue: "editor")
+    case Sections.settings.rawValue: open(segue: "settings")
     case Sections.help.rawValue:
       switch indexPath.row {
       case 0: open(segue: "install")

@@ -31,40 +31,22 @@ final class LetterKeyView: KeyView {
   
   private var primaryLabel = UILabel()
   private var secondaryLabel = UILabel()
-  
-  private var primaryFontSize: CGFloat {
-    if UIDevice.isPhone {
-      if UIScreen.isPortrait {
-        return 18.0
-      } else {
-        return 16.0
-      }
-    } else {
-      return 30.0
-    }
-  }
-  private var secondaryFontSize: CGFloat {
-    if UIDevice.current.userInterfaceIdiom == .phone {
-      if UIScreen.isPortrait {
-        return 12.0
-      } else {
-        return 16.0
-      }
-    } else {
-      return 16.0
-    }
-  }
+  private var shouldDisplaySecondaryLetter = true
   
   
   // MARK: Life cycle
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    initLabels()
   }
   
   required init?(coder: NSCoder) {
     super.init(coder: coder)
+  }
+
+  init(shouldDisplaySecondaryLetter: Bool) {
+    super.init(frame: .zero)
+    self.shouldDisplaySecondaryLetter = shouldDisplaySecondaryLetter
     initLabels()
   }
   
@@ -91,19 +73,18 @@ final class LetterKeyView: KeyView {
   override func updateAppearance() {
     super.updateAppearance()
     let primaryColor = ColorManager.shared.label
-    let primaryWeight: UIFont.Weight = UIDevice.current.userInterfaceIdiom == .phone ? .regular : .light
-    let shouldHideInactiveLabel = UIDevice.isPhone && !UIScreen.isPortrait
+    let shouldHideInactiveLabel = !shouldDisplaySecondaryLetter || (UIDevice.isPhone && !UIScreen.isPortrait)
     if isAltActivated {
-      secondaryLabel.font = .systemFont(ofSize: secondaryFontSize, weight: primaryWeight)
+      secondaryLabel.font = secondaryFont()
       secondaryLabel.textColor = primaryColor
-      primaryLabel.font = .systemFont(ofSize: primaryFontSize, weight: .light)
+      primaryLabel.font = primaryFont()
       primaryLabel.textColor = ColorManager.shared.secondaryLabel
       secondaryLabel.isHidden = false
       primaryLabel.isHidden = shouldHideInactiveLabel
     } else {
-      secondaryLabel.font = .systemFont(ofSize: secondaryFontSize, weight: .light)
+      secondaryLabel.font = secondaryFont()
       secondaryLabel.textColor = ColorManager.shared.secondaryLabel
-      primaryLabel.font = .systemFont(ofSize: primaryFontSize, weight: primaryWeight)
+      primaryLabel.font = primaryFont()
       primaryLabel.textColor = primaryColor
       secondaryLabel.isHidden = shouldHideInactiveLabel
       primaryLabel.isHidden = false
@@ -130,10 +111,13 @@ final class LetterKeyView: KeyView {
     secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
     addSubview(secondaryLabel)
     NSLayoutConstraint.activate([
-      secondaryLabel.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 2),
       secondaryLabel.rightAnchor.constraint(equalTo: backgroundView.rightAnchor),
       secondaryLabel.leftAnchor.constraint(equalTo: backgroundView.leftAnchor),
+      secondaryLabel.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 2)
     ])
+    if !shouldDisplaySecondaryLetter {
+      secondaryLabel.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -2).isActive = true
+    }
   }
   
   /**
@@ -148,6 +132,34 @@ final class LetterKeyView: KeyView {
       primaryLabel.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -2),
       primaryLabel.leftAnchor.constraint(equalTo: backgroundView.leftAnchor),
     ])
+    if !shouldDisplaySecondaryLetter {
+      primaryLabel.topAnchor.constraint(lessThanOrEqualTo: backgroundView.topAnchor, constant: 2).isActive = true
+    }
+  }
+
+  private func primaryFont() -> UIFont {
+    var size = CGFloat(30.0)
+    if UIDevice.isPhone {
+      if UIScreen.isPortrait {
+        size = shouldDisplaySecondaryLetter ? 18.0 : 20.0
+      } else {
+        size = 16.0
+      }
+    }
+    return .systemFont(ofSize: size, weight: .regular)
+  }
+
+  private func secondaryFont() -> UIFont {
+    var size = CGFloat(16.0)
+    if UIDevice.current.userInterfaceIdiom == .phone {
+      if UIScreen.isPortrait {
+        size = shouldDisplaySecondaryLetter ? 12.0 : 20.0
+      }
+    } else {
+      size = shouldDisplaySecondaryLetter ? 16.0 : 30.0
+    }
+    let weight: UIFont.Weight = shouldDisplaySecondaryLetter ? .light : .regular
+    return .systemFont(ofSize: size, weight: weight)
   }
   
 }
