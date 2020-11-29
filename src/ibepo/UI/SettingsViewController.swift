@@ -10,10 +10,6 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
 
-  enum CellId: String {
-    case SecondaryLetters
-  }
-
   enum Row: Int {
     case SecondaryLetters
   }
@@ -37,7 +33,12 @@ class SettingsViewController: UITableViewController {
     switch (indexPath.row) {
     case Row.SecondaryLetters.rawValue: // Secondary letters
       let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchTableViewCell", for: indexPath) as! SwitchTableViewCell
-      cell.configure(id: CellId.SecondaryLetters.rawValue, delegate: self, title: "Afficher les lettres secondaires", isOn: true)
+      cell.configure(
+        id: SettingsKey.shouldDisplaySecondaryLetter.rawValue,
+        delegate: self,
+        title: "Afficher les lettres secondaires",
+        isOn: (UserDefaults.standard.value(forKey: SettingsKey.shouldDisplaySecondaryLetter.rawValue) as? Bool) ?? true
+      )
       return cell
     default:
       fatalError("Row not found")
@@ -50,7 +51,8 @@ extension SettingsViewController: SwitchTableViewCellDelegate {
 
   func didChange(id: String, newValue: Bool) {
     switch id {
-    case CellId.SecondaryLetters.rawValue:
+    case SettingsKey.shouldDisplaySecondaryLetter.rawValue:
+      UserDefaults.standard.setValue(newValue, forKey: SettingsKey.shouldDisplaySecondaryLetter.rawValue)
     default:
       fatalError("Unhandled change function")
     }
