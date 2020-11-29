@@ -8,6 +8,12 @@
 
 import Foundation
 
-enum SettingsKey: String {
-  case shouldDisplaySecondaryLetter
+struct Settings {
+
+  static let suiteName = "group.F2M6RF7E9E.com.novesoft.ibepo"
+
+  enum Key: String {
+    case shouldDisplaySecondaryLetter
+  }
+
 }

@@ -14,6 +14,8 @@ class SettingsViewController: UITableViewController {
     case SecondaryLetters
   }
 
+  private let userDefaults = UserDefaults(suiteName: Settings.suiteName)
+
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: nil), forCellReuseIdentifier: "SwitchTableViewCell")
@@ -34,10 +36,10 @@ class SettingsViewController: UITableViewController {
     case Row.SecondaryLetters.rawValue: // Secondary letters
       let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchTableViewCell", for: indexPath) as! SwitchTableViewCell
       cell.configure(
-        id: SettingsKey.shouldDisplaySecondaryLetter.rawValue,
+        id: Settings.Key.shouldDisplaySecondaryLetter.rawValue,
         delegate: self,
         title: "Afficher les lettres secondaires",
-        isOn: (UserDefaults.standard.value(forKey: SettingsKey.shouldDisplaySecondaryLetter.rawValue) as? Bool) ?? true
+        isOn: (userDefaults?.value(forKey: Settings.Key.shouldDisplaySecondaryLetter.rawValue) as? Bool) ?? true
       )
       return cell
     default:
@@ -51,8 +53,8 @@ extension SettingsViewController: SwitchTableViewCellDelegate {
 
   func didChange(id: String, newValue: Bool) {
     switch id {
-    case SettingsKey.shouldDisplaySecondaryLetter.rawValue:
-      UserDefaults.standard.setValue(newValue, forKey: SettingsKey.shouldDisplaySecondaryLetter.rawValue)
+    case Settings.Key.shouldDisplaySecondaryLetter.rawValue:
+      userDefaults?.setValue(newValue, forKey: Settings.Key.shouldDisplaySecondaryLetter.rawValue)
     default:
       fatalError("Unhandled change function")
     }

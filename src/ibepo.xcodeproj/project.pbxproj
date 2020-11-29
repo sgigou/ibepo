@@ -41,8 +41,8 @@
 		398DD58C2573927600BBC8EF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398DD58B2573927600BBC8EF /* SettingsViewController.swift */; };
 		398DD59B257393E200BBC8EF /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398DD599257393E200BBC8EF /* SwitchTableViewCell.swift */; };
 		398DD59C257393E200BBC8EF /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 398DD59A257393E200BBC8EF /* SwitchTableViewCell.xib */; };
-		398DD5A2257398F500BBC8EF /* SettingsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398DD5A1257398F500BBC8EF /* SettingsKeys.swift */; };
-		398DD5A3257398F500BBC8EF /* SettingsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398DD5A1257398F500BBC8EF /* SettingsKeys.swift */; };
+		398DD5A2257398F500BBC8EF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398DD5A1257398F500BBC8EF /* Settings.swift */; };
+		398DD5A3257398F500BBC8EF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398DD5A1257398F500BBC8EF /* Settings.swift */; };
 		39936946247527FC00D53EA1 /* AutocorrectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39936943247527FC00D53EA1 /* AutocorrectViewController.swift */; };
 		39936948247527FC00D53EA1 /* AutocorrectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39936944247527FC00D53EA1 /* AutocorrectViewController.xib */; };
 		39991304248E2E4C00AD614E /* TextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39991302248E2E4C00AD614E /* TextModifier.swift */; };
@@ -143,7 +143,9 @@
 		398DD58B2573927600BBC8EF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		398DD599257393E200BBC8EF /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		398DD59A257393E200BBC8EF /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
-		398DD5A1257398F500BBC8EF /* SettingsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKeys.swift; sourceTree = "<group>"; };
+		398DD5A1257398F500BBC8EF /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		398DD5A825739BD000BBC8EF /* iBépo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iBépo.entitlements"; sourceTree = "<group>"; };
+		398DD5AD25739BE000BBC8EF /* keyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = keyboard.entitlements; sourceTree = "<group>"; };
 		39936943247527FC00D53EA1 /* AutocorrectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocorrectViewController.swift; sourceTree = "<group>"; };
 		39936944247527FC00D53EA1 /* AutocorrectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutocorrectViewController.xib; sourceTree = "<group>"; };
 		3994E3A1245D6D10008B1099 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 		392AD045245D72D9008252F1 /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				398DD5AD25739BE000BBC8EF /* keyboard.entitlements */,
 				392AD048245D72D9008252F1 /* Info.plist */,
 				392AD046245D72D9008252F1 /* KeyboardViewController.swift */,
 				391BF0762460251C004F8497 /* Utils */,
@@ -284,7 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				39528F88245AFC510080FBE8 /* Assets.xcassets */,
-				398DD5A1257398F500BBC8EF /* SettingsKeys.swift */,
+				398DD5A1257398F500BBC8EF /* Settings.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 		39528F7E245AFC4D0080FBE8 /* ibepo */ = {
 			isa = PBXGroup;
 			children = (
+				398DD5A825739BD000BBC8EF /* iBépo.entitlements */,
 				39528F7F245AFC4D0080FBE8 /* AppDelegate.swift */,
 				39528F8D245AFC510080FBE8 /* Info.plist */,
 				399FB96125220F2100095E6E /* Utils */,
@@ -615,7 +619,7 @@
 				3981495324604393007C9754 /* SpecialKeyView.swift in Sources */,
 				39C6E5A92480FF0700EDB1EA /* PopupView.swift in Sources */,
 				39C6E5AC248108F400EDB1EA /* Constants.swift in Sources */,
-				398DD5A3257398F500BBC8EF /* SettingsKeys.swift in Sources */,
+				398DD5A3257398F500BBC8EF /* Settings.swift in Sources */,
 				399FBB7B248E5B06004F365D /* NonBreakingSpaceInserter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -626,7 +630,7 @@
 			files = (
 				39690C67251E191C000E09AF /* LandingViewController.swift in Sources */,
 				39C8EB15251E38DE002D5892 /* EditorViewController.swift in Sources */,
-				398DD5A2257398F500BBC8EF /* SettingsKeys.swift in Sources */,
+				398DD5A2257398F500BBC8EF /* Settings.swift in Sources */,
 				398DD59B257393E200BBC8EF /* SwitchTableViewCell.swift in Sources */,
 				39C8EB0F251E34F6002D5892 /* InstallViewController.swift in Sources */,
 				398DD58C2573927600BBC8EF /* SettingsViewController.swift in Sources */,
@@ -690,6 +694,7 @@
 		392AD04D245D72D9008252F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = keyboard/keyboard.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
@@ -714,6 +719,7 @@
 		392AD04E245D72D9008252F1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = keyboard/keyboard.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
@@ -856,6 +862,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "ibepo/iBépo.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
@@ -880,6 +887,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "ibepo/iBépo.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
