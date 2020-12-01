@@ -697,7 +697,7 @@
 				CODE_SIGN_ENTITLEMENTS = keyboard/keyboard.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = F2M6RF7E9E;
 				INFOPLIST_FILE = keyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -706,7 +706,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.novesoft.ibepo.keyboardex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -722,7 +722,7 @@
 				CODE_SIGN_ENTITLEMENTS = keyboard/keyboard.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = F2M6RF7E9E;
 				INFOPLIST_FILE = keyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -731,7 +731,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.novesoft.ibepo.keyboardex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -865,7 +865,7 @@
 				CODE_SIGN_ENTITLEMENTS = "ibepo/iBépo.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = F2M6RF7E9E;
 				INFOPLIST_FILE = ibepo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -873,7 +873,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.novesoft.ibepo;
 				PRODUCT_NAME = "iBépo";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -890,7 +890,7 @@
 				CODE_SIGN_ENTITLEMENTS = "ibepo/iBépo.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = F2M6RF7E9E;
 				INFOPLIST_FILE = ibepo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -898,7 +898,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.novesoft.ibepo;
 				PRODUCT_NAME = "iBépo";
 				PROVISIONING_PROFILE_SPECIFIER = "";
